@@ -119,8 +119,22 @@ const BulkStudentUpload = ({ schoolId, teachers, sections, onComplete }: BulkStu
           };
         });
 
-        setParsedRows(rows);
-        if (rows.length === 0) toast.error("No data found in file");
+        const errorRows = rows.filter((r) => r.error);
+        const validRows = rows.filter((r) => !r.error);
+
+        if (rows.length === 0) {
+          toast.error("No data found in file");
+        } else if (errorRows.length > 0 && validRows.length === 0) {
+          setParsedRows(rows);
+          toast.error(`All ${errorRows.length} row(s) have errors. Fix and re-upload.`);
+        } else if (errorRows.length > 0) {
+          setParsedRows(rows);
+          toast.error(`${errorRows.length} row(s) have errors. ${validRows.length} valid row(s) will be created automatically after you review.`);
+        } else {
+          // All valid — create immediately
+          setParsedRows(rows);
+          await handleBulkCreate(validRows);
+        }
       } catch {
         toast.error("Failed to parse file. Use the template format.");
       }
