@@ -72,7 +72,7 @@ const BulkStudentUpload = ({ schoolId, teachers, sections, onComplete }: BulkStu
     setResults([]);
 
     const reader = new FileReader();
-    reader.onload = (evt) => {
+    reader.onload = async (evt) => {
       try {
         const wb = XLSX.read(evt.target?.result, { type: "binary" });
         const ws = wb.Sheets[wb.SheetNames[0]];
@@ -119,8 +119,22 @@ const BulkStudentUpload = ({ schoolId, teachers, sections, onComplete }: BulkStu
           };
         });
 
-        setParsedRows(rows);
-        if (rows.length === 0) toast.error("No data found in file");
+        const errorRows = rows.filter((r) => r.error);
+        const validRows = rows.filter((r) => !r.error);
+
+        if (rows.length === 0) {
+          toast.error("No data found in file");
+        } else if (errorRows.length > 0 && validRows.length === 0) {
+          setParsedRows(rows);
+          toast.error(`All ${errorRows.length} row(s) have errors. Fix and re-upload.`);
+        } else if (errorRows.length > 0) {
+          setParsedRows(rows);
+          toast.error(`${errorRows.length} row(s) have errors. ${validRows.length} valid row(s) will be created automatically after you review.`);
+        } else {
+          // All valid — create immediately
+          setParsedRows(rows);
+          await handleBulkCreate(validRows);
+        }
       } catch {
         toast.error("Failed to parse file. Use the template format.");
       }
@@ -129,8 +143,8 @@ const BulkStudentUpload = ({ schoolId, teachers, sections, onComplete }: BulkStu
     if (fileRef.current) fileRef.current.value = "";
   };
 
-  const handleBulkCreate = async () => {
-    const validRows = parsedRows.filter((r) => !r.error);
+  const handleBulkCreate = async (rowsToProcess?: ParsedRow[]) => {
+    const validRows = rowsToProcess || parsedRows.filter((r) => !r.error);
     if (validRows.length === 0) {
       toast.error("No valid rows to process");
       return;
@@ -338,7 +352,7 @@ const BulkStudentUpload = ({ schoolId, teachers, sections, onComplete }: BulkStu
                     <Button variant="ghost" onClick={() => setParsedRows([])}>Cancel</Button>
                     <Button
                       variant="hero"
-                      onClick={handleBulkCreate}
+                      onClick={() => handleBulkCreate()}
                       disabled={uploading || validCount === 0}
                     >
                       {uploading ? (
