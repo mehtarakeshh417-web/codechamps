@@ -72,7 +72,7 @@ const BulkStudentUpload = ({ schoolId, teachers, sections, onComplete }: BulkStu
     setResults([]);
 
     const reader = new FileReader();
-    reader.onload = (evt) => {
+    reader.onload = async (evt) => {
       try {
         const wb = XLSX.read(evt.target?.result, { type: "binary" });
         const ws = wb.Sheets[wb.SheetNames[0]];
@@ -143,8 +143,8 @@ const BulkStudentUpload = ({ schoolId, teachers, sections, onComplete }: BulkStu
     if (fileRef.current) fileRef.current.value = "";
   };
 
-  const handleBulkCreate = async () => {
-    const validRows = parsedRows.filter((r) => !r.error);
+  const handleBulkCreate = async (rowsToProcess?: ParsedRow[]) => {
+    const validRows = rowsToProcess || parsedRows.filter((r) => !r.error);
     if (validRows.length === 0) {
       toast.error("No valid rows to process");
       return;
