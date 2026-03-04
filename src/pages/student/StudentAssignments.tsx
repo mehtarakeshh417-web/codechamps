@@ -83,7 +83,7 @@ const StudentAssignments = () => {
   const [projNote, setProjNote] = useState("");
 
   const fetchData = useCallback(async () => {
-    if (!student) return;
+    if (!student) { setLoading(false); return; }
     setLoading(true);
 
     // Fetch assignments for student's class and school

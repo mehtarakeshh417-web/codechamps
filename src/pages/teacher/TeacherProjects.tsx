@@ -34,7 +34,7 @@ const TeacherProjects = () => {
   const [form, setForm] = useState({ title: "", description: "", targetClass: myClasses[0] || "", technology: TECH_OPTIONS[0], submissionType: SUBMISSION_TYPES[0], dueDate: "" });
 
   const fetchProjects = useCallback(async () => {
-    if (!teacher?.id) return;
+    if (!teacher?.id) { setLoading(false); return; }
     setLoading(true);
     const { data, error } = await supabase
       .from("projects")
