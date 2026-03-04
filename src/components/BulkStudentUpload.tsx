@@ -352,7 +352,7 @@ const BulkStudentUpload = ({ schoolId, teachers, sections, onComplete }: BulkStu
                     <Button variant="ghost" onClick={() => setParsedRows([])}>Cancel</Button>
                     <Button
                       variant="hero"
-                      onClick={handleBulkCreate}
+                      onClick={() => handleBulkCreate()}
                       disabled={uploading || validCount === 0}
                     >
                       {uploading ? (
