@@ -14,6 +14,129 @@ export type Database = {
   }
   public: {
     Tables: {
+      assignments: {
+        Row: {
+          assignment_type: string
+          created_at: string
+          description: string | null
+          difficulty_level: string | null
+          due_date: string | null
+          id: string
+          questions: Json
+          school_id: string
+          status: string
+          subject: string | null
+          target_class: string
+          teacher_id: string
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          assignment_type?: string
+          created_at?: string
+          description?: string | null
+          difficulty_level?: string | null
+          due_date?: string | null
+          id?: string
+          questions?: Json
+          school_id: string
+          status?: string
+          subject?: string | null
+          target_class: string
+          teacher_id: string
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          assignment_type?: string
+          created_at?: string
+          description?: string | null
+          difficulty_level?: string | null
+          due_date?: string | null
+          id?: string
+          questions?: Json
+          school_id?: string
+          status?: string
+          subject?: string | null
+          target_class?: string
+          teacher_id?: string
+          title?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "assignments_school_id_fkey"
+            columns: ["school_id"]
+            isOneToOne: false
+            referencedRelation: "schools"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "assignments_teacher_id_fkey"
+            columns: ["teacher_id"]
+            isOneToOne: false
+            referencedRelation: "teachers"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      projects: {
+        Row: {
+          created_at: string
+          description: string
+          due_date: string | null
+          id: string
+          school_id: string
+          submission_type: string | null
+          target_class: string
+          teacher_id: string
+          technology: string
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          description?: string
+          due_date?: string | null
+          id?: string
+          school_id: string
+          submission_type?: string | null
+          target_class: string
+          teacher_id: string
+          technology?: string
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          description?: string
+          due_date?: string | null
+          id?: string
+          school_id?: string
+          submission_type?: string | null
+          target_class?: string
+          teacher_id?: string
+          technology?: string
+          title?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "projects_school_id_fkey"
+            columns: ["school_id"]
+            isOneToOne: false
+            referencedRelation: "schools"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "projects_teacher_id_fkey"
+            columns: ["teacher_id"]
+            isOneToOne: false
+            referencedRelation: "teachers"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       schools: {
         Row: {
           address: string | null

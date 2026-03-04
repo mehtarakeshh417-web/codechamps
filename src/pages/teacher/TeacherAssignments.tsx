@@ -1,4 +1,4 @@
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FileText, Plus, Trash2, CheckCircle, Clock, ChevronDown, ChevronRight, Sparkles, Play, Loader2 } from "lucide-react";
 import { useAuth } from "@/contexts/AuthContext";
@@ -6,6 +6,7 @@ import { useData } from "@/contexts/DataContext";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 import { getCurriculumForClass } from "@/lib/curriculumData";
+import { supabase } from "@/integrations/supabase/client";
 
 interface Question {
   id: string;
@@ -13,6 +14,7 @@ interface Question {
   question: string;
   options?: string[];
   correctAnswer: string;
+  explanation?: string;
 }
 
 interface Assignment {
@@ -25,21 +27,9 @@ interface Assignment {
   createdAt: string;
   status: "active" | "closed";
   teacherId: string;
+  difficultyLevel: string;
+  assignmentType: string;
 }
-
-const STORAGE_KEY = "cc_assignments";
-const GEMINI_API_KEY = "AIzaSyD2K_I_zk2sJNOOLTyj-RSU1e2qF3NPRnk";
-
-const loadAssignments = (teacherId: string): Assignment[] => {
-  try {
-    const data = localStorage.getItem(`${STORAGE_KEY}_${teacherId}`);
-    return data ? JSON.parse(data) : [];
-  } catch { return []; }
-};
-
-const saveAssignments = (teacherId: string, assignments: Assignment[]) => {
-  localStorage.setItem(`${STORAGE_KEY}_${teacherId}`, JSON.stringify(assignments));
-};
 
 const TeacherAssignments = () => {
   const { user } = useAuth();
@@ -47,10 +37,11 @@ const TeacherAssignments = () => {
   const teacher = teachers.find((t) => t.user_id === user?.id || t.id === user?.id);
   const myClasses = teacher?.classes || [];
 
-  const [assignments, setAssignments] = useState<Assignment[]>(() => loadAssignments(user?.id || ""));
+  const [assignments, setAssignments] = useState<Assignment[]>([]);
+  const [loading, setLoading] = useState(true);
   const [showForm, setShowForm] = useState(false);
   const [expandedId, setExpandedId] = useState<string | null>(null);
-  const [form, setForm] = useState({ title: "", targetClass: myClasses[0] || "", subject: "", dueDate: "" });
+  const [form, setForm] = useState({ title: "", targetClass: myClasses[0] || "", subject: "", dueDate: "", difficultyLevel: "Medium", assignmentType: "mcq" });
   const [questions, setQuestions] = useState<Question[]>([]);
   const [qForm, setQForm] = useState({ type: "mcq" as Question["type"], question: "", options: ["", "", "", ""], correctAnswer: "" });
 
@@ -63,6 +54,43 @@ const TeacherAssignments = () => {
 
   const curriculum = form.targetClass ? getCurriculumForClass(form.targetClass) : undefined;
   const subjects = curriculum?.subjects || [];
+
+  // Fetch assignments from DB
+  const fetchAssignments = useCallback(async () => {
+    if (!teacher?.id) return;
+    setLoading(true);
+    const { data, error } = await supabase
+      .from("assignments")
+      .select("*")
+      .eq("teacher_id", teacher.id)
+      .order("created_at", { ascending: false });
+    if (error) { console.error("Fetch assignments error:", error); }
+    else {
+      setAssignments((data || []).map((a: any) => ({
+        id: a.id,
+        title: a.title,
+        targetClass: a.target_class,
+        subject: a.subject || "",
+        questions: (a.questions as any[]) || [],
+        dueDate: a.due_date || "",
+        createdAt: a.created_at,
+        status: a.status || "active",
+        teacherId: a.teacher_id,
+        difficultyLevel: a.difficulty_level || "Medium",
+        assignmentType: a.assignment_type || "mcq",
+      })));
+    }
+    setLoading(false);
+  }, [teacher?.id]);
+
+  useEffect(() => { fetchAssignments(); }, [fetchAssignments]);
+
+  // Update form when myClasses loads
+  useEffect(() => {
+    if (myClasses.length > 0 && !form.targetClass) {
+      setForm(f => ({ ...f, targetClass: myClasses[0] }));
+    }
+  }, [myClasses]);
 
   const addQuestion = useCallback(() => {
     if (!qForm.question.trim()) { toast.error("Enter a question"); return; }
@@ -83,111 +111,71 @@ const TeacherAssignments = () => {
     if (!aiTopic.trim()) { toast.error("Enter a topic for AI generation"); return; }
     setAiLoading(true);
 
-    const typeDesc = aiQType === "mixed" ? "mixed (MCQ + True/False + Descriptive)" : aiQType === "mcq" ? "Multiple Choice (MCQ)" : aiQType === "truefalse" ? "True/False" : "Descriptive (short answer)";
+    try {
+      const { data, error } = await supabase.functions.invoke("generate-assignment", {
+        body: {
+          topic: aiTopic,
+          targetClass: form.targetClass,
+          questionType: aiQType,
+          count: aiCount,
+          difficulty: form.difficultyLevel,
+        },
+      });
 
-    const prompt = `You are an expert K-8 computer science teacher. Generate exactly ${aiCount} ${typeDesc} questions for ${form.targetClass || "a general"} class on the topic: "${aiTopic}".
+      if (error) throw new Error(error.message);
+      if (data?.error) throw new Error(data.error);
 
-Return ONLY a valid JSON array. Each item must have:
-- "type": "mcq", "truefalse", or "descriptive"
-- "question": the question text
-- "options": array of 4 strings (for MCQ only, omit for truefalse and descriptive)
-- "correctAnswer": the correct answer string (for descriptive, provide a model answer in 1-2 sentences)
+      const newQuestions: Question[] = (data.questions || []).map((q: any) => ({
+        id: crypto.randomUUID(),
+        type: (q.type === "truefalse" ? "truefalse" : q.type === "fillinblanks" ? "descriptive" : q.type === "descriptive" ? "descriptive" : "mcq") as Question["type"],
+        question: q.question,
+        options: q.type === "mcq" ? q.options : undefined,
+        correctAnswer: q.correctAnswer,
+        explanation: q.explanation,
+      }));
 
-Example: [{"type":"mcq","question":"What is HTML?","options":["A markup language","A programming language","A database","An OS"],"correctAnswer":"A markup language"},{"type":"descriptive","question":"Explain what a web browser does.","correctAnswer":"A web browser is software that retrieves and displays web pages from the internet."}]
-
-Make questions age-appropriate and educational. Return ONLY the JSON array, no other text.`;
-
-    const models = [
-      "gemini-2.0-flash-lite",
-      "gemini-2.0-flash",
-      "gemini-1.5-flash",
-    ];
-
-    let lastError = "";
-    for (const model of models) {
-      try {
-        // Small delay to avoid rate limits
-        await new Promise((r) => setTimeout(r, 500));
-
-        const res = await fetch(
-          `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${GEMINI_API_KEY}`,
-          {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-              contents: [{ parts: [{ text: prompt }] }],
-              generationConfig: { temperature: 0.7, maxOutputTokens: 4096 },
-            }),
-          }
-        );
-
-        if (res.status === 429) {
-          lastError = "Rate limited, trying another model...";
-          await new Promise((r) => setTimeout(r, 2000));
-          continue;
-        }
-
-        if (!res.ok) {
-          lastError = `API Error ${res.status}`;
-          continue;
-        }
-
-        const data = await res.json();
-        const text = data?.candidates?.[0]?.content?.parts?.[0]?.text;
-        if (!text) { lastError = "No content in response"; continue; }
-
-        const jsonMatch = text.match(/\[[\s\S]*\]/);
-        if (!jsonMatch) { lastError = "Could not parse AI response"; continue; }
-
-        const parsed = JSON.parse(jsonMatch[0]) as Array<{ type: string; question: string; options?: string[]; correctAnswer: string }>;
-        const newQuestions: Question[] = parsed.map((q) => ({
-          id: crypto.randomUUID(),
-          type: (q.type === "truefalse" ? "truefalse" : q.type === "descriptive" ? "descriptive" : "mcq") as Question["type"],
-          question: q.question,
-          options: q.type === "mcq" ? q.options : undefined,
-          correctAnswer: q.correctAnswer,
-        }));
-
-        setQuestions((prev) => [...prev, ...newQuestions]);
-        setShowAI(false);
-        setAiTopic("");
-        toast.success(`${newQuestions.length} questions generated by AI!`);
-        setAiLoading(false);
-        return; // Success — exit
-      } catch (err: any) {
-        lastError = err.message || "AI generation failed";
-        continue;
-      }
+      setQuestions((prev) => [...prev, ...newQuestions]);
+      setShowAI(false);
+      setAiTopic("");
+      toast.success(`${newQuestions.length} questions generated by AI!`);
+    } catch (err: any) {
+      toast.error(err.message || "AI generation failed. Please try again.");
     }
-
-    toast.error(lastError || "AI generation failed after all retries");
     setAiLoading(false);
-  }, [aiTopic, aiQType, aiCount, form.targetClass]);
+  }, [aiTopic, aiQType, aiCount, form.targetClass, form.difficultyLevel]);
 
-  const createAssignment = useCallback(() => {
+  const createAssignment = useCallback(async () => {
     if (!form.title.trim() || !form.targetClass || !form.subject.trim()) { toast.error("Fill all fields"); return; }
     if (questions.length === 0) { toast.error("Add at least 1 question"); return; }
-    const assignment: Assignment = {
-      id: crypto.randomUUID(),
-      ...form,
-      questions,
-      createdAt: new Date().toISOString(),
+    if (!teacher?.id || !teacher?.schoolId) { toast.error("Teacher data not loaded"); return; }
+
+    const { error } = await supabase.from("assignments").insert({
+      title: form.title,
+      description: "",
+      assignment_type: form.assignmentType,
+      target_class: form.targetClass,
+      subject: form.subject,
+      school_id: teacher.schoolId,
+      teacher_id: teacher.id,
+      difficulty_level: form.difficultyLevel,
+      questions: questions as any,
+      due_date: form.dueDate,
       status: "active",
-      teacherId: user?.id || "",
-    };
-    const updated = [...assignments, assignment];
-    setAssignments(updated);
-    saveAssignments(user?.id || "", updated);
+    });
+
+    if (error) { toast.error("Failed to save assignment: " + error.message); return; }
+
+    await fetchAssignments();
     setShowForm(false);
     setQuestions([]);
-    setForm({ title: "", targetClass: myClasses[0] || "", subject: "", dueDate: "" });
+    setForm({ title: "", targetClass: myClasses[0] || "", subject: "", dueDate: "", difficultyLevel: "Medium", assignmentType: "mcq" });
     toast.success("Assignment created!");
-  }, [form, questions, assignments, user?.id, myClasses]);
+  }, [form, questions, teacher, myClasses, fetchAssignments]);
 
-  const deleteAssignment = (id: string) => {
-    const updated = assignments.filter((a) => a.id !== id);
-    setAssignments(updated);
-    saveAssignments(user?.id || "", updated);
+  const deleteAssignment = async (id: string) => {
+    const { error } = await supabase.from("assignments").delete().eq("id", id);
+    if (error) { toast.error("Delete failed"); return; }
+    setAssignments((prev) => prev.filter((a) => a.id !== id));
     toast.success("Assignment deleted");
   };
 
@@ -216,6 +204,15 @@ Make questions age-appropriate and educational. Return ONLY the JSON array, no o
                 </select>
                 <input value={form.subject} onChange={(e) => setForm({ ...form, subject: e.target.value })} placeholder="Subject" className="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white text-sm font-body focus:outline-none focus:border-primary/50" />
                 <input type="date" value={form.dueDate} onChange={(e) => setForm({ ...form, dueDate: e.target.value })} className="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white text-sm font-body focus:outline-none focus:border-primary/50" />
+                <select value={form.difficultyLevel} onChange={(e) => setForm({ ...form, difficultyLevel: e.target.value })} className="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white text-sm font-body focus:outline-none focus:border-primary/50">
+                  {["Easy", "Medium", "Hard"].map((d) => <option key={d} value={d} className="bg-[hsl(220,30%,15%)]">{d}</option>)}
+                </select>
+                <select value={form.assignmentType} onChange={(e) => setForm({ ...form, assignmentType: e.target.value })} className="bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white text-sm font-body focus:outline-none focus:border-primary/50">
+                  <option value="mcq" className="bg-[hsl(220,30%,15%)]">MCQ</option>
+                  <option value="truefalse" className="bg-[hsl(220,30%,15%)]">True / False</option>
+                  <option value="fillinblanks" className="bg-[hsl(220,30%,15%)]">Fill in the Blanks</option>
+                  <option value="mixed" className="bg-[hsl(220,30%,15%)]">Mixed</option>
+                </select>
               </div>
 
               {/* Quick pick subject from curriculum */}
@@ -265,9 +262,9 @@ Make questions age-appropriate and educational. Return ONLY the JSON array, no o
 
                         <div className="flex flex-wrap items-center gap-4">
                           <div className="flex gap-2">
-                          {(["mixed", "mcq", "truefalse", "descriptive"] as const).map((t) => (
+                            {(["mixed", "mcq", "truefalse", "descriptive"] as const).map((t) => (
                               <button key={t} onClick={() => setAiQType(t)} className={`px-3 py-1 rounded-lg text-xs font-body ${aiQType === t ? "bg-neon-purple/20 text-neon-purple border border-neon-purple/30" : "bg-white/5 text-white/50 border border-white/10"}`}>
-                                {t === "mixed" ? "Mixed" : t === "mcq" ? "MCQ" : t === "truefalse" ? "True/False" : "Descriptive"}
+                                {t === "mixed" ? "Mixed" : t === "mcq" ? "MCQ" : t === "truefalse" ? "True/False" : "Fill in Blanks"}
                               </button>
                             ))}
                           </div>
@@ -292,7 +289,7 @@ Make questions age-appropriate and educational. Return ONLY the JSON array, no o
                   <div className="flex gap-3 flex-wrap">
                     {(["mcq", "truefalse", "descriptive"] as const).map((t) => (
                       <button key={t} onClick={() => setQForm({ ...qForm, type: t })} className={`px-3 py-1.5 rounded-lg text-xs font-body uppercase tracking-wider ${qForm.type === t ? "bg-primary/20 text-primary border border-primary/30" : "bg-white/5 text-white/50 border border-white/10"}`}>
-                        {t === "mcq" ? "MCQ" : t === "truefalse" ? "True/False" : "Descriptive"}
+                        {t === "mcq" ? "MCQ" : t === "truefalse" ? "True/False" : "Fill in Blanks"}
                       </button>
                     ))}
                   </div>
@@ -344,7 +341,11 @@ Make questions age-appropriate and educational. Return ONLY the JSON array, no o
       </AnimatePresence>
 
       {/* Assignment List */}
-      {assignments.length === 0 && !showForm ? (
+      {loading ? (
+        <div className="glass-card p-12 text-center">
+          <Loader2 className="w-8 h-8 text-white/30 mx-auto animate-spin" />
+        </div>
+      ) : assignments.length === 0 && !showForm ? (
         <motion.div initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} className="glass-card p-12 text-center">
           <FileText className="w-16 h-16 text-white/20 mx-auto mb-4" />
           <p className="text-white/50 font-body">No assignments yet. Click "New Assignment" to create one.</p>
@@ -379,8 +380,9 @@ Make questions age-appropriate and educational. Return ONLY the JSON array, no o
                       <motion.div initial={{ height: 0 }} animate={{ height: "auto" }} exit={{ height: 0 }} className="overflow-hidden">
                         <div className="px-4 pb-4 space-y-2 border-t border-white/10 pt-3">
                           {a.dueDate && <p className="text-xs text-white/50 font-body">Due: {new Date(a.dueDate).toLocaleDateString()}</p>}
+                          <p className="text-xs text-white/40 font-body">Difficulty: {a.difficultyLevel} · Type: {a.assignmentType}</p>
                           {a.questions.map((q, qi) => (
-                            <div key={q.id} className="bg-white/5 rounded-lg p-3">
+                            <div key={q.id || qi} className="bg-white/5 rounded-lg p-3">
                               <p className="text-sm text-white/90 font-body mb-1">{qi + 1}. {q.question}</p>
                               {q.options && (
                                 <div className="flex flex-wrap gap-2 mb-1">

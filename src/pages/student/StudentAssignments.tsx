@@ -1,11 +1,12 @@
-import { useState, useMemo } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { FileText, Code, ChevronDown, ChevronRight, Clock, CheckCircle2, Send, BookOpen } from "lucide-react";
+import { FileText, Code, ChevronDown, ChevronRight, Clock, CheckCircle2, Send, Loader2 } from "lucide-react";
 import { useAuth } from "@/contexts/AuthContext";
 import { useData } from "@/contexts/DataContext";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { toast } from "sonner";
+import { supabase } from "@/integrations/supabase/client";
 
 interface Question {
   id: string;
@@ -23,8 +24,8 @@ interface Assignment {
   questions: Question[];
   dueDate: string;
   createdAt: string;
-  status: "active" | "closed";
-  teacherId: string;
+  status: string;
+  teacherName: string;
 }
 
 interface Project {
@@ -33,6 +34,7 @@ interface Project {
   description: string;
   targetClass: string;
   technology: string;
+  submissionType: string;
   dueDate: string;
   createdAt: string;
 }
@@ -45,99 +47,73 @@ interface Submission {
   score?: number;
 }
 
+// Keep submissions in localStorage for now (student-side only)
 const loadSubmissions = (studentId: string): Submission[] => {
   try {
     const data = localStorage.getItem(`cc_submissions_${studentId}`);
     return data ? JSON.parse(data) : [];
   } catch { return []; }
 };
-
 const saveSubmissions = (studentId: string, subs: Submission[]) => {
   localStorage.setItem(`cc_submissions_${studentId}`, JSON.stringify(subs));
 };
-
 const loadProjectSubmissions = (studentId: string): Record<string, string> => {
   try {
     const data = localStorage.getItem(`cc_proj_submissions_${studentId}`);
     return data ? JSON.parse(data) : {};
   } catch { return {}; }
 };
-
 const saveProjectSubmissions = (studentId: string, subs: Record<string, string>) => {
   localStorage.setItem(`cc_proj_submissions_${studentId}`, JSON.stringify(subs));
-};
-
-// Load ALL assignments from all teachers
-const loadAllAssignments = (teacherIds: string[]): (Assignment & { teacherName: string })[] => {
-  const all: (Assignment & { teacherName: string })[] = [];
-  teacherIds.forEach((tid) => {
-    try {
-      const data = localStorage.getItem(`cc_assignments_${tid}`);
-      if (data) {
-        const assignments: Assignment[] = JSON.parse(data);
-        assignments.forEach((a) => all.push({ ...a, teacherName: "" }));
-      }
-    } catch {}
-  });
-  return all;
-};
-
-const loadAllProjects = (teacherIds: string[]): (Project & { teacherId: string })[] => {
-  const all: (Project & { teacherId: string })[] = [];
-  teacherIds.forEach((tid) => {
-    try {
-      const data = localStorage.getItem(`cc_projects_${tid}`);
-      if (data) {
-        const projects: Project[] = JSON.parse(data);
-        projects.forEach((p) => all.push({ ...p, teacherId: tid }));
-      }
-    } catch {}
-  });
-  return all;
 };
 
 const StudentAssignments = () => {
   const { user } = useAuth();
   const { students, teachers } = useData();
   const student = students.find((s) => s.user_id === user?.id || s.id === user?.id);
-  const studentClass = student?.class || user?.className || "";
 
-  // Get teacher IDs for this student's school - use BOTH user_id and id for localStorage lookup
-  const schoolTeachers = teachers.filter((t) => t.schoolId === student?.schoolId);
-  // Teachers save to localStorage with their auth user_id, so we need to search with user_id
-  const teacherUserIds = schoolTeachers.map((t) => t.user_id).filter(Boolean) as string[];
-  const teacherTableIds = schoolTeachers.map((t) => t.id);
-
-  // Load assignments and projects matching student's class
-  const assignments = useMemo(() => {
-    const all = loadAllAssignments([...teacherUserIds, ...teacherTableIds]);
-    return all.filter((a) => {
-      const classMatch = a.targetClass && studentClass && (
-        a.targetClass.includes(studentClass) || studentClass.includes(a.targetClass) ||
-        a.targetClass.replace(/[^0-9]/g, "") === studentClass.replace(/[^0-9]/g, "")
-      );
-      return classMatch && a.status === "active";
-    }).map((a) => {
-      const t = schoolTeachers.find((t) => t.id === a.teacherId);
-      return { ...a, teacherName: t ? `${t.firstName} ${t.lastName}` : "Teacher" };
-    });
-  }, [teacherUserIds, teacherTableIds, studentClass, schoolTeachers]);
-
-  const projects = useMemo(() => {
-    const all = loadAllProjects([...teacherUserIds, ...teacherTableIds]);
-    return all.filter((p) => {
-      return p.targetClass && studentClass && (
-        p.targetClass.includes(studentClass) || studentClass.includes(p.targetClass) ||
-        p.targetClass.replace(/[^0-9]/g, "") === studentClass.replace(/[^0-9]/g, "")
-      );
-    });
-  }, [teacherUserIds, teacherTableIds, studentClass]);
+  const [assignments, setAssignments] = useState<Assignment[]>([]);
+  const [projects, setProjects] = useState<Project[]>([]);
+  const [loading, setLoading] = useState(true);
 
   const [submissions, setSubmissions] = useState<Submission[]>(() => loadSubmissions(user?.id || ""));
   const [projSubmissions, setProjSubmissions] = useState<Record<string, string>>(() => loadProjectSubmissions(user?.id || ""));
   const [expandedId, setExpandedId] = useState<string | null>(null);
   const [answers, setAnswers] = useState<Record<string, string>>({});
   const [projNote, setProjNote] = useState("");
+
+  const fetchData = useCallback(async () => {
+    if (!student) return;
+    setLoading(true);
+
+    // Fetch assignments for student's class and school
+    const [aRes, pRes] = await Promise.all([
+      supabase.from("assignments").select("*, teachers(first_name, last_name)").eq("status", "active"),
+      supabase.from("projects").select("*"),
+    ]);
+
+    if (aRes.data) {
+      setAssignments(aRes.data.map((a: any) => ({
+        id: a.id, title: a.title, targetClass: a.target_class,
+        subject: a.subject || "", questions: (a.questions as any[]) || [],
+        dueDate: a.due_date || "", createdAt: a.created_at, status: a.status,
+        teacherName: a.teachers ? `${a.teachers.first_name} ${a.teachers.last_name || ""}`.trim() : "Teacher",
+      })));
+    }
+
+    if (pRes.data) {
+      setProjects(pRes.data.map((p: any) => ({
+        id: p.id, title: p.title, description: p.description,
+        targetClass: p.target_class, technology: p.technology,
+        submissionType: p.submission_type || "Screenshot",
+        dueDate: p.due_date || "", createdAt: p.created_at,
+      })));
+    }
+
+    setLoading(false);
+  }, [student]);
+
+  useEffect(() => { fetchData(); }, [fetchData]);
 
   const isSubmitted = (assignmentId: string) => submissions.some((s) => s.assignmentId === assignmentId);
   const getSubmission = (assignmentId: string) => submissions.find((s) => s.assignmentId === assignmentId);
@@ -148,21 +124,12 @@ const StudentAssignments = () => {
       toast.error(`Please answer all questions (${answered}/${assignment.questions.length})`);
       return;
     }
-
     let correct = 0;
     assignment.questions.forEach((q) => {
       if (answers[q.id]?.trim().toLowerCase() === q.correctAnswer.trim().toLowerCase()) correct++;
     });
     const score = Math.round((correct / assignment.questions.length) * 100);
-
-    const sub: Submission = {
-      assignmentId: assignment.id,
-      studentId: user?.id || "",
-      answers: { ...answers },
-      submittedAt: new Date().toISOString(),
-      score,
-    };
-
+    const sub: Submission = { assignmentId: assignment.id, studentId: user?.id || "", answers: { ...answers }, submittedAt: new Date().toISOString(), score };
     const updated = [...submissions, sub];
     setSubmissions(updated);
     saveSubmissions(user?.id || "", updated);
@@ -179,6 +146,14 @@ const StudentAssignments = () => {
     setProjNote("");
     toast.success("Project submitted!");
   };
+
+  if (loading) {
+    return (
+      <div className="glass-card p-12 text-center">
+        <Loader2 className="w-8 h-8 text-white/30 mx-auto animate-spin" />
+      </div>
+    );
+  }
 
   return (
     <div>
@@ -197,7 +172,6 @@ const StudentAssignments = () => {
           </TabsTrigger>
         </TabsList>
 
-        {/* ASSIGNMENTS TAB */}
         <TabsContent value="assignments">
           {assignments.length === 0 ? (
             <div className="glass-card p-12 text-center">
@@ -210,7 +184,6 @@ const StudentAssignments = () => {
                 const submitted = isSubmitted(a.id);
                 const sub = getSubmission(a.id);
                 const isExpanded = expandedId === a.id;
-
                 return (
                   <motion.div key={a.id} initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: i * 0.03 }}>
                     <div className="glass-card overflow-hidden">
@@ -297,7 +270,6 @@ const StudentAssignments = () => {
           )}
         </TabsContent>
 
-        {/* PROJECTS TAB */}
         <TabsContent value="projects">
           {projects.length === 0 ? (
             <div className="glass-card p-12 text-center">
@@ -309,7 +281,6 @@ const StudentAssignments = () => {
               {projects.map((p, i) => {
                 const isExpanded = expandedId === p.id;
                 const isProjectSubmitted = !!projSubmissions[p.id];
-
                 return (
                   <motion.div key={p.id} initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: i * 0.03 }}>
                     <div className="glass-card overflow-hidden">
@@ -319,7 +290,7 @@ const StudentAssignments = () => {
                         </div>
                         <div className="flex-1 text-left">
                           <h3 className="font-display text-sm font-bold text-white">{p.title}</h3>
-                          <p className="text-xs text-white/60 font-body">{p.technology}</p>
+                          <p className="text-xs text-white/60 font-body">{p.technology} · {p.submissionType}</p>
                         </div>
                         <div className="flex items-center gap-2">
                           <span className="text-xs bg-neon-orange/15 text-neon-orange px-2 py-0.5 rounded-full">{p.technology}</span>
