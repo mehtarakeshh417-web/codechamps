@@ -3,7 +3,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Upload, Download, FileText, X, AlertTriangle, CheckCircle2, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
-import { useData, type StudentData } from "@/contexts/DataContext";
+import { supabase } from "@/integrations/supabase/client";
+import * as XLSX from "xlsx";
 import * as XLSX from "xlsx";
 
 interface BulkStudentUploadProps {
@@ -27,8 +28,9 @@ interface ParsedRow {
 
 const CLASS_OPTIONS = ["1st", "2nd", "3rd", "4th", "5th", "6th", "7th", "8th"];
 
+const usernameToEmail = (username: string) => `${username}@codechamps.local`;
+
 const BulkStudentUpload = ({ schoolId, teachers, sections, onComplete }: BulkStudentUploadProps) => {
-  const { addStudent } = useData();
   const [show, setShow] = useState(false);
   const [parsedRows, setParsedRows] = useState<ParsedRow[]>([]);
   const [uploading, setUploading] = useState(false);
