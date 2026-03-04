@@ -99,16 +99,18 @@ const loadAllProjects = (teacherIds: string[]): (Project & { teacherId: string }
 const StudentAssignments = () => {
   const { user } = useAuth();
   const { students, teachers } = useData();
-  const student = students.find((s) => s.id === user?.id);
+  const student = students.find((s) => s.user_id === user?.id || s.id === user?.id);
   const studentClass = student?.class || user?.className || "";
 
-  // Get teacher IDs for this student's school
+  // Get teacher IDs for this student's school - use BOTH user_id and id for localStorage lookup
   const schoolTeachers = teachers.filter((t) => t.schoolId === student?.schoolId);
-  const teacherIds = schoolTeachers.map((t) => t.id);
+  // Teachers save to localStorage with their auth user_id, so we need to search with user_id
+  const teacherUserIds = schoolTeachers.map((t) => t.user_id).filter(Boolean) as string[];
+  const teacherTableIds = schoolTeachers.map((t) => t.id);
 
   // Load assignments and projects matching student's class
   const assignments = useMemo(() => {
-    const all = loadAllAssignments(teacherIds);
+    const all = loadAllAssignments([...teacherUserIds, ...teacherTableIds]);
     return all.filter((a) => {
       const classMatch = a.targetClass && studentClass && (
         a.targetClass.includes(studentClass) || studentClass.includes(a.targetClass) ||
@@ -119,17 +121,17 @@ const StudentAssignments = () => {
       const t = schoolTeachers.find((t) => t.id === a.teacherId);
       return { ...a, teacherName: t ? `${t.firstName} ${t.lastName}` : "Teacher" };
     });
-  }, [teacherIds, studentClass, schoolTeachers]);
+  }, [teacherUserIds, teacherTableIds, studentClass, schoolTeachers]);
 
   const projects = useMemo(() => {
-    const all = loadAllProjects(teacherIds);
+    const all = loadAllProjects([...teacherUserIds, ...teacherTableIds]);
     return all.filter((p) => {
       return p.targetClass && studentClass && (
         p.targetClass.includes(studentClass) || studentClass.includes(p.targetClass) ||
         p.targetClass.replace(/[^0-9]/g, "") === studentClass.replace(/[^0-9]/g, "")
       );
     });
-  }, [teacherIds, studentClass]);
+  }, [teacherUserIds, teacherTableIds, studentClass]);
 
   const [submissions, setSubmissions] = useState<Submission[]>(() => loadSubmissions(user?.id || ""));
   const [projSubmissions, setProjSubmissions] = useState<Record<string, string>>(() => loadProjectSubmissions(user?.id || ""));
