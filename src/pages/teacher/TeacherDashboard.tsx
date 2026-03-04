@@ -10,7 +10,7 @@ const TeacherDashboard = () => {
   const { getTeacherStudents, teachers } = useData();
   const navigate = useNavigate();
 
-  const teacher = teachers.find((t) => t.id === user?.id);
+  const teacher = teachers.find((t) => t.user_id === user?.id);
   const myClasses = teacher?.classes || [];
   const myStudents = getTeacherStudents(user?.id || "");
 
