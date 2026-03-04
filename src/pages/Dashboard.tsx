@@ -58,6 +58,7 @@ const teacherRoutes = (
     <Route path="classes" element={<TeacherClasses />} />
     <Route path="assignments" element={<TeacherAssignments />} />
     <Route path="projects" element={<TeacherProjects />} />
+    <Route path="results" element={<TeacherResults />} />
     <Route path="analytics" element={<TeacherAnalytics />} />
     <Route path="settings" element={<ChangePassword />} />
   </>
