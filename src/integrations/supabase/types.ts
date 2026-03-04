@@ -242,6 +242,51 @@ export type Database = {
           },
         ]
       }
+      submissions: {
+        Row: {
+          answers: Json
+          assignment_id: string
+          id: string
+          score: number
+          student_id: string
+          submitted_at: string
+          total_questions: number
+        }
+        Insert: {
+          answers?: Json
+          assignment_id: string
+          id?: string
+          score?: number
+          student_id: string
+          submitted_at?: string
+          total_questions?: number
+        }
+        Update: {
+          answers?: Json
+          assignment_id?: string
+          id?: string
+          score?: number
+          student_id?: string
+          submitted_at?: string
+          total_questions?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "submissions_assignment_id_fkey"
+            columns: ["assignment_id"]
+            isOneToOne: false
+            referencedRelation: "assignments"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "submissions_student_id_fkey"
+            columns: ["student_id"]
+            isOneToOne: false
+            referencedRelation: "students"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       teachers: {
         Row: {
           classes: string[] | null
