@@ -5,7 +5,6 @@ import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
 import * as XLSX from "xlsx";
-import * as XLSX from "xlsx";
 
 interface BulkStudentUploadProps {
   schoolId: string;
