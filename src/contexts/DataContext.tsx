@@ -114,6 +114,7 @@ export const DataProvider: React.FC<{ children: React.ReactNode }> = ({ children
         supabase.from("teachers").select("*"),
         supabase.from("students").select("*"),
       ]);
+      console.log("DataContext fetch results:", { schools: sRes.data?.length, teachers: tRes.data?.length, students: stRes.data?.length, sErr: sRes.error, tErr: tRes.error, stErr: stRes.error });
       setSchools((sRes.data || []).map(mapSchool));
       setTeachers((tRes.data || []).map(mapTeacher));
       setStudents((stRes.data || []).map(mapStudent));
