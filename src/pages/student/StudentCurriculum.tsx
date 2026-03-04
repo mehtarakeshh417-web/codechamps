@@ -180,15 +180,15 @@ const TopicCard = ({ topic, isCompleted, isExpanded, onToggleExpand, onToggleCom
     <AnimatePresence>
       {isExpanded && (
         <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} exit={{ height: 0, opacity: 0 }} className="overflow-hidden">
-          <div className="ml-4 mt-2 space-y-2 pb-2">
+    <div className="ml-4 mt-2 space-y-2 pb-2 bg-[hsl(220,30%,12%)] rounded-xl p-3">
             {/* Lessons */}
             <div className="space-y-1">
-              <p className="text-xs text-white/40 font-body uppercase tracking-wider mb-1 px-2">Lessons</p>
+              <p className="text-xs text-neon-blue/60 font-body uppercase tracking-wider mb-1 px-2 font-bold">Lessons</p>
               {topic.lessons.map((lesson, li) => {
                 const isViewing = viewingLesson?.topicId === topic.id && viewingLesson.lessonIdx === li;
                 return (
                   <div key={lesson.id}>
-                    <button onClick={() => onViewLesson(li)} className={`w-full text-left px-3 py-2 rounded-lg text-sm font-body flex items-center gap-2 transition-colors ${isViewing ? "bg-primary/15 text-primary" : "text-white/70 hover:bg-white/5 hover:text-white"}`}>
+                    <button onClick={() => onViewLesson(li)} className={`w-full text-left px-3 py-2 rounded-lg text-sm font-body flex items-center gap-2 transition-colors ${isViewing ? "bg-primary/20 text-primary font-semibold" : "text-white/90 hover:bg-white/10 hover:text-white"}`}>
                       <Play className="w-3.5 h-3.5 shrink-0" />
                       {lesson.title}
                     </button>
@@ -208,12 +208,12 @@ const TopicCard = ({ topic, isCompleted, isExpanded, onToggleExpand, onToggleCom
 
             {/* Activities & Projects */}
             <div className="space-y-1 mt-3">
-              <p className="text-xs text-white/40 font-body uppercase tracking-wider mb-1 px-2">Activities & Projects</p>
+              <p className="text-xs text-neon-orange/60 font-body uppercase tracking-wider mb-1 px-2 font-bold">Activities & Projects</p>
               {topic.activities.map((act) => (
-                <div key={act.id} className="px-3 py-2 rounded-lg text-sm font-body flex items-center gap-2 text-white/70">
+                <div key={act.id} className="px-3 py-2 rounded-lg text-sm font-body flex items-center gap-2 text-white/90">
                   {act.type === "project" ? <Code className="w-3.5 h-3.5 text-neon-orange shrink-0" /> : <FileText className="w-3.5 h-3.5 text-neon-blue shrink-0" />}
                   <span>{act.title}</span>
-                  <span className={`text-[10px] px-1.5 py-0.5 rounded-full ml-auto font-display uppercase tracking-wider ${act.type === "project" ? "bg-neon-orange/15 text-neon-orange" : "bg-neon-blue/15 text-neon-blue"}`}>
+                  <span className={`text-[10px] px-2 py-0.5 rounded-full ml-auto font-display uppercase tracking-wider font-bold ${act.type === "project" ? "bg-neon-orange/20 text-neon-orange" : "bg-neon-blue/20 text-neon-blue"}`}>
                     {act.type}
                   </span>
                 </div>

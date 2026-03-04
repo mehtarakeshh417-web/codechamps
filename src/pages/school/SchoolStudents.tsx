@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { GraduationCap, Plus, X, Trash2, AlertTriangle, Edit2 } from "lucide-react";
+import BulkStudentUpload from "@/components/BulkStudentUpload";
 import { toast } from "sonner";
 
 const CLASS_OPTIONS = ["1st", "2nd", "3rd", "4th", "5th", "6th", "7th", "8th"];
@@ -33,13 +34,13 @@ const SchoolStudents = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!form.name || !form.fatherName || !form.class || !form.section || !form.rollNo || !form.teacherId) {
-      toast.error("Fill all required fields including teacher assignment");
+    if (!form.name || !form.fatherName || !form.class || !form.section || !form.rollNo || !form.teacherId || !form.username.trim() || !form.password.trim()) {
+      toast.error("Fill all required fields including username and password");
       return;
     }
     setIsSubmitting(true);
-    const customUsername = form.username.trim() || undefined;
-    const customPassword = form.password.trim() || undefined;
+    const customUsername = form.username.trim();
+    const customPassword = form.password.trim();
     const student = await addStudent({ ...form, schoolId }, customUsername, customPassword);
     if (student) {
       toast.success(`Student created! Username: ${student.username} | Password: ${student.password}`);
@@ -92,7 +93,15 @@ const SchoolStudents = () => {
           <h1 className="font-display text-3xl font-bold mb-1"><span className="text-gradient-brand">Students</span></h1>
           <p className="text-white/60 font-body">Manage student enrollment</p>
         </div>
-        <Button variant="hero" size="lg" onClick={handleAddClick}><Plus className="w-5 h-5 mr-2" /> Add Student</Button>
+        <div className="flex gap-3">
+          <BulkStudentUpload
+            schoolId={schoolId}
+            teachers={teachers.map(t => ({ id: t.id, firstName: t.firstName, lastName: t.lastName, classes: t.classes }))}
+            sections={SECTION_OPTIONS}
+            onComplete={() => {}}
+          />
+          <Button variant="hero" size="lg" onClick={handleAddClick}><Plus className="w-5 h-5 mr-2" /> Add Student</Button>
+        </div>
       </motion.div>
 
       {teachers.length === 0 && (
@@ -145,12 +154,12 @@ const SchoolStudents = () => {
               </select>
             </div>
             <div className="space-y-2">
-              <Label className="text-white/80 font-body font-medium">Username (auto if blank)</Label>
-              <Input value={form.username} onChange={(e) => setForm({ ...form, username: e.target.value })} placeholder="Auto-generated if left blank" className="bg-white/10 border-white/20 text-white placeholder:text-white/40" />
+              <Label className="text-white/80 font-body font-medium">Username *</Label>
+              <Input value={form.username} onChange={(e) => setForm({ ...form, username: e.target.value })} placeholder="Enter username" className="bg-white/10 border-white/20 text-white placeholder:text-white/40" required />
             </div>
             <div className="space-y-2">
-              <Label className="text-white/80 font-body font-medium">Password (auto if blank)</Label>
-              <Input value={form.password} onChange={(e) => setForm({ ...form, password: e.target.value })} placeholder="Auto-generated if left blank" className="bg-white/10 border-white/20 text-white placeholder:text-white/40" />
+              <Label className="text-white/80 font-body font-medium">Password *</Label>
+              <Input value={form.password} onChange={(e) => setForm({ ...form, password: e.target.value })} placeholder="Enter password" className="bg-white/10 border-white/20 text-white placeholder:text-white/40" required />
             </div>
             <div className="md:col-span-2 flex justify-end gap-3 mt-4">
               <Button type="button" variant="ghost" onClick={() => setShowForm(false)}>Cancel</Button>

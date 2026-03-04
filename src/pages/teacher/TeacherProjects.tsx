@@ -34,7 +34,7 @@ const TECH_OPTIONS = ["Scratch Jr", "Scratch", "MS Paint", "MS Word", "MS PowerP
 const TeacherProjects = () => {
   const { user } = useAuth();
   const { teachers, getTeacherStudents } = useData();
-  const teacher = teachers.find((t) => t.id === user?.id);
+  const teacher = teachers.find((t) => t.user_id === user?.id || t.id === user?.id);
   const myClasses = teacher?.classes || [];
 
   const [projects, setProjects] = useState<Project[]>(() => loadProjects(user?.id || ""));
