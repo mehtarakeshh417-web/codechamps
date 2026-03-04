@@ -59,26 +59,31 @@ const TeacherAssignments = () => {
   const fetchAssignments = useCallback(async () => {
     if (!teacher?.id) { setLoading(false); return; }
     setLoading(true);
-    const { data, error } = await supabase
-      .from("assignments")
-      .select("*")
-      .eq("teacher_id", teacher.id)
-      .order("created_at", { ascending: false });
-    if (error) { console.error("Fetch assignments error:", error); }
-    else {
-      setAssignments((data || []).map((a: any) => ({
-        id: a.id,
-        title: a.title,
-        targetClass: a.target_class,
-        subject: a.subject || "",
-        questions: (a.questions as any[]) || [],
-        dueDate: a.due_date || "",
-        createdAt: a.created_at,
-        status: a.status || "active",
-        teacherId: a.teacher_id,
-        difficultyLevel: a.difficulty_level || "Medium",
-        assignmentType: a.assignment_type || "mcq",
-      })));
+    try {
+      const { data, error } = await supabase
+        .from("assignments")
+        .select("*")
+        .eq("teacher_id", teacher.id)
+        .order("created_at", { ascending: false });
+      if (error) { console.error("Fetch assignments error:", error); toast.error("Failed to load assignments. Please refresh."); }
+      else {
+        setAssignments((data || []).map((a: any) => ({
+          id: a.id,
+          title: a.title,
+          targetClass: a.target_class,
+          subject: a.subject || "",
+          questions: (a.questions as any[]) || [],
+          dueDate: a.due_date || "",
+          createdAt: a.created_at,
+          status: a.status || "active",
+          teacherId: a.teacher_id,
+          difficultyLevel: a.difficulty_level || "Medium",
+          assignmentType: a.assignment_type || "mcq",
+        })));
+      }
+    } catch (err) {
+      console.error("Fetch assignments error:", err);
+      toast.error("Failed to load assignments. Please refresh.");
     }
     setLoading(false);
   }, [teacher?.id]);

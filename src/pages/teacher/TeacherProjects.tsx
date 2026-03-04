@@ -36,19 +36,24 @@ const TeacherProjects = () => {
   const fetchProjects = useCallback(async () => {
     if (!teacher?.id) { setLoading(false); return; }
     setLoading(true);
-    const { data, error } = await supabase
-      .from("projects")
-      .select("*")
-      .eq("teacher_id", teacher.id)
-      .order("created_at", { ascending: false });
-    if (error) console.error("Fetch projects error:", error);
-    else {
-      setProjects((data || []).map((p: any) => ({
-        id: p.id, title: p.title, description: p.description,
-        targetClass: p.target_class, technology: p.technology,
-        submissionType: p.submission_type || "Screenshot",
-        dueDate: p.due_date || "", createdAt: p.created_at,
-      })));
+    try {
+      const { data, error } = await supabase
+        .from("projects")
+        .select("*")
+        .eq("teacher_id", teacher.id)
+        .order("created_at", { ascending: false });
+      if (error) { console.error("Fetch projects error:", error); toast.error("Failed to load projects. Please refresh."); }
+      else {
+        setProjects((data || []).map((p: any) => ({
+          id: p.id, title: p.title, description: p.description,
+          targetClass: p.target_class, technology: p.technology,
+          submissionType: p.submission_type || "Screenshot",
+          dueDate: p.due_date || "", createdAt: p.created_at,
+        })));
+      }
+    } catch (err) {
+      console.error("Fetch projects error:", err);
+      toast.error("Failed to load projects. Please refresh.");
     }
     setLoading(false);
   }, [teacher?.id]);
