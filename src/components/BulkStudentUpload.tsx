@@ -139,38 +139,73 @@ const BulkStudentUpload = ({ schoolId, teachers, sections, onComplete }: BulkStu
     setUploading(true);
     const newResults: typeof results = [];
 
-    for (const row of validRows) {
-      const matchedTeacher = teachers.find(
-        (t) => `${t.firstName} ${t.lastName}`.toLowerCase() === row.teacherName.toLowerCase()
-      );
-      if (!matchedTeacher) {
-        newResults.push({ name: row.name, success: false, error: "Teacher not found" });
-        continue;
+    try {
+      // Prepare bulk user creation payload
+      const usersPayload = validRows.map((row) => ({
+        email: usernameToEmail(row.username),
+        password: row.password,
+        role: "student" as const,
+        metadata: { display_name: row.name },
+      }));
+
+      // Create all auth users in bulk via edge function
+      const { data: bulkResult, error: bulkError } = await supabase.functions.invoke("manage-users", {
+        body: { action: "create_users_bulk", users: usersPayload },
+      });
+
+      if (bulkError) {
+        toast.error(`Bulk creation failed: ${bulkError.message}`);
+        setUploading(false);
+        return;
       }
 
-      try {
-        const student = await addStudent(
-          {
-            name: row.name,
-            fatherName: row.fatherName,
-            class: row.class,
-            section: row.section,
-            rollNo: row.rollNo,
-            teacherId: matchedTeacher.id,
-            schoolId,
-          },
-          row.username,
-          row.password
+      const createdUsers = bulkResult?.users || [];
+      const bulkErrors = bulkResult?.errors || [];
+
+      // Map created users back to rows by email
+      const userByEmail = new Map<string, any>();
+      for (const u of createdUsers) {
+        userByEmail.set(u.email, u);
+      }
+
+      // Now insert student records for successfully created users
+      // Also find the actual school table ID
+      const { data: schoolRecord } = await supabase.from("schools").select("id").eq("user_id", schoolId).maybeSingle();
+      const actualSchoolId = schoolRecord?.id || schoolId;
+
+      for (const row of validRows) {
+        const email = usernameToEmail(row.username);
+        const createdUser = userByEmail.get(email);
+
+        if (!createdUser) {
+          const matchingError = bulkErrors.find((e: string) => e.startsWith(email));
+          newResults.push({ name: row.name, success: false, error: matchingError || "Auth user creation failed" });
+          continue;
+        }
+
+        const matchedTeacher = teachers.find(
+          (t) => `${t.firstName} ${t.lastName}`.toLowerCase() === row.teacherName.toLowerCase()
         );
 
-        if (student) {
-          newResults.push({ name: row.name, success: true, username: student.username, password: student.password });
+        const { error: insertErr } = await supabase.from("students").insert({
+          user_id: createdUser.id,
+          school_id: actualSchoolId,
+          teacher_id: matchedTeacher?.id || null,
+          name: row.name,
+          father_name: row.fatherName,
+          class: row.class,
+          section: row.section,
+          roll_no: row.rollNo,
+        });
+
+        if (insertErr) {
+          newResults.push({ name: row.name, success: false, error: insertErr.message });
         } else {
-          newResults.push({ name: row.name, success: false, error: "Creation failed (username may exist)" });
+          newResults.push({ name: row.name, success: true, username: row.username, password: row.password });
         }
-      } catch (err: any) {
-        newResults.push({ name: row.name, success: false, error: err.message || "Unknown error" });
       }
+    } catch (err: any) {
+      toast.error(`Unexpected error: ${err.message}`);
     }
 
     setResults(newResults);
