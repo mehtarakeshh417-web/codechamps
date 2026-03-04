@@ -110,7 +110,7 @@ const StudentAssignments = () => {
 
   // Load assignments and projects matching student's class
   const assignments = useMemo(() => {
-    const all = loadAllAssignments(teacherIds);
+    const all = loadAllAssignments([...teacherUserIds, ...teacherTableIds]);
     return all.filter((a) => {
       const classMatch = a.targetClass && studentClass && (
         a.targetClass.includes(studentClass) || studentClass.includes(a.targetClass) ||
@@ -121,17 +121,17 @@ const StudentAssignments = () => {
       const t = schoolTeachers.find((t) => t.id === a.teacherId);
       return { ...a, teacherName: t ? `${t.firstName} ${t.lastName}` : "Teacher" };
     });
-  }, [teacherIds, studentClass, schoolTeachers]);
+  }, [teacherUserIds, teacherTableIds, studentClass, schoolTeachers]);
 
   const projects = useMemo(() => {
-    const all = loadAllProjects(teacherIds);
+    const all = loadAllProjects([...teacherUserIds, ...teacherTableIds]);
     return all.filter((p) => {
       return p.targetClass && studentClass && (
         p.targetClass.includes(studentClass) || studentClass.includes(p.targetClass) ||
         p.targetClass.replace(/[^0-9]/g, "") === studentClass.replace(/[^0-9]/g, "")
       );
     });
-  }, [teacherIds, studentClass]);
+  }, [teacherUserIds, teacherTableIds, studentClass]);
 
   const [submissions, setSubmissions] = useState<Submission[]>(() => loadSubmissions(user?.id || ""));
   const [projSubmissions, setProjSubmissions] = useState<Record<string, string>>(() => loadProjectSubmissions(user?.id || ""));
