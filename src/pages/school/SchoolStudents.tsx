@@ -14,7 +14,7 @@ const DEFAULT_SECTIONS = ["A", "B", "C", "D", "E"];
 
 const SchoolStudents = () => {
   const { user } = useAuth();
-  const { addStudent, getSchoolStudents, getSchoolTeachers, getSchool, deleteStudent, updateStudent } = useData();
+  const { addStudent, getSchoolStudents, getSchoolTeachers, getSchool, deleteStudent, updateStudent, refreshData } = useData();
   const [showForm, setShowForm] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [editingId, setEditingId] = useState<string | null>(null);
