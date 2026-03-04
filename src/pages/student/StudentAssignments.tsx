@@ -39,14 +39,33 @@ interface Project {
   createdAt: string;
 }
 
-interface DbSubmission {
-  id: string;
-  assignment_id: string;
-  score: number;
-  total_questions: number;
+interface Submission {
+  assignmentId: string;
+  studentId: string;
   answers: Record<string, string>;
-  submitted_at: string;
+  submittedAt: string;
+  score?: number;
 }
+
+// Keep submissions in localStorage for now (student-side only)
+const loadSubmissions = (studentId: string): Submission[] => {
+  try {
+    const data = localStorage.getItem(`cc_submissions_${studentId}`);
+    return data ? JSON.parse(data) : [];
+  } catch { return []; }
+};
+const saveSubmissions = (studentId: string, subs: Submission[]) => {
+  localStorage.setItem(`cc_submissions_${studentId}`, JSON.stringify(subs));
+};
+const loadProjectSubmissions = (studentId: string): Record<string, string> => {
+  try {
+    const data = localStorage.getItem(`cc_proj_submissions_${studentId}`);
+    return data ? JSON.parse(data) : {};
+  } catch { return {}; }
+};
+const saveProjectSubmissions = (studentId: string, subs: Record<string, string>) => {
+  localStorage.setItem(`cc_proj_submissions_${studentId}`, JSON.stringify(subs));
+};
 
 const StudentAssignments = () => {
   const { user } = useAuth();
@@ -57,18 +76,10 @@ const StudentAssignments = () => {
   const [projects, setProjects] = useState<Project[]>([]);
   const [loading, setLoading] = useState(true);
 
-  const [dbSubmissions, setDbSubmissions] = useState<DbSubmission[]>([]);
+  const [submissions, setSubmissions] = useState<Submission[]>(() => loadSubmissions(user?.id || ""));
+  const [projSubmissions, setProjSubmissions] = useState<Record<string, string>>(() => loadProjectSubmissions(user?.id || ""));
   const [expandedId, setExpandedId] = useState<string | null>(null);
   const [answers, setAnswers] = useState<Record<string, string>>({});
-  const [submitting, setSubmitting] = useState(false);
-
-  // Project submissions (localStorage for now)
-  const [projSubmissions, setProjSubmissions] = useState<Record<string, string>>(() => {
-    try {
-      const data = localStorage.getItem(`cc_proj_submissions_${user?.id}`);
-      return data ? JSON.parse(data) : {};
-    } catch { return {}; }
-  });
   const [projNote, setProjNote] = useState("");
 
   const fetchData = useCallback(async () => {
@@ -76,10 +87,10 @@ const StudentAssignments = () => {
     setLoading(true);
 
     try {
-      const [aRes, pRes, sRes] = await Promise.all([
+      // Fetch assignments for student's class and school
+      const [aRes, pRes] = await Promise.all([
         supabase.from("assignments").select("*, teachers(first_name, last_name)").eq("status", "active"),
         supabase.from("projects").select("*"),
-        supabase.from("submissions").select("*").eq("student_id", student.id),
       ]);
 
       if (aRes.data) {
@@ -89,7 +100,9 @@ const StudentAssignments = () => {
           dueDate: a.due_date || "", createdAt: a.created_at, status: a.status,
           teacherName: a.teachers ? `${a.teachers.first_name} ${a.teachers.last_name || ""}`.trim() : "Teacher",
         })));
-      } else { setAssignments([]); }
+      } else {
+        setAssignments([]);
+      }
 
       if (pRes.data) {
         setProjects(pRes.data.map((p: any) => ({
@@ -98,19 +111,14 @@ const StudentAssignments = () => {
           submissionType: p.submission_type || "Screenshot",
           dueDate: p.due_date || "", createdAt: p.created_at,
         })));
-      } else { setProjects([]); }
-
-      if (sRes.data) {
-        setDbSubmissions(sRes.data.map((s: any) => ({
-          id: s.id, assignment_id: s.assignment_id, score: s.score,
-          total_questions: s.total_questions, answers: s.answers || {},
-          submitted_at: s.submitted_at,
-        })));
-      } else { setDbSubmissions([]); }
+      } else {
+        setProjects([]);
+      }
     } catch (err) {
       console.error("Failed to load assignments:", err);
       toast.error("Failed to load assignments. Please refresh.");
-      setAssignments([]); setProjects([]); setDbSubmissions([]);
+      setAssignments([]);
+      setProjects([]);
     }
 
     setLoading(false);
@@ -118,67 +126,34 @@ const StudentAssignments = () => {
 
   useEffect(() => { fetchData(); }, [fetchData]);
 
-  const isSubmitted = (assignmentId: string) => dbSubmissions.some((s) => s.assignment_id === assignmentId);
-  const getSubmission = (assignmentId: string) => dbSubmissions.find((s) => s.assignment_id === assignmentId);
+  const isSubmitted = (assignmentId: string) => submissions.some((s) => s.assignmentId === assignmentId);
+  const getSubmission = (assignmentId: string) => submissions.find((s) => s.assignmentId === assignmentId);
 
-  const submitAssignment = async (assignment: Assignment) => {
-    if (!student) return;
+  const submitAssignment = (assignment: Assignment) => {
     const answered = assignment.questions.filter((q) => answers[q.id]?.trim()).length;
     if (answered < assignment.questions.length) {
       toast.error(`Please answer all questions (${answered}/${assignment.questions.length})`);
       return;
     }
-
     let correct = 0;
     assignment.questions.forEach((q) => {
       if (answers[q.id]?.trim().toLowerCase() === q.correctAnswer.trim().toLowerCase()) correct++;
     });
-
-    setSubmitting(true);
-    try {
-      const { error } = await supabase.from("submissions").insert({
-        assignment_id: assignment.id,
-        student_id: student.id,
-        answers: answers as any,
-        score: correct,
-        total_questions: assignment.questions.length,
-      });
-
-      if (error) {
-        if (error.code === "23505") {
-          toast.error("You have already submitted this assignment.");
-        } else {
-          toast.error("Submission failed: " + error.message);
-        }
-        setSubmitting(false);
-        return;
-      }
-
-      // Refresh submissions
-      const { data: newSubs } = await supabase.from("submissions").select("*").eq("student_id", student.id);
-      if (newSubs) {
-        setDbSubmissions(newSubs.map((s: any) => ({
-          id: s.id, assignment_id: s.assignment_id, score: s.score,
-          total_questions: s.total_questions, answers: s.answers || {},
-          submitted_at: s.submitted_at,
-        })));
-      }
-
-      setAnswers({});
-      setExpandedId(null);
-      const pct = Math.round((correct / assignment.questions.length) * 100);
-      toast.success(`Submitted! Score: ${pct}% (${correct}/${assignment.questions.length} correct)`);
-    } catch (err) {
-      toast.error("Submission failed. Please try again.");
-    }
-    setSubmitting(false);
+    const score = Math.round((correct / assignment.questions.length) * 100);
+    const sub: Submission = { assignmentId: assignment.id, studentId: user?.id || "", answers: { ...answers }, submittedAt: new Date().toISOString(), score };
+    const updated = [...submissions, sub];
+    setSubmissions(updated);
+    saveSubmissions(user?.id || "", updated);
+    setAnswers({});
+    setExpandedId(null);
+    toast.success(`Submitted! Score: ${score}% (${correct}/${assignment.questions.length} correct)`);
   };
 
   const submitProject = (projectId: string) => {
     if (!projNote.trim()) { toast.error("Enter your submission notes"); return; }
     const updated = { ...projSubmissions, [projectId]: projNote };
     setProjSubmissions(updated);
-    localStorage.setItem(`cc_proj_submissions_${user?.id}`, JSON.stringify(updated));
+    saveProjectSubmissions(user?.id || "", updated);
     setProjNote("");
     toast.success("Project submitted!");
   };
@@ -212,7 +187,7 @@ const StudentAssignments = () => {
           {assignments.length === 0 ? (
             <div className="glass-card p-12 text-center">
               <FileText className="w-16 h-16 text-white/20 mx-auto mb-4" />
-              <p className="text-white/50 font-body">No assignments available for your class yet.</p>
+              <p className="text-white/50 font-body">No assignments pending. Check back when your teacher creates one!</p>
             </div>
           ) : (
             <div className="space-y-3">
@@ -220,7 +195,6 @@ const StudentAssignments = () => {
                 const submitted = isSubmitted(a.id);
                 const sub = getSubmission(a.id);
                 const isExpanded = expandedId === a.id;
-                const pct = sub && sub.total_questions > 0 ? Math.round((sub.score / sub.total_questions) * 100) : 0;
                 return (
                   <motion.div key={a.id} initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: i * 0.03 }}>
                     <div className="glass-card overflow-hidden">
@@ -234,7 +208,7 @@ const StudentAssignments = () => {
                         </div>
                         <div className="flex items-center gap-2">
                           {submitted ? (
-                            <span className="text-xs bg-neon-green/15 text-neon-green px-2 py-0.5 rounded-full font-body">Score: {pct}%</span>
+                            <span className="text-xs bg-neon-green/15 text-neon-green px-2 py-0.5 rounded-full font-body">Score: {sub?.score}%</span>
                           ) : (
                             a.dueDate && <span className="text-xs text-white/50 font-body flex items-center gap-1"><Clock className="w-3 h-3" /> {new Date(a.dueDate).toLocaleDateString()}</span>
                           )}
@@ -246,21 +220,19 @@ const StudentAssignments = () => {
                         {isExpanded && (
                           <motion.div initial={{ height: 0 }} animate={{ height: "auto" }} exit={{ height: 0 }} className="overflow-hidden">
                             <div className="px-4 pb-4 space-y-3 border-t border-white/10 pt-3">
-                              {submitted && sub ? (
+                              {submitted ? (
                                 <div className="space-y-2">
                                   <div className="bg-neon-green/10 border border-neon-green/20 rounded-xl p-4 text-center">
                                     <CheckCircle2 className="w-8 h-8 text-neon-green mx-auto mb-2" />
-                                    <p className="font-display text-lg font-bold text-white">Score: {pct}%</p>
-                                    <p className="text-xs text-white/50 font-body">
-                                      {sub.score}/{sub.total_questions} correct · Submitted on {new Date(sub.submitted_at).toLocaleString()}
-                                    </p>
+                                    <p className="font-display text-lg font-bold text-white">Score: {sub?.score}%</p>
+                                    <p className="text-xs text-white/50 font-body">Submitted on {new Date(sub?.submittedAt || "").toLocaleString()}</p>
                                   </div>
                                   {a.questions.map((q, qi) => (
                                     <div key={q.id} className="bg-white/5 rounded-lg p-3">
                                       <p className="text-sm text-white/90 font-body mb-1">{qi + 1}. {q.question}</p>
                                       <p className="text-xs font-body">
                                         <span className="text-white/50">Your answer: </span>
-                                        <span className={sub.answers[q.id]?.toLowerCase() === q.correctAnswer.toLowerCase() ? "text-neon-green" : "text-destructive"}>{sub.answers[q.id] || "—"}</span>
+                                        <span className={sub?.answers[q.id]?.toLowerCase() === q.correctAnswer.toLowerCase() ? "text-neon-green" : "text-destructive"}>{sub?.answers[q.id] || "—"}</span>
                                       </p>
                                       <p className="text-xs text-neon-green/70 font-body">Correct: {q.correctAnswer}</p>
                                     </div>
@@ -291,8 +263,8 @@ const StudentAssignments = () => {
                                     </div>
                                   ))}
                                   <div className="flex justify-end">
-                                    <Button onClick={() => submitAssignment(a)} disabled={submitting} className="bg-gradient-to-r from-neon-green to-neon-blue text-white">
-                                      {submitting ? <Loader2 className="w-4 h-4 mr-1 animate-spin" /> : <Send className="w-4 h-4 mr-1" />} Submit Assignment
+                                    <Button onClick={() => submitAssignment(a)} className="bg-gradient-to-r from-neon-green to-neon-blue text-white">
+                                      <Send className="w-4 h-4 mr-1" /> Submit Assignment
                                     </Button>
                                   </div>
                                 </div>
@@ -313,7 +285,7 @@ const StudentAssignments = () => {
           {projects.length === 0 ? (
             <div className="glass-card p-12 text-center">
               <Code className="w-16 h-16 text-white/20 mx-auto mb-4" />
-              <p className="text-white/50 font-body">No projects assigned yet.</p>
+              <p className="text-white/50 font-body">No projects assigned yet. Check back later!</p>
             </div>
           ) : (
             <div className="space-y-3">
@@ -353,7 +325,7 @@ const StudentAssignments = () => {
                                 </div>
                               ) : (
                                 <div className="space-y-2">
-                                  <textarea value={projNote} onChange={(e) => setProjNote(e.target.value)} placeholder="Enter submission notes, links, or description of your work..." rows={3} className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white text-sm font-body focus:outline-none focus:border-primary/50 resize-none" />
+                                  <textarea value={projNote} onChange={(e) => setProjNote(e.target.value)} placeholder="Describe your work, paste links, or add notes about your project..." rows={3} className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white text-sm font-body focus:outline-none focus:border-primary/50 resize-none" />
                                   <div className="flex justify-end">
                                     <Button onClick={() => submitProject(p.id)} className="bg-gradient-to-r from-neon-orange to-[hsl(45,100%,55%)] text-white">
                                       <Send className="w-4 h-4 mr-1" /> Submit Project

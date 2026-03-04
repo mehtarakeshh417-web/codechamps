@@ -36,7 +36,6 @@ const navConfig: Record<UserRole, NavItem[]> = {
     { icon: BookOpen, label: "My Classes", path: "/dashboard/classes" },
     { icon: FileText, label: "Assignments", path: "/dashboard/assignments" },
     { icon: Code, label: "Projects", path: "/dashboard/projects" },
-    { icon: Trophy, label: "Results", path: "/dashboard/results" },
     { icon: BarChart3, label: "Analytics", path: "/dashboard/analytics" },
     { icon: Settings, label: "Change Password", path: "/dashboard/settings" },
   ],

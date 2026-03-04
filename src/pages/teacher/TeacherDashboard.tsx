@@ -1,11 +1,9 @@
-import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import StatCard from "@/components/StatCard";
 import { useAuth } from "@/contexts/AuthContext";
 import { useData } from "@/contexts/DataContext";
 import { BookOpen, FileText, Users, CheckCircle, Sparkles, Code } from "lucide-react";
-import { supabase } from "@/integrations/supabase/client";
 
 const TeacherDashboard = () => {
   const { user } = useAuth();
@@ -15,22 +13,6 @@ const TeacherDashboard = () => {
   const teacher = teachers.find((t) => t.user_id === user?.id);
   const myClasses = teacher?.classes || [];
   const myStudents = getTeacherStudents(user?.id || "");
-
-  const [assignmentCount, setAssignmentCount] = useState(0);
-  const [projectCount, setProjectCount] = useState(0);
-
-  useEffect(() => {
-    if (!teacher?.id) return;
-    const fetchCounts = async () => {
-      const [aRes, pRes] = await Promise.all([
-        supabase.from("assignments").select("id", { count: "exact", head: true }).eq("teacher_id", teacher.id),
-        supabase.from("projects").select("id", { count: "exact", head: true }).eq("teacher_id", teacher.id),
-      ]);
-      setAssignmentCount(aRes.count || 0);
-      setProjectCount(pRes.count || 0);
-    };
-    fetchCounts();
-  }, [teacher?.id]);
 
   return (
     <div>
@@ -73,8 +55,8 @@ const TeacherDashboard = () => {
             </div>
           )}
         </StatCard>
-        <StatCard icon={FileText} label="Assignments Created" value={assignmentCount} glowClass="neon-glow-green" delay={0.3} onClick={() => navigate("/dashboard/assignments")} />
-        <StatCard icon={CheckCircle} label="Projects Assigned" value={projectCount} glowClass="neon-glow-purple" delay={0.4} onClick={() => navigate("/dashboard/projects")} />
+        <StatCard icon={FileText} label="Assignments Created" value={0} glowClass="neon-glow-green" delay={0.3} onClick={() => navigate("/dashboard/assignments")} />
+        <StatCard icon={CheckCircle} label="Projects Reviewed" value={0} glowClass="neon-glow-purple" delay={0.4} onClick={() => navigate("/dashboard/projects")} />
       </div>
 
       <div className="grid md:grid-cols-2 gap-6">
@@ -111,9 +93,9 @@ const TeacherDashboard = () => {
           <div className="grid grid-cols-2 gap-3">
             {[
               { icon: FileText, label: "Create Assignment", color: "from-neon-blue to-neon-purple", path: "/dashboard/assignments" },
-              { icon: Sparkles, label: "AI Generate", color: "from-neon-purple to-neon-pink", path: "/dashboard/assignments" },
+              { icon: Sparkles, label: "AI Generate", color: "from-neon-purple to-neon-pink", path: "/dashboard/ai-generator" },
               { icon: Code, label: "Assign Project", color: "from-neon-green to-neon-blue", path: "/dashboard/projects" },
-              { icon: CheckCircle, label: "View Results", color: "from-neon-orange to-neon-pink", path: "/dashboard/results" },
+              { icon: CheckCircle, label: "Review Submissions", color: "from-neon-orange to-neon-pink", path: "/dashboard/assignments" },
             ].map((a) => (
               <button key={a.label} onClick={() => navigate(a.path)} className="flex flex-col items-center gap-2 p-4 rounded-xl bg-white/10 hover:bg-white/15 transition-all hover:scale-105">
                 <div className={`w-10 h-10 rounded-xl bg-gradient-to-br ${a.color} flex items-center justify-center`}>
