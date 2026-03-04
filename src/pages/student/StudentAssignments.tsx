@@ -83,31 +83,42 @@ const StudentAssignments = () => {
   const [projNote, setProjNote] = useState("");
 
   const fetchData = useCallback(async () => {
-    if (!student) return;
+    if (!student) { setLoading(false); return; }
     setLoading(true);
 
-    // Fetch assignments for student's class and school
-    const [aRes, pRes] = await Promise.all([
-      supabase.from("assignments").select("*, teachers(first_name, last_name)").eq("status", "active"),
-      supabase.from("projects").select("*"),
-    ]);
+    try {
+      // Fetch assignments for student's class and school
+      const [aRes, pRes] = await Promise.all([
+        supabase.from("assignments").select("*, teachers(first_name, last_name)").eq("status", "active"),
+        supabase.from("projects").select("*"),
+      ]);
 
-    if (aRes.data) {
-      setAssignments(aRes.data.map((a: any) => ({
-        id: a.id, title: a.title, targetClass: a.target_class,
-        subject: a.subject || "", questions: (a.questions as any[]) || [],
-        dueDate: a.due_date || "", createdAt: a.created_at, status: a.status,
-        teacherName: a.teachers ? `${a.teachers.first_name} ${a.teachers.last_name || ""}`.trim() : "Teacher",
-      })));
-    }
+      if (aRes.data) {
+        setAssignments(aRes.data.map((a: any) => ({
+          id: a.id, title: a.title, targetClass: a.target_class,
+          subject: a.subject || "", questions: (a.questions as any[]) || [],
+          dueDate: a.due_date || "", createdAt: a.created_at, status: a.status,
+          teacherName: a.teachers ? `${a.teachers.first_name} ${a.teachers.last_name || ""}`.trim() : "Teacher",
+        })));
+      } else {
+        setAssignments([]);
+      }
 
-    if (pRes.data) {
-      setProjects(pRes.data.map((p: any) => ({
-        id: p.id, title: p.title, description: p.description,
-        targetClass: p.target_class, technology: p.technology,
-        submissionType: p.submission_type || "Screenshot",
-        dueDate: p.due_date || "", createdAt: p.created_at,
-      })));
+      if (pRes.data) {
+        setProjects(pRes.data.map((p: any) => ({
+          id: p.id, title: p.title, description: p.description,
+          targetClass: p.target_class, technology: p.technology,
+          submissionType: p.submission_type || "Screenshot",
+          dueDate: p.due_date || "", createdAt: p.created_at,
+        })));
+      } else {
+        setProjects([]);
+      }
+    } catch (err) {
+      console.error("Failed to load assignments:", err);
+      toast.error("Failed to load assignments. Please refresh.");
+      setAssignments([]);
+      setProjects([]);
     }
 
     setLoading(false);
