@@ -14,7 +14,7 @@ const DEFAULT_SECTIONS = ["A", "B", "C", "D", "E"];
 
 const SchoolStudents = () => {
   const { user } = useAuth();
-  const { addStudent, getSchoolStudents, getSchoolTeachers, getSchool, deleteStudent, updateStudent } = useData();
+  const { addStudent, getSchoolStudents, getSchoolTeachers, getSchool, deleteStudent, updateStudent, refreshData } = useData();
   const [showForm, setShowForm] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [editingId, setEditingId] = useState<string | null>(null);
@@ -98,7 +98,7 @@ const SchoolStudents = () => {
             schoolId={schoolId}
             teachers={teachers.map(t => ({ id: t.id, firstName: t.firstName, lastName: t.lastName, classes: t.classes }))}
             sections={SECTION_OPTIONS}
-            onComplete={() => {}}
+            onComplete={() => refreshData()}
           />
           <Button variant="hero" size="lg" onClick={handleAddClick}><Plus className="w-5 h-5 mr-2" /> Add Student</Button>
         </div>
