@@ -102,7 +102,7 @@ const BulkStudentUpload = ({ schoolId, teachers, sections, onComplete }: BulkStu
           if (!section || !sections.includes(section)) errors.push(`Invalid section "${section}"`);
           if (!rollNo) errors.push("Roll no required");
           if (!username) errors.push("Username required");
-          if (!password) errors.push("Password required");
+          else if (!/^[a-zA-Z0-9._-]+$/.test(username)) errors.push("Username: only letters, numbers, dots, hyphens, underscores");
           else if (password.length < 6) errors.push("Password min 6 chars");
 
           // Find teacher
