@@ -14,16 +14,212 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      schools: {
+        Row: {
+          address: string | null
+          city: string | null
+          created_at: string
+          id: string
+          logo: string | null
+          name: string
+          phone: string | null
+          sections: string[] | null
+          state: string | null
+          updated_at: string
+          user_id: string | null
+        }
+        Insert: {
+          address?: string | null
+          city?: string | null
+          created_at?: string
+          id?: string
+          logo?: string | null
+          name: string
+          phone?: string | null
+          sections?: string[] | null
+          state?: string | null
+          updated_at?: string
+          user_id?: string | null
+        }
+        Update: {
+          address?: string | null
+          city?: string | null
+          created_at?: string
+          id?: string
+          logo?: string | null
+          name?: string
+          phone?: string | null
+          sections?: string[] | null
+          state?: string | null
+          updated_at?: string
+          user_id?: string | null
+        }
+        Relationships: []
+      }
+      students: {
+        Row: {
+          class: string | null
+          created_at: string
+          father_name: string | null
+          id: string
+          name: string
+          progress: number | null
+          roll_no: string | null
+          school_id: string
+          section: string | null
+          teacher_id: string | null
+          updated_at: string
+          user_id: string | null
+          xp: number | null
+        }
+        Insert: {
+          class?: string | null
+          created_at?: string
+          father_name?: string | null
+          id?: string
+          name: string
+          progress?: number | null
+          roll_no?: string | null
+          school_id: string
+          section?: string | null
+          teacher_id?: string | null
+          updated_at?: string
+          user_id?: string | null
+          xp?: number | null
+        }
+        Update: {
+          class?: string | null
+          created_at?: string
+          father_name?: string | null
+          id?: string
+          name?: string
+          progress?: number | null
+          roll_no?: string | null
+          school_id?: string
+          section?: string | null
+          teacher_id?: string | null
+          updated_at?: string
+          user_id?: string | null
+          xp?: number | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "students_school_id_fkey"
+            columns: ["school_id"]
+            isOneToOne: false
+            referencedRelation: "schools"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "students_teacher_id_fkey"
+            columns: ["teacher_id"]
+            isOneToOne: false
+            referencedRelation: "teachers"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      teachers: {
+        Row: {
+          classes: string[] | null
+          created_at: string
+          first_name: string
+          id: string
+          last_name: string | null
+          school_id: string
+          updated_at: string
+          user_id: string | null
+        }
+        Insert: {
+          classes?: string[] | null
+          created_at?: string
+          first_name: string
+          id?: string
+          last_name?: string | null
+          school_id: string
+          updated_at?: string
+          user_id?: string | null
+        }
+        Update: {
+          classes?: string[] | null
+          created_at?: string
+          first_name?: string
+          id?: string
+          last_name?: string | null
+          school_id?: string
+          updated_at?: string
+          user_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "teachers_school_id_fkey"
+            columns: ["school_id"]
+            isOneToOne: false
+            referencedRelation: "schools"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      user_roles: {
+        Row: {
+          id: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Insert: {
+          id?: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Update: {
+          id?: string
+          role?: Database["public"]["Enums"]["app_role"]
+          user_id?: string
+        }
+        Relationships: []
+      }
+      user_security: {
+        Row: {
+          created_at: string
+          id: string
+          pin: string
+          security_answer: string
+          security_question: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          pin: string
+          security_answer: string
+          security_question: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          pin?: string
+          security_answer?: string
+          security_question?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      has_role: {
+        Args: {
+          _role: Database["public"]["Enums"]["app_role"]
+          _user_id: string
+        }
+        Returns: boolean
+      }
     }
     Enums: {
-      [_ in never]: never
+      app_role: "admin" | "school" | "teacher" | "student"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -150,6 +346,8 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      app_role: ["admin", "school", "teacher", "student"],
+    },
   },
 } as const
