@@ -82,10 +82,10 @@ const BulkStudentUpload = ({ schoolId, teachers, sections, onComplete }: BulkStu
           const fatherName = (row["Father Name"] || "").trim();
           const cls = (row["Class"] || "").trim();
           const section = (row["Section"] || "").trim();
-          const rollNo = (row["Roll No"] || "").toString().trim();
-          const teacherName = (row["Teacher Name"] || "").trim();
-          const username = (row["Username"] || "").trim();
-          const password = (row["Password"] || "").trim();
+          const rollNo = String(row["Roll No"] ?? "").trim();
+          const teacherName = String(row["Teacher Name"] ?? "").trim();
+          const username = String(row["Username"] ?? "").trim();
+          const password = String(row["Password"] ?? "").trim();
 
           const errors: string[] = [];
           if (!name) errors.push("Name required");
