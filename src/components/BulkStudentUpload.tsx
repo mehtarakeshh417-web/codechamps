@@ -77,15 +77,23 @@ const BulkStudentUpload = ({ schoolId, teachers, sections, onComplete }: BulkStu
         const ws = wb.Sheets[wb.SheetNames[0]];
         const data = XLSX.utils.sheet_to_json<Record<string, string>>(ws);
 
+        const getVal = (row: Record<string, string>, ...keys: string[]): string => {
+          for (const k of keys) {
+            const val = row[k];
+            if (val !== undefined && val !== null) return String(val).trim();
+          }
+          return "";
+        };
+
         const rows: ParsedRow[] = data.map((row) => {
-          const name = (row["Student Name"] || "").trim();
-          const fatherName = (row["Father Name"] || "").trim();
-          const cls = (row["Class"] || "").trim();
-          const section = (row["Section"] || "").trim();
-          const rollNo = String(row["Roll No"] ?? "").trim();
-          const teacherName = String(row["Teacher Name"] ?? "").trim();
-          const username = String(row["Username"] ?? "").trim();
-          const password = String(row["Password"] ?? "").trim();
+          const name = getVal(row, "Student Name", "Name", "Student_Name", "name", "student name");
+          const fatherName = getVal(row, "Father Name", "Father_Name", "FatherName", "father name", "Father's Name");
+          const cls = getVal(row, "Class", "class");
+          const section = getVal(row, "Section", "section");
+          const rollNo = getVal(row, "Roll No", "Roll", "RollNo", "roll_no", "roll no", "roll");
+          const teacherName = getVal(row, "Teacher Name", "Teacher", "TeacherName", "teacher name", "teacher");
+          const username = getVal(row, "Username", "username", "User Name", "user_name", "UserName");
+          const password = getVal(row, "Password", "password", "Pass", "pass");
 
           const errors: string[] = [];
           if (!name) errors.push("Name required");
