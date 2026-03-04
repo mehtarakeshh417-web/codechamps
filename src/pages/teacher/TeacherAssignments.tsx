@@ -44,7 +44,7 @@ const saveAssignments = (teacherId: string, assignments: Assignment[]) => {
 const TeacherAssignments = () => {
   const { user } = useAuth();
   const { teachers } = useData();
-  const teacher = teachers.find((t) => t.id === user?.id);
+  const teacher = teachers.find((t) => t.user_id === user?.id || t.id === user?.id);
   const myClasses = teacher?.classes || [];
 
   const [assignments, setAssignments] = useState<Assignment[]>(() => loadAssignments(user?.id || ""));

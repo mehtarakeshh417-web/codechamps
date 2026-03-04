@@ -33,13 +33,13 @@ const SchoolStudents = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!form.name || !form.fatherName || !form.class || !form.section || !form.rollNo || !form.teacherId) {
-      toast.error("Fill all required fields including teacher assignment");
+    if (!form.name || !form.fatherName || !form.class || !form.section || !form.rollNo || !form.teacherId || !form.username.trim() || !form.password.trim()) {
+      toast.error("Fill all required fields including username and password");
       return;
     }
     setIsSubmitting(true);
-    const customUsername = form.username.trim() || undefined;
-    const customPassword = form.password.trim() || undefined;
+    const customUsername = form.username.trim();
+    const customPassword = form.password.trim();
     const student = await addStudent({ ...form, schoolId }, customUsername, customPassword);
     if (student) {
       toast.success(`Student created! Username: ${student.username} | Password: ${student.password}`);
@@ -145,12 +145,12 @@ const SchoolStudents = () => {
               </select>
             </div>
             <div className="space-y-2">
-              <Label className="text-white/80 font-body font-medium">Username (auto if blank)</Label>
-              <Input value={form.username} onChange={(e) => setForm({ ...form, username: e.target.value })} placeholder="Auto-generated if left blank" className="bg-white/10 border-white/20 text-white placeholder:text-white/40" />
+              <Label className="text-white/80 font-body font-medium">Username *</Label>
+              <Input value={form.username} onChange={(e) => setForm({ ...form, username: e.target.value })} placeholder="Enter username" className="bg-white/10 border-white/20 text-white placeholder:text-white/40" required />
             </div>
             <div className="space-y-2">
-              <Label className="text-white/80 font-body font-medium">Password (auto if blank)</Label>
-              <Input value={form.password} onChange={(e) => setForm({ ...form, password: e.target.value })} placeholder="Auto-generated if left blank" className="bg-white/10 border-white/20 text-white placeholder:text-white/40" />
+              <Label className="text-white/80 font-body font-medium">Password *</Label>
+              <Input value={form.password} onChange={(e) => setForm({ ...form, password: e.target.value })} placeholder="Enter password" className="bg-white/10 border-white/20 text-white placeholder:text-white/40" required />
             </div>
             <div className="md:col-span-2 flex justify-end gap-3 mt-4">
               <Button type="button" variant="ghost" onClick={() => setShowForm(false)}>Cancel</Button>

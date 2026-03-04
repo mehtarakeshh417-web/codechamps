@@ -10,7 +10,7 @@ const TeacherClasses = () => {
   const { teachers, getTeacherStudents } = useData();
   const [expanded, setExpanded] = useState<string | null>(null);
 
-  const teacher = teachers.find((t) => t.id === user?.id);
+  const teacher = teachers.find((t) => t.user_id === user?.id || t.id === user?.id);
   const myClasses = teacher?.classes || [];
   const allStudents = getTeacherStudents(user?.id || "");
 

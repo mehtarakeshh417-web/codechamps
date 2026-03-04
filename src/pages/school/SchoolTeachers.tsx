@@ -74,8 +74,12 @@ const SchoolTeachers = () => {
       return;
     }
     setIsSubmitting(true);
-    const customUsername = form.username.trim() || undefined;
-    const customPassword = form.password.trim() || undefined;
+    if (!form.username.trim() || !form.password.trim()) {
+      toast.error("Username and password are required");
+      return;
+    }
+    const customUsername = form.username.trim();
+    const customPassword = form.password.trim();
     const teacher = await addTeacher({ firstName: form.firstName, lastName: form.lastName, classes: classStrings, schoolId }, customUsername, customPassword);
     if (teacher) {
       toast.success(`Teacher created! Username: ${teacher.username} | Password: ${teacher.password}`);
@@ -147,12 +151,12 @@ const SchoolTeachers = () => {
             </div>
             <div className="grid md:grid-cols-2 gap-4">
               <div className="space-y-2">
-                <Label className="text-white/80 font-body font-medium">Username (auto if blank)</Label>
-                <Input value={form.username} onChange={(e) => setForm({ ...form, username: e.target.value })} placeholder="Auto-generated if left blank" className="bg-white/10 border-white/20 text-white placeholder:text-white/40" />
+                <Label className="text-white/80 font-body font-medium">Username *</Label>
+                <Input value={form.username} onChange={(e) => setForm({ ...form, username: e.target.value })} placeholder="Enter username" className="bg-white/10 border-white/20 text-white placeholder:text-white/40" required />
               </div>
               <div className="space-y-2">
-                <Label className="text-white/80 font-body font-medium">Password (auto if blank)</Label>
-                <Input value={form.password} onChange={(e) => setForm({ ...form, password: e.target.value })} placeholder="Auto-generated if left blank" className="bg-white/10 border-white/20 text-white placeholder:text-white/40" />
+                <Label className="text-white/80 font-body font-medium">Password *</Label>
+                <Input value={form.password} onChange={(e) => setForm({ ...form, password: e.target.value })} placeholder="Enter password" className="bg-white/10 border-white/20 text-white placeholder:text-white/40" required />
               </div>
             </div>
 
