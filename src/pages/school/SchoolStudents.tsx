@@ -98,7 +98,7 @@ const SchoolStudents = () => {
             schoolId={schoolId}
             teachers={teachers.map(t => ({ id: t.id, firstName: t.firstName, lastName: t.lastName, classes: t.classes }))}
             sections={SECTION_OPTIONS}
-            onComplete={() => {}}
+            onComplete={() => refreshData()}
           />
           <Button variant="hero" size="lg" onClick={handleAddClick}><Plus className="w-5 h-5 mr-2" /> Add Student</Button>
         </div>
