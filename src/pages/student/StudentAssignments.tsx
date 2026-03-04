@@ -99,12 +99,14 @@ const loadAllProjects = (teacherIds: string[]): (Project & { teacherId: string }
 const StudentAssignments = () => {
   const { user } = useAuth();
   const { students, teachers } = useData();
-  const student = students.find((s) => s.id === user?.id);
+  const student = students.find((s) => s.user_id === user?.id || s.id === user?.id);
   const studentClass = student?.class || user?.className || "";
 
-  // Get teacher IDs for this student's school
+  // Get teacher IDs for this student's school - use BOTH user_id and id for localStorage lookup
   const schoolTeachers = teachers.filter((t) => t.schoolId === student?.schoolId);
-  const teacherIds = schoolTeachers.map((t) => t.id);
+  // Teachers save to localStorage with their auth user_id, so we need to search with user_id
+  const teacherUserIds = schoolTeachers.map((t) => t.user_id).filter(Boolean) as string[];
+  const teacherTableIds = schoolTeachers.map((t) => t.id);
 
   // Load assignments and projects matching student's class
   const assignments = useMemo(() => {

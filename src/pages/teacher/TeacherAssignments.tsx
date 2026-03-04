@@ -28,7 +28,7 @@ interface Assignment {
 }
 
 const STORAGE_KEY = "cc_assignments";
-const GEMINI_API_KEY = "AIzaSyBvPeUVKRwc4tU8sgF6bNfwdTexy9LAXhg";
+const GEMINI_API_KEY = "AIzaSyD2K_I_zk2sJNOOLTyj-RSU1e2qF3NPRnk";
 
 const loadAssignments = (teacherId: string): Assignment[] => {
   try {
