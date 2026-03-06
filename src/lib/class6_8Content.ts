@@ -1,7 +1,7 @@
 // Curriculum content for Classes 6-8
 import c6Html from "@/assets/curriculum/c6-html-basics.jpg";
 import c6Python from "@/assets/curriculum/c6-python-basics.jpg";
-import c6Internet from "@/assets/curriculum/c6-internet.jpg";
+import c6InternetImg from "@/assets/curriculum/c6-internet.jpg";
 
 import type { TopicTextbook } from "./class5Content";
 
