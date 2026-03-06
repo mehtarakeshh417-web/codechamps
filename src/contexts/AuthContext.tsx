@@ -33,14 +33,36 @@ const AuthContext = createContext<AuthContextType | null>(null);
 const usernameToEmail = (username: string) => `${username}@codechamps.local`;
 const emailToUsername = (email: string) => email.replace("@codechamps.local", "");
 
+const CACHE_KEY = "cc_auth_user";
+
+const getCachedUser = (userId: string): AuthUser | null => {
+  try {
+    const raw = localStorage.getItem(CACHE_KEY);
+    if (!raw) return null;
+    const cached = JSON.parse(raw);
+    if (cached.id === userId) return cached as AuthUser;
+  } catch {}
+  return null;
+};
+
+const cacheUser = (u: AuthUser) => {
+  localStorage.setItem(CACHE_KEY, JSON.stringify(u));
+};
+
+const clearCachedUser = () => localStorage.removeItem(CACHE_KEY);
+
 const buildAuthUser = async (supaUser: User): Promise<AuthUser | null> => {
   const username = emailToUsername(supaUser.email || "");
-  
+
+  // Return cached instantly if available
+  const cached = getCachedUser(supaUser.id);
+  if (cached) return cached;
+
   // Single RPC call to get role + profile info
   const { data: profile } = await supabase.rpc("get_user_profile", { _user_id: supaUser.id });
-  
+
   const p = profile as any || {};
-  return {
+  const authUser: AuthUser = {
     id: supaUser.id,
     username,
     role: (p.role as UserRole) || "student",
@@ -48,30 +70,9 @@ const buildAuthUser = async (supaUser: User): Promise<AuthUser | null> => {
     schoolName: p.school_name || undefined,
     className: p.class_name || undefined,
   };
+  cacheUser(authUser);
+  return authUser;
 };
-
-export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [user, setUser] = useState<AuthUser | null>(null);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const { data: { subscription } } = supabase.auth.onAuthStateChange(async (event, session) => {
-      if (event === 'INITIAL_SESSION' || event === 'SIGNED_IN' || event === 'TOKEN_REFRESHED') {
-        if (session?.user) {
-          const authUser = await buildAuthUser(session.user);
-          setUser(authUser);
-        } else {
-          setUser(null);
-        }
-        setLoading(false);
-      } else if (event === 'SIGNED_OUT') {
-        setUser(null);
-        setLoading(false);
-      }
-    });
-
-    return () => subscription.unsubscribe();
-  }, []);
 
   const login = useCallback(async (username: string, password: string): Promise<boolean> => {
     const email = usernameToEmail(username);
