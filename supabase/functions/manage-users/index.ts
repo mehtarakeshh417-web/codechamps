@@ -99,21 +99,19 @@ Deno.serve(async (req) => {
         userId = newUser.user.id;
       }
 
-      // Assign role
+      // Assign role (upsert to handle re-registration)
       const { error: roleError } = await supabase
         .from("user_roles")
-        .insert({ user_id: newUser.user.id, role });
+        .upsert({ user_id: userId, role }, { onConflict: "user_id,role" });
 
       if (roleError) {
-        // Cleanup: delete the user if role assignment fails
-        await supabase.auth.admin.deleteUser(newUser.user.id);
         return new Response(JSON.stringify({ error: `Role assignment failed: ${roleError.message}` }), {
           status: 400,
           headers: { ...corsHeaders, "Content-Type": "application/json" },
         });
       }
 
-      return new Response(JSON.stringify({ user: newUser.user }), {
+      return new Response(JSON.stringify({ user: { id: userId } }), {
         headers: { ...corsHeaders, "Content-Type": "application/json" },
       });
     }
