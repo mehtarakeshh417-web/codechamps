@@ -1,6 +1,11 @@
 import { useState, useRef, useEffect } from "react";
 import { Play, RotateCcw, Maximize2, Minimize2, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import SimulatedWordEditor from "./SimulatedWordEditor";
+import SimulatedExcelEditor from "./SimulatedExcelEditor";
+import SimulatedPowerPointEditor from "./SimulatedPowerPointEditor";
+import SimulatedGimpEditor from "./SimulatedGimpEditor";
+import SimulatedKritaEditor from "./SimulatedKritaEditor";
 
 // Fullscreen wrapper for all editors
 const EditorWrapper = ({
