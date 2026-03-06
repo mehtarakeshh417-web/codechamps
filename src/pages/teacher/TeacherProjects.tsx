@@ -188,9 +188,10 @@ const TeacherProjects = () => {
                     </div>
                     <div className="flex-1 text-left">
                       <h3 className="font-display text-sm font-bold text-white">{p.title}</h3>
-                      <p className="text-xs text-white/50 font-body">{p.targetClass} · {p.technology}</p>
+                      <p className="text-xs text-white/50 font-body">{p.targetClass} · {p.technology} · {(projSubsMap[p.id] || []).length} submissions</p>
                     </div>
                     <span className="text-xs bg-neon-orange/15 text-neon-orange px-2 py-0.5 rounded-full">{p.technology}</span>
+                    {(projSubsMap[p.id] || []).length > 0 && <span className="text-xs bg-neon-green/15 text-neon-green px-2 py-0.5 rounded-full">{projSubsMap[p.id].length}</span>}
                     {isExpanded ? <ChevronDown className="w-4 h-4 text-white/40" /> : <ChevronRight className="w-4 h-4 text-white/40" />}
                   </button>
 
@@ -210,6 +211,23 @@ const TeacherProjects = () => {
                               {classStudents.length > 10 && <span className="text-xs text-white/40">+{classStudents.length - 10} more</span>}
                             </div>
                           </div>
+                          {/* Project Submissions */}
+                          {(projSubsMap[p.id] || []).length > 0 && (
+                            <div className="border-t border-white/10 pt-3">
+                              <p className="text-xs text-white/50 font-body flex items-center gap-1 mb-2"><CheckCircle2 className="w-3.5 h-3.5" /> {projSubsMap[p.id].length} Student Submission(s)</p>
+                              <div className="space-y-1.5">
+                                {projSubsMap[p.id].map((sub) => (
+                                  <div key={sub.id} className="bg-white/5 rounded-lg p-2.5">
+                                    <div className="flex items-center justify-between mb-1">
+                                      <p className="text-sm text-white/90 font-body font-semibold">{sub.studentName}</p>
+                                      <p className="text-xs text-white/50 font-body">{new Date(sub.submittedAt).toLocaleString()}</p>
+                                    </div>
+                                    <p className="text-xs text-white/60 font-body">{sub.notes}</p>
+                                  </div>
+                                ))}
+                              </div>
+                            </div>
+                          )}
                           <div className="flex justify-end">
                             <Button size="sm" variant="ghost" onClick={() => deleteProject(p.id)} className="text-destructive hover:text-destructive/80">
                               <Trash2 className="w-3.5 h-3.5 mr-1" /> Delete
