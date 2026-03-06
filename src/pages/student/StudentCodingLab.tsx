@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 import { motion } from "framer-motion";
-import { Code, Terminal, Gamepad2, Palette, Coffee, Paintbrush, FileText } from "lucide-react";
+import { Code, Terminal, Gamepad2, Palette, Coffee, Paintbrush, FileText, Table2, Presentation, ImageIcon, PenTool } from "lucide-react";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { useAuth } from "@/contexts/AuthContext";
 import {
@@ -9,6 +9,10 @@ import {
   JavaEditor,
   MsPaintEditor,
   MsWordEditor,
+  MsExcelEditor,
+  MsPowerPointEditor,
+  GimpEditor,
+  KritaEditor,
   ScratchEditor,
   ScratchJrEditor,
 } from "@/components/coding-lab/editors";
@@ -18,22 +22,26 @@ const getAvailableEditors = (className?: string): string[] => {
   const numMatch = className.match(/(\d+)/);
   const classNum = numMatch ? parseInt(numMatch[1]) : 1;
 
-  if (classNum <= 2) return ["scratchjr", "mspaint"];
-  if (classNum <= 4) return ["scratch", "scratchjr", "mspaint", "msword"];
-  if (classNum <= 5) return ["scratch", "scratchjr", "python", "html", "java", "mspaint", "msword"];
-  if (classNum === 6) return ["html", "python", "java", "scratch", "mspaint", "msword"];
-  if (classNum === 7) return ["html", "python", "java", "scratch", "mspaint", "msword"];
-  return ["html", "python", "java", "scratch", "mspaint", "msword"];
+  if (classNum <= 2) return ["scratchjr", "mspaint", "krita"];
+  if (classNum <= 4) return ["scratch", "scratchjr", "mspaint", "krita", "msword", "gimp"];
+  if (classNum <= 5) return ["scratch", "scratchjr", "python", "html", "java", "mspaint", "krita", "msword", "msexcel", "mspowerpoint", "gimp"];
+  if (classNum === 6) return ["html", "python", "java", "scratch", "mspaint", "krita", "msword", "msexcel", "mspowerpoint", "gimp"];
+  if (classNum === 7) return ["html", "python", "java", "scratch", "mspaint", "krita", "msword", "msexcel", "mspowerpoint", "gimp"];
+  return ["html", "python", "java", "scratch", "mspaint", "krita", "msword", "msexcel", "mspowerpoint", "gimp"];
 };
 
 const editorMeta: Record<string, { label: string; icon: React.ElementType; component: React.FC }> = {
-  html:      { label: "HTML/CSS/JS", icon: Code,       component: HtmlEditor },
-  python:    { label: "Python",      icon: Terminal,    component: PythonEditor },
-  java:      { label: "Java",        icon: Coffee,      component: JavaEditor },
-  scratch:   { label: "Scratch",     icon: Gamepad2,    component: ScratchEditor },
-  scratchjr: { label: "Scratch Jr",  icon: Palette,     component: ScratchJrEditor },
-  mspaint:   { label: "MS Paint",    icon: Paintbrush,  component: MsPaintEditor },
-  msword:    { label: "MS Word",     icon: FileText,    component: MsWordEditor },
+  html:          { label: "HTML/CSS/JS",    icon: Code,         component: HtmlEditor },
+  python:        { label: "Python",         icon: Terminal,     component: PythonEditor },
+  java:          { label: "Java",           icon: Coffee,       component: JavaEditor },
+  scratch:       { label: "Scratch",        icon: Gamepad2,     component: ScratchEditor },
+  scratchjr:     { label: "Scratch Jr",     icon: Palette,      component: ScratchJrEditor },
+  mspaint:       { label: "MS Paint",       icon: Paintbrush,   component: MsPaintEditor },
+  msword:        { label: "MS Word",        icon: FileText,     component: MsWordEditor },
+  msexcel:       { label: "MS Excel",       icon: Table2,       component: MsExcelEditor },
+  mspowerpoint:  { label: "PowerPoint",     icon: Presentation, component: MsPowerPointEditor },
+  gimp:          { label: "GIMP",           icon: ImageIcon,    component: GimpEditor },
+  krita:         { label: "Krita",          icon: PenTool,      component: KritaEditor },
 };
 
 const StudentCodingLab = () => {
@@ -51,6 +59,7 @@ const StudentCodingLab = () => {
         <TabsList className="bg-white/5 border border-white/10 mb-6 flex-wrap h-auto gap-1 p-1">
           {editors.map((key) => {
             const meta = editorMeta[key];
+            if (!meta) return null;
             const Icon = meta.icon;
             return (
               <TabsTrigger key={key} value={key} className="data-[state=active]:bg-primary/20 data-[state=active]:text-primary text-white/60 font-body gap-1">
@@ -62,6 +71,7 @@ const StudentCodingLab = () => {
 
         {editors.map((key) => {
           const meta = editorMeta[key];
+          if (!meta) return null;
           const Comp = meta.component;
           return (
             <TabsContent key={key} value={key}>

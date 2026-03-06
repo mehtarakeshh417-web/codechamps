@@ -1,6 +1,11 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Play, RotateCcw, Maximize2, Minimize2, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import SimulatedWordEditor from "./SimulatedWordEditor";
+import SimulatedExcelEditor from "./SimulatedExcelEditor";
+import SimulatedPowerPointEditor from "./SimulatedPowerPointEditor";
+import SimulatedGimpEditor from "./SimulatedGimpEditor";
+import SimulatedKritaEditor from "./SimulatedKritaEditor";
 
 // Fullscreen wrapper for all editors
 const EditorWrapper = ({
@@ -21,12 +26,11 @@ const EditorWrapper = ({
     }
   };
 
-  // Listen for fullscreen changes
-  useState(() => {
+  useEffect(() => {
     const handler = () => setIsFullscreen(!!document.fullscreenElement);
     document.addEventListener("fullscreenchange", handler);
     return () => document.removeEventListener("fullscreenchange", handler);
-  });
+  }, []);
 
   return (
     <div ref={containerRef} className={`relative ${isFullscreen ? "bg-[hsl(var(--background))]" : ""}`}>
@@ -129,18 +133,38 @@ export const MsPaintEditor = () => (
   </EditorWrapper>
 );
 
-// MS Word Editor (OnlyOffice Personal / Ethercalc alternative - using a rich text editor embed)
+// MS Word Editor - Simulated
 export const MsWordEditor = () => (
   <EditorWrapper title="MS Word Editor">
-    <div className="h-[600px] rounded-xl overflow-hidden border border-white/10">
-      <iframe
-        src="https://www.editpad.org/"
-        className="w-full h-full border-0"
-        title="MS Word Editor"
-        allow="clipboard-read; clipboard-write"
-        sandbox="allow-scripts allow-same-origin allow-popups allow-forms allow-modals allow-downloads"
-      />
-    </div>
+    <SimulatedWordEditor />
+  </EditorWrapper>
+);
+
+// MS Excel Editor - Simulated
+export const MsExcelEditor = () => (
+  <EditorWrapper title="MS Excel Editor">
+    <SimulatedExcelEditor />
+  </EditorWrapper>
+);
+
+// MS PowerPoint Editor - Simulated
+export const MsPowerPointEditor = () => (
+  <EditorWrapper title="MS PowerPoint Editor">
+    <SimulatedPowerPointEditor />
+  </EditorWrapper>
+);
+
+// GIMP Editor - Simulated
+export const GimpEditor = () => (
+  <EditorWrapper title="GIMP Editor">
+    <SimulatedGimpEditor />
+  </EditorWrapper>
+);
+
+// Krita Editor - Simulated
+export const KritaEditor = () => (
+  <EditorWrapper title="Krita Editor">
+    <SimulatedKritaEditor />
   </EditorWrapper>
 );
 
@@ -185,5 +209,17 @@ export const EDITOR_URLS: Record<string, { url: string; label: string }> = {
   scratch: { url: "https://studio.penguinmod.com/editor.html", label: "Block Coding Editor" },
   scratchjr: { url: "https://codejr.org/scratchjr/index.html", label: "Scratch Jr" },
   mspaint: { url: "https://jspaint.app", label: "MS Paint" },
-  msword: { url: "https://www.editpad.org/", label: "MS Word Editor" },
+  msword: { url: "about:blank", label: "MS Word Editor" },
+  msexcel: { url: "about:blank", label: "MS Excel Editor" },
+  mspowerpoint: { url: "about:blank", label: "MS PowerPoint Editor" },
+  gimp: { url: "about:blank", label: "GIMP Editor" },
+  krita: { url: "about:blank", label: "Krita Editor" },
 };
+
+// Re-export simulated editors
+export { default as SimulatedWordEditor } from "./SimulatedWordEditor";
+export { default as SimulatedExcelEditor } from "./SimulatedExcelEditor";
+export { default as SimulatedPowerPointEditor } from "./SimulatedPowerPointEditor";
+export { default as SimulatedGimpEditor } from "./SimulatedGimpEditor";
+export { default as SimulatedKritaEditor } from "./SimulatedKritaEditor";
+
