@@ -36,41 +36,18 @@ const emailToUsername = (email: string) => email.replace("@codechamps.local", ""
 const buildAuthUser = async (supaUser: User): Promise<AuthUser | null> => {
   const username = emailToUsername(supaUser.email || "");
   
-  // Get role
-  const { data: roles } = await supabase
-    .from("user_roles")
-    .select("role")
-    .eq("user_id", supaUser.id);
+  // Single RPC call to get role + profile info
+  const { data: profile } = await supabase.rpc("get_user_profile", { _user_id: supaUser.id });
   
-  const role = (roles?.[0]?.role as UserRole) || "student";
-  const meta = supaUser.user_metadata || {};
-
-  let displayName = meta.display_name || username;
-  let schoolName = meta.school_name;
-  let className = meta.class_name;
-
-  // Enrich from tables
-  if (role === "school") {
-    const { data: school } = await supabase.from("schools").select("name").eq("user_id", supaUser.id).maybeSingle();
-    if (school) { displayName = school.name; schoolName = school.name; }
-  } else if (role === "teacher") {
-    const { data: teacher } = await supabase.from("teachers").select("first_name, last_name, school_id").eq("user_id", supaUser.id).maybeSingle();
-    if (teacher) {
-      displayName = `${teacher.first_name} ${teacher.last_name}`.trim();
-      const { data: school } = await supabase.from("schools").select("name").eq("id", teacher.school_id).maybeSingle();
-      if (school) schoolName = school.name;
-    }
-  } else if (role === "student") {
-    const { data: student } = await supabase.from("students").select("name, class, section, school_id").eq("user_id", supaUser.id).maybeSingle();
-    if (student) {
-      displayName = student.name;
-      className = `${student.class} (${student.section})`;
-      const { data: school } = await supabase.from("schools").select("name").eq("id", student.school_id).maybeSingle();
-      if (school) schoolName = school.name;
-    }
-  }
-
-  return { id: supaUser.id, username, role, displayName, schoolName, className };
+  const p = profile as any || {};
+  return {
+    id: supaUser.id,
+    username,
+    role: (p.role as UserRole) || "student",
+    displayName: p.display_name || username,
+    schoolName: p.school_name || undefined,
+    className: p.class_name || undefined,
+  };
 };
 
 export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
