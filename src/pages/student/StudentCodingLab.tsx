@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 import { motion } from "framer-motion";
-import { Code, Terminal, Gamepad2, Palette, Coffee, Paintbrush } from "lucide-react";
+import { Code, Terminal, Gamepad2, Palette, Coffee, Paintbrush, FileText } from "lucide-react";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { useAuth } from "@/contexts/AuthContext";
 import {
@@ -8,6 +8,7 @@ import {
   PythonEditor,
   JavaEditor,
   MsPaintEditor,
+  MsWordEditor,
   ScratchEditor,
   ScratchJrEditor,
 } from "@/components/coding-lab/editors";
@@ -18,11 +19,11 @@ const getAvailableEditors = (className?: string): string[] => {
   const classNum = numMatch ? parseInt(numMatch[1]) : 1;
 
   if (classNum <= 2) return ["scratchjr", "mspaint"];
-  if (classNum <= 4) return ["scratch", "scratchjr", "mspaint"];
-  if (classNum <= 5) return ["scratch", "scratchjr", "python", "html", "java", "mspaint"];
-  if (classNum === 6) return ["html", "python", "java", "scratch", "mspaint"];
-  if (classNum === 7) return ["html", "python", "java", "scratch", "mspaint"];
-  return ["html", "python", "java", "scratch", "mspaint"]; // Class 8+
+  if (classNum <= 4) return ["scratch", "scratchjr", "mspaint", "msword"];
+  if (classNum <= 5) return ["scratch", "scratchjr", "python", "html", "java", "mspaint", "msword"];
+  if (classNum === 6) return ["html", "python", "java", "scratch", "mspaint", "msword"];
+  if (classNum === 7) return ["html", "python", "java", "scratch", "mspaint", "msword"];
+  return ["html", "python", "java", "scratch", "mspaint", "msword"];
 };
 
 const editorMeta: Record<string, { label: string; icon: React.ElementType; component: React.FC }> = {
@@ -32,6 +33,7 @@ const editorMeta: Record<string, { label: string; icon: React.ElementType; compo
   scratch:   { label: "Scratch",     icon: Gamepad2,    component: ScratchEditor },
   scratchjr: { label: "Scratch Jr",  icon: Palette,     component: ScratchJrEditor },
   mspaint:   { label: "MS Paint",    icon: Paintbrush,  component: MsPaintEditor },
+  msword:    { label: "MS Word",     icon: FileText,    component: MsWordEditor },
 };
 
 const StudentCodingLab = () => {

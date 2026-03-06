@@ -764,14 +764,269 @@ const scratchBlocks: TopicTextbook = {
   ]
 };
 
+// ======================== MS WORD - TEXT FORMATTING ========================
+const wordTextFormatting: TopicTextbook = {
+  topicId: "c5-word-tf",
+  topicTitle: "MS Word – Text Formatting & Styles",
+  subjectColor: "neon-blue",
+  pages: [
+    {
+      pageTitle: "Introduction to Text Formatting",
+      subtitle: "Making your text look beautiful and professional",
+      bannerColor: "from-blue-500 to-cyan-500",
+      sections: [
+        {
+          heading: "What is Text Formatting?",
+          body: "**Text formatting** means changing how your text looks — making it bigger, bolder, more colorful, or more organized.\n\nGood formatting makes documents:\n• **Easier to read** — readers can scan quickly\n• **More professional** — looks like a real publication\n• **Better organized** — headings, lists, and emphasis guide the reader\n• **More attractive** — color and style catch the eye\n\nAll text formatting tools are in the **Home** tab in the **Font** and **Paragraph** groups.",
+          tip: "Always format AFTER you finish writing. Write first, format later — this saves time!"
+        }
+      ]
+    },
+    {
+      pageTitle: "Bold, Italic, Underline & More",
+      subtitle: "Basic text styling tools",
+      bannerColor: "from-cyan-500 to-blue-500",
+      sections: [
+        {
+          heading: "Text Style Options",
+          body: "**Bold (Ctrl+B)** — Makes text **thicker and darker**. Use for headings and important words.\n\n*Italic (Ctrl+I)* — Makes text *slanted*. Use for book titles, foreign words, or emphasis.\n\n**Underline (Ctrl+U)** — Adds a line under text. Use sparingly — too much underline is hard to read.\n\n~~Strikethrough~~ — Draws a line through text. Shows deleted or incorrect information.\n\n**Subscript** — Makes text smaller and lower (like H₂O)\n**Superscript** — Makes text smaller and higher (like x²)\n\n**Text Highlight** — Marks text with a colored background (like a highlighter pen)\n**Font Color** — Changes the color of the text itself",
+        },
+        {
+          heading: "Changing Font & Size",
+          body: "**Font Name:** The style of letters\n• **Arial** — clean and modern\n• **Times New Roman** — classic and formal\n• **Comic Sans** — fun and playful\n• **Calibri** — the default Word font\n\n**Font Size:** Measured in points (pt)\n• 8-10pt — small text, fine print\n• 11-12pt — normal body text\n• 14-16pt — subheadings\n• 18-24pt — headings\n• 28-72pt — titles and posters\n\n**Quick Size Buttons:**\n• **A↑** (Grow Font) — increases size by one step\n• **A↓** (Shrink Font) — decreases size by one step\n\n**Change Case** button — Switch between UPPERCASE, lowercase, Title Case, and more!",
+          tip: "For school work, use **Calibri** or **Arial** at **12pt** for body text and **14-16pt** for headings."
+        }
+      ],
+      exercises: [
+        { type: "fill-in-blank", question: "The keyboard shortcut for Bold is Ctrl+___.", answer: "b" },
+        { type: "fill-in-blank", question: "The default font in MS Word is ___.", answer: "calibri" },
+        { type: "true-false", question: "Subscript makes text smaller and higher.", answer: "False", options: ["True", "False"] },
+        { type: "true-false", question: "You can change text between uppercase and lowercase using the Change Case button.", answer: "True", options: ["True", "False"] },
+      ]
+    },
+    {
+      pageTitle: "Paragraph Alignment & Spacing",
+      subtitle: "Organizing your paragraphs neatly",
+      bannerColor: "from-indigo-500 to-purple-500",
+      sections: [
+        {
+          heading: "Text Alignment",
+          body: "**Alignment** controls how text lines up on the page:\n\n⬅️ **Left Align (Ctrl+L)** — text lines up on the left edge (default for most text)\n⬅️➡️ **Center (Ctrl+E)** — text is centered in the middle (great for titles)\n➡️ **Right Align (Ctrl+R)** — text lines up on the right edge (used for dates)\n⬅️➡️ **Justify (Ctrl+J)** — text stretches to fill both edges evenly (used in books and newspapers)\n\n**When to use each:**\n• Left Align — regular paragraphs, letters, reports\n• Center — titles, headings, invitations\n• Right Align — dates, page numbers, signatures\n• Justify — professional documents, magazine articles",
+        },
+        {
+          heading: "Line Spacing & Paragraph Spacing",
+          body: "**Line Spacing** — the space between lines within a paragraph:\n• **1.0** — single spacing (tight)\n• **1.15** — default Word spacing\n• **1.5** — one-and-a-half spacing (easy to read)\n• **2.0** — double spacing (used in school essays)\n\n**How to change:**\n1. Select text → Home tab → Line Spacing button (in Paragraph group)\n2. Choose your spacing\n\n**Paragraph Spacing** — space before or after paragraphs:\n• **Before** — adds space above the paragraph\n• **After** — adds space below the paragraph\n• Change in: Home → Paragraph → Spacing options",
+          tip: "Teachers often ask for **double spacing (2.0)** in essays so they can write comments between lines!"
+        }
+      ],
+      exercises: [
+        { type: "fill-in-blank", question: "The shortcut to center text is Ctrl+___.", answer: "e" },
+        { type: "fill-in-blank", question: "___ alignment stretches text to fill both left and right edges.", answer: "justify" },
+        { type: "true-false", question: "Double spacing means 2.0 line spacing.", answer: "True", options: ["True", "False"] },
+        { type: "practice", question: "Type a short essay about 'My School'. Use Center alignment for the title, Justify for the body, and Right Align for the date. Set line spacing to 1.5 and add 12pt spacing after each paragraph.", answer: "" },
+      ]
+    },
+    {
+      pageTitle: "Find & Replace",
+      subtitle: "Quickly find and change text in your document",
+      bannerColor: "from-teal-500 to-green-500",
+      sections: [
+        {
+          heading: "Find (Ctrl+F)",
+          body: "**Find** lets you search for any word or phrase in your document.\n\n**How to use Find:**\n1. Press **Ctrl+F** (or go to Home → Find)\n2. Type the word you're looking for\n3. Word highlights all occurrences!\n4. Use the arrows to jump between results\n\n**Advanced Find options:**\n• **Match case** — finds only exact capitalization ('Word' but not 'word')\n• **Find whole words only** — finds 'the' but not 'the**re**' or 'o**the**r'",
+        },
+        {
+          heading: "Replace (Ctrl+H)",
+          body: "**Replace** lets you find a word and change it to something else — automatically!\n\n**How to use Replace:**\n1. Press **Ctrl+H** (or Home → Replace)\n2. In 'Find what' — type the word to find\n3. In 'Replace with' — type the new word\n4. Click **Replace** — changes one at a time\n5. Click **Replace All** — changes ALL occurrences at once!\n\n**Example:** You wrote 'colour' 50 times but need 'color' (American spelling)\n→ Find: colour → Replace with: color → Replace All\n→ Done! All 50 changed in 1 second!\n\n⚠️ Be careful with Replace All — it might change words you didn't intend!",
+          tip: "Always use **Find** first to see all occurrences before using **Replace All**. This prevents accidental changes!"
+        }
+      ],
+      exercises: [
+        { type: "fill-in-blank", question: "The shortcut to open Find is Ctrl+___.", answer: "f" },
+        { type: "fill-in-blank", question: "The shortcut to open Replace is Ctrl+___.", answer: "h" },
+        { type: "true-false", question: "Replace All changes every occurrence at once.", answer: "True", options: ["True", "False"] },
+        { type: "true-false", question: "Find can only search for single words, not phrases.", answer: "False", options: ["True", "False"] },
+        { type: "practice", question: "Type a paragraph using the word 'computer' at least 5 times. Then use Find to highlight all occurrences. Finally, use Replace to change 'computer' to 'PC' in all places at once.", answer: "" },
+      ]
+    },
+    {
+      pageTitle: "Chapter Review & Assessment",
+      subtitle: "Test your knowledge of Text Formatting!",
+      bannerColor: "from-blue-500 to-indigo-500",
+      sections: [
+        {
+          heading: "Summary — What You Learned",
+          body: "✅ **Text Styles** — Bold, Italic, Underline, Strikethrough, Sub/Superscript\n✅ **Font & Size** — Choosing fonts, changing sizes, Change Case\n✅ **Alignment** — Left, Center, Right, Justify\n✅ **Spacing** — Line spacing (1.0, 1.5, 2.0) and paragraph spacing\n✅ **Find & Replace** — Search for text and change it automatically\n\nThese skills make your documents look professional and polished!",
+        }
+      ],
+      exercises: [
+        { type: "fill-in-blank", question: "The three basic text styles are Bold, Italic, and ___.", answer: "underline" },
+        { type: "fill-in-blank", question: "___ alignment is best for titles and headings.", answer: "center" },
+        { type: "fill-in-blank", question: "Ctrl+H opens the ___ dialog.", answer: "replace" },
+        { type: "true-false", question: "Justify alignment makes text line up on both left and right edges.", answer: "True", options: ["True", "False"] },
+        { type: "true-false", question: "The default line spacing in Word is 2.0.", answer: "False", options: ["True", "False"] },
+        { type: "practice", question: "Create a 'Class Newspaper' with: (1) A large, bold, centered title (2) Date right-aligned (3) Body text in justified alignment with 1.5 spacing (4) Use at least 3 different fonts and colors (5) Add bold and italic for emphasis throughout.", answer: "" },
+      ]
+    },
+  ]
+};
+
+// ======================== PPT - SLIDE DESIGN ========================
+const pptDesign: TopicTextbook = {
+  topicId: "c5-ppt-design",
+  topicTitle: "MS PowerPoint – Slide Design & Themes",
+  subjectColor: "neon-orange",
+  pages: [
+    {
+      pageTitle: "Introduction to Slide Design",
+      subtitle: "Creating visually stunning presentations",
+      bannerColor: "from-orange-500 to-red-500",
+      sections: [
+        {
+          heading: "Why Design Matters",
+          body: "A well-designed presentation keeps your audience engaged and helps them understand your message.\n\n**Good design includes:**\n🎨 Consistent colors and fonts throughout\n🎨 Clean layouts that aren't cluttered\n🎨 Readable text (not too small, good contrast)\n🎨 Relevant images and graphics\n🎨 Professional appearance\n\n**Bad design mistakes:**\n❌ Too much text on one slide\n❌ Clashing colors\n❌ Too many different fonts\n❌ Tiny text nobody can read\n❌ Distracting backgrounds",
+          tip: "The 10-20-30 rule: No more than 10 slides, no longer than 20 minutes, no text smaller than 30pt!"
+        }
+      ]
+    },
+    {
+      pageTitle: "Themes & Templates",
+      subtitle: "Ready-made designs for professional slides",
+      bannerColor: "from-pink-500 to-rose-500",
+      sections: [
+        {
+          heading: "What are Themes?",
+          body: "A **theme** is a set of pre-designed colors, fonts, and effects that give your presentation a consistent, professional look.\n\n**How to apply a theme:**\n1. Go to **Design** tab\n2. Browse the theme gallery\n3. Hover over a theme to preview it\n4. Click to apply it to all slides\n\n**Theme includes:**\n• **Colors** — a coordinated color palette\n• **Fonts** — a heading font and a body font\n• **Effects** — shape and line styles\n• **Background** — consistent background design",
+        },
+        {
+          heading: "Customizing Themes",
+          body: "You can modify any theme to make it your own!\n\n**Change Colors:**\n1. Design tab → Variants → Colors\n2. Choose from preset color schemes OR create custom colors\n\n**Change Fonts:**\n1. Design tab → Variants → Fonts\n2. Choose a font pair for headings and body\n\n**Change Background:**\n1. Design tab → Format Background\n2. Options: Solid fill, Gradient fill, Picture fill, Pattern fill\n3. Click 'Apply to All' for consistency\n\n**Slide Master** (Advanced):\nThe Slide Master controls the look of ALL slides at once. Changes here affect every slide!\n1. View tab → Slide Master\n2. Edit the master layout\n3. Close Master View",
+          tip: "Using Slide Master saves time — change the logo, font, or color once and it updates everywhere!"
+        }
+      ],
+      exercises: [
+        { type: "fill-in-blank", question: "A ___ is a set of pre-designed colors, fonts, and effects.", answer: "theme" },
+        { type: "fill-in-blank", question: "The ___ Master controls the look of all slides at once.", answer: "slide" },
+        { type: "true-false", question: "You can customize the colors of a theme.", answer: "True", options: ["True", "False"] },
+        { type: "true-false", question: "A theme only changes the background of slides.", answer: "False", options: ["True", "False"] },
+      ]
+    },
+    {
+      pageTitle: "SmartArt Graphics",
+      subtitle: "Visual diagrams to explain ideas",
+      bannerColor: "from-violet-500 to-purple-500",
+      sections: [
+        {
+          heading: "What is SmartArt?",
+          body: "**SmartArt** creates professional diagrams and charts with just a few clicks!\n\n**Types of SmartArt:**\n📊 **List** — show items in a visual list\n🔄 **Process** — show steps in a sequence\n♻️ **Cycle** — show a repeating process\n🏗️ **Hierarchy** — show organizational structures (like family trees)\n🔗 **Relationship** — show how things connect\n📐 **Matrix** — show parts of a whole\n🎯 **Pyramid** — show proportional or hierarchical relationships\n\n**How to insert SmartArt:**\n1. Go to **Insert** tab\n2. Click **SmartArt**\n3. Choose a category and design\n4. Click **OK**\n5. Type your text in the text pane",
+        },
+        {
+          heading: "Formatting SmartArt",
+          body: "After inserting SmartArt, you can customize it:\n\n**Add/Remove Shapes:**\n• Click a shape → SmartArt Tools → Add Shape\n• Select and press Delete to remove\n\n**Change Colors:**\n• SmartArt Tools → Design → Change Colors\n• Choose from colorful, accent, or custom schemes\n\n**Change Style:**\n• SmartArt Tools → Design → SmartArt Styles\n• Options: Simple, Polished, 3-D, and more\n\n**Example Uses:**\n• **Water Cycle** — use a Cycle SmartArt\n• **Food Chain** — use a Hierarchy SmartArt\n• **Steps to solve a problem** — use a Process SmartArt\n• **Compare two things** — use a Relationship SmartArt",
+          tip: "SmartArt is much faster than drawing shapes manually! Use it whenever you need to show a process, list, or hierarchy."
+        }
+      ],
+      exercises: [
+        { type: "fill-in-blank", question: "SmartArt is found in the ___ tab.", answer: "insert" },
+        { type: "fill-in-blank", question: "A ___ SmartArt shows steps in a sequence.", answer: "process" },
+        { type: "true-false", question: "SmartArt can only show lists.", answer: "False", options: ["True", "False"] },
+        { type: "practice", question: "Create a presentation about 'The Water Cycle'. Use a Cycle SmartArt to show the stages (Evaporation, Condensation, Precipitation, Collection). Apply a colorful theme and add images on other slides.", answer: "" },
+      ]
+    },
+  ]
+};
+
+// ======================== SCRATCH - GAME DEVELOPMENT ========================
+const scratchGames: TopicTextbook = {
+  topicId: "c5-scr-games",
+  topicTitle: "Scratch – Game Development Basics",
+  subjectColor: "neon-green",
+  pages: [
+    {
+      pageTitle: "Introduction to Game Development",
+      subtitle: "Learn to create your own games in Scratch!",
+      bannerImage: c5Scratch,
+      bannerColor: "from-yellow-500 to-green-500",
+      sections: [
+        {
+          heading: "What Makes a Game?",
+          body: "Every game has these essential elements:\n\n🎮 **Player Character** — the sprite the player controls\n🎯 **Goal** — what the player needs to achieve\n🚧 **Obstacles** — things that make it challenging\n📊 **Score** — tracks the player's performance\n❤️ **Lives** — number of chances\n🎵 **Sound Effects** — audio feedback\n🖼️ **Backdrops** — the game environment\n\n**Types of games you can make in Scratch:**\n• **Maze games** — navigate through a maze\n• **Catch games** — catch falling objects\n• **Chase games** — avoid enemies\n• **Quiz games** — answer questions\n• **Platformer games** — jump between platforms\n• **Pong-style games** — bounce a ball",
+          funFact: "The first video game ever made was 'Tennis for Two' in 1958 — over 65 years ago! It was played on an oscilloscope screen."
+        }
+      ]
+    },
+    {
+      pageTitle: "Player Movement",
+      subtitle: "Making your character move with keyboard controls",
+      bannerImage: c5ScratchBlocks,
+      bannerColor: "from-green-500 to-teal-500",
+      sections: [
+        {
+          heading: "Arrow Key Movement",
+          body: "The most common game control is moving a character with arrow keys.\n\n**Basic Movement Script:**\n```\nWhen green flag clicked\nForever\n  If <key 'up arrow' pressed?> then\n    change y by 5\n  End\n  If <key 'down arrow' pressed?> then\n    change y by -5\n  End\n  If <key 'left arrow' pressed?> then\n    change x by -5\n  End\n  If <key 'right arrow' pressed?> then\n    change x by 5\n  End\nEnd\n```\n\n**Making it better:**\n• **Boundary check** — stop at edges using `if on edge, bounce`\n• **Speed variable** — use a variable to control movement speed\n• **Smooth rotation** — set rotation style to 'left-right' for side-scrolling games",
+          tip: "Change the movement value (5) to make the character faster or slower. Try different values to find the perfect speed!"
+        }
+      ],
+      exercises: [
+        { type: "fill-in-blank", question: "To move a sprite up, we change ___ by a positive number.", answer: "y" },
+        { type: "fill-in-blank", question: "To move a sprite left, we change x by a ___ number.", answer: "negative" },
+        { type: "true-false", question: "The 'if on edge, bounce' block prevents sprites from leaving the screen.", answer: "True", options: ["True", "False"] },
+        { type: "practice", question: "Open the block coding editor and create a sprite that moves in all 4 directions using arrow keys. Add boundary detection so it doesn't go off-screen. Add a trail effect by using the 'stamp' block.", answer: "" },
+      ]
+    },
+    {
+      pageTitle: "Collision Detection & Scoring",
+      subtitle: "Detecting when sprites touch and keeping score",
+      bannerColor: "from-orange-500 to-red-500",
+      sections: [
+        {
+          heading: "Collision Detection",
+          body: "**Collision detection** means checking if two sprites are touching each other.\n\n**Methods:**\n🔵 **touching [sprite]?** — checks if touching another sprite\n🎨 **touching color [color]?** — checks if touching a specific color\n📏 **distance to [sprite] < 30** — checks if within a certain distance\n\n**Common collision uses:**\n• Player touches coin → collect it, add score\n• Player touches enemy → lose a life\n• Ball touches paddle → bounce back\n• Character touches finish line → win!",
+        },
+        {
+          heading: "Score System",
+          body: "**Setting up a score:**\n1. Create a variable called 'score'\n2. Set score to 0 when game starts\n3. Change score when events happen\n\n**Complete scoring example:**\n```\nWhen green flag clicked\nset [score] to (0)\nset [lives] to (3)\n\n-- On the coin sprite:\nWhen green flag clicked\nForever\n  go to (random position)\n  wait until <touching [player]?>\n  change [score] by (10)\n  play sound 'pop'\n  go to (random position)\nEnd\n```\n\n**Difficulty increase:**\n```\nIf <(score) > (50)> then\n  set [speed] to (8)\nEnd\nIf <(score) > (100)> then\n  set [speed] to (12)\nEnd\n```\nThis makes the game harder as the score increases!",
+          tip: "Always show the score on screen using 'show variable'. Players want to see their progress!"
+        }
+      ],
+      exercises: [
+        { type: "fill-in-blank", question: "Checking if two sprites are touching is called ___ detection.", answer: "collision" },
+        { type: "fill-in-blank", question: "To increase score by 10, use 'change [score] by ___'.", answer: "10" },
+        { type: "true-false", question: "You can check if a sprite is touching a specific color.", answer: "True", options: ["True", "False"] },
+        { type: "practice", question: "Create a 'Catch the Fruit' game: a basket at the bottom moves left-right with arrow keys. Fruits fall from random positions at the top. When the basket catches a fruit, score increases by 10 and a sound plays. After 5 missed fruits, game over!", answer: "" },
+      ]
+    },
+    {
+      pageTitle: "Chapter Review",
+      subtitle: "Test your game development knowledge!",
+      bannerColor: "from-green-500 to-emerald-500",
+      sections: [
+        {
+          heading: "Summary — What You Learned",
+          body: "✅ **Game Elements** — player, goal, obstacles, score, lives, sounds\n✅ **Player Movement** — arrow key controls using sensing and motion blocks\n✅ **Collision Detection** — touching sprites, touching colors, distance checks\n✅ **Score System** — variables for score and lives, increasing difficulty\n\nWith these skills, you can create many different types of games!",
+        }
+      ],
+      exercises: [
+        { type: "fill-in-blank", question: "Every game needs a player, a goal, and ___.", answer: "obstacles" },
+        { type: "true-false", question: "The 'change x by -5' block moves a sprite to the left.", answer: "True", options: ["True", "False"] },
+        { type: "true-false", question: "You cannot make a game harder as the player's score increases.", answer: "False", options: ["True", "False"] },
+        { type: "practice", question: "Design and create your own original game! It must have: (1) A player sprite with keyboard controls (2) At least 2 other sprites (3) A scoring system (4) A game over condition (5) Sound effects. Be creative!", answer: "" },
+      ]
+    },
+  ]
+};
+
 // Export all topic textbooks
 export const TOPIC_TEXTBOOKS: TopicTextbook[] = [
   wordPageFormatting,
+  wordTextFormatting,
   pptAnimations,
+  pptDesign,
   excelIntro,
   excelCells,
   excelEdit,
   scratchBlocks,
+  scratchGames,
 ];
 
 export const getTopicTextbook = (topicId: string): TopicTextbook | undefined => {

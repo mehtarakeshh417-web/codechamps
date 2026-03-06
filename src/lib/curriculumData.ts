@@ -317,38 +317,54 @@ export const CURRICULUM: ClassCurriculum[] = [
     subjects: [
       {
         id: "c5-word", title: "MS Word – Page Formatting", icon: "FileText", color: "neon-blue",
-        topics: [{
-          id: "c5-word-pf", title: "Page Layout & Design",
-          lessons: makeLessons(["Page Margins", "Page Orientation", "Page Background Color", "Watermarks", "Page Borders", "Columns"], "c5-word"),
-          activities: makeActivities(["Activity: Format a Magazine Page", "Project: Formatted Report", "Project: Class Brochure"], "c5-word"),
-        }],
+        topics: [
+          {
+            id: "c5-word-pf", title: "Ch 1: Page Layout & Design",
+            lessons: makeLessons(["Page Margins", "Page Orientation", "Page Background Color", "Watermarks", "Page Borders", "Columns"], "c5-word"),
+            activities: makeActivities(["Activity: Format a Magazine Page", "Project: Formatted Report", "Project: Class Brochure"], "c5-word"),
+          },
+          {
+            id: "c5-word-tf", title: "Ch 2: Text Formatting & Styles",
+            lessons: makeLessons(["Bold, Italic, Underline", "Font Styles & Sizes", "Text Alignment", "Line Spacing", "Find & Replace"], "c5-word-tf"),
+            activities: makeActivities(["Activity: Format a Story", "Project: Styled Newsletter"], "c5-word-tf"),
+          },
+        ],
       },
       {
         id: "c5-ppt", title: "MS PPT – Animations", icon: "Presentation", color: "neon-orange",
-        topics: [{
-          id: "c5-ppt-anim", title: "Animations, Transitions & Media",
-          lessons: makeLessons(["Slide Transitions", "Animation Effects", "Animation Timing", "Inserting Audio", "Inserting Video", "Custom Animations"], "c5-ppt"),
-          activities: makeActivities(["Activity: Animated Slideshow", "Project: Science Presentation", "Project: Story Animation PPT"], "c5-ppt"),
-        }],
+        topics: [
+          {
+            id: "c5-ppt-anim", title: "Ch 1: Animations, Transitions & Media",
+            lessons: makeLessons(["Slide Transitions", "Animation Effects", "Animation Timing", "Inserting Audio", "Inserting Video", "Custom Animations"], "c5-ppt"),
+            activities: makeActivities(["Activity: Animated Slideshow", "Project: Science Presentation", "Project: Story Animation PPT"], "c5-ppt"),
+          },
+          {
+            id: "c5-ppt-design", title: "Ch 2: Slide Design & Themes",
+            lessons: makeLessons(["Slide Themes", "Custom Backgrounds", "Slide Master", "Using SmartArt"], "c5-ppt-d"),
+            activities: makeActivities(["Activity: Design a Theme", "Project: Themed Presentation"], "c5-ppt-d"),
+          },
+        ],
       },
       {
         id: "c5-excel-intro", title: "MS Excel Introduction", icon: "Table", color: "neon-purple",
-        topics: [{
-          id: "c5-xl-intro", title: "Getting Started with Excel",
-          lessons: makeLessons(["What is Excel?", "Excel Interface", "Workbooks & Worksheets", "Cells, Rows, Columns", "Entering Data"], "c5-xl-i"),
-          activities: makeActivities(["Activity: Create First Spreadsheet", "Project: Class Timetable", "Project: Birthday List"], "c5-xl-i"),
-        }],
+        topics: [
+          {
+            id: "c5-xl-intro", title: "Ch 1: Getting Started with Excel",
+            lessons: makeLessons(["What is Excel?", "Excel Interface", "Workbooks & Worksheets", "Cells, Rows, Columns", "Entering Data"], "c5-xl-i"),
+            activities: makeActivities(["Activity: Create First Spreadsheet", "Project: Class Timetable", "Project: Birthday List"], "c5-xl-i"),
+          },
+        ],
       },
       {
         id: "c5-excel-work", title: "MS Excel Working", icon: "Table", color: "neon-purple",
         topics: [
           {
-            id: "c5-xl-cells", title: "Selecting & Formatting Cells",
+            id: "c5-xl-cells", title: "Ch 1: Selecting & Formatting Cells",
             lessons: makeLessons(["Selecting Cells & Ranges", "Changing Font & Size", "Cell Alignment", "Adding Borders", "Cell Background Color"], "c5-xl-c"),
             activities: makeActivities(["Activity: Format a Data Table"], "c5-xl-c"),
           },
           {
-            id: "c5-xl-edit", title: "Insert, Delete & Resize",
+            id: "c5-xl-edit", title: "Ch 2: Insert, Delete & Resize",
             lessons: makeLessons(["Insert Rows & Columns", "Delete Rows & Columns", "Resize Rows & Columns", "Merge Cells", "Wrap Text"], "c5-xl-e"),
             activities: makeActivities(["Activity: Build a Mark Sheet", "Project: Monthly Budget", "Project: Sports Score Card"], "c5-xl-e"),
           },
@@ -356,11 +372,18 @@ export const CURRICULUM: ClassCurriculum[] = [
       },
       {
         id: "c5-scratch", title: "Scratch – Blocks & Variables", icon: "Gamepad2", color: "neon-green",
-        topics: [{
-          id: "c5-scr", title: "Blocks, Operators & Variables",
-          lessons: makeLessons(["Control Blocks", "Sensing Blocks", "Operator Blocks", "Creating Variables", "Using Variables in Games", "Broadcasting Messages"], "c5-scr"),
-          activities: makeActivities(["Activity: Variable Counter", "Project: Score Keeping Game", "Project: Interactive Quiz"], "c5-scr"),
-        }],
+        topics: [
+          {
+            id: "c5-scr", title: "Ch 1: Blocks, Operators & Variables",
+            lessons: makeLessons(["Control Blocks", "Sensing Blocks", "Operator Blocks", "Creating Variables", "Using Variables in Games", "Broadcasting Messages"], "c5-scr"),
+            activities: makeActivities(["Activity: Variable Counter", "Project: Score Keeping Game", "Project: Interactive Quiz"], "c5-scr"),
+          },
+          {
+            id: "c5-scr-games", title: "Ch 2: Game Development Basics",
+            lessons: makeLessons(["Game Design Concepts", "Player Movement", "Collision Detection", "Score System", "Levels & Difficulty"], "c5-scr-g"),
+            activities: makeActivities(["Activity: Simple Maze Game", "Project: Catch Game", "Project: Quiz Game"], "c5-scr-g"),
+          },
+        ],
       },
     ],
   },
