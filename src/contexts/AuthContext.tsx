@@ -73,6 +73,28 @@ const buildAuthUser = async (supaUser: User): Promise<AuthUser | null> => {
   cacheUser(authUser);
   return authUser;
 };
+export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  const [user, setUser] = useState<AuthUser | null>(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const { data: { subscription } } = supabase.auth.onAuthStateChange(async (event, session) => {
+      if (event === 'INITIAL_SESSION' || event === 'SIGNED_IN' || event === 'TOKEN_REFRESHED') {
+        if (session?.user) {
+          const authUser = await buildAuthUser(session.user);
+          setUser(authUser);
+        } else {
+          setUser(null);
+        }
+        setLoading(false);
+      } else if (event === 'SIGNED_OUT') {
+        clearCachedUser();
+        setUser(null);
+        setLoading(false);
+      }
+    });
+    return () => subscription.unsubscribe();
+  }, []);
 
   const login = useCallback(async (username: string, password: string): Promise<boolean> => {
     const email = usernameToEmail(username);
@@ -81,6 +103,7 @@ const buildAuthUser = async (supaUser: User): Promise<AuthUser | null> => {
   }, []);
 
   const logout = useCallback(async () => {
+    clearCachedUser();
     await supabase.auth.signOut();
     setUser(null);
   }, []);
