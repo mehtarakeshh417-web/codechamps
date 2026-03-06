@@ -47,25 +47,7 @@ interface Submission {
   score?: number;
 }
 
-// Keep submissions in localStorage for now (student-side only)
-const loadSubmissions = (studentId: string): Submission[] => {
-  try {
-    const data = localStorage.getItem(`cc_submissions_${studentId}`);
-    return data ? JSON.parse(data) : [];
-  } catch { return []; }
-};
-const saveSubmissions = (studentId: string, subs: Submission[]) => {
-  localStorage.setItem(`cc_submissions_${studentId}`, JSON.stringify(subs));
-};
-const loadProjectSubmissions = (studentId: string): Record<string, string> => {
-  try {
-    const data = localStorage.getItem(`cc_proj_submissions_${studentId}`);
-    return data ? JSON.parse(data) : {};
-  } catch { return {}; }
-};
-const saveProjectSubmissions = (studentId: string, subs: Record<string, string>) => {
-  localStorage.setItem(`cc_proj_submissions_${studentId}`, JSON.stringify(subs));
-};
+// Submissions are now persisted in Supabase
 
 const StudentAssignments = () => {
   const { user } = useAuth();
