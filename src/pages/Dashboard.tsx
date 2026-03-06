@@ -69,6 +69,7 @@ const studentRoutes = (
   <>
     <Route index element={<StudentDashboard />} />
     <Route path="curriculum" element={<StudentCurriculum />} />
+    <Route path="curriculum/topic/:topicId" element={<TopicViewer />} />
     <Route path="progress" element={<StudentProgress />} />
     <Route path="assignments" element={<StudentAssignments />} />
     <Route path="coding-lab" element={<StudentCodingLab />} />
