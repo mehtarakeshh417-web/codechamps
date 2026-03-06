@@ -24,6 +24,7 @@ import TeacherStudentProgress from "./teacher/TeacherStudentProgress";
 import ChangePassword from "./shared/ChangePassword";
 import StudentDashboard from "./student/StudentDashboard";
 import StudentCurriculum from "./student/StudentCurriculum";
+import TopicViewer from "./student/TopicViewer";
 import StudentAssignments from "./student/StudentAssignments";
 import StudentCodingLab from "./student/StudentCodingLab";
 import StudentAchievements from "./student/StudentAchievements";
@@ -68,6 +69,7 @@ const studentRoutes = (
   <>
     <Route index element={<StudentDashboard />} />
     <Route path="curriculum" element={<StudentCurriculum />} />
+    <Route path="curriculum/topic/:topicId" element={<TopicViewer />} />
     <Route path="progress" element={<StudentProgress />} />
     <Route path="assignments" element={<StudentAssignments />} />
     <Route path="coding-lab" element={<StudentCodingLab />} />

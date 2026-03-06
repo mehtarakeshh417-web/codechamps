@@ -1,226 +1,779 @@
-// Rich curriculum content for Class 5 with theory, images, and exercises
-import c5WordImg from "@/assets/curriculum/c5-word-page.jpg";
-import c5PptImg from "@/assets/curriculum/c5-ppt-anim.jpg";
-import c5ExcelIntroImg from "@/assets/curriculum/c5-excel-intro.jpg";
-import c5ExcelWorkImg from "@/assets/curriculum/c5-excel-work.jpg";
-import c5ScratchImg from "@/assets/curriculum/c5-scratch.jpg";
+// Detailed multi-page textbook content for Class 5 curriculum
+// Each topic has multiple pages with theory, images, and exercises
+
+import c5WordPage from "@/assets/curriculum/c5-word-page.jpg";
+import c5WordMargins from "@/assets/curriculum/c5-word-margins.jpg";
+import c5WordOrientation from "@/assets/curriculum/c5-word-orientation.jpg";
+import c5WordWatermark from "@/assets/curriculum/c5-word-watermark.jpg";
+import c5WordColumns from "@/assets/curriculum/c5-word-columns.jpg";
+import c5PptAnim from "@/assets/curriculum/c5-ppt-anim.jpg";
+import c5PptTransitions from "@/assets/curriculum/c5-ppt-transitions.jpg";
+import c5PptAnimTypes from "@/assets/curriculum/c5-ppt-animation-types.jpg";
+import c5PptMedia from "@/assets/curriculum/c5-ppt-media.jpg";
+import c5ExcelIntro from "@/assets/curriculum/c5-excel-intro.jpg";
+import c5ExcelInterface from "@/assets/curriculum/c5-excel-interface.jpg";
+import c5ExcelWork from "@/assets/curriculum/c5-excel-work.jpg";
+import c5ExcelFormatting from "@/assets/curriculum/c5-excel-formatting.jpg";
+import c5ExcelInsertDelete from "@/assets/curriculum/c5-excel-insert-delete.jpg";
+import c5Scratch from "@/assets/curriculum/c5-scratch.jpg";
+import c5ScratchBlocks from "@/assets/curriculum/c5-scratch-blocks.jpg";
+import c5ScratchVariables from "@/assets/curriculum/c5-scratch-variables.jpg";
 
 export interface Exercise {
   type: "fill-in-blank" | "true-false" | "practice";
   question: string;
-  answer: string; // correct answer
-  options?: string[]; // for true-false: ["True","False"]
+  answer: string;
+  options?: string[];
 }
 
-export interface TopicContent {
+export interface ContentSection {
+  heading: string;
+  body: string; // supports **bold** and line breaks
+  image?: string;
+  tip?: string;
+  funFact?: string;
+}
+
+export interface TextbookPage {
+  pageTitle: string;
+  subtitle?: string;
+  bannerImage?: string;
+  bannerColor?: string; // gradient class
+  sections: ContentSection[];
+  exercises?: Exercise[];
+}
+
+export interface TopicTextbook {
   topicId: string;
-  image: string;
-  theory: string; // rich text theory
-  exercises: Exercise[];
+  topicTitle: string;
+  subjectColor: string;
+  pages: TextbookPage[];
 }
 
-export const CLASS5_CONTENT: TopicContent[] = [
-  {
-    topicId: "c5-word-pf",
-    image: c5WordImg,
-    theory: `**MS Word – Page Formatting** helps you make your documents look professional and beautiful.
+// ======================== MS WORD - PAGE FORMATTING ========================
+const wordPageFormatting: TopicTextbook = {
+  topicId: "c5-word-pf",
+  topicTitle: "MS Word – Page Layout & Design",
+  subjectColor: "neon-blue",
+  pages: [
+    {
+      pageTitle: "Introduction to Page Formatting",
+      subtitle: "Making your documents look professional and beautiful",
+      bannerImage: c5WordPage,
+      bannerColor: "from-blue-500 to-cyan-500",
+      sections: [
+        {
+          heading: "What is Page Formatting?",
+          body: "**Page formatting** means changing how your document page looks. It includes setting margins, choosing page orientation, adding backgrounds, watermarks, borders, and columns.\n\nWhen you write a letter, a report, or a project, page formatting makes it look neat and professional. Imagine reading a book with no margins — the text would go right to the edge of the paper! Formatting fixes that.\n\n**Why is Page Formatting Important?**\n• Makes documents easy to read\n• Gives a professional appearance\n• Helps organize information\n• Makes printed documents look great",
+          tip: "All page formatting options are found in the **Page Layout** tab in MS Word."
+        },
+        {
+          heading: "Where to Find Page Layout",
+          body: "To access page formatting tools:\n\n**Step 1:** Open Microsoft Word\n**Step 2:** Click on the **Page Layout** tab at the top ribbon\n**Step 3:** You will see groups like Page Setup, Page Background, and Paragraph\n\nEach group contains different tools for formatting your page. Let's learn about each one in the following pages!",
+          funFact: "Microsoft Word was first released in 1983 — that's over 40 years ago! It has been helping people create beautiful documents ever since."
+        }
+      ]
+    },
+    {
+      pageTitle: "Page Margins",
+      subtitle: "The blank spaces around your content",
+      bannerImage: c5WordMargins,
+      bannerColor: "from-blue-500 to-indigo-500",
+      sections: [
+        {
+          heading: "What are Margins?",
+          body: "**Margins** are the blank spaces between the edge of the paper and where your text begins. Every page has four margins:\n\n📏 **Top Margin** — space above the text\n📏 **Bottom Margin** — space below the text\n📏 **Left Margin** — space on the left side\n📏 **Right Margin** — space on the right side\n\nMargins prevent text from going to the very edge of the paper, making your document easier to read and print.",
+          image: c5WordMargins
+        },
+        {
+          heading: "Types of Margin Settings",
+          body: "MS Word provides several preset margin options:\n\n📄 **Normal** — Top: 2.54cm, Bottom: 2.54cm, Left: 3.17cm, Right: 3.17cm (most common)\n📄 **Narrow** — 1.27cm on all sides (fits more text on page)\n📄 **Wide** — 5.08cm left and right (gives more white space)\n📄 **Moderate** — 2.54cm top/bottom, 1.91cm left/right\n📄 **Custom Margins** — You set your own values!\n\n**How to Change Margins:**\n1. Go to **Page Layout** tab\n2. Click **Margins**\n3. Choose a preset OR click **Custom Margins**\n4. Set your desired values\n5. Click **OK**",
+          tip: "For school projects, the **Normal** margin setting works best. It gives enough space for binding on the left side."
+        }
+      ],
+      exercises: [
+        { type: "fill-in-blank", question: "The blank spaces between the edge of the paper and the text are called ___.", answer: "margins" },
+        { type: "fill-in-blank", question: "The ___ margin preset gives the least white space around the text.", answer: "narrow" },
+        { type: "true-false", question: "Every page has only two margins — left and right.", answer: "False", options: ["True", "False"] },
+        { type: "true-false", question: "You can set custom margin values in MS Word.", answer: "True", options: ["True", "False"] },
+      ]
+    },
+    {
+      pageTitle: "Page Orientation",
+      subtitle: "Portrait vs Landscape — choosing the right direction",
+      bannerImage: c5WordOrientation,
+      bannerColor: "from-indigo-500 to-purple-500",
+      sections: [
+        {
+          heading: "What is Page Orientation?",
+          body: "**Page orientation** refers to the direction in which your page is displayed. There are two types:\n\n📄 **Portrait** — The page is taller than it is wide (like a standing book). This is the **default** orientation.\n\n📄 **Landscape** — The page is wider than it is tall (like a lying-down book). Used for wide tables, images, or certificates.",
+          image: c5WordOrientation
+        },
+        {
+          heading: "When to Use Each Orientation",
+          body: "**Use Portrait for:**\n• Letters and essays\n• Reports and homework\n• Story writing\n• Most regular documents\n\n**Use Landscape for:**\n• Wide tables with many columns\n• Certificates and awards\n• Photo layouts\n• Landscape drawings\n• Timetables\n\n**How to Change Orientation:**\n1. Go to **Page Layout** tab\n2. Click **Orientation**\n3. Choose **Portrait** or **Landscape**\n\nThe entire document will change to the selected orientation.",
+          tip: "You can even have different orientations on different pages using **Section Breaks**! This is an advanced feature you'll learn later."
+        }
+      ],
+      exercises: [
+        { type: "fill-in-blank", question: "The default page orientation in MS Word is ___.", answer: "portrait" },
+        { type: "fill-in-blank", question: "___ orientation makes the page wider than it is tall.", answer: "landscape" },
+        { type: "true-false", question: "Landscape orientation is best for writing essays.", answer: "False", options: ["True", "False"] },
+        { type: "practice", question: "Open MS Word. Create a new document. Change the orientation to Landscape. Type a wide table with 6 columns showing your weekly timetable. Then change it back to Portrait and notice the difference.", answer: "" },
+      ]
+    },
+    {
+      pageTitle: "Page Background Color",
+      subtitle: "Adding colors to make your pages pop!",
+      bannerColor: "from-purple-500 to-pink-500",
+      sections: [
+        {
+          heading: "Adding a Background Color",
+          body: "You can change the entire background color of your page to make it more attractive or to match a theme.\n\n**How to Add Page Color:**\n1. Go to **Page Layout** tab\n2. Click **Page Color** in the Page Background group\n3. Choose a color from the color palette\n4. Your entire page background will change!\n\n**More Options:**\n• Click **More Colors** to see the full color spectrum\n• Click **Fill Effects** to add gradients, textures, or patterns\n\n**Types of Fill Effects:**\n🎨 **Gradient** — smooth blend of two colors\n🎨 **Texture** — looks like fabric, marble, wood, etc.\n🎨 **Pattern** — repeating designs like stripes or dots\n🎨 **Picture** — use an image as background",
+          tip: "Light colors work best for page backgrounds. Dark backgrounds make text hard to read!"
+        },
+        {
+          heading: "Important Things to Remember",
+          body: "⚠️ **Page color does NOT print by default!** To print the background color:\n1. Go to **File → Options → Display**\n2. Check **Print Background Colors and Images**\n\n⚠️ Use **light colors** so the text remains readable\n⚠️ Page color applies to the **entire document** — you cannot color just one page easily\n⚠️ To remove the color, go to **Page Color → No Color**",
+          funFact: "Did you know? Professional designers often use very light pastel backgrounds instead of pure white. It's easier on the eyes!"
+        }
+      ],
+      exercises: [
+        { type: "fill-in-blank", question: "To change page background, go to Page Layout → ___.", answer: "page color" },
+        { type: "true-false", question: "Page background color prints automatically when you press Print.", answer: "False", options: ["True", "False"] },
+        { type: "true-false", question: "You can add gradient effects as a page background.", answer: "True", options: ["True", "False"] },
+        { type: "practice", question: "Open MS Word. Add a light yellow page background. Then try adding a gradient fill effect with two colors of your choice. Finally, try a texture fill like 'Parchment'.", answer: "" },
+      ]
+    },
+    {
+      pageTitle: "Watermarks",
+      subtitle: "Faded text or images behind your content",
+      bannerImage: c5WordWatermark,
+      bannerColor: "from-gray-500 to-blue-500",
+      sections: [
+        {
+          heading: "What is a Watermark?",
+          body: "A **watermark** is a faded text or image that appears **behind** the main content of your document. It is semi-transparent so you can still read the text over it.\n\n**Common uses of watermarks:**\n• Mark a document as **CONFIDENTIAL** or **DRAFT**\n• Add a company or school logo behind text\n• Show ownership of a document\n• Add a decorative background element",
+          image: c5WordWatermark
+        },
+        {
+          heading: "How to Add a Watermark",
+          body: "**Adding a Text Watermark:**\n1. Go to **Page Layout** tab\n2. Click **Watermark**\n3. Choose from preset options like CONFIDENTIAL, DO NOT COPY, DRAFT, SAMPLE, or ASAP\n4. The watermark appears on every page!\n\n**Creating a Custom Watermark:**\n1. Click **Watermark → Custom Watermark**\n2. Choose **Text watermark** — type your own text, choose font, size, color, and layout (Diagonal or Horizontal)\n3. OR choose **Picture watermark** — select an image from your computer\n4. Click **OK**\n\n**Removing a Watermark:**\n• Go to **Page Layout → Watermark → Remove Watermark**",
+          tip: "Use a large font size and light gray color for text watermarks so they don't interfere with the main content."
+        }
+      ],
+      exercises: [
+        { type: "fill-in-blank", question: "A ___ is a faded text or image that appears behind the main content.", answer: "watermark" },
+        { type: "fill-in-blank", question: "Watermarks can be laid out in Diagonal or ___ direction.", answer: "horizontal" },
+        { type: "true-false", question: "Watermarks appear on every page of the document.", answer: "True", options: ["True", "False"] },
+        { type: "true-false", question: "You can only use text for watermarks, not pictures.", answer: "False", options: ["True", "False"] },
+        { type: "practice", question: "Create a document and add a 'DRAFT' watermark. Then remove it and create a custom watermark with your name. Try both diagonal and horizontal layouts.", answer: "" },
+      ]
+    },
+    {
+      pageTitle: "Page Borders",
+      subtitle: "Beautiful decorative frames around your pages",
+      bannerColor: "from-pink-500 to-rose-500",
+      sections: [
+        {
+          heading: "What are Page Borders?",
+          body: "**Page borders** are decorative frames that go around the entire page. They make your documents look attractive and professional — perfect for certificates, greeting cards, and project covers!\n\n**Types of Page Borders:**\n🔲 **Box** — simple rectangular border all around\n🔲 **Shadow** — border with a shadow effect\n🔲 **3-D** — border with a 3D raised effect\n🔲 **Custom** — different borders on each side\n🎨 **Art** — decorative borders with shapes like stars, hearts, trees, balloons, and more!",
+        },
+        {
+          heading: "How to Add Page Borders",
+          body: "**Steps to add a page border:**\n1. Go to **Page Layout** tab (or **Design** tab in newer versions)\n2. Click **Page Borders**\n3. The **Borders and Shading** dialog box opens\n4. Choose a **Setting** (Box, Shadow, 3-D, or Custom)\n5. Select a **Style** (solid, dotted, dashed, double line, etc.)\n6. Choose a **Color** for your border\n7. Set the **Width** (thickness) of the border\n8. Click **OK**\n\n**For Art Borders:**\n1. In the same dialog box, click the **Art** dropdown\n2. Browse through dozens of decorative designs!\n3. Choose your favorite (stars, flowers, ice cream, apples, etc.)\n4. Adjust the width\n5. Click **OK**",
+          tip: "Art borders are perfect for birthday cards, certificates, and project cover pages!"
+        }
+      ],
+      exercises: [
+        { type: "fill-in-blank", question: "The four types of page border settings are Box, Shadow, 3-D, and ___.", answer: "custom" },
+        { type: "fill-in-blank", question: "___ borders have decorative designs like stars, hearts, and flowers.", answer: "art" },
+        { type: "true-false", question: "You can change the color and width of page borders.", answer: "True", options: ["True", "False"] },
+        { type: "practice", question: "Create a birthday invitation card. Use an Art border with a festive design. Add a colorful page background. Type the invitation text in decorative fonts.", answer: "" },
+      ]
+    },
+    {
+      pageTitle: "Columns",
+      subtitle: "Split your text like a newspaper!",
+      bannerImage: c5WordColumns,
+      bannerColor: "from-emerald-500 to-teal-500",
+      sections: [
+        {
+          heading: "What are Columns?",
+          body: "**Columns** allow you to split your text into two or more vertical sections, just like a newspaper or magazine!\n\nNormally, text flows from the left edge to the right edge of the page. With columns, the page is divided and text flows down one column before continuing to the next.\n\n**Column Options:**\n📰 **One** — normal full-width (default)\n📰 **Two** — page split into 2 equal columns\n📰 **Three** — page split into 3 equal columns\n📰 **Left** — 2 columns with the left one narrower\n📰 **Right** — 2 columns with the right one narrower",
+          image: c5WordColumns
+        },
+        {
+          heading: "How to Create Columns",
+          body: "**Steps to add columns:**\n1. Select the text you want to put in columns (or select all text with Ctrl+A)\n2. Go to **Page Layout** tab\n3. Click **Columns**\n4. Choose **Two** or **Three**\n5. Your text automatically reformats into columns!\n\n**For More Options:**\n1. Click **Columns → More Columns**\n2. Set the exact number of columns\n3. Adjust the **spacing** between columns\n4. Check **Line between** to add a vertical line separating columns\n5. Click **OK**\n\n**Column Break:**\nTo force text to move to the next column:\n1. Place your cursor where you want the break\n2. Go to **Page Layout → Breaks → Column**",
+          tip: "Columns work great for newsletters, brochures, and newspaper-style projects. Try combining columns with a large heading that spans the full width!"
+        }
+      ],
+      exercises: [
+        { type: "fill-in-blank", question: "The default column setting in MS Word is ___ column(s).", answer: "one" },
+        { type: "fill-in-blank", question: "To add a vertical line between columns, check the '___ between' option.", answer: "line" },
+        { type: "true-false", question: "MS Word can only create a maximum of 2 columns.", answer: "False", options: ["True", "False"] },
+        { type: "true-false", question: "Column breaks force text to move to the next column.", answer: "True", options: ["True", "False"] },
+        { type: "practice", question: "Create a class newsletter with a big title spanning the full width, then format the body text into 2 columns. Add a line between the columns. Include at least 3 news items about your class.", answer: "" },
+      ]
+    },
+    {
+      pageTitle: "Chapter Review & Assessment",
+      subtitle: "Test your knowledge of Page Formatting!",
+      bannerColor: "from-amber-500 to-orange-500",
+      sections: [
+        {
+          heading: "Summary — What You Learned",
+          body: "In this chapter, you learned about **Page Formatting** in MS Word:\n\n✅ **Margins** — blank spaces around the edges (Normal, Narrow, Wide, Custom)\n✅ **Orientation** — Portrait (tall) or Landscape (wide)\n✅ **Page Color** — background color with gradients, textures, and patterns\n✅ **Watermarks** — faded text/images behind content\n✅ **Page Borders** — decorative frames including Art borders\n✅ **Columns** — newspaper-style text layouts\n\nAll these tools are found in the **Page Layout** tab. Together, they help you create beautiful, professional-looking documents!",
+        }
+      ],
+      exercises: [
+        { type: "fill-in-blank", question: "All page formatting tools are found in the ___ tab.", answer: "page layout" },
+        { type: "fill-in-blank", question: "A document that is wider than it is tall uses ___ orientation.", answer: "landscape" },
+        { type: "fill-in-blank", question: "___ are faded text or images that appear behind the document content.", answer: "watermarks" },
+        { type: "fill-in-blank", question: "Decorative borders with shapes like stars and flowers are called ___ borders.", answer: "art" },
+        { type: "true-false", question: "Narrow margins give less white space around the text.", answer: "True", options: ["True", "False"] },
+        { type: "true-false", question: "Page color prints automatically without any settings change.", answer: "False", options: ["True", "False"] },
+        { type: "true-false", question: "You can split text into 3 columns in MS Word.", answer: "True", options: ["True", "False"] },
+        { type: "true-false", question: "Watermarks can only be placed diagonally.", answer: "False", options: ["True", "False"] },
+        { type: "practice", question: "Create a complete project cover page with: (1) Landscape orientation (2) A page border with Art design (3) A light blue page background (4) A 'DRAFT' watermark (5) The title in WordArt. Then, on page 2, change to Portrait with 2-column text for the project content.", answer: "" },
+      ]
+    },
+  ]
+};
 
-📐 **Page Margins** are the blank spaces around the edges of a page. You can change margins from the Page Layout tab. Margins can be Normal, Narrow, Wide, or Custom.
+// ======================== MS PPT - ANIMATIONS ========================
+const pptAnimations: TopicTextbook = {
+  topicId: "c5-ppt-anim",
+  topicTitle: "MS PowerPoint – Animations, Transitions & Media",
+  subjectColor: "neon-orange",
+  pages: [
+    {
+      pageTitle: "Introduction to Animations & Transitions",
+      subtitle: "Making your presentations come alive!",
+      bannerImage: c5PptAnim,
+      bannerColor: "from-orange-500 to-amber-500",
+      sections: [
+        {
+          heading: "Why Animations Matter",
+          body: "**Animations** and **transitions** make your PowerPoint presentations exciting and engaging! Without them, your slides just appear one after another — but with them, text flies in, images spin, and slides fade beautifully.\n\n**Animations** = Effects applied to **objects** on a slide (text, images, shapes)\n**Transitions** = Effects applied **between slides** (how one slide changes to the next)\n\nThink of animations like special effects in a movie — they grab attention and keep your audience interested!",
+          tip: "Don't use too many different animations in one presentation. Pick 2-3 effects and use them consistently for a professional look."
+        },
+        {
+          heading: "Where to Find These Tools",
+          body: "📍 **Transitions** are in the **Transitions** tab\n📍 **Animations** are in the **Animations** tab\n📍 **Media (Audio/Video)** are in the **Insert** tab\n\nLet's explore each one in detail on the following pages!"
+        }
+      ]
+    },
+    {
+      pageTitle: "Slide Transitions",
+      subtitle: "Beautiful effects between your slides",
+      bannerImage: c5PptTransitions,
+      bannerColor: "from-amber-500 to-yellow-500",
+      sections: [
+        {
+          heading: "What are Slide Transitions?",
+          body: "A **slide transition** is the visual effect that plays when you move from one slide to the next during a slideshow.\n\n**Popular Transition Effects:**\n\n🌟 **Subtle Transitions:**\n• **Fade** — slide gently fades in\n• **Push** — new slide pushes old one away\n• **Wipe** — new slide wipes across like a curtain\n• **Split** — slide splits open\n\n🌟 **Exciting Transitions:**\n• **Morph** — objects smoothly transform position\n• **Zoom** — dramatic zoom effect\n• **Curtains** — like opening theater curtains\n• **Airplane** — slide flies in like a paper airplane\n\n🌟 **Dynamic Transitions:**\n• **Rotate** — slide rotates into view\n• **Fracture** — slide breaks apart\n• **Ripple** — creates a water ripple effect",
+          image: c5PptTransitions
+        },
+        {
+          heading: "How to Apply Transitions",
+          body: "**Steps to add a transition:**\n1. Click on the slide you want to add a transition to\n2. Go to the **Transitions** tab\n3. Browse the transition effects\n4. Click on one to preview it!\n5. The transition plays automatically so you can see the effect\n\n**Customizing Transitions:**\n• **Effect Options** — change direction (from left, right, top, bottom)\n• **Sound** — add a sound effect (like applause, drum roll)\n• **Duration** — how long the transition takes (fast: 0.5s, slow: 3s)\n• **Apply To All** — same transition on every slide\n\n**Advancing Slides:**\n• **On Mouse Click** — click to move to next slide\n• **After** — automatically advance after set time (e.g., 5 seconds)",
+          tip: "The **Morph** transition is one of the coolest! It smoothly animates objects from one position to another between slides."
+        }
+      ],
+      exercises: [
+        { type: "fill-in-blank", question: "The visual effect that plays between two slides is called a ___.", answer: "transition" },
+        { type: "fill-in-blank", question: "The ___ transition makes objects smoothly move from one position to another.", answer: "morph" },
+        { type: "true-false", question: "You can add sound effects to slide transitions.", answer: "True", options: ["True", "False"] },
+        { type: "true-false", question: "You can only apply one type of transition to the entire presentation.", answer: "False", options: ["True", "False"] },
+      ]
+    },
+    {
+      pageTitle: "Animation Effects",
+      subtitle: "Making objects on your slides move and appear",
+      bannerImage: c5PptAnimTypes,
+      bannerColor: "from-red-500 to-orange-500",
+      sections: [
+        {
+          heading: "Four Types of Animations",
+          body: "PowerPoint has **4 categories** of animation effects:\n\n🟢 **Entrance Animations** (Green) — How objects **appear** on the slide\n• Fly In — object flies in from a direction\n• Fade In — object gradually appears\n• Bounce — object bounces into view\n• Zoom — object zooms from small to full size\n• Appear — object just pops up instantly\n\n🟡 **Emphasis Animations** (Yellow) — How objects get **highlighted**\n• Spin — object rotates\n• Grow/Shrink — object gets bigger or smaller\n• Pulse — object pulses with a glow\n• Teeter — object wobbles\n• Color Change — object changes color\n\n🔴 **Exit Animations** (Red) — How objects **disappear**\n• Fly Out — object flies away\n• Fade Out — object gradually vanishes\n• Shrink & Turn — object shrinks and spins away\n• Bounce Out — object bounces off screen\n\n🔵 **Motion Paths** (Blue) — Object **moves** along a path\n• Lines — straight line movement\n• Arcs — curved movement\n• Turns — zigzag movement\n• Custom Path — draw your own path!",
+          image: c5PptAnimTypes,
+          funFact: "The Motion Path animation lets you draw any path you want! You could make a bee fly around the screen in loops!"
+        }
+      ],
+      exercises: [
+        { type: "fill-in-blank", question: "The four types of animations are Entrance, Emphasis, Exit, and ___.", answer: "motion paths" },
+        { type: "fill-in-blank", question: "Entrance animations are shown in ___ color in PowerPoint.", answer: "green" },
+        { type: "true-false", question: "Emphasis animations make objects appear on the slide.", answer: "False", options: ["True", "False"] },
+        { type: "true-false", question: "You can draw your own custom motion path.", answer: "True", options: ["True", "False"] },
+      ]
+    },
+    {
+      pageTitle: "Animation Timing & Order",
+      subtitle: "Controlling when and how fast animations play",
+      bannerColor: "from-violet-500 to-purple-500",
+      sections: [
+        {
+          heading: "Animation Timing Controls",
+          body: "After adding an animation, you need to control **when** it plays and **how long** it takes.\n\n**Start Options:**\n🖱️ **On Click** — animation plays when you click the mouse (default)\n▶️ **With Previous** — plays at the same time as the previous animation\n⏭️ **After Previous** — plays automatically after the previous animation finishes\n\n**Duration:** How long the animation takes\n• Fast: 0.25 - 0.50 seconds\n• Medium: 1.00 second\n• Slow: 2.00 - 3.00 seconds\n\n**Delay:** Wait time before the animation starts\n• Example: Set delay to 1 second — the animation waits 1 second before playing",
+        },
+        {
+          heading: "Animation Pane & Multiple Animations",
+          body: "The **Animation Pane** is your control center for managing all animations on a slide.\n\n**How to open Animation Pane:**\n1. Go to **Animations** tab\n2. Click **Animation Pane** (on the right side of the ribbon)\n3. A panel opens on the right showing all animations in order\n\n**Multiple Animations on One Object:**\nYes! You can add more than one animation to the same object!\n1. Select the object\n2. Click **Add Animation** (NOT the main animation button — that replaces!)\n3. Choose another animation\n4. Use the Animation Pane to reorder them\n\n**Reordering Animations:**\n• Drag animations up or down in the Animation Pane\n• Use the ↑ and ↓ arrows to move them",
+          tip: "Use 'With Previous' to make multiple objects appear at the same time. Use 'After Previous' for a sequence!"
+        }
+      ],
+      exercises: [
+        { type: "fill-in-blank", question: "The three start options for animations are On Click, With Previous, and ___.", answer: "after previous" },
+        { type: "fill-in-blank", question: "The ___ Pane shows all animations in order on the right side.", answer: "animation" },
+        { type: "true-false", question: "You can add multiple animations to the same object.", answer: "True", options: ["True", "False"] },
+        { type: "practice", question: "Create a slide with a title and 3 bullet points. Apply Fly In animation to each bullet point, set to 'After Previous' with 1 second delay between each. The bullets should appear one by one automatically.", answer: "" },
+      ]
+    },
+    {
+      pageTitle: "Inserting Audio & Video",
+      subtitle: "Adding multimedia to your presentations",
+      bannerImage: c5PptMedia,
+      bannerColor: "from-teal-500 to-cyan-500",
+      sections: [
+        {
+          heading: "Adding Audio to Slides",
+          body: "You can add background music, narration, or sound effects to your slides!\n\n**How to Insert Audio:**\n1. Go to **Insert** tab\n2. Click **Audio** (in the Media group)\n3. Choose:\n   • **Audio on My PC** — select a sound file from your computer\n   • **Record Audio** — record your own voice!\n\n**Audio Options:**\n• **Play in Background** — music plays across all slides\n• **Start Automatically** or **On Click**\n• **Loop until Stopped** — repeats the audio\n• **Hide During Show** — hides the speaker icon\n• **Volume** — adjust loud/quiet",
+          image: c5PptMedia
+        },
+        {
+          heading: "Adding Video to Slides",
+          body: "Videos make your presentations even more engaging!\n\n**How to Insert Video:**\n1. Go to **Insert** tab\n2. Click **Video** (in the Media group)\n3. Choose:\n   • **Video on My PC** — select a video file\n   • **Online Video** — paste a YouTube or other web video link\n\n**Video Options:**\n• **Start** — Automatically or On Click\n• **Play Full Screen** — video fills the entire screen\n• **Loop** — video repeats\n• **Trim Video** — cut the beginning or end\n• **Video Shape** — change the video frame shape (circle, star, etc.)\n• **Video Effects** — add shadow, reflection, glow",
+          tip: "For school presentations, record your own narration explaining each slide. It's a great way to practice speaking!"
+        }
+      ],
+      exercises: [
+        { type: "fill-in-blank", question: "To insert audio, go to the ___ tab and click Audio.", answer: "insert" },
+        { type: "fill-in-blank", question: "To play music across all slides, click 'Play in ___'.", answer: "background" },
+        { type: "true-false", question: "You can record your own audio in PowerPoint.", answer: "True", options: ["True", "False"] },
+        { type: "true-false", question: "Videos in PowerPoint cannot be trimmed.", answer: "False", options: ["True", "False"] },
+      ]
+    },
+    {
+      pageTitle: "Chapter Review & Assessment",
+      subtitle: "Test your knowledge of Animations, Transitions & Media!",
+      bannerColor: "from-orange-500 to-red-500",
+      sections: [
+        {
+          heading: "Summary — What You Learned",
+          body: "✅ **Transitions** — visual effects between slides (Fade, Push, Wipe, Morph, etc.)\n✅ **Animation Types** — Entrance, Emphasis, Exit, and Motion Paths\n✅ **Animation Timing** — On Click, With Previous, After Previous + Duration and Delay\n✅ **Animation Pane** — manage and reorder all animations\n✅ **Multiple Animations** — use Add Animation to apply more than one effect\n✅ **Audio** — insert music, sound effects, or record narration\n✅ **Video** — insert video files or online videos with playback options"
+        }
+      ],
+      exercises: [
+        { type: "fill-in-blank", question: "Entrance, Emphasis, Exit, and ___ are the four animation categories.", answer: "motion paths" },
+        { type: "fill-in-blank", question: "A ___ is the visual effect that plays when switching between slides.", answer: "transition" },
+        { type: "fill-in-blank", question: "To add a second animation to an object, click '___'.", answer: "add animation" },
+        { type: "true-false", question: "The Morph transition smoothly moves objects between slides.", answer: "True", options: ["True", "False"] },
+        { type: "true-false", question: "Emphasis animations make objects disappear from the slide.", answer: "False", options: ["True", "False"] },
+        { type: "practice", question: "Create a 5-slide presentation about 'My Favorite Season'. Add different transitions to each slide. On Slide 1, add an entrance animation to the title. On Slide 3, add a motion path animation to an image. Add background music that plays across all slides.", answer: "" },
+      ]
+    },
+  ]
+};
 
-📄 **Page Orientation** means the direction of the page. Portrait (tall) is default. Landscape (wide) is used for wide tables or images. Go to Page Layout → Orientation to change it.
+// ======================== MS EXCEL INTRODUCTION ========================
+const excelIntro: TopicTextbook = {
+  topicId: "c5-xl-intro",
+  topicTitle: "MS Excel – Getting Started",
+  subjectColor: "neon-purple",
+  pages: [
+    {
+      pageTitle: "Introduction to Microsoft Excel",
+      subtitle: "The world's most popular spreadsheet program",
+      bannerImage: c5ExcelIntro,
+      bannerColor: "from-green-600 to-emerald-500",
+      sections: [
+        {
+          heading: "What is Microsoft Excel?",
+          body: "**Microsoft Excel** is a powerful spreadsheet application. It organizes data in a grid of **rows** and **columns**.\n\n**What can you do with Excel?**\n📊 Organize data neatly in tables\n📊 Perform calculations using formulas\n📊 Create colorful charts and graphs\n📊 Sort and filter large amounts of data\n📊 Track scores, budgets, and attendance\n📊 Create timetables and schedules\n\n**Real-life uses of Excel:**\n• Teachers use it to maintain student marks\n• Companies use it to track sales and expenses\n• Scientists use it to analyze data\n• Students use it for projects and record-keeping",
+          funFact: "Microsoft Excel was first released in 1985 for Apple Macintosh! The Windows version came in 1987. Today, over 750 million people use Excel worldwide!"
+        }
+      ]
+    },
+    {
+      pageTitle: "The Excel Interface",
+      subtitle: "Understanding the parts of the Excel window",
+      bannerImage: c5ExcelInterface,
+      bannerColor: "from-emerald-500 to-green-500",
+      sections: [
+        {
+          heading: "Parts of the Excel Window",
+          body: "When you open Excel, you see these important parts:\n\n📌 **Title Bar** — Shows the file name at the very top (e.g., 'Book1 - Excel')\n\n📌 **Ribbon** — The toolbar with tabs like Home, Insert, Page Layout, Formulas, Data, Review, View. Each tab has different groups of tools.\n\n📌 **Formula Bar** — Located below the ribbon. Shows the content or formula in the selected cell. You can type directly here too!\n\n📌 **Name Box** — To the left of the Formula Bar. Shows the address of the selected cell (like A1, B5, C12).\n\n📌 **Column Headers** — Letters at the top: A, B, C, D... up to XFD (16,384 columns!)\n\n📌 **Row Headers** — Numbers on the left: 1, 2, 3... up to 1,048,576 rows!\n\n📌 **Cells** — The individual boxes where rows and columns meet. Each cell has a unique address.\n\n📌 **Sheet Tabs** — At the bottom, you can see tabs like Sheet1, Sheet2. Click to switch between worksheets.\n\n📌 **Status Bar** — At the very bottom, shows information like page number, zoom level, and quick calculations.",
+          image: c5ExcelInterface,
+          tip: "The Name Box is very useful! Type any cell address (like Z100) and press Enter to quickly jump to that cell."
+        }
+      ]
+    },
+    {
+      pageTitle: "Workbooks and Worksheets",
+      subtitle: "Understanding the structure of an Excel file",
+      bannerColor: "from-green-500 to-lime-500",
+      sections: [
+        {
+          heading: "Workbook vs Worksheet",
+          body: "📗 **Workbook** = The entire Excel file. When you save an Excel file, you save a workbook. The file extension is **.xlsx**\n\n📄 **Worksheet** (or Sheet) = A single page within the workbook. Each worksheet is a separate grid of cells.\n\n**Think of it like this:**\n• A **workbook** is like a **notebook**\n• A **worksheet** is like a **page** in that notebook\n• You can have many pages (worksheets) in one notebook (workbook)!",
+        },
+        {
+          heading: "Working with Worksheets",
+          body: "**Default:** A new workbook starts with one worksheet (Sheet1)\n\n**Add a new worksheet:**\n• Click the **+** button next to the sheet tabs\n• OR right-click a sheet tab → **Insert → Worksheet**\n\n**Rename a worksheet:**\n• Double-click the sheet tab → type a new name → press Enter\n• Example: Rename 'Sheet1' to 'Marks'\n\n**Delete a worksheet:**\n• Right-click the sheet tab → **Delete**\n• ⚠️ Warning: This cannot be undone!\n\n**Move/Rearrange worksheets:**\n• Click and drag the sheet tab to a new position\n\n**Color a sheet tab:**\n• Right-click the sheet tab → **Tab Color** → Choose a color\n\n**Using Multiple Worksheets:**\nYou might use different sheets for:\n• Sheet 1: 'Student List'\n• Sheet 2: 'Marks'\n• Sheet 3: 'Attendance'\n• Sheet 4: 'Results'",
+          tip: "Give your worksheets meaningful names! 'Maths Marks' is much better than 'Sheet1'."
+        }
+      ],
+      exercises: [
+        { type: "fill-in-blank", question: "An entire Excel file is called a ___.", answer: "workbook" },
+        { type: "fill-in-blank", question: "A single page within a workbook is called a ___.", answer: "worksheet" },
+        { type: "fill-in-blank", question: "Excel files have the extension ___.", answer: ".xlsx" },
+        { type: "true-false", question: "A workbook can contain only one worksheet.", answer: "False", options: ["True", "False"] },
+        { type: "true-false", question: "You can rename worksheet tabs by double-clicking them.", answer: "True", options: ["True", "False"] },
+      ]
+    },
+    {
+      pageTitle: "Cells, Rows, and Columns",
+      subtitle: "The building blocks of every spreadsheet",
+      bannerColor: "from-lime-500 to-green-600",
+      sections: [
+        {
+          heading: "Understanding the Grid",
+          body: "The Excel worksheet is a grid made up of:\n\n**Columns** — Vertical strips labeled with letters: A, B, C... Z, AA, AB... up to XFD\n• There are **16,384 columns** in total!\n\n**Rows** — Horizontal strips labeled with numbers: 1, 2, 3... up to 1,048,576\n• That's over **1 million rows**!\n\n**Cells** — The individual boxes where a column and row intersect\n• Each cell has a unique address called a **Cell Reference**\n• Examples: A1 (column A, row 1), B5 (column B, row 5), D10 (column D, row 10)\n\n**Active Cell** — The cell that is currently selected. It has a dark border around it. The cell reference appears in the Name Box.",
+        },
+        {
+          heading: "Cell Ranges",
+          body: "A **cell range** is a group of cells. It is written as:\n**StartCell:EndCell**\n\nExamples:\n• **A1:A10** — cells A1 to A10 (10 cells in column A)\n• **A1:D1** — cells A1 to D1 (4 cells in row 1)\n• **A1:C5** — a block of cells from A1 to C5 (15 cells)\n• **B2:B2** — just one cell (B2)\n\n**How to Select Ranges:**\n• Click on the first cell, hold Shift, click the last cell\n• OR click and drag from first to last cell\n• OR type the range in the Name Box (e.g., type A1:D10 and press Enter)",
+          tip: "Hold **Ctrl** and click to select multiple non-adjacent cells. For example, select A1, C3, and E5 all at once!"
+        }
+      ],
+      exercises: [
+        { type: "fill-in-blank", question: "The box where a column and row meet is called a ___.", answer: "cell" },
+        { type: "fill-in-blank", question: "A cell's unique address is called a cell ___.", answer: "reference" },
+        { type: "fill-in-blank", question: "The range A1:C5 contains ___ cells.", answer: "15" },
+        { type: "true-false", question: "Excel has over 1 million rows.", answer: "True", options: ["True", "False"] },
+        { type: "true-false", question: "Columns are labeled with numbers in Excel.", answer: "False", options: ["True", "False"] },
+      ]
+    },
+    {
+      pageTitle: "Entering Data in Excel",
+      subtitle: "Typing text, numbers, and dates into cells",
+      bannerColor: "from-cyan-500 to-blue-500",
+      sections: [
+        {
+          heading: "Types of Data",
+          body: "You can enter three types of data in Excel cells:\n\n📝 **Text (Labels)** — Words, names, headings\n• Examples: 'Name', 'Maths', 'Roll Number'\n• Text automatically aligns to the **left** of the cell\n\n🔢 **Numbers** — Numeric values for calculations\n• Examples: 95, 3.14, -50, 1000\n• Numbers automatically align to the **right** of the cell\n\n📅 **Dates and Times** — Calendar dates and clock times\n• Examples: 01/15/2025, 3:30 PM\n• Dates align to the **right** of the cell",
+        },
+        {
+          heading: "How to Enter Data",
+          body: "**Basic Data Entry:**\n1. Click on a cell to select it\n2. Start typing — the text appears in both the cell AND the Formula Bar\n3. Press **Enter** to confirm and move down\n4. Press **Tab** to confirm and move right\n5. Press **Escape** to cancel\n\n**Editing Data:**\n• Double-click a cell to edit its content\n• OR select the cell and edit in the Formula Bar\n• OR press **F2** to enter edit mode\n\n**Quick Data Entry Tips:**\n• Type in one cell, press Tab, type in next — great for filling rows!\n• Type a number, press Enter, type next — great for filling columns!\n• To enter the same data in multiple cells: Select all cells → Type the data → Press **Ctrl+Enter**\n\n**AutoFill:**\nExcel can automatically fill patterns!\n1. Type 'Monday' in A1\n2. Grab the small green square at the bottom-right corner of the cell\n3. Drag down — Excel fills in Tuesday, Wednesday, Thursday, etc.!\n4. Works with numbers too: Type 1, 2 → drag → 3, 4, 5, 6...",
+          tip: "AutoFill is magical! It can fill months (Jan, Feb, Mar...), days, dates, and number patterns automatically!"
+        }
+      ],
+      exercises: [
+        { type: "fill-in-blank", question: "Text automatically aligns to the ___ of the cell.", answer: "left" },
+        { type: "fill-in-blank", question: "Numbers automatically align to the ___ of the cell.", answer: "right" },
+        { type: "fill-in-blank", question: "Press ___ to confirm data and move to the cell below.", answer: "enter" },
+        { type: "fill-in-blank", question: "The ___ feature can automatically fill days, months, and number patterns.", answer: "autofill" },
+        { type: "true-false", question: "You can press Tab to move to the next cell on the right.", answer: "True", options: ["True", "False"] },
+        { type: "practice", question: "Create a class timetable in Excel. Row 1: Days of the week (Monday to Friday). Column A: Period numbers (1 to 8). Fill in the subjects for each period. Use AutoFill for the days.", answer: "" },
+        { type: "practice", question: "Create a birthday list. Column A: Serial number (1-10 using AutoFill). Column B: Friend's name. Column C: Date of Birth. Column D: Favorite Gift.", answer: "" },
+      ]
+    },
+  ]
+};
 
-🎨 **Page Background Color** lets you add a color to the entire page background. Go to Page Layout → Page Color to pick a color.
+// ======================== MS EXCEL - FORMATTING CELLS ========================
+const excelCells: TopicTextbook = {
+  topicId: "c5-xl-cells",
+  topicTitle: "MS Excel – Selecting & Formatting Cells",
+  subjectColor: "neon-purple",
+  pages: [
+    {
+      pageTitle: "Selecting Cells and Ranges",
+      subtitle: "Learn to select exactly what you need",
+      bannerImage: c5ExcelFormatting,
+      bannerColor: "from-green-600 to-teal-500",
+      sections: [
+        {
+          heading: "Selection Methods",
+          body: "Before you can format cells, you need to **select** them first.\n\n**Single Cell:** Click on it\n**Range of Cells:** Click first cell → drag to last cell (or click first, hold Shift, click last)\n**Entire Row:** Click the row number on the left\n**Entire Column:** Click the column letter at the top\n**Multiple Rows/Columns:** Click and drag across row numbers or column letters\n**Non-adjacent Cells:** Hold **Ctrl** and click each cell individually\n**Entire Worksheet:** Click the box at the intersection of row and column headers (top-left corner) OR press **Ctrl+A**",
+          image: c5ExcelFormatting
+        }
+      ],
+      exercises: [
+        { type: "fill-in-blank", question: "To select the entire worksheet, press Ctrl+___.", answer: "a" },
+        { type: "fill-in-blank", question: "Hold ___ and click to select non-adjacent cells.", answer: "ctrl" },
+        { type: "true-false", question: "You can select an entire column by clicking its letter header.", answer: "True", options: ["True", "False"] },
+      ]
+    },
+    {
+      pageTitle: "Font Formatting",
+      subtitle: "Making your text beautiful and readable",
+      bannerColor: "from-teal-500 to-cyan-500",
+      sections: [
+        {
+          heading: "Changing Font Properties",
+          body: "The **Home** tab has all font formatting tools:\n\n🔤 **Font Name** — Change the typeface (Arial, Calibri, Comic Sans, etc.)\n🔢 **Font Size** — Make text bigger or smaller (8, 10, 11, 12, 14, 16, 18, 20...)\n\n**Text Styles:**\n• **B** — **Bold** (Ctrl+B) — makes text thicker and darker\n• *I* — *Italic* (Ctrl+I) — makes text slanted\n• **U** — Underline (Ctrl+U) — adds a line under text\n• ~~S~~ — Strikethrough — draws a line through text\n\n**Colors:**\n• **Font Color** (A with colored bar) — change the text color\n• **Fill Color** (paint bucket) — change the cell background color\n\n**How to Apply:**\n1. Select the cells you want to format\n2. Use the Font group in the Home tab\n3. Click the dropdown arrows for more options",
+          tip: "Use **Bold** for headings and column headers to make them stand out from the data!"
+        }
+      ],
+      exercises: [
+        { type: "fill-in-blank", question: "The keyboard shortcut for Bold is Ctrl+___.", answer: "b" },
+        { type: "fill-in-blank", question: "The paint bucket icon is used to change the cell ___ color.", answer: "background" },
+        { type: "true-false", question: "You can change both font color and cell background color.", answer: "True", options: ["True", "False"] },
+      ]
+    },
+    {
+      pageTitle: "Cell Alignment & Borders",
+      subtitle: "Organizing data neatly in your cells",
+      bannerColor: "from-blue-500 to-indigo-500",
+      sections: [
+        {
+          heading: "Cell Alignment",
+          body: "**Alignment** controls where text sits inside a cell.\n\n**Horizontal Alignment** (left to right):\n⬅️ **Left** — text sits on the left edge\n⬅️➡️ **Center** — text sits in the middle\n➡️ **Right** — text sits on the right edge\n\n**Vertical Alignment** (top to bottom):\n⬆️ **Top** — text sits at the top of the cell\n⬆️⬇️ **Middle** — text sits in the center vertically\n⬇️ **Bottom** — text sits at the bottom (default)\n\n**Other Alignment Options:**\n• **Wrap Text** — long text wraps to the next line within the cell\n• **Merge & Center** — combines cells and centers text\n• **Orientation** — rotate text at an angle (useful for column headers!)",
+        },
+        {
+          heading: "Adding Borders",
+          body: "**Borders** are lines around cells that make your data look organized like a proper table.\n\n**How to Add Borders:**\n1. Select the cells\n2. Go to **Home** tab → **Borders** button (grid icon with dropdown arrow)\n3. Choose from options:\n\n📦 **Bottom Border** — line at the bottom only\n📦 **Top Border** — line at the top only\n📦 **All Borders** — lines around every cell\n📦 **Thick Box Border** — thick border around the selection\n📦 **Outside Borders** — border only on the outer edge\n📦 **No Border** — remove all borders\n\n**More Borders:**\n• Click **More Borders** to open the Format Cells dialog\n• Choose line style (solid, dotted, dashed, double)\n• Choose line color\n• Choose which sides to apply borders to\n• Click **OK**",
+          tip: "For a professional table: Use **thick borders** on the outside and **thin borders** on the inside!"
+        }
+      ],
+      exercises: [
+        { type: "fill-in-blank", question: "Merge & ___ combines cells and centers the text.", answer: "center" },
+        { type: "fill-in-blank", question: "The ___ Text option makes long text wrap to the next line within a cell.", answer: "wrap" },
+        { type: "true-false", question: "You can only add borders on all sides at once.", answer: "False", options: ["True", "False"] },
+        { type: "practice", question: "Create a mark sheet: Row 1 headers (Roll No, Name, Maths, Science, English, Total) — Bold, centered, with blue background. Add all borders. Center-align the marks. Use different border styles for the header row.", answer: "" },
+      ]
+    },
+  ]
+};
 
-💧 **Watermarks** are faded text or images that appear behind the content. They are used for "CONFIDENTIAL" or "DRAFT" labels. Go to Page Layout → Watermark.
+// ======================== MS EXCEL - INSERT, DELETE & RESIZE ========================
+const excelEdit: TopicTextbook = {
+  topicId: "c5-xl-edit",
+  topicTitle: "MS Excel – Insert, Delete & Resize",
+  subjectColor: "neon-purple",
+  pages: [
+    {
+      pageTitle: "Inserting Rows and Columns",
+      subtitle: "Adding new rows and columns to your spreadsheet",
+      bannerImage: c5ExcelInsertDelete,
+      bannerColor: "from-green-600 to-emerald-500",
+      sections: [
+        {
+          heading: "Inserting Rows",
+          body: "Sometimes you need to add more rows in the middle of your data.\n\n**Method 1: Right-Click**\n1. Right-click on the row number where you want to insert above\n2. Click **Insert**\n3. A new empty row appears above!\n\n**Method 2: Ribbon**\n1. Click on any cell in the row\n2. Go to **Home** tab → **Insert** → **Insert Sheet Rows**\n\n**Insert Multiple Rows:**\n1. Select multiple row numbers (e.g., click 5, drag to 7 to select 3 rows)\n2. Right-click → **Insert**\n3. Three new rows appear!\n\n⚠️ New rows always insert **above** the selected row.",
+          image: c5ExcelInsertDelete
+        },
+        {
+          heading: "Inserting Columns",
+          body: "Adding columns works the same way!\n\n**Method 1: Right-Click**\n1. Right-click on the column letter where you want to insert before\n2. Click **Insert**\n3. A new empty column appears to the left!\n\n**Method 2: Ribbon**\n1. Click on any cell in the column\n2. Go to **Home** tab → **Insert** → **Insert Sheet Columns**\n\n**Insert Multiple Columns:**\n1. Select multiple column letters\n2. Right-click → **Insert**\n\n⚠️ New columns always insert **to the left** of the selected column.",
+          tip: "After inserting rows or columns, existing data shifts to make room. Formulas automatically adjust!"
+        }
+      ],
+      exercises: [
+        { type: "fill-in-blank", question: "New rows are inserted ___ the selected row.", answer: "above" },
+        { type: "fill-in-blank", question: "New columns are inserted to the ___ of the selected column.", answer: "left" },
+        { type: "true-false", question: "You can insert multiple rows at once.", answer: "True", options: ["True", "False"] },
+      ]
+    },
+    {
+      pageTitle: "Deleting and Resizing",
+      subtitle: "Removing rows/columns and adjusting sizes",
+      bannerColor: "from-emerald-500 to-teal-500",
+      sections: [
+        {
+          heading: "Deleting Rows and Columns",
+          body: "**Delete a Row:**\n1. Right-click the row number\n2. Click **Delete**\n3. The entire row is removed and rows below shift up\n\n**Delete a Column:**\n1. Right-click the column letter\n2. Click **Delete**\n3. The column is removed and columns to the right shift left\n\n⚠️ **Important:** Delete removes the entire row/column including all data!\n⚠️ This is different from pressing the **Delete key** on your keyboard, which only clears the cell content but keeps the row/column.",
+        },
+        {
+          heading: "Resizing Rows and Columns",
+          body: "**Resize Column Width:**\n• Hover over the border between two column letters (cursor changes to ↔)\n• Click and drag left or right\n• **Auto-fit:** Double-click the border to automatically fit the widest content\n\n**Resize Row Height:**\n• Hover over the border between two row numbers (cursor changes to ↕)\n• Click and drag up or down\n• **Auto-fit:** Double-click the border to fit content\n\n**Exact Size:**\n1. Right-click the column letter → **Column Width** → Type a number\n2. Right-click the row number → **Row Height** → Type a number\n\n**Resize Multiple at Once:**\n1. Select multiple columns/rows\n2. Resize one — all selected ones resize equally!",
+          tip: "Double-clicking a column border is the fastest way to make a column perfectly fit its content!"
+        }
+      ],
+      exercises: [
+        { type: "fill-in-blank", question: "To auto-fit a column width, ___ the column border.", answer: "double-click" },
+        { type: "true-false", question: "Pressing the Delete key on the keyboard removes the entire row.", answer: "False", options: ["True", "False"] },
+        { type: "true-false", question: "You can set an exact column width by right-clicking the column header.", answer: "True", options: ["True", "False"] },
+      ]
+    },
+    {
+      pageTitle: "Merge Cells & Wrap Text",
+      subtitle: "Combining cells and handling long text",
+      bannerColor: "from-teal-500 to-cyan-500",
+      sections: [
+        {
+          heading: "Merging Cells",
+          body: "**Merge Cells** combines two or more cells into one large cell. This is commonly used for creating headings that span multiple columns.\n\n**How to Merge Cells:**\n1. Select the cells you want to merge (e.g., A1:D1)\n2. Go to **Home** tab\n3. Click **Merge & Center** button\n4. The cells combine into one and text is centered!\n\n**Merge Options:**\n🔗 **Merge & Center** — merges and centers text\n🔗 **Merge Across** — merges cells in each row separately\n🔗 **Merge Cells** — merges without centering\n🔗 **Unmerge Cells** — splits merged cells back to individual cells\n\n⚠️ **Warning:** When you merge cells, only the data in the **top-left cell** is kept. Data in other cells is deleted!",
+        },
+        {
+          heading: "Wrap Text",
+          body: "When text is too long for a cell, it overflows into the next cell (or gets hidden if the next cell has data).\n\n**Wrap Text** solves this by making the text go to a new line within the same cell!\n\n**How to Wrap Text:**\n1. Select the cell with long text\n2. Go to **Home** tab\n3. Click **Wrap Text** button\n4. The row height automatically increases to show all the text!\n\n**Without Wrap Text:** 'This is a very long sentence' → overflows →→→\n**With Wrap Text:**\n'This is a very\nlong sentence' (stays within the cell)\n\n**Manual Line Break:**\nPress **Alt+Enter** while typing in a cell to start a new line manually!",
+          tip: "Use Merge & Center for table titles, and Wrap Text for cells with descriptions or long text!"
+        }
+      ],
+      exercises: [
+        { type: "fill-in-blank", question: "Merge & Center combines cells into one and ___ the text.", answer: "centers" },
+        { type: "fill-in-blank", question: "Press Alt+___ to create a manual line break within a cell.", answer: "enter" },
+        { type: "true-false", question: "When merging cells, data from all cells is preserved.", answer: "False", options: ["True", "False"] },
+        { type: "true-false", question: "Wrap Text makes long text go to the next line within the same cell.", answer: "True", options: ["True", "False"] },
+        { type: "practice", question: "Create a Sports Score Card. Merge cells A1:E1 for the title 'Sports Day 2025'. Use wrap text for the 'Events' column with long event names. Add borders, colors, and format it neatly.", answer: "" },
+      ]
+    },
+  ]
+};
 
-🖼️ **Page Borders** are decorative borders around the entire page. Go to Page Layout → Page Borders. You can choose Box, Shadow, 3D, or Art borders.
+// ======================== SCRATCH - BLOCKS & VARIABLES ========================
+const scratchBlocks: TopicTextbook = {
+  topicId: "c5-scr",
+  topicTitle: "Scratch – Blocks, Operators & Variables",
+  subjectColor: "neon-green",
+  pages: [
+    {
+      pageTitle: "Introduction to Advanced Scratch",
+      subtitle: "Taking your coding skills to the next level!",
+      bannerImage: c5Scratch,
+      bannerColor: "from-yellow-500 to-orange-500",
+      sections: [
+        {
+          heading: "What You'll Learn",
+          body: "In this chapter, you'll learn powerful Scratch features that will let you create **real games** and **interactive programs**!\n\n🧱 **Control Blocks** — Make decisions and repeat actions\n👁️ **Sensing Blocks** — Detect mouse, keyboard, and sprite interactions\n🔢 **Operator Blocks** — Do math and comparisons\n📦 **Variables** — Store and track information like scores\n📡 **Broadcasting** — Make sprites communicate with each other\n\nThese tools are what separate simple animations from real, interactive programs!",
+          image: c5Scratch,
+          funFact: "Scratch was created at MIT (Massachusetts Institute of Technology) in 2003. Over 100 million projects have been shared on the Scratch website!"
+        }
+      ]
+    },
+    {
+      pageTitle: "Control Blocks",
+      subtitle: "The brain of your Scratch programs",
+      bannerImage: c5ScratchBlocks,
+      bannerColor: "from-orange-500 to-amber-500",
+      sections: [
+        {
+          heading: "What are Control Blocks?",
+          body: "**Control blocks** (yellow/dark orange) control the **flow** of your program — they decide what happens, when, and how many times.\n\n⏳ **Wait ( ) seconds**\nPauses the script for a set time.\nExample: Wait 2 seconds between dialogue lines.\n\n🔄 **Repeat ( )**\nRuns the blocks inside it a specific number of times.\nExample: Repeat 10 → move 10 steps each time = moves 100 steps total.\n\n♾️ **Forever**\nRuns the blocks inside it non-stop until you click the stop button.\nExample: Forever → check if touching edge → if yes, bounce.\n\n❓ **If < > then**\nChecks a condition. If true, runs the blocks inside.\nExample: If <touching color red?> then → say 'Ouch!'\n\n❓ **If < > then / else**\nChecks a condition. If true, runs one set of blocks. If false, runs a different set.\nExample: If <score > 10> then → say 'You win!' else → say 'Keep trying!'",
+          image: c5ScratchBlocks,
+          tip: "The diamond-shaped blocks (like <touching mouse pointer?>) are called **Boolean blocks**. They always give a True or False answer!"
+        },
+        {
+          heading: "Nested Control Blocks",
+          body: "You can put control blocks **inside** other control blocks! This is called **nesting**.\n\n**Example: A Simple Game Loop**\n```\nForever\n  If <key 'right arrow' pressed?> then\n    Move 10 steps\n  End\n  If <key 'left arrow' pressed?> then\n    Move -10 steps\n  End\n  If <touching 'Enemy'?> then\n    Say 'Game Over!' for 2 secs\n    Stop all\n  End\nEnd\n```\n\nThis creates a character you can move left and right, and if it touches an enemy, the game ends!\n\n**Wait Until < >**\nPauses until a condition becomes true.\nExample: Wait until <key 'space' pressed?> → then continue.",
+        }
+      ],
+      exercises: [
+        { type: "fill-in-blank", question: "The ___ block runs code inside it non-stop.", answer: "forever" },
+        { type: "fill-in-blank", question: "The 'If-then-else' block checks a ___ and runs different code based on the result.", answer: "condition" },
+        { type: "true-false", question: "The Repeat block runs code a specific number of times.", answer: "True", options: ["True", "False"] },
+        { type: "true-false", question: "You cannot put an If block inside a Forever block.", answer: "False", options: ["True", "False"] },
+      ]
+    },
+    {
+      pageTitle: "Sensing Blocks",
+      subtitle: "Making your programs detect and respond",
+      bannerColor: "from-cyan-500 to-blue-500",
+      sections: [
+        {
+          heading: "What are Sensing Blocks?",
+          body: "**Sensing blocks** (light blue) let your program **detect** what's happening in the project.\n\n🖱️ **Mouse Sensing:**\n• **mouse x** / **mouse y** — gets the mouse cursor position\n• **mouse down?** — checks if mouse button is pressed\n\n⌨️ **Keyboard Sensing:**\n• **key ( ) pressed?** — checks if a specific key is pressed\n• Choose any key: space, arrows, letters, numbers\n\n👆 **Touch Sensing:**\n• **touching ( )?** — checks if sprite is touching another sprite, edge, or mouse\n• **touching color ( )?** — checks if sprite touches a specific color\n• **color ( ) is touching ( )?** — checks if one color on the sprite touches another color\n\n📏 **Distance:**\n• **distance to ( )** — measures distance to mouse or another sprite",
+        },
+        {
+          heading: "Ask and Answer",
+          body: "The **Ask** block is one of the most useful sensing blocks!\n\n**ask ( ) and wait** — Shows a text input box on screen and waits for user to type\n**answer** — Stores whatever the user typed\n\n**Example: Greeting Program**\n```\nask 'What is your name?' and wait\nsay (join 'Hello, ' (answer)) for 2 secs\nask 'How old are you?' and wait\nsay (join 'Wow! ' (join (answer) ' years old!')) for 2 secs\n```\n\nThis creates an interactive conversation with the user!\n\n**Other Useful Sensing Blocks:**\n• **timer** — counts seconds since program started\n• **reset timer** — resets the timer to 0\n• **loudness** — detects microphone input volume\n• **current (year/month/date/day/hour/minute/second)** — gets the current date/time",
+          tip: "Use the **timer** block to create timed challenges! Start the timer, let the player do something, then check how long it took."
+        }
+      ],
+      exercises: [
+        { type: "fill-in-blank", question: "The 'ask and wait' block stores the user's response in the ___ block.", answer: "answer" },
+        { type: "fill-in-blank", question: "Sensing blocks are ___ colored in Scratch.", answer: "light blue" },
+        { type: "true-false", question: "You can detect if a specific keyboard key is pressed.", answer: "True", options: ["True", "False"] },
+        { type: "practice", question: "Create a Scratch project where the cat asks your name, then says 'Welcome [name]!'. Then ask a math question and check if the answer is correct using an If block.", answer: "" },
+      ]
+    },
+    {
+      pageTitle: "Operator Blocks",
+      subtitle: "Math, logic, and text operations",
+      bannerColor: "from-green-500 to-emerald-500",
+      sections: [
+        {
+          heading: "Math Operators",
+          body: "**Operator blocks** (green) perform math calculations and comparisons.\n\n**Arithmetic Operators:**\n➕ **( ) + ( )** — Addition (5 + 3 = 8)\n➖ **( ) - ( )** — Subtraction (10 - 4 = 6)\n✖️ **( ) * ( )** — Multiplication (6 * 7 = 42)\n➗ **( ) / ( )** — Division (20 / 5 = 4)\n\n**More Math:**\n🎲 **pick random ( ) to ( )** — generates a random number\n   Example: pick random 1 to 6 = simulates rolling a dice!\n\n📐 **( ) mod ( )** — remainder after division\n   Example: 10 mod 3 = 1 (because 10 ÷ 3 = 3 remainder 1)\n\n🔄 **round ( )** — rounds to nearest whole number\n   Example: round 3.7 = 4",
+        },
+        {
+          heading: "Comparison and Logic Operators",
+          body: "**Comparison Operators** (give True or False):\n• **( ) > ( )** — greater than (5 > 3 = True)\n• **( ) < ( )** — less than (2 < 1 = False)\n• **( ) = ( )** — equal to (7 = 7 = True)\n\n**Logic Operators:**\n• **< > and < >** — both conditions must be true\n• **< > or < >** — at least one condition must be true\n• **not < >** — flips true to false and false to true\n\n**Text Operators:**\n• **join ( ) ( )** — combines two texts together\n   Example: join 'Hello' 'World' = 'HelloWorld'\n• **letter ( ) of ( )** — gets a specific character\n   Example: letter 1 of 'Cat' = 'C'\n• **length of ( )** — counts characters\n   Example: length of 'Hello' = 5\n• **( ) contains ( )?** — checks if text contains a word",
+          tip: "Use **join** to create dynamic messages like: join 'Your score is: ' (score)"
+        }
+      ],
+      exercises: [
+        { type: "fill-in-blank", question: "The 'pick random 1 to 6' block simulates rolling a ___.", answer: "dice" },
+        { type: "fill-in-blank", question: "The ___ operator combines two text strings together.", answer: "join" },
+        { type: "true-false", question: "10 mod 3 equals 1.", answer: "True", options: ["True", "False"] },
+        { type: "true-false", question: "The 'and' operator requires only one condition to be true.", answer: "False", options: ["True", "False"] },
+      ]
+    },
+    {
+      pageTitle: "Variables",
+      subtitle: "Storing and tracking information in your programs",
+      bannerImage: c5ScratchVariables,
+      bannerColor: "from-orange-500 to-red-500",
+      sections: [
+        {
+          heading: "What are Variables?",
+          body: "A **variable** is like a labeled box that stores a piece of information. You give it a name and put a value inside.\n\n**Examples of variables:**\n📦 **score** = 0 (tracks player's points)\n📦 **lives** = 3 (tracks remaining lives)\n📦 **playerName** = 'Alex' (stores the player's name)\n📦 **timer** = 30 (countdown seconds)\n📦 **level** = 1 (current game level)\n\n**How to Create a Variable:**\n1. Go to the **Variables** category (orange blocks)\n2. Click **Make a Variable**\n3. Type a name (e.g., 'score')\n4. Choose **For all sprites** or **For this sprite only**\n5. Click **OK**",
+          image: c5ScratchVariables
+        },
+        {
+          heading: "Using Variables",
+          body: "After creating a variable, you get these blocks:\n\n🔧 **set [score] to (0)** — sets the variable to a specific value\n🔧 **change [score] by (1)** — adds to the current value\n👁️ **show variable [score]** — displays it on the stage\n🙈 **hide variable [score]** — hides it from the stage\n\n**Example: Score Keeping Game**\n```\nWhen green flag clicked\n  set [score] to (0)\n  set [lives] to (3)\n  show variable [score]\n  show variable [lives]\n  Forever\n    If <touching 'coin'?> then\n      change [score] by (10)\n      play sound 'pop'\n    End\n    If <touching 'enemy'?> then\n      change [lives] by (-1)\n      If <(lives) = (0)> then\n        say 'Game Over!' for 2 secs\n        stop all\n      End\n    End\n  End\n```\n\nThis game tracks your score (goes up when you collect coins) and lives (goes down when you hit enemies). When lives reach 0, the game ends!",
+          tip: "Always **set variables to their starting values** at the beginning of your program (when green flag clicked). Otherwise, they keep values from the last time you ran the project!"
+        }
+      ],
+      exercises: [
+        { type: "fill-in-blank", question: "A ___ is like a labeled box that stores information.", answer: "variable" },
+        { type: "fill-in-blank", question: "The 'change score by 1' block ___ 1 to the current score.", answer: "adds" },
+        { type: "true-false", question: "Variables can store both numbers and text.", answer: "True", options: ["True", "False"] },
+        { type: "true-false", question: "You should set variables to starting values when the green flag is clicked.", answer: "True", options: ["True", "False"] },
+      ]
+    },
+    {
+      pageTitle: "Broadcasting Messages",
+      subtitle: "Making sprites talk to each other",
+      bannerColor: "from-purple-500 to-violet-500",
+      sections: [
+        {
+          heading: "What is Broadcasting?",
+          body: "**Broadcasting** lets sprites send messages to each other! This is how sprites coordinate and work together.\n\n**How it works:**\n1. One sprite **broadcasts** a message (like shouting a signal)\n2. Other sprites **receive** the message and react\n\n**Broadcasting Blocks:**\n📡 **broadcast [message]** — sends a message to all sprites\n📡 **broadcast [message] and wait** — sends a message and waits until all receivers finish\n📡 **when I receive [message]** — runs code when the message is received\n\n**Example: Traffic Light Game**\n\nSprite 1 (Traffic Light):\n```\nWhen green flag clicked\nForever\n  switch costume to 'green'\n  broadcast 'go'\n  wait 3 secs\n  switch costume to 'red'\n  broadcast 'stop'\n  wait 3 secs\nEnd\n```\n\nSprite 2 (Car):\n```\nWhen I receive 'go'\n  repeat 30\n    move 5 steps\n  end\n\nWhen I receive 'stop'\n  say 'Stopped!' for 1 sec\n```",
+        },
+        {
+          heading: "Creating Messages",
+          body: "**To create a new message:**\n1. Drag the **broadcast** block into your script\n2. Click the dropdown arrow\n3. Click **New message**\n4. Type a descriptive name (like 'gameOver', 'nextLevel', 'playerWins')\n5. Click **OK**\n\n**Best Practices for Broadcasting:**\n✅ Use clear message names ('playerDied' not 'msg1')\n✅ Keep track of which sprites send and receive each message\n✅ Use 'broadcast and wait' when you need things to happen in order\n✅ One broadcast can trigger actions in multiple sprites!\n\n**Common Uses:**\n• Start a game ('gameStart')\n• End a game ('gameOver')\n• Change scenes ('scene2')\n• Trigger events ('playerScored', 'enemyDefeated')\n• Coordinate animations ('startDance')",
+          tip: "Think of broadcasting like a school bell — when it rings, everyone knows what to do!"
+        }
+      ],
+      exercises: [
+        { type: "fill-in-blank", question: "The ___ block sends a message to all sprites.", answer: "broadcast" },
+        { type: "fill-in-blank", question: "The 'when I receive' block runs code when a ___ is received.", answer: "message" },
+        { type: "true-false", question: "Only one sprite can receive a broadcast message.", answer: "False", options: ["True", "False"] },
+        { type: "true-false", question: "Broadcast messages should have clear, descriptive names.", answer: "True", options: ["True", "False"] },
+        { type: "practice", question: "Create an interactive quiz game with 3 questions. Use 'ask and wait' for questions, variables for score, 'if-then' to check answers, and broadcasting to show a 'You Win' or 'Try Again' screen at the end.", answer: "" },
+      ]
+    },
+  ]
+};
 
-📰 **Columns** let you split text into two or more columns like a newspaper. Go to Page Layout → Columns → Choose Two or Three columns.`,
-    exercises: [
-      { type: "fill-in-blank", question: "The blank spaces around the edges of a page are called ___.", answer: "margins" },
-      { type: "fill-in-blank", question: "Portrait and ___ are the two types of page orientation.", answer: "landscape" },
-      { type: "fill-in-blank", question: "A ___ is a faded text or image that appears behind the content.", answer: "watermark" },
-      { type: "true-false", question: "Page borders can only be simple lines.", answer: "False", options: ["True", "False"] },
-      { type: "true-false", question: "You can split text into columns in MS Word.", answer: "True", options: ["True", "False"] },
-      { type: "true-false", question: "Landscape orientation makes the page tall and narrow.", answer: "False", options: ["True", "False"] },
-      { type: "practice", question: "Open MS Word. Set the page orientation to Landscape. Add a page border with Art style. Change the page color to light yellow.", answer: "" },
-      { type: "practice", question: "Create a one-page document with two columns. Type a short story in it. Add a 'DRAFT' watermark.", answer: "" },
-    ],
-  },
-  {
-    topicId: "c5-ppt-anim",
-    image: c5PptImg,
-    theory: `**MS PowerPoint – Animations & Transitions** makes your presentations come alive with motion and effects!
-
-🎬 **Slide Transitions** are visual effects that play when you move from one slide to the next. Go to Transitions tab to pick effects like Fade, Push, Wipe, or Morph.
-
-✨ **Animation Effects** make objects on a slide appear, disappear, or move. There are 4 types:
-• **Entrance** – object appears (Fly In, Fade In)
-• **Emphasis** – object gets highlighted (Spin, Grow)
-• **Exit** – object disappears (Fly Out, Fade Out)
-• **Motion Path** – object moves along a path
-
-⏱️ **Animation Timing** controls when and how fast animations play. You can set:
-• Start: On Click, With Previous, After Previous
-• Duration: How long the animation takes
-• Delay: Wait time before animation starts
-
-🔊 **Inserting Audio** – Go to Insert → Audio to add background music or sound effects to your slides.
-
-🎥 **Inserting Video** – Go to Insert → Video to add video clips from your computer or online sources.
-
-🎨 **Custom Animations** – You can apply multiple animations to the same object and control their order using the Animation Pane.`,
-    exercises: [
-      { type: "fill-in-blank", question: "Visual effects that play when moving from one slide to the next are called ___.", answer: "transitions" },
-      { type: "fill-in-blank", question: "The four types of animation effects are Entrance, Emphasis, Exit, and ___.", answer: "motion path" },
-      { type: "fill-in-blank", question: "To add background music, go to Insert → ___.", answer: "audio" },
-      { type: "true-false", question: "You can apply only one animation to an object in PowerPoint.", answer: "False", options: ["True", "False"] },
-      { type: "true-false", question: "Transitions are effects between two slides.", answer: "True", options: ["True", "False"] },
-      { type: "true-false", question: "Emphasis animations make an object disappear from the slide.", answer: "False", options: ["True", "False"] },
-      { type: "practice", question: "Create a 5-slide presentation about your favorite animal. Add different transitions to each slide. Apply entrance animation to the title on each slide.", answer: "" },
-      { type: "practice", question: "Insert an image in a slide. Apply a Motion Path animation to make it move across the screen. Set the duration to 3 seconds.", answer: "" },
-    ],
-  },
-  {
-    topicId: "c5-xl-intro",
-    image: c5ExcelIntroImg,
-    theory: `**MS Excel Introduction** – Excel is a powerful spreadsheet program used to organize data, do calculations, and make charts!
-
-📊 **What is Excel?** Excel is a spreadsheet application by Microsoft. It organizes data in rows and columns. It is used for calculations, record-keeping, charts, and data analysis.
-
-🖥️ **Excel Interface** has these main parts:
-• **Title Bar** – Shows the file name
-• **Ribbon** – Contains tabs like Home, Insert, Page Layout
-• **Formula Bar** – Shows the content of the selected cell
-• **Name Box** – Shows the cell address (like A1, B3)
-• **Sheet Tabs** – Switch between different worksheets
-
-📒 **Workbooks & Worksheets** – A Workbook is the entire Excel file. Each workbook can have multiple Worksheets (tabs at the bottom). By default, Excel opens with one worksheet.
-
-🔲 **Cells, Rows, Columns**:
-• A **Cell** is the box where a row and column meet (e.g., A1)
-• **Rows** go horizontally (numbered 1, 2, 3...)
-• **Columns** go vertically (lettered A, B, C...)
-
-✍️ **Entering Data** – Click on any cell and start typing. Press Enter to move down, Tab to move right. You can enter text, numbers, or dates.`,
-    exercises: [
-      { type: "fill-in-blank", question: "Excel organizes data in rows and ___.", answer: "columns" },
-      { type: "fill-in-blank", question: "The box where a row and column meet is called a ___.", answer: "cell" },
-      { type: "fill-in-blank", question: "The ___ bar shows the content of the selected cell.", answer: "formula" },
-      { type: "fill-in-blank", question: "An entire Excel file is called a ___.", answer: "workbook" },
-      { type: "true-false", question: "Rows in Excel are labeled with letters A, B, C.", answer: "False", options: ["True", "False"] },
-      { type: "true-false", question: "A workbook can have multiple worksheets.", answer: "True", options: ["True", "False"] },
-      { type: "practice", question: "Open Excel. In Sheet1, type your class timetable with days as columns and periods as rows. Save the file as 'My Timetable'.", answer: "" },
-      { type: "practice", question: "Create a birthday list with columns: Name, Date of Birth, and Favorite Gift. Enter at least 5 friends' details.", answer: "" },
-    ],
-  },
-  {
-    topicId: "c5-xl-cells",
-    image: c5ExcelWorkImg,
-    theory: `**Selecting & Formatting Cells in Excel** makes your data look organized and easy to read.
-
-🔲 **Selecting Cells & Ranges**:
-• Click a single cell to select it
-• Click and drag to select a range (like A1:C5)
-• Hold Ctrl and click to select multiple non-adjacent cells
-• Click a row number to select the entire row
-• Click a column letter to select the entire column
-
-🔤 **Changing Font & Size** – Select cells, then use the Home tab to change font name, size, color, and style (Bold, Italic, Underline).
-
-📐 **Cell Alignment** – You can align text:
-• Horizontally: Left, Center, Right
-• Vertically: Top, Middle, Bottom
-• Go to Home tab → Alignment group
-
-🔲 **Adding Borders** – Select cells → Home → Borders button. Choose from Bottom Border, All Borders, Thick Box Border, etc.
-
-🎨 **Cell Background Color** – Select cells → Home → Fill Color (paint bucket icon). Pick any color to highlight important cells.`,
-    exercises: [
-      { type: "fill-in-blank", question: "To select multiple non-adjacent cells, hold the ___ key and click.", answer: "ctrl" },
-      { type: "fill-in-blank", question: "Cell alignment can be horizontal or ___.", answer: "vertical" },
-      { type: "fill-in-blank", question: "The fill color button looks like a ___ icon.", answer: "paint bucket" },
-      { type: "true-false", question: "You can select an entire row by clicking the row number.", answer: "True", options: ["True", "False"] },
-      { type: "true-false", question: "Excel only allows left alignment for text.", answer: "False", options: ["True", "False"] },
-      { type: "practice", question: "Create a mark sheet with subjects as rows and marks as a column. Apply bold formatting to headers, center-align all marks, and add borders to the entire table.", answer: "" },
-    ],
-  },
-  {
-    topicId: "c5-xl-edit",
-    image: c5ExcelWorkImg,
-    theory: `**Insert, Delete & Resize in Excel** helps you manage your spreadsheet structure.
-
-➕ **Insert Rows & Columns**:
-• Right-click a row number → Insert (adds a row above)
-• Right-click a column letter → Insert (adds a column to the left)
-• Or go to Home → Insert → Insert Sheet Rows/Columns
-
-➖ **Delete Rows & Columns**:
-• Right-click a row/column → Delete
-• Or Home → Delete → Delete Sheet Rows/Columns
-
-↔️ **Resize Rows & Columns**:
-• Drag the border between column letters to change width
-• Drag the border between row numbers to change height
-• Double-click the border to auto-fit
-
-🔗 **Merge Cells** – Select multiple cells → Home → Merge & Center. This combines cells into one large cell. Useful for headings.
-
-📝 **Wrap Text** – When text is too long for a cell, use Home → Wrap Text so the text goes to the next line within the same cell instead of overflowing.`,
-    exercises: [
-      { type: "fill-in-blank", question: "To insert a row, right-click the row number and select ___.", answer: "insert" },
-      { type: "fill-in-blank", question: "Merge & Center combines multiple cells into ___ large cell.", answer: "one" },
-      { type: "fill-in-blank", question: "___ Text makes long text go to the next line within the same cell.", answer: "wrap" },
-      { type: "true-false", question: "You can auto-fit column width by double-clicking the column border.", answer: "True", options: ["True", "False"] },
-      { type: "true-false", question: "Deleting a row only removes the data, not the row itself.", answer: "False", options: ["True", "False"] },
-      { type: "practice", question: "Create a monthly budget table. Use Merge & Center for the title. Insert a new row for a new expense. Apply Wrap Text to the description column.", answer: "" },
-      { type: "practice", question: "Build a Sports Score Card with team names, match scores, and totals. Resize columns to fit all data. Use borders and colors to make it look neat.", answer: "" },
-    ],
-  },
-  {
-    topicId: "c5-scr",
-    image: c5ScratchImg,
-    theory: `**Scratch – Blocks, Operators & Variables** takes your coding to the next level!
-
-🧱 **Control Blocks** (yellow/orange) control the flow of your program:
-• **Wait** – pauses for a number of seconds
-• **Repeat** – runs blocks inside it a set number of times
-• **Forever** – runs blocks inside it non-stop
-• **If...then** – runs blocks only if a condition is true
-• **If...then...else** – runs different blocks based on a condition
-
-👁️ **Sensing Blocks** (light blue) detect things:
-• **Touching** – checks if sprite is touching something
-• **Ask and wait** – asks a question and stores the answer
-• **Mouse x/y** – gets the mouse position
-• **Key pressed** – checks if a keyboard key is pressed
-
-🔢 **Operator Blocks** (green) do math and logic:
-• Addition (+), Subtraction (−), Multiplication (×), Division (÷)
-• Greater than (>), Less than (<), Equal to (=)
-• Join – combines two texts together
-• Pick random – generates a random number
-
-📦 **Creating Variables** – Variables store data like score, name, or lives. Go to Variables category → Make a Variable. Give it a name like "score".
-
-🎮 **Using Variables in Games** – Use "set score to 0" at game start. Use "change score by 1" when player does something right. Show the variable on stage so players can see their score.
-
-📡 **Broadcasting Messages** – Sprites can send messages to each other! Use "broadcast message" to send and "when I receive message" to listen. This helps sprites communicate and coordinate.`,
-    exercises: [
-      { type: "fill-in-blank", question: "The ___ block runs code inside it non-stop.", answer: "forever" },
-      { type: "fill-in-blank", question: "Variables are used to store ___ like score or name.", answer: "data" },
-      { type: "fill-in-blank", question: "The 'ask and wait' block is a ___ block.", answer: "sensing" },
-      { type: "fill-in-blank", question: "To send a message to another sprite, use the ___ block.", answer: "broadcast" },
-      { type: "true-false", question: "The 'If...then' block runs code only when a condition is true.", answer: "True", options: ["True", "False"] },
-      { type: "true-false", question: "Operator blocks are colored light blue in Scratch.", answer: "False", options: ["True", "False"] },
-      { type: "true-false", question: "You can create your own variables in Scratch.", answer: "True", options: ["True", "False"] },
-      { type: "practice", question: "Create a simple counting game in Scratch. Add a variable called 'score'. When the sprite is clicked, change score by 1. Add a forever loop that makes the sprite move randomly.", answer: "" },
-      { type: "practice", question: "Make a quiz game with 3 questions using 'ask and wait'. Use 'if...then' to check if the answer is correct. Keep score using a variable.", answer: "" },
-    ],
-  },
+// Export all topic textbooks
+export const TOPIC_TEXTBOOKS: TopicTextbook[] = [
+  wordPageFormatting,
+  pptAnimations,
+  excelIntro,
+  excelCells,
+  excelEdit,
+  scratchBlocks,
 ];
 
-// Helper to get content for a specific topic
-export const getTopicContent = (topicId: string): TopicContent | undefined => {
-  return CLASS5_CONTENT.find((c) => c.topicId === topicId);
+export const getTopicTextbook = (topicId: string): TopicTextbook | undefined => {
+  return TOPIC_TEXTBOOKS.find((t) => t.topicId === topicId);
 };
