@@ -24,6 +24,7 @@ import TeacherStudentProgress from "./teacher/TeacherStudentProgress";
 import ChangePassword from "./shared/ChangePassword";
 import StudentDashboard from "./student/StudentDashboard";
 import StudentCurriculum from "./student/StudentCurriculum";
+import TopicViewer from "./student/TopicViewer";
 import StudentAssignments from "./student/StudentAssignments";
 import StudentCodingLab from "./student/StudentCodingLab";
 import StudentAchievements from "./student/StudentAchievements";
