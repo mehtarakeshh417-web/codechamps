@@ -122,7 +122,8 @@ const StudentAssignments = () => {
   const isSubmitted = (assignmentId: string) => submissions.some((s) => s.assignmentId === assignmentId);
   const getSubmission = (assignmentId: string) => submissions.find((s) => s.assignmentId === assignmentId);
 
-  const submitAssignment = (assignment: Assignment) => {
+  const submitAssignment = async (assignment: Assignment) => {
+    if (!student) return;
     const answered = assignment.questions.filter((q) => answers[q.id]?.trim()).length;
     if (answered < assignment.questions.length) {
       toast.error(`Please answer all questions (${answered}/${assignment.questions.length})`);
@@ -133,20 +134,37 @@ const StudentAssignments = () => {
       if (answers[q.id]?.trim().toLowerCase() === q.correctAnswer.trim().toLowerCase()) correct++;
     });
     const score = Math.round((correct / assignment.questions.length) * 100);
-    const sub: Submission = { assignmentId: assignment.id, studentId: user?.id || "", answers: { ...answers }, submittedAt: new Date().toISOString(), score };
-    const updated = [...submissions, sub];
-    setSubmissions(updated);
-    saveSubmissions(user?.id || "", updated);
+
+    const { error } = await supabase.from("submissions").insert({
+      assignment_id: assignment.id,
+      student_id: student.id,
+      answers: { ...answers } as any,
+      score,
+      total_questions: assignment.questions.length,
+    });
+
+    if (error) { toast.error("Failed to submit. Try again."); console.error(error); return; }
+
+    const sub: Submission = { assignmentId: assignment.id, studentId: student.id, answers: { ...answers }, submittedAt: new Date().toISOString(), score };
+    setSubmissions([...submissions, sub]);
     setAnswers({});
     setExpandedId(null);
     toast.success(`Submitted! Score: ${score}% (${correct}/${assignment.questions.length} correct)`);
   };
 
-  const submitProject = (projectId: string) => {
+  const submitProject = async (projectId: string) => {
+    if (!student) return;
     if (!projNote.trim()) { toast.error("Enter your submission notes"); return; }
-    const updated = { ...projSubmissions, [projectId]: projNote };
-    setProjSubmissions(updated);
-    saveProjectSubmissions(user?.id || "", updated);
+
+    const { error } = await supabase.from("project_submissions" as any).insert({
+      project_id: projectId,
+      student_id: student.id,
+      notes: projNote,
+    } as any);
+
+    if (error) { toast.error("Failed to submit. Try again."); console.error(error); return; }
+
+    setProjSubmissions({ ...projSubmissions, [projectId]: projNote });
     setProjNote("");
     toast.success("Project submitted!");
   };
