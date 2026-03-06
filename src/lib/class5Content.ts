@@ -32,6 +32,7 @@ export interface ContentSection {
   image?: string;
   tip?: string;
   funFact?: string;
+  youtubeId?: string; // YouTube video ID for embedding
 }
 
 export interface TextbookPage {

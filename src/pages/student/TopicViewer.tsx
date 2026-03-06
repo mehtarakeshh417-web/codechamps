@@ -141,6 +141,24 @@ const SectionRenderer = ({ section }: { section: ContentSection }) => (
       />
     )}
 
+    {section.youtubeId && (
+      <motion.div
+        initial={{ opacity: 0, scale: 0.95 }}
+        animate={{ opacity: 1, scale: 1 }}
+        className="rounded-2xl overflow-hidden border-2 border-white/10 shadow-lg"
+      >
+        <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
+          <iframe
+            src={`https://www.youtube.com/embed/${section.youtubeId}`}
+            className="absolute inset-0 w-full h-full"
+            title={section.heading}
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+          />
+        </div>
+      </motion.div>
+    )}
+
     <div className="space-y-3">
       {section.body.split("\n\n").map((para, i) => (
         <p key={i} className="text-white/80 font-body text-[15px] leading-[1.8]">
