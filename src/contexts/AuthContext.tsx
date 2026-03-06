@@ -55,14 +55,6 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Clear old localStorage data from previous implementation
-    localStorage.removeItem("codechamps_users");
-    localStorage.removeItem("codechamps_user");
-    localStorage.removeItem("codechamps_security");
-    localStorage.removeItem("cc_schools");
-    localStorage.removeItem("cc_teachers");
-    localStorage.removeItem("cc_students");
-
     const { data: { subscription } } = supabase.auth.onAuthStateChange(async (event, session) => {
       if (event === 'INITIAL_SESSION' || event === 'SIGNED_IN' || event === 'TOKEN_REFRESHED') {
         if (session?.user) {
