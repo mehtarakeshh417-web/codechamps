@@ -378,6 +378,11 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
+      get_school_id_for_user: { Args: { _user_id: string }; Returns: string }
+      get_student_school_id: { Args: { _user_id: string }; Returns: string }
+      get_student_teacher_id: { Args: { _user_id: string }; Returns: string }
+      get_teacher_id_for_user: { Args: { _user_id: string }; Returns: string }
+      get_teacher_school_id: { Args: { _user_id: string }; Returns: string }
       get_user_profile: { Args: { _user_id: string }; Returns: Json }
       has_role: {
         Args: {
