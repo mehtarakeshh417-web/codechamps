@@ -47,25 +47,7 @@ interface Submission {
   score?: number;
 }
 
-// Keep submissions in localStorage for now (student-side only)
-const loadSubmissions = (studentId: string): Submission[] => {
-  try {
-    const data = localStorage.getItem(`cc_submissions_${studentId}`);
-    return data ? JSON.parse(data) : [];
-  } catch { return []; }
-};
-const saveSubmissions = (studentId: string, subs: Submission[]) => {
-  localStorage.setItem(`cc_submissions_${studentId}`, JSON.stringify(subs));
-};
-const loadProjectSubmissions = (studentId: string): Record<string, string> => {
-  try {
-    const data = localStorage.getItem(`cc_proj_submissions_${studentId}`);
-    return data ? JSON.parse(data) : {};
-  } catch { return {}; }
-};
-const saveProjectSubmissions = (studentId: string, subs: Record<string, string>) => {
-  localStorage.setItem(`cc_proj_submissions_${studentId}`, JSON.stringify(subs));
-};
+// Submissions are now persisted in Supabase
 
 const StudentAssignments = () => {
   const { user } = useAuth();
@@ -76,8 +58,8 @@ const StudentAssignments = () => {
   const [projects, setProjects] = useState<Project[]>([]);
   const [loading, setLoading] = useState(true);
 
-  const [submissions, setSubmissions] = useState<Submission[]>(() => loadSubmissions(user?.id || ""));
-  const [projSubmissions, setProjSubmissions] = useState<Record<string, string>>(() => loadProjectSubmissions(user?.id || ""));
+  const [submissions, setSubmissions] = useState<Submission[]>([]);
+  const [projSubmissions, setProjSubmissions] = useState<Record<string, string>>({});
   const [expandedId, setExpandedId] = useState<string | null>(null);
   const [answers, setAnswers] = useState<Record<string, string>>({});
   const [projNote, setProjNote] = useState("");
@@ -87,10 +69,11 @@ const StudentAssignments = () => {
     setLoading(true);
 
     try {
-      // Fetch assignments for student's class and school
-      const [aRes, pRes] = await Promise.all([
+      const [aRes, pRes, subRes, projSubRes] = await Promise.all([
         supabase.from("assignments").select("*, teachers(first_name, last_name)").eq("status", "active"),
         supabase.from("projects").select("*"),
+        supabase.from("submissions").select("*").eq("student_id", student.id),
+        supabase.from("project_submissions" as any).select("*").eq("student_id", student.id),
       ]);
 
       if (aRes.data) {
@@ -100,9 +83,7 @@ const StudentAssignments = () => {
           dueDate: a.due_date || "", createdAt: a.created_at, status: a.status,
           teacherName: a.teachers ? `${a.teachers.first_name} ${a.teachers.last_name || ""}`.trim() : "Teacher",
         })));
-      } else {
-        setAssignments([]);
-      }
+      } else { setAssignments([]); }
 
       if (pRes.data) {
         setProjects(pRes.data.map((p: any) => ({
@@ -111,8 +92,20 @@ const StudentAssignments = () => {
           submissionType: p.submission_type || "Screenshot",
           dueDate: p.due_date || "", createdAt: p.created_at,
         })));
-      } else {
-        setProjects([]);
+      } else { setProjects([]); }
+
+      if (subRes.data) {
+        setSubmissions(subRes.data.map((s: any) => ({
+          assignmentId: s.assignment_id, studentId: s.student_id,
+          answers: s.answers as Record<string, string>,
+          submittedAt: s.submitted_at, score: s.score,
+        })));
+      }
+
+      if (projSubRes.data) {
+        const map: Record<string, string> = {};
+        (projSubRes.data as any[]).forEach((ps: any) => { map[ps.project_id] = ps.notes; });
+        setProjSubmissions(map);
       }
     } catch (err) {
       console.error("Failed to load assignments:", err);
@@ -129,7 +122,8 @@ const StudentAssignments = () => {
   const isSubmitted = (assignmentId: string) => submissions.some((s) => s.assignmentId === assignmentId);
   const getSubmission = (assignmentId: string) => submissions.find((s) => s.assignmentId === assignmentId);
 
-  const submitAssignment = (assignment: Assignment) => {
+  const submitAssignment = async (assignment: Assignment) => {
+    if (!student) return;
     const answered = assignment.questions.filter((q) => answers[q.id]?.trim()).length;
     if (answered < assignment.questions.length) {
       toast.error(`Please answer all questions (${answered}/${assignment.questions.length})`);
@@ -140,20 +134,37 @@ const StudentAssignments = () => {
       if (answers[q.id]?.trim().toLowerCase() === q.correctAnswer.trim().toLowerCase()) correct++;
     });
     const score = Math.round((correct / assignment.questions.length) * 100);
-    const sub: Submission = { assignmentId: assignment.id, studentId: user?.id || "", answers: { ...answers }, submittedAt: new Date().toISOString(), score };
-    const updated = [...submissions, sub];
-    setSubmissions(updated);
-    saveSubmissions(user?.id || "", updated);
+
+    const { error } = await supabase.from("submissions").insert({
+      assignment_id: assignment.id,
+      student_id: student.id,
+      answers: { ...answers } as any,
+      score,
+      total_questions: assignment.questions.length,
+    });
+
+    if (error) { toast.error("Failed to submit. Try again."); console.error(error); return; }
+
+    const sub: Submission = { assignmentId: assignment.id, studentId: student.id, answers: { ...answers }, submittedAt: new Date().toISOString(), score };
+    setSubmissions([...submissions, sub]);
     setAnswers({});
     setExpandedId(null);
     toast.success(`Submitted! Score: ${score}% (${correct}/${assignment.questions.length} correct)`);
   };
 
-  const submitProject = (projectId: string) => {
+  const submitProject = async (projectId: string) => {
+    if (!student) return;
     if (!projNote.trim()) { toast.error("Enter your submission notes"); return; }
-    const updated = { ...projSubmissions, [projectId]: projNote };
-    setProjSubmissions(updated);
-    saveProjectSubmissions(user?.id || "", updated);
+
+    const { error } = await supabase.from("project_submissions" as any).insert({
+      project_id: projectId,
+      student_id: student.id,
+      notes: projNote,
+    } as any);
+
+    if (error) { toast.error("Failed to submit. Try again."); console.error(error); return; }
+
+    setProjSubmissions({ ...projSubmissions, [projectId]: projNote });
     setProjNote("");
     toast.success("Project submitted!");
   };

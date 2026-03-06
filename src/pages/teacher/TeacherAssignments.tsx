@@ -1,6 +1,6 @@
 import { useState, useCallback, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { FileText, Plus, Trash2, CheckCircle, Clock, ChevronDown, ChevronRight, Sparkles, Play, Loader2 } from "lucide-react";
+import { FileText, Plus, Trash2, CheckCircle, Clock, ChevronDown, ChevronRight, Sparkles, Play, Loader2, Users } from "lucide-react";
 import { useAuth } from "@/contexts/AuthContext";
 import { useData } from "@/contexts/DataContext";
 import { Button } from "@/components/ui/button";
@@ -31,6 +31,15 @@ interface Assignment {
   assignmentType: string;
 }
 
+interface SubmissionRecord {
+  id: string;
+  studentName: string;
+  score: number;
+  totalQuestions: number;
+  submittedAt: string;
+  answers: Record<string, string>;
+}
+
 const TeacherAssignments = () => {
   const { user } = useAuth();
   const { teachers } = useData();
@@ -41,6 +50,7 @@ const TeacherAssignments = () => {
   const [loading, setLoading] = useState(true);
   const [showForm, setShowForm] = useState(false);
   const [expandedId, setExpandedId] = useState<string | null>(null);
+  const [submissionsMap, setSubmissionsMap] = useState<Record<string, SubmissionRecord[]>>({});
   const [form, setForm] = useState({ title: "", targetClass: myClasses[0] || "", subject: "", dueDate: "", difficultyLevel: "Medium", assignmentType: "mcq" });
   const [questions, setQuestions] = useState<Question[]>([]);
   const [qForm, setQForm] = useState({ type: "mcq" as Question["type"], question: "", options: ["", "", "", ""], correctAnswer: "" });
@@ -60,26 +70,46 @@ const TeacherAssignments = () => {
     if (!teacher?.id) { setLoading(false); return; }
     setLoading(true);
     try {
-      const { data, error } = await supabase
-        .from("assignments")
-        .select("*")
-        .eq("teacher_id", teacher.id)
-        .order("created_at", { ascending: false });
+      const [assignRes, subRes] = await Promise.all([
+        supabase.from("assignments").select("*").eq("teacher_id", teacher.id).order("created_at", { ascending: false }),
+        supabase.from("submissions").select("*, students(name)").eq("assignment_id", teacher.id).is("assignment_id", null), // placeholder, will re-fetch below
+      ]);
+
+      const { data, error } = await supabase.from("assignments").select("*").eq("teacher_id", teacher.id).order("created_at", { ascending: false });
       if (error) { console.error("Fetch assignments error:", error); toast.error("Failed to load assignments. Please refresh."); }
       else {
-        setAssignments((data || []).map((a: any) => ({
-          id: a.id,
-          title: a.title,
-          targetClass: a.target_class,
-          subject: a.subject || "",
-          questions: (a.questions as any[]) || [],
-          dueDate: a.due_date || "",
-          createdAt: a.created_at,
-          status: a.status || "active",
-          teacherId: a.teacher_id,
+        const mapped = (data || []).map((a: any) => ({
+          id: a.id, title: a.title, targetClass: a.target_class,
+          subject: a.subject || "", questions: (a.questions as any[]) || [],
+          dueDate: a.due_date || "", createdAt: a.created_at,
+          status: a.status || "active", teacherId: a.teacher_id,
           difficultyLevel: a.difficulty_level || "Medium",
           assignmentType: a.assignment_type || "mcq",
-        })));
+        }));
+        setAssignments(mapped);
+
+        // Fetch all submissions for these assignments
+        if (mapped.length > 0) {
+          const ids = mapped.map(a => a.id);
+          const { data: subs } = await supabase
+            .from("submissions")
+            .select("*, students(name)")
+            .in("assignment_id", ids);
+          
+          const map: Record<string, SubmissionRecord[]> = {};
+          (subs || []).forEach((s: any) => {
+            if (!map[s.assignment_id]) map[s.assignment_id] = [];
+            map[s.assignment_id].push({
+              id: s.id,
+              studentName: s.students?.name || "Unknown",
+              score: s.score,
+              totalQuestions: s.total_questions,
+              submittedAt: s.submitted_at,
+              answers: s.answers as Record<string, string>,
+            });
+          });
+          setSubmissionsMap(map);
+        }
       }
     } catch (err) {
       console.error("Fetch assignments error:", err);
@@ -378,7 +408,7 @@ const TeacherAssignments = () => {
                     </div>
                     <div className="flex-1 text-left">
                       <h3 className="font-display text-sm font-bold text-white">{a.title}</h3>
-                      <p className="text-xs text-white/60 font-body">{a.targetClass} · {a.subject} · {a.questions.length} questions</p>
+                      <p className="text-xs text-white/60 font-body">{a.targetClass} · {a.subject} · {a.questions.length} questions · {(submissionsMap[a.id] || []).length} submissions</p>
                     </div>
                     <div className="flex items-center gap-3">
                       {a.status === "active" ? (
@@ -409,6 +439,25 @@ const TeacherAssignments = () => {
                               <p className="text-xs text-neon-green/80 font-body">Answer: {q.correctAnswer}</p>
                             </div>
                           ))}
+                          {/* Student Submissions */}
+                          {(submissionsMap[a.id] || []).length > 0 && (
+                            <div className="mt-3 border-t border-white/10 pt-3">
+                              <p className="text-xs text-white/50 font-body flex items-center gap-1 mb-2"><Users className="w-3.5 h-3.5" /> {submissionsMap[a.id].length} Student Submission(s)</p>
+                              <div className="space-y-1.5">
+                                {submissionsMap[a.id].map((sub) => (
+                                  <div key={sub.id} className="bg-white/5 rounded-lg p-2.5 flex items-center justify-between">
+                                    <div>
+                                      <p className="text-sm text-white/90 font-body font-semibold">{sub.studentName}</p>
+                                      <p className="text-xs text-white/50 font-body">{new Date(sub.submittedAt).toLocaleString()}</p>
+                                    </div>
+                                    <span className={`text-xs px-2 py-0.5 rounded-full font-body ${sub.score >= 70 ? "bg-neon-green/15 text-neon-green" : sub.score >= 40 ? "bg-neon-orange/15 text-neon-orange" : "bg-destructive/15 text-destructive"}`}>
+                                      {sub.score}%
+                                    </span>
+                                  </div>
+                                ))}
+                              </div>
+                            </div>
+                          )}
                           <div className="flex justify-end pt-2">
                             <Button size="sm" variant="ghost" onClick={() => deleteAssignment(a.id)} className="text-destructive hover:text-destructive/80">
                               <Trash2 className="w-3.5 h-3.5 mr-1" /> Delete

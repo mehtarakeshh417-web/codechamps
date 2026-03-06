@@ -80,6 +80,45 @@ export type Database = {
           },
         ]
       }
+      project_submissions: {
+        Row: {
+          id: string
+          notes: string
+          project_id: string
+          student_id: string
+          submitted_at: string
+        }
+        Insert: {
+          id?: string
+          notes?: string
+          project_id: string
+          student_id: string
+          submitted_at?: string
+        }
+        Update: {
+          id?: string
+          notes?: string
+          project_id?: string
+          student_id?: string
+          submitted_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "project_submissions_project_id_fkey"
+            columns: ["project_id"]
+            isOneToOne: false
+            referencedRelation: "projects"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "project_submissions_student_id_fkey"
+            columns: ["student_id"]
+            isOneToOne: false
+            referencedRelation: "students"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       projects: {
         Row: {
           created_at: string
