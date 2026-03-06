@@ -68,15 +68,15 @@ export const MsPaintEditor = () => (
   </div>
 );
 
-// Scratch Editor (TurboWarp - open source Scratch clone)
+// Block Coding Editor (Snap! - Berkeley's visual block programming, Scratch-like)
 export const ScratchEditor = () => (
   <div className="h-[600px] rounded-xl overflow-hidden border border-white/10">
     <iframe
-      src="https://turbowarp.org/editor?fps=30&clones=Infinity&offscreen&size=480x360"
+      src="https://snap.berkeley.edu/snap/snap.html"
       className="w-full h-full border-0"
-      title="Scratch Editor"
+      title="Block Coding Editor"
       allow="clipboard-read; clipboard-write"
-      sandbox="allow-scripts allow-same-origin allow-popups allow-forms"
+      sandbox="allow-scripts allow-same-origin allow-popups allow-forms allow-modals"
     />
   </div>
 );

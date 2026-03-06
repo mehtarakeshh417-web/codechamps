@@ -20,6 +20,7 @@ import TeacherClasses from "./teacher/TeacherClasses";
 import TeacherAssignments from "./teacher/TeacherAssignments";
 import TeacherProjects from "./teacher/TeacherProjects";
 import TeacherAnalytics from "./teacher/TeacherAnalytics";
+import TeacherStudentProgress from "./teacher/TeacherStudentProgress";
 import ChangePassword from "./shared/ChangePassword";
 import StudentDashboard from "./student/StudentDashboard";
 import StudentCurriculum from "./student/StudentCurriculum";
@@ -57,6 +58,7 @@ const teacherRoutes = (
     <Route path="classes" element={<TeacherClasses />} />
     <Route path="assignments" element={<TeacherAssignments />} />
     <Route path="projects" element={<TeacherProjects />} />
+    <Route path="student-progress" element={<TeacherStudentProgress />} />
     <Route path="analytics" element={<TeacherAnalytics />} />
     <Route path="settings" element={<ChangePassword />} />
   </>
