@@ -280,13 +280,13 @@ const c6Internet: TopicTextbook = {
     {
       pageTitle: "What is the Internet?",
       subtitle: "The world's biggest network!",
-      bannerImage: c6Internet,
+      bannerImage: c6InternetImg,
       bannerColor: "from-orange-500 to-amber-500",
       sections: [
         {
           heading: "Understanding the Internet",
           body: "The **Internet** is a global network that connects billions of computers and devices worldwide.\n\n**What can you do on the Internet?**\n🌐 Browse websites (World Wide Web)\n📧 Send and receive emails\n💬 Chat and video call\n📺 Watch videos (YouTube, Netflix)\n🎮 Play online games\n📚 Research and learn\n🛒 Shop online\n☁️ Store files in the cloud\n\n**Internet vs World Wide Web:**\n• **Internet** = the NETWORK (cables, routers, servers)\n• **WWW (Web)** = CONTENT on the internet (websites, pages)\n• The web runs ON the internet, but they're not the same!\n\n**How does it work?**\n1. You type a URL (web address)\n2. Your browser sends a REQUEST through the internet\n3. A SERVER (powerful computer) receives it\n4. The server sends back the WEBPAGE\n5. Your browser displays it!",
-          image: c6Internet,
+          image: c6InternetImg,
           funFact: "The internet started in 1969 as ARPANET, a US military project connecting just 4 computers! Today, over 5.4 billion people use the internet."
         }
       ],
