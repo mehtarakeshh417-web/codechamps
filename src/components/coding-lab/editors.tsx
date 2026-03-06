@@ -21,12 +21,11 @@ const EditorWrapper = ({
     }
   };
 
-  // Listen for fullscreen changes
-  useState(() => {
+  useEffect(() => {
     const handler = () => setIsFullscreen(!!document.fullscreenElement);
     document.addEventListener("fullscreenchange", handler);
     return () => document.removeEventListener("fullscreenchange", handler);
-  });
+  }, []);
 
   return (
     <div ref={containerRef} className={`relative ${isFullscreen ? "bg-[hsl(var(--background))]" : ""}`}>
