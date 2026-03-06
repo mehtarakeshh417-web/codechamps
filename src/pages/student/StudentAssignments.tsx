@@ -69,10 +69,11 @@ const StudentAssignments = () => {
     setLoading(true);
 
     try {
-      // Fetch assignments for student's class and school
-      const [aRes, pRes] = await Promise.all([
+      const [aRes, pRes, subRes, projSubRes] = await Promise.all([
         supabase.from("assignments").select("*, teachers(first_name, last_name)").eq("status", "active"),
         supabase.from("projects").select("*"),
+        supabase.from("submissions").select("*").eq("student_id", student.id),
+        supabase.from("project_submissions" as any).select("*").eq("student_id", student.id),
       ]);
 
       if (aRes.data) {
@@ -82,9 +83,7 @@ const StudentAssignments = () => {
           dueDate: a.due_date || "", createdAt: a.created_at, status: a.status,
           teacherName: a.teachers ? `${a.teachers.first_name} ${a.teachers.last_name || ""}`.trim() : "Teacher",
         })));
-      } else {
-        setAssignments([]);
-      }
+      } else { setAssignments([]); }
 
       if (pRes.data) {
         setProjects(pRes.data.map((p: any) => ({
@@ -93,8 +92,20 @@ const StudentAssignments = () => {
           submissionType: p.submission_type || "Screenshot",
           dueDate: p.due_date || "", createdAt: p.created_at,
         })));
-      } else {
-        setProjects([]);
+      } else { setProjects([]); }
+
+      if (subRes.data) {
+        setSubmissions(subRes.data.map((s: any) => ({
+          assignmentId: s.assignment_id, studentId: s.student_id,
+          answers: s.answers as Record<string, string>,
+          submittedAt: s.submitted_at, score: s.score,
+        })));
+      }
+
+      if (projSubRes.data) {
+        const map: Record<string, string> = {};
+        (projSubRes.data as any[]).forEach((ps: any) => { map[ps.project_id] = ps.notes; });
+        setProjSubmissions(map);
       }
     } catch (err) {
       console.error("Failed to load assignments:", err);
