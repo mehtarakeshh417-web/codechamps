@@ -367,6 +367,35 @@ export type Database = {
           },
         ]
       }
+      topic_completions: {
+        Row: {
+          completed_at: string
+          id: string
+          student_id: string
+          topic_id: string
+        }
+        Insert: {
+          completed_at?: string
+          id?: string
+          student_id: string
+          topic_id: string
+        }
+        Update: {
+          completed_at?: string
+          id?: string
+          student_id?: string
+          topic_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "topic_completions_student_id_fkey"
+            columns: ["student_id"]
+            isOneToOne: false
+            referencedRelation: "students"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       user_roles: {
         Row: {
           id: string
