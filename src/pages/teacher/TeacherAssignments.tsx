@@ -31,6 +31,15 @@ interface Assignment {
   assignmentType: string;
 }
 
+interface SubmissionRecord {
+  id: string;
+  studentName: string;
+  score: number;
+  totalQuestions: number;
+  submittedAt: string;
+  answers: Record<string, string>;
+}
+
 const TeacherAssignments = () => {
   const { user } = useAuth();
   const { teachers } = useData();
@@ -41,6 +50,7 @@ const TeacherAssignments = () => {
   const [loading, setLoading] = useState(true);
   const [showForm, setShowForm] = useState(false);
   const [expandedId, setExpandedId] = useState<string | null>(null);
+  const [submissionsMap, setSubmissionsMap] = useState<Record<string, SubmissionRecord[]>>({});
   const [form, setForm] = useState({ title: "", targetClass: myClasses[0] || "", subject: "", dueDate: "", difficultyLevel: "Medium", assignmentType: "mcq" });
   const [questions, setQuestions] = useState<Question[]>([]);
   const [qForm, setQForm] = useState({ type: "mcq" as Question["type"], question: "", options: ["", "", "", ""], correctAnswer: "" });
