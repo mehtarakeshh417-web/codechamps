@@ -5,10 +5,11 @@ import { useAuth } from "@/contexts/AuthContext";
 import { useData } from "@/contexts/DataContext";
 import { getTopicTextbook, type Exercise, type TextbookPage, type ContentSection } from "@/lib/class5Content";
 import { getCurriculumForClass } from "@/lib/curriculumData";
-import { ArrowLeft, ArrowRight, BookOpen, CheckCircle2, Circle, ChevronLeft, Home } from "lucide-react";
+import { ArrowLeft, ArrowRight, BookOpen, CheckCircle2, Circle, ChevronLeft, ExternalLink, Maximize2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
+import { openEditorPopup, EDITOR_URLS } from "@/components/coding-lab/editors";
 
 // Color mappings for banner gradients
 const subjectColorMap: Record<string, string> = {
@@ -18,6 +19,19 @@ const subjectColorMap: Record<string, string> = {
   "neon-purple": "from-[hsl(260,80%,60%)] to-[hsl(280,80%,55%)]",
 };
 
+// Determine best editor for a practice exercise based on context
+const getEditorForPractice = (question: string): string | null => {
+  const q = question.toLowerCase();
+  if (q.includes("ms word") || q.includes("word") || q.includes("document") || q.includes("letter") || q.includes("newsletter") || q.includes("invitation") || q.includes("report") || q.includes("card") || q.includes("format")) return "msword";
+  if (q.includes("paint") || q.includes("draw") || q.includes("color") || q.includes("art") || q.includes("picture")) return "mspaint";
+  if (q.includes("scratch") || q.includes("sprite") || q.includes("block") || q.includes("animation") || q.includes("game")) return "scratch";
+  if (q.includes("python")) return "python";
+  if (q.includes("html") || q.includes("web")) return "html";
+  if (q.includes("java")) return "java";
+  if (q.includes("excel") || q.includes("spreadsheet") || q.includes("cell")) return "msword"; // closest available
+  return null;
+};
+
 // Exercise component
 const ExerciseItem = ({ exercise }: { exercise: Exercise }) => {
   const [userAnswer, setUserAnswer] = useState("");
@@ -25,11 +39,40 @@ const ExerciseItem = ({ exercise }: { exercise: Exercise }) => {
   const isCorrect = exercise.answer.toLowerCase().trim() === userAnswer.toLowerCase().trim();
 
   if (exercise.type === "practice") {
+    const editorKey = getEditorForPractice(exercise.question);
+    const editorInfo = editorKey ? EDITOR_URLS[editorKey] : null;
+
     return (
       <div className="bg-gradient-to-r from-neon-orange/10 to-transparent rounded-xl p-5 border border-neon-orange/20">
         <div className="flex items-start gap-3">
           <span className="text-xs bg-neon-orange/20 text-neon-orange px-3 py-1 rounded-full font-bold shrink-0 mt-0.5">✍️ Practice</span>
-          <p className="text-sm text-white/80 font-body leading-relaxed">{exercise.question}</p>
+          <div className="flex-1">
+            <p className="text-sm text-white/80 font-body leading-relaxed mb-3">{exercise.question}</p>
+            {editorInfo && (
+              <div className="flex gap-2 flex-wrap">
+                <Button
+                  size="sm"
+                  onClick={() => openEditorPopup(editorInfo.url, editorInfo.label)}
+                  className="bg-primary/20 text-primary border border-primary/30 hover:bg-primary/30 gap-1 text-xs"
+                >
+                  <ExternalLink className="w-3 h-3" /> Open {editorInfo.label}
+                </Button>
+                <Button
+                  size="sm"
+                  onClick={() => {
+                    const el = document.querySelector(`[data-editor-popup]`) as HTMLElement;
+                    if (editorInfo.url !== "about:blank") {
+                      window.open(editorInfo.url, "_blank");
+                    }
+                  }}
+                  variant="ghost"
+                  className="text-white/50 hover:text-white text-xs gap-1"
+                >
+                  <Maximize2 className="w-3 h-3" /> Full Screen
+                </Button>
+              </div>
+            )}
+          </div>
         </div>
       </div>
     );
@@ -80,7 +123,7 @@ const ExerciseItem = ({ exercise }: { exercise: Exercise }) => {
   );
 };
 
-// Section renderer - textbook style
+// Section renderer
 const SectionRenderer = ({ section }: { section: ContentSection }) => (
   <div className="space-y-4">
     <h3 className="font-display text-xl font-bold text-white flex items-center gap-2">
@@ -145,7 +188,7 @@ const PageRenderer = ({ page }: { page: TextbookPage }) => (
     className="space-y-8"
   >
     {/* Page Header */}
-    <div className={`rounded-2xl overflow-hidden border border-white/10 shadow-xl`}>
+    <div className="rounded-2xl overflow-hidden border border-white/10 shadow-xl">
       {page.bannerImage ? (
         <div className="relative">
           <img src={page.bannerImage} alt={page.pageTitle} className="w-full h-48 object-cover" />
@@ -261,16 +304,9 @@ const TopicViewer = () => {
           <ChevronLeft className="w-4 h-4" /> Curriculum
         </Button>
         <div className="flex items-center gap-3">
-          <span className="text-xs text-white/40 font-body">Page {currentPage + 1} of {totalPages}</span>
-          <div className="flex gap-1">
-            {textbook.pages.map((_, i) => (
-              <button
-                key={i}
-                onClick={() => setCurrentPage(i)}
-                className={`w-2.5 h-2.5 rounded-full transition-all ${i === currentPage ? "bg-primary scale-125" : i < currentPage ? "bg-neon-green/60" : "bg-white/20"}`}
-              />
-            ))}
-          </div>
+          <span className="text-sm font-body font-semibold text-white/70">
+            Page {currentPage + 1} of {totalPages}
+          </span>
         </div>
       </motion.div>
 
@@ -284,7 +320,7 @@ const TopicViewer = () => {
         <PageRenderer page={page} />
       </AnimatePresence>
 
-      {/* Bottom Navigation */}
+      {/* Bottom Navigation - READABLE PAGE NUMBERS */}
       <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="mt-8 flex items-center justify-between pb-8">
         <Button
           variant="ghost"
@@ -295,13 +331,19 @@ const TopicViewer = () => {
           <ArrowLeft className="w-4 h-4" /> Previous
         </Button>
 
-        {/* Page selector */}
-        <div className="flex items-center gap-2">
+        {/* Readable page selector with good contrast */}
+        <div className="flex items-center gap-1.5 flex-wrap justify-center max-w-[60%]">
           {textbook.pages.map((p, i) => (
             <button
               key={i}
               onClick={() => setCurrentPage(i)}
-              className={`px-2.5 py-1 rounded-lg text-xs font-body transition-all ${i === currentPage ? "bg-primary text-white font-bold" : "bg-white/5 text-white/40 hover:bg-white/10 hover:text-white/60"}`}
+              className={`min-w-[36px] h-9 px-2 rounded-lg text-sm font-body font-bold transition-all ${
+                i === currentPage
+                  ? "bg-primary text-white shadow-lg shadow-primary/30 scale-110"
+                  : i < currentPage
+                  ? "bg-neon-green/20 text-neon-green hover:bg-neon-green/30 border border-neon-green/30"
+                  : "bg-white/10 text-white/70 hover:bg-white/20 hover:text-white border border-white/10"
+              }`}
               title={p.pageTitle}
             >
               {i + 1}
