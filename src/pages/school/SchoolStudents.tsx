@@ -34,8 +34,8 @@ const SchoolStudents = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!form.name || !form.fatherName || !form.class || !form.section || !form.rollNo || !form.teacherId || !form.username.trim() || !form.password.trim()) {
-      toast.error("Fill all required fields including username and password");
+    if (!form.username.trim() || !form.password.trim()) {
+      toast.error("Username and password are required");
       return;
     }
     setIsSubmitting(true);
