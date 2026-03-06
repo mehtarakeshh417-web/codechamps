@@ -58,8 +58,8 @@ const StudentAssignments = () => {
   const [projects, setProjects] = useState<Project[]>([]);
   const [loading, setLoading] = useState(true);
 
-  const [submissions, setSubmissions] = useState<Submission[]>(() => loadSubmissions(user?.id || ""));
-  const [projSubmissions, setProjSubmissions] = useState<Record<string, string>>(() => loadProjectSubmissions(user?.id || ""));
+  const [submissions, setSubmissions] = useState<Submission[]>([]);
+  const [projSubmissions, setProjSubmissions] = useState<Record<string, string>>({});
   const [expandedId, setExpandedId] = useState<string | null>(null);
   const [answers, setAnswers] = useState<Record<string, string>>({});
   const [projNote, setProjNote] = useState("");
