@@ -18,6 +18,13 @@ interface Project {
   createdAt: string;
 }
 
+interface ProjectSubmissionRecord {
+  id: string;
+  studentName: string;
+  notes: string;
+  submittedAt: string;
+}
+
 const TECH_OPTIONS = ["Scratch Jr", "Scratch", "MS Paint", "MS Word", "MS PowerPoint", "MS Excel", "MS Access", "HTML/CSS", "Python", "GIMP", "KRITA", "Canva", "MIT App Inventor"];
 const SUBMISSION_TYPES = ["Screenshot", "File Upload", "Code", "Link"];
 
@@ -31,6 +38,7 @@ const TeacherProjects = () => {
   const [loading, setLoading] = useState(true);
   const [showForm, setShowForm] = useState(false);
   const [expandedId, setExpandedId] = useState<string | null>(null);
+  const [projSubsMap, setProjSubsMap] = useState<Record<string, ProjectSubmissionRecord[]>>({});
   const [form, setForm] = useState({ title: "", description: "", targetClass: myClasses[0] || "", technology: TECH_OPTIONS[0], submissionType: SUBMISSION_TYPES[0], dueDate: "" });
 
   const fetchProjects = useCallback(async () => {
