@@ -70,26 +70,46 @@ const TeacherAssignments = () => {
     if (!teacher?.id) { setLoading(false); return; }
     setLoading(true);
     try {
-      const { data, error } = await supabase
-        .from("assignments")
-        .select("*")
-        .eq("teacher_id", teacher.id)
-        .order("created_at", { ascending: false });
+      const [assignRes, subRes] = await Promise.all([
+        supabase.from("assignments").select("*").eq("teacher_id", teacher.id).order("created_at", { ascending: false }),
+        supabase.from("submissions").select("*, students(name)").eq("assignment_id", teacher.id).is("assignment_id", null), // placeholder, will re-fetch below
+      ]);
+
+      const { data, error } = await supabase.from("assignments").select("*").eq("teacher_id", teacher.id).order("created_at", { ascending: false });
       if (error) { console.error("Fetch assignments error:", error); toast.error("Failed to load assignments. Please refresh."); }
       else {
-        setAssignments((data || []).map((a: any) => ({
-          id: a.id,
-          title: a.title,
-          targetClass: a.target_class,
-          subject: a.subject || "",
-          questions: (a.questions as any[]) || [],
-          dueDate: a.due_date || "",
-          createdAt: a.created_at,
-          status: a.status || "active",
-          teacherId: a.teacher_id,
+        const mapped = (data || []).map((a: any) => ({
+          id: a.id, title: a.title, targetClass: a.target_class,
+          subject: a.subject || "", questions: (a.questions as any[]) || [],
+          dueDate: a.due_date || "", createdAt: a.created_at,
+          status: a.status || "active", teacherId: a.teacher_id,
           difficultyLevel: a.difficulty_level || "Medium",
           assignmentType: a.assignment_type || "mcq",
-        })));
+        }));
+        setAssignments(mapped);
+
+        // Fetch all submissions for these assignments
+        if (mapped.length > 0) {
+          const ids = mapped.map(a => a.id);
+          const { data: subs } = await supabase
+            .from("submissions")
+            .select("*, students(name)")
+            .in("assignment_id", ids);
+          
+          const map: Record<string, SubmissionRecord[]> = {};
+          (subs || []).forEach((s: any) => {
+            if (!map[s.assignment_id]) map[s.assignment_id] = [];
+            map[s.assignment_id].push({
+              id: s.id,
+              studentName: s.students?.name || "Unknown",
+              score: s.score,
+              totalQuestions: s.total_questions,
+              submittedAt: s.submitted_at,
+              answers: s.answers as Record<string, string>,
+            });
+          });
+          setSubmissionsMap(map);
+        }
       }
     } catch (err) {
       console.error("Fetch assignments error:", err);
