@@ -69,15 +69,11 @@ const SchoolTeachers = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const classStrings = getClassStrings(selectedClasses);
-    if (!form.firstName || !form.lastName || classStrings.length === 0) {
-      toast.error("Fill all fields and select at least one class with section");
-      return;
-    }
-    setIsSubmitting(true);
     if (!form.username.trim() || !form.password.trim()) {
       toast.error("Username and password are required");
       return;
     }
+    setIsSubmitting(true);
     const customUsername = form.username.trim();
     const customPassword = form.password.trim();
     const teacher = await addTeacher({ firstName: form.firstName, lastName: form.lastName, classes: classStrings, schoolId }, customUsername, customPassword);

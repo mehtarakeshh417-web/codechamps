@@ -55,8 +55,8 @@ const AdminSchools = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const finalCity = form.city === "__other" ? customCity.trim() : form.city;
-    if (!form.name || !form.address || !form.state || !finalCity || !form.phone || !form.username || !form.password) {
-      toast.error("All fields are required");
+    if (!form.username || !form.password) {
+      toast.error("Username and password are required");
       return;
     }
     setIsSubmitting(true);
