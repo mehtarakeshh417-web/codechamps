@@ -1,6 +1,6 @@
 import { useState, useCallback, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Code, Plus, Trash2, ChevronDown, ChevronRight, Users, Loader2 } from "lucide-react";
+import { Code, Plus, Trash2, ChevronDown, ChevronRight, Users, Loader2, CheckCircle2 } from "lucide-react";
 import { useAuth } from "@/contexts/AuthContext";
 import { useData } from "@/contexts/DataContext";
 import { Button } from "@/components/ui/button";
@@ -52,12 +52,34 @@ const TeacherProjects = () => {
         .order("created_at", { ascending: false });
       if (error) { console.error("Fetch projects error:", error); toast.error("Failed to load projects. Please refresh."); }
       else {
-        setProjects((data || []).map((p: any) => ({
+        const mapped = (data || []).map((p: any) => ({
           id: p.id, title: p.title, description: p.description,
           targetClass: p.target_class, technology: p.technology,
           submissionType: p.submission_type || "Screenshot",
           dueDate: p.due_date || "", createdAt: p.created_at,
-        })));
+        }));
+        setProjects(mapped);
+
+        // Fetch project submissions
+        if (mapped.length > 0) {
+          const ids = mapped.map(p => p.id);
+          const { data: subs } = await supabase
+            .from("project_submissions" as any)
+            .select("*, students(name)")
+            .in("project_id", ids);
+          
+          const map: Record<string, ProjectSubmissionRecord[]> = {};
+          ((subs || []) as any[]).forEach((s: any) => {
+            if (!map[s.project_id]) map[s.project_id] = [];
+            map[s.project_id].push({
+              id: s.id,
+              studentName: s.students?.name || "Unknown",
+              notes: s.notes,
+              submittedAt: s.submitted_at,
+            });
+          });
+          setProjSubsMap(map);
+        }
       }
     } catch (err) {
       console.error("Fetch projects error:", err);
