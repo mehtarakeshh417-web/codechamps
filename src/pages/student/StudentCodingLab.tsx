@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { Code, Terminal, Gamepad2, Palette, Coffee, Paintbrush, FileText, Table2, Presentation, ImageIcon, PenTool } from "lucide-react";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { useAuth } from "@/contexts/AuthContext";
+import { useSearchParams } from "react-router-dom";
 import {
   HtmlEditor,
   PythonEditor,
@@ -46,7 +47,10 @@ const editorMeta: Record<string, { label: string; icon: React.ElementType; compo
 
 const StudentCodingLab = () => {
   const { user } = useAuth();
+  const [searchParams] = useSearchParams();
   const editors = useMemo(() => getAvailableEditors(user?.className), [user?.className]);
+  const editorFromUrl = searchParams.get("editor");
+  const defaultEditor = editorFromUrl && editors.includes(editorFromUrl) ? editorFromUrl : editors[0];
 
   return (
     <div>
@@ -55,7 +59,7 @@ const StudentCodingLab = () => {
         <p className="text-white/60 font-body mb-6">Practice coding with real compilers & editors</p>
       </motion.div>
 
-      <Tabs defaultValue={editors[0]} className="w-full">
+      <Tabs defaultValue={defaultEditor} key={defaultEditor} className="w-full">
         <TabsList className="bg-white/5 border border-white/10 mb-6 flex-wrap h-auto gap-1 p-1">
           {editors.map((key) => {
             const meta = editorMeta[key];

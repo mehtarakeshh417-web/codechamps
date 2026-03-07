@@ -28,7 +28,10 @@ const getEditorForPractice = (question: string): string | null => {
   if (q.includes("python")) return "python";
   if (q.includes("html") || q.includes("web")) return "html";
   if (q.includes("java")) return "java";
-  if (q.includes("excel") || q.includes("spreadsheet") || q.includes("cell")) return "msword"; // closest available
+  if (q.includes("excel") || q.includes("spreadsheet") || q.includes("cell")) return "msexcel";
+  if (q.includes("powerpoint") || q.includes("slide") || q.includes("presentation")) return "mspowerpoint";
+  if (q.includes("gimp") || q.includes("photo edit")) return "gimp";
+  if (q.includes("krita") || q.includes("digital art") || q.includes("digital paint")) return "krita";
   return null;
 };
 
@@ -52,7 +55,9 @@ const ExerciseItem = ({ exercise }: { exercise: Exercise }) => {
               <div className="flex gap-2 flex-wrap">
                 <Button
                   size="sm"
-                  onClick={() => openEditorPopup(editorInfo.url, editorInfo.label)}
+                  onClick={() => {
+                    window.location.href = `/dashboard/coding-lab?editor=${editorKey}`;
+                  }}
                   className="bg-primary/20 text-primary border border-primary/30 hover:bg-primary/30 gap-1 text-xs"
                 >
                   <ExternalLink className="w-3 h-3" /> Open {editorInfo.label}
@@ -60,10 +65,7 @@ const ExerciseItem = ({ exercise }: { exercise: Exercise }) => {
                 <Button
                   size="sm"
                   onClick={() => {
-                    const el = document.querySelector(`[data-editor-popup]`) as HTMLElement;
-                    if (editorInfo.url !== "about:blank") {
-                      window.open(editorInfo.url, "_blank");
-                    }
+                    window.open(`/dashboard/coding-lab?editor=${editorKey}&fullscreen=1`, "_blank");
                   }}
                   variant="ghost"
                   className="text-white/50 hover:text-white text-xs gap-1"
