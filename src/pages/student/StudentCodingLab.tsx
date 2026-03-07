@@ -47,7 +47,10 @@ const editorMeta: Record<string, { label: string; icon: React.ElementType; compo
 
 const StudentCodingLab = () => {
   const { user } = useAuth();
+  const [searchParams] = useSearchParams();
   const editors = useMemo(() => getAvailableEditors(user?.className), [user?.className]);
+  const editorFromUrl = searchParams.get("editor");
+  const defaultEditor = editorFromUrl && editors.includes(editorFromUrl) ? editorFromUrl : editors[0];
 
   return (
     <div>
