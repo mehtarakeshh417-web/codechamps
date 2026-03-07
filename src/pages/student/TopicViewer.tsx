@@ -28,7 +28,10 @@ const getEditorForPractice = (question: string): string | null => {
   if (q.includes("python")) return "python";
   if (q.includes("html") || q.includes("web")) return "html";
   if (q.includes("java")) return "java";
-  if (q.includes("excel") || q.includes("spreadsheet") || q.includes("cell")) return "msword"; // closest available
+  if (q.includes("excel") || q.includes("spreadsheet") || q.includes("cell")) return "msexcel";
+  if (q.includes("powerpoint") || q.includes("slide") || q.includes("presentation")) return "mspowerpoint";
+  if (q.includes("gimp") || q.includes("photo edit")) return "gimp";
+  if (q.includes("krita") || q.includes("digital art") || q.includes("digital paint")) return "krita";
   return null;
 };
 
