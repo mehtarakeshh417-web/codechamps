@@ -253,8 +253,8 @@ const BulkStudentUpload = ({ schoolId, teachers, sections, onComplete }: BulkStu
 
   return (
     <div>
-      <Button variant="glass" size="lg" onClick={() => setShow(!show)}>
-        <Upload className="w-5 h-5 mr-2" /> Bulk Upload
+      <Button variant="hero" size="xl" onClick={() => setShow(!show)}>
+        <Upload className="w-6 h-6 mr-2" /> Bulk Upload
       </Button>
 
       <AnimatePresence>
