@@ -1,6 +1,7 @@
 import { useState, useCallback, useEffect, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Code, Plus, Trash2, ChevronDown, ChevronRight, Users, Loader2, CheckCircle2, Star, MessageCircle, Clock, Target, Award, BarChart3, Eye, Edit3, Save, X } from "lucide-react";
+import { Code, Plus, Trash2, ChevronDown, ChevronRight, Users, Loader2, CheckCircle2, Star, MessageCircle, Clock, Target, Award, BarChart3, Eye, Edit3, Save, X, FileText } from "lucide-react";
+import { PROJECT_TEMPLATES, getTemplatesForTechnology } from "@/lib/projectTemplates";
 import { useAuth } from "@/contexts/AuthContext";
 import { useData } from "@/contexts/DataContext";
 import { Button } from "@/components/ui/button";
