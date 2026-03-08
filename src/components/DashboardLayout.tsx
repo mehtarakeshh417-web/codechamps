@@ -209,8 +209,12 @@ const DashboardLayout = ({ children }: Props) => {
         </div>
       </main>
 
-      {/* AI Tutor Chat - Student only */}
-      {user.role === "student" && <AiTutorChat />}
+      {/* AI Tutor Chat - Student only, hidden on assignments/projects to prevent cheating */}
+      {user.role === "student" && 
+        !location.pathname.includes("/assignments") && 
+        !location.pathname.includes("/projects") && 
+        <AiTutorChat />
+      }
     </div>
   );
 };
