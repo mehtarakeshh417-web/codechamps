@@ -333,6 +333,7 @@ const c3WordAdv: TopicTextbook = {
       sections: [
         {
           heading: "Adding Page Borders",
+          image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&h=400&fit=crop",
           body: "**Page borders** make your document look beautiful!\n\n**How to add:**\n1. Go to **Design** tab (or Page Layout in older versions)\n2. Click **Page Borders**\n3. Choose a border style, color, and width\n4. Or choose **Art borders** for decorative designs!\n\n**Printing Your Document:**\n1. Press **Ctrl+P** (or File → Print)\n2. Choose your printer\n3. Set number of copies\n4. Choose pages to print (All, Current Page, or specific pages)\n5. Click **Print**!\n\n**Print Preview:**\nAlways check Print Preview before printing! It shows exactly how your document will look on paper.",
         }
       ],
