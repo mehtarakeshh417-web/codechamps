@@ -257,7 +257,7 @@ export const EDITOR_URLS: Record<string, { url: string; label: string }> = {
   java: { url: "https://onecompiler.com/java", label: "Java Compiler" },
   scratch: { url: "https://studio.penguinmod.com/editor.html", label: "Block Coding Editor" },
   scratchjr: { url: "https://codejr.org/scratchjr/index.html", label: "Scratch Jr" },
-  mspaint: { url: "https://viliusle.github.io/miniPaint/", label: "MS Paint" },
+  mspaint: { url: "https://paint.js.org/", label: "MS Paint" },
   msword: { url: "about:blank", label: "MS Word Editor" },
   msexcel: { url: "about:blank", label: "MS Excel Editor" },
   mspowerpoint: { url: "about:blank", label: "MS PowerPoint Editor" },
