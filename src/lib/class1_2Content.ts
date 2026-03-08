@@ -396,6 +396,7 @@ const c1PaintColor: TopicTextbook = {
       sections: [
         {
           heading: "Primary and Secondary Colors",
+          image: "https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?w=800&h=400&fit=crop",
           body: "**Primary Colors** — These are the 3 main colors that can't be made by mixing:\n🔴 **Red**\n🔵 **Blue**\n🟡 **Yellow**\n\n**Secondary Colors** — Made by mixing two primary colors:\n🟠 **Orange** = Red + Yellow\n🟢 **Green** = Blue + Yellow\n🟣 **Purple** = Red + Blue\n\n**In MS Paint:**\n• Find these colors in the Color Palette\n• Use **Edit Colors** to create custom colors\n• Mix colors using the Custom Color picker!",
           funFact: "A rainbow has 7 colors: Red, Orange, Yellow, Green, Blue, Indigo, Violet — remember it as ROY G. BIV!"
         }
