@@ -50,7 +50,25 @@ const c1ComputerIntro: TopicTextbook = {
           body: "Every computer has these important parts:\n\n🖥️ **Monitor** — The screen where you see everything. It shows pictures, words, and videos. It looks like a TV!\n\n⌨️ **Keyboard** — Has letters, numbers, and special keys. You use it to type words and give commands.\n\n🖱️ **Mouse** — A small device you move on the desk. It has buttons to click and a wheel to scroll.\n\n🖥️ **CPU (Central Processing Unit)** — The \"brain\" of the computer. It thinks and processes everything! It's usually inside a big box.\n\n🔊 **Speakers** — Make sounds, music, and voices come out of the computer.",
           image: c1ComputerParts,
           youtubeId: "1UjWdtY8yx4",
-          tip: "Remember: The CPU is the BRAIN, the Monitor is the EYES, the Keyboard is the MOUTH, and the Mouse is the HAND!"
+          tip: "Remember: The CPU is the BRAIN, the Monitor is the EYES, the Keyboard is the MOUTH, and the Mouse is the HAND!",
+          illustration: [
+            { emoji: "🖥️", label: "Monitor" },
+            { emoji: "⌨️", label: "Keyboard" },
+            { emoji: "🖱️", label: "Mouse" },
+            { emoji: "🧠", label: "CPU" },
+            { emoji: "🔊", label: "Speakers" },
+            { emoji: "🖨️", label: "Printer" },
+          ],
+          table: {
+            headers: ["Part", "What It Does", "Looks Like"],
+            rows: [
+              ["Monitor", "Shows pictures and text", "A flat screen like a TV"],
+              ["Keyboard", "Type letters and numbers", "Rectangle with many keys"],
+              ["Mouse", "Point and click on things", "Small oval with buttons"],
+              ["CPU", "Thinks and processes everything", "A big box / tower"],
+              ["Speakers", "Plays sounds and music", "Small boxes near the monitor"],
+            ]
+          }
         }
       ],
       exercises: [
