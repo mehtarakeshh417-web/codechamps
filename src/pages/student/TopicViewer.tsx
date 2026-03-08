@@ -17,6 +17,7 @@ import TopicProgressPanel from "@/components/topic-viewer/TopicProgressPanel";
 import { PremiumSection, PremiumExercise, PremiumPageHeader } from "@/components/topic-viewer/PremiumContentSections";
 import WatchAndLearn from "@/components/topic-viewer/WatchAndLearn";
 import TopicQuiz from "@/components/topic-viewer/TopicQuiz";
+import StudentNotes from "@/components/topic-viewer/StudentNotes";
 
 const xpLevel = (xp: number) => {
   if (xp < 500) return 1;
@@ -265,6 +266,10 @@ const TopicViewer = () => {
           </div>
         )}
 
+        {/* Student Notes */}
+        {user?.role === "student" && student && (
+          <StudentNotes studentId={student.id} topicId={topicId || ""} />
+        )}
         {/* Bottom Navigation */}
         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="mt-14 mb-12">
           {/* Page selector pills */}

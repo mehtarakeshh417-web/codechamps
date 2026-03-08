@@ -7,7 +7,7 @@ import NotificationBell from "@/components/NotificationBell";
 import dashboardBg from "@/assets/dashboard-bg.jpg";
 import {
   LayoutDashboard, School, Users, BookOpen, Trophy, Settings, LogOut, GraduationCap,
-  BarChart3, Code, FileText, Gamepad2, Award, UserCircle, Menu, X, CalendarDays, MessageSquare, Keyboard
+  BarChart3, Code, FileText, Gamepad2, Award, UserCircle, Menu, X, CalendarDays, MessageSquare, Keyboard, Megaphone
 } from "lucide-react";
 import AiTutorChat from "@/components/AiTutorChat";
 
@@ -32,6 +32,7 @@ const navConfig: Record<UserRole, NavItem[]> = {
     { icon: BookOpen, label: "Classes", path: "/dashboard/classes" },
     { icon: CalendarDays, label: "Attendance", path: "/dashboard/attendance" },
     { icon: BarChart3, label: "Analytics", path: "/dashboard/analytics" },
+    { icon: Megaphone, label: "Announcements", path: "/dashboard/announcements" },
     { icon: Settings, label: "Settings", path: "/dashboard/settings" },
   ],
   teacher: [
@@ -45,6 +46,7 @@ const navConfig: Record<UserRole, NavItem[]> = {
     { icon: MessageSquare, label: "Discussions", path: "/dashboard/discussions" },
     { icon: Users, label: "Student Progress", path: "/dashboard/student-progress" },
     { icon: BarChart3, label: "Analytics", path: "/dashboard/analytics" },
+    { icon: Megaphone, label: "Announcements", path: "/dashboard/announcements" },
     { icon: Settings, label: "Change Password", path: "/dashboard/settings" },
   ],
   student: [
