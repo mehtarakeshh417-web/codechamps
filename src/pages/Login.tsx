@@ -116,8 +116,15 @@ const Login = () => {
             Secured with PIN & security questions
           </div>
 
+          {/* Forgot password */}
+          <div className="mt-4 text-center">
+            <button onClick={() => navigate("/forgot-password")} className="text-primary/70 hover:text-primary text-sm font-body transition-colors">
+              Forgot Password?
+            </button>
+          </div>
+
           {/* Back link */}
-          <div className="mt-4 pt-4 border-t border-white/10 text-center">
+          <div className="mt-3 pt-4 border-t border-white/10 text-center">
             <button onClick={() => navigate("/")} className="text-primary/70 hover:text-primary text-sm font-body transition-colors">
               ← Back to Home
             </button>

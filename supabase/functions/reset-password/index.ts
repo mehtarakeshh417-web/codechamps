@@ -1,0 +1,113 @@
+import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
+
+const corsHeaders = {
+  "Access-Control-Allow-Origin": "*",
+  "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
+};
+
+Deno.serve(async (req) => {
+  if (req.method === "OPTIONS") {
+    return new Response(null, { headers: corsHeaders });
+  }
+
+  try {
+    const supabaseUrl = Deno.env.get("SUPABASE_URL")!;
+    const serviceRoleKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
+    const supabase = createClient(supabaseUrl, serviceRoleKey);
+
+    const { username, method, verification_value, new_password } = await req.json();
+
+    if (!username || !method || !new_password) {
+      return new Response(JSON.stringify({ error: "Missing required fields" }), {
+        status: 400,
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+    }
+
+    if (new_password.length < 4) {
+      return new Response(JSON.stringify({ error: "Password must be at least 4 characters" }), {
+        status: 400,
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+    }
+
+    const email = `${username}@codechamps.local`;
+
+    // Find the user by email
+    const { data: listData } = await supabase.auth.admin.listUsers();
+    const authUser = listData?.users?.find((u: any) => u.email === email);
+
+    if (!authUser) {
+      return new Response(JSON.stringify({ error: "User not found" }), {
+        status: 404,
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+    }
+
+    const userId = authUser.id;
+
+    if (method === "old_password") {
+      // Verify old password by attempting sign-in
+      const anonKey = Deno.env.get("SUPABASE_ANON_KEY")!;
+      const anonClient = createClient(supabaseUrl, anonKey);
+      const { error: signInError } = await anonClient.auth.signInWithPassword({ email, password: verification_value });
+      if (signInError) {
+        return new Response(JSON.stringify({ error: "Incorrect old password" }), {
+          status: 401,
+          headers: { ...corsHeaders, "Content-Type": "application/json" },
+        });
+      }
+      // Sign out the temp session
+      await anonClient.auth.signOut();
+    } else if (method === "pin") {
+      const { data: sec } = await supabase
+        .from("user_security")
+        .select("pin")
+        .eq("user_id", userId)
+        .maybeSingle();
+
+      if (!sec || sec.pin !== verification_value) {
+        return new Response(JSON.stringify({ error: "Incorrect PIN" }), {
+          status: 401,
+          headers: { ...corsHeaders, "Content-Type": "application/json" },
+        });
+      }
+    } else if (method === "security_question") {
+      const { data: sec } = await supabase
+        .from("user_security")
+        .select("security_answer")
+        .eq("user_id", userId)
+        .maybeSingle();
+
+      if (!sec || sec.security_answer !== verification_value.trim().toLowerCase()) {
+        return new Response(JSON.stringify({ error: "Incorrect security answer" }), {
+          status: 401,
+          headers: { ...corsHeaders, "Content-Type": "application/json" },
+        });
+      }
+    } else {
+      return new Response(JSON.stringify({ error: "Invalid method" }), {
+        status: 400,
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+    }
+
+    // Update password
+    const { error: updateError } = await supabase.auth.admin.updateUser(userId, { password: new_password });
+    if (updateError) {
+      return new Response(JSON.stringify({ error: updateError.message }), {
+        status: 500,
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+    }
+
+    return new Response(JSON.stringify({ success: true }), {
+      headers: { ...corsHeaders, "Content-Type": "application/json" },
+    });
+  } catch (err) {
+    return new Response(JSON.stringify({ error: err.message }), {
+      status: 500,
+      headers: { ...corsHeaders, "Content-Type": "application/json" },
+    });
+  }
+});
