@@ -9,7 +9,7 @@ import { GraduationCap, Plus, X, Trash2, AlertTriangle, Edit2 } from "lucide-rea
 import BulkStudentUpload from "@/components/BulkStudentUpload";
 import { toast } from "sonner";
 
-const CLASS_OPTIONS = ["1st", "2nd", "3rd", "4th", "5th", "6th", "7th", "8th"];
+const CLASS_OPTIONS = ["1st", "2nd", "3rd", "4th", "5th", "6th", "7th", "8th", "9th", "10th"];
 const DEFAULT_SECTIONS = ["A", "B", "C", "D", "E"];
 
 const SchoolStudents = () => {
