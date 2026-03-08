@@ -10,51 +10,50 @@ const SimulatedExcelEditor = () => {
 
   useEffect(() => {
     if (sheetRef.current && !instanceRef.current) {
-      instanceRef.current = jspreadsheet(sheetRef.current, {
-        data: [
-          ["Item", "Price", "Qty", "Total"],
-          ["Pencils", 5, 10, "=B2*C2"],
-          ["Notebooks", 40, 3, "=B3*C3"],
-          ["Erasers", 3, 10, "=B4*C4"],
-          ["", "", "Total:", "=SUM(D2:D4)"],
-          ...Array.from({ length: 45 }, () => ["", "", "", ""]),
-        ],
-        columns: [
-          { type: "text" as any, width: 160 },
-          { type: "numeric" as any, width: 100 },
-          { type: "numeric" as any, width: 100 },
-          { type: "numeric" as any, width: 120 },
-          ...Array.from({ length: 8 }, () => ({ type: "text" as any, width: 100 })),
-        ],
-        minDimensions: [12, 50] as any,
+      instanceRef.current = (jspreadsheet as any)(sheetRef.current, {
+        worksheets: [{
+          data: [
+            ["Item", "Price", "Qty", "Total"],
+            ["Pencils", 5, 10, "=B2*C2"],
+            ["Notebooks", 40, 3, "=B3*C3"],
+            ["Erasers", 3, 10, "=B4*C4"],
+            ["", "", "Total:", "=SUM(D2:D4)"],
+            ...Array.from({ length: 45 }, () => ["", "", "", ""]),
+          ],
+          columns: [
+            { type: "text", width: 160 },
+            { type: "numeric", width: 100 },
+            { type: "numeric", width: 100 },
+            { type: "numeric", width: 120 },
+            ...Array.from({ length: 8 }, () => ({ type: "text", width: 100 })),
+          ],
+          minDimensions: [12, 50],
+          style: {
+            A1: "font-weight:bold;background-color:#1e40af;color:#fff;",
+            B1: "font-weight:bold;background-color:#1e40af;color:#fff;",
+            C1: "font-weight:bold;background-color:#1e40af;color:#fff;",
+            D1: "font-weight:bold;background-color:#1e40af;color:#fff;",
+            C5: "font-weight:bold;",
+            D5: "font-weight:bold;background-color:#dbeafe;",
+          },
+        }],
         tableOverflow: true,
-        tableWidth: "100%" as any,
-        tableHeight: "100%" as any,
+        tableWidth: "100%",
+        tableHeight: "100%",
         defaultColWidth: 100,
         allowInsertRow: true,
         allowInsertColumn: true,
         allowDeleteRow: true,
         allowDeleteColumn: true,
-        allowRenameColumn: true,
         columnSorting: true,
         search: true,
-        style: {
-          A1: "font-weight:bold;background-color:#1e40af;color:#fff;",
-          B1: "font-weight:bold;background-color:#1e40af;color:#fff;",
-          C1: "font-weight:bold;background-color:#1e40af;color:#fff;",
-          D1: "font-weight:bold;background-color:#1e40af;color:#fff;",
-          C5: "font-weight:bold;",
-          D5: "font-weight:bold;background-color:#dbeafe;",
-        },
       });
     }
 
     return () => {
-      if (instanceRef.current) {
+      if (instanceRef.current && sheetRef.current) {
         try {
-          if (sheetRef.current) {
-            (jspreadsheet as any).destroy?.(sheetRef.current);
-          }
+          (jspreadsheet as any).destroy?.(sheetRef.current);
         } catch { /* ignore */ }
         instanceRef.current = null;
       }
@@ -71,7 +70,7 @@ const SimulatedExcelEditor = () => {
       </div>
 
       {/* Spreadsheet */}
-      <div className="flex-1 overflow-hidden jspreadsheet-container">
+      <div className="flex-1 overflow-hidden">
         <div ref={sheetRef} className="w-full h-full" />
       </div>
 
