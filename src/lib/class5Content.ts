@@ -863,6 +863,7 @@ const wordTextFormatting: TopicTextbook = {
       sections: [
         {
           heading: "What is Text Formatting?",
+          image: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=800&h=400&fit=crop",
           body: "**Text formatting** means changing how your text looks — making it bigger, bolder, more colorful, or more organized.\n\nGood formatting makes documents:\n• **Easier to read** — readers can scan quickly\n• **More professional** — looks like a real publication\n• **Better organized** — headings, lists, and emphasis guide the reader\n• **More attractive** — color and style catch the eye\n\nAll text formatting tools are in the **Home** tab in the **Font** and **Paragraph** groups.",
           tip: "Always format AFTER you finish writing. Write first, format later — this saves time!"
         }
