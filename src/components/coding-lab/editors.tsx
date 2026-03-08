@@ -181,19 +181,10 @@ export const MsWordEditor = () => {
   );
 };
 
-// MS Excel Editor - EtherCalc (open-source collaborative spreadsheet)
+// MS Excel Editor - JSpreadsheet (full Excel-like features)
 export const MsExcelEditor = () => (
   <EditorWrapper title="MS Excel Editor">
-    <div className="h-[650px] rounded-xl overflow-hidden border border-white/10 bg-white">
-      <iframe
-        src="https://ethercalc.net/_new"
-        className="w-full h-full border-0"
-        title="MS Excel (EtherCalc)"
-        allow="clipboard-read; clipboard-write"
-        sandbox="allow-scripts allow-same-origin allow-popups allow-forms allow-modals allow-downloads"
-        loading="lazy"
-      />
-    </div>
+    <JSpreadsheetExcel />
   </EditorWrapper>
 );
 
