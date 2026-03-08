@@ -122,6 +122,7 @@ const wordPageFormatting: TopicTextbook = {
         },
         {
           heading: "Types of Margin Settings",
+          image: "https://images.unsplash.com/photo-1586281380349-632531db7ed4?w=800&h=400&fit=crop",
           body: "MS Word provides several preset margin options:\n\n📄 **Normal** — Top: 2.54cm, Bottom: 2.54cm, Left: 3.17cm, Right: 3.17cm (most common)\n📄 **Narrow** — 1.27cm on all sides (fits more text on page)\n📄 **Wide** — 5.08cm left and right (gives more white space)\n📄 **Moderate** — 2.54cm top/bottom, 1.91cm left/right\n📄 **Custom Margins** — You set your own values!\n\n**How to Change Margins:**\n1. Go to **Page Layout** tab\n2. Click **Margins**\n3. Choose a preset OR click **Custom Margins**\n4. Set your desired values\n5. Click **OK**",
           tip: "For school projects, the **Normal** margin setting works best. It gives enough space for binding on the left side."
         }
