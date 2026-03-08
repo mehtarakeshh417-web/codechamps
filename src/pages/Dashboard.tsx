@@ -31,6 +31,7 @@ import StudentAchievements from "./student/StudentAchievements";
 import StudentLeaderboard from "./student/StudentLeaderboard";
 import StudentCertificates from "./student/StudentCertificates";
 import StudentProgress from "./student/StudentProgress";
+import StudentProjects from "./student/StudentProjects";
 
 const adminRoutes = (
   <>
