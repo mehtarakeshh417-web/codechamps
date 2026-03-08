@@ -426,7 +426,7 @@ const c3ScratchCompDragDrop: TopicTextbook = {
 };
 
 const c3ScratchSprite: TopicTextbook = {
-  topicId: "c3-scr-sp",
+  topicId: "c3-scr-sprite",
   topicTitle: "Moving Sprites & Saving",
   subjectColor: "neon-green",
   pages: [
@@ -442,7 +442,7 @@ const c3ScratchSprite: TopicTextbook = {
 };
 
 const c3ScratchAppear: TopicTextbook = {
-  topicId: "c3-scr-a",
+  topicId: "c3-scr-appear",
   topicTitle: "Change Sprite Appearance",
   subjectColor: "neon-green",
   pages: [
@@ -472,7 +472,7 @@ const c3ScratchSay: TopicTextbook = {
 };
 
 const c3ScratchSound: TopicTextbook = {
-  topicId: "c3-scr-snd",
+  topicId: "c3-scr-sound",
   topicTitle: "Sound & Music in Scratch",
   subjectColor: "neon-green",
   pages: [
@@ -568,7 +568,7 @@ const c4PptIntro: TopicTextbook = {
 };
 
 const c4PptSlides: TopicTextbook = {
-  topicId: "c4-ppt-sl",
+  topicId: "c4-ppt-slides",
   topicTitle: "Slides, Templates & Content",
   subjectColor: "neon-orange",
   pages: [
