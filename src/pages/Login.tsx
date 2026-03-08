@@ -81,7 +81,7 @@ const Login = () => {
               />
             </div>
             <div className="space-y-2">
-              <Label htmlFor="password" className="text-white/70 font-body text-sm">Password</Label>
+              <Label htmlFor="password" className="text-white font-body text-sm font-bold">Password</Label>
               <Input
                 id="password"
                 type="password"

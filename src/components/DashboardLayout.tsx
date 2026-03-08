@@ -99,14 +99,14 @@ const DashboardLayout = ({ children }: Props) => {
           <div className="flex items-center gap-2 mt-4">
             <UserCircle className="w-8 h-8 text-white/40" />
             <div>
-              <div className="text-sm font-bold text-white/90 font-body">{user.displayName}</div>
+              <div className="text-sm font-bold text-white font-body">{user.displayName}</div>
               <div className={`text-xs font-display uppercase tracking-wider ${roleLabelColors[user.role]}`}>
                 {user.role === "admin" ? "Master Admin" : user.role}
               </div>
             </div>
           </div>
           {user.schoolName && (
-            <div className="mt-2 text-xs text-white/40 font-body">{user.schoolName}</div>
+            <div className="mt-2 text-xs text-white/80 font-body font-semibold">{user.schoolName}</div>
           )}
         </div>
 
