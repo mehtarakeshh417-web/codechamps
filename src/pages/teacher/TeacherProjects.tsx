@@ -154,7 +154,7 @@ const TeacherProjects = () => {
     // Send notifications to students in this class
     const teacherDisplayName = teacher ? `${teacher.firstName} ${teacher.lastName}`.trim() : "Your teacher";
     const allStudents2 = getTeacherStudents(user?.id || "");
-    const classStudents2 = allStudents2.filter((s) => form.targetClass.includes(s.class));
+    const classStudents2 = allStudents2.filter((s) => `${s.class}-${s.section}` === form.targetClass);
     const notifInserts = classStudents2.filter(s => s.user_id).map(s => ({
       user_id: s.user_id!,
       title: `🚀 New Project from ${teacherDisplayName}`,
