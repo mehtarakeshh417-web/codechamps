@@ -478,6 +478,7 @@ const c1ScratchWork: TopicTextbook = {
       sections: [
         {
           heading: "Motion Blocks",
+          image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=800&h=400&fit=crop",
           body: "Let's make the cat walk!\n\n**Step 1:** Drag the **Green Flag** block (yellow) to the scripts area — this starts your program.\n\n**Step 2:** Connect a **Move Right** block (blue arrow pointing right)\n\n**Step 3:** Tap the Green Flag on the stage — the cat moves right!\n\n**More Motion Blocks:**\n➡️ **Move Right** — sprite moves right\n⬅️ **Move Left** — sprite moves left\n⬆️ **Move Up** — sprite moves up\n⬇️ **Move Down** — sprite moves down\n🔄 **Turn Right** — sprite rotates clockwise\n🔄 **Turn Left** — sprite rotates counter-clockwise\n↩️ **Go Home** — sprite goes back to starting position",
           tip: "You can change the number inside each block to control HOW FAR the sprite moves! Bigger number = moves more."
         }
