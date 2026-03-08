@@ -77,6 +77,7 @@ const studentRoutes = (
     <Route path="coding-lab" element={<StudentCodingLab />} />
     <Route path="achievements" element={<StudentAchievements />} />
     <Route path="projects" element={<StudentProjects />} />
+    <Route path="portfolio" element={<StudentPortfolio />} />
     <Route path="leaderboard" element={<StudentLeaderboard />} />
     <Route path="certificates" element={<StudentCertificates />} />
     <Route path="settings" element={<ChangePassword />} />

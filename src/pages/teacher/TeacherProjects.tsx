@@ -245,6 +245,50 @@ const TeacherProjects = () => {
                 <Plus className="w-5 h-5 text-[hsl(var(--neon-green))]" /> Create New Project
               </h2>
 
+              {/* Template Selector */}
+              <div className="p-4 rounded-xl bg-[hsl(var(--neon-blue))]/5 border border-[hsl(var(--neon-blue))]/20">
+                <label className="text-xs text-[hsl(var(--neon-blue))] font-body font-bold mb-2 block flex items-center gap-1">
+                  <FileText className="w-3.5 h-3.5" /> Start from Template (optional)
+                </label>
+                <select
+                  defaultValue=""
+                  onChange={(e) => {
+                    const tmpl = PROJECT_TEMPLATES.find(t => t.id === e.target.value);
+                    if (tmpl) {
+                      setForm(f => ({
+                        ...f,
+                        title: tmpl.title,
+                        description: tmpl.description,
+                        technology: tmpl.technology,
+                        submissionType: tmpl.submissionType,
+                        learningObjective: tmpl.learningObjective,
+                        instructions: tmpl.instructions.length > 0 ? tmpl.instructions : [""],
+                        referenceResources: tmpl.referenceResources.length > 0 ? tmpl.referenceResources : [""],
+                        expectedOutput: tmpl.expectedOutput,
+                        maxMarks: tmpl.maxMarks,
+                        difficultyLevel: tmpl.difficultyLevel,
+                        estimatedTime: tmpl.estimatedTime,
+                      }));
+                      toast.success(`Template "${tmpl.title}" loaded! You can edit any field.`);
+                    }
+                    e.target.value = "";
+                  }}
+                  className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white text-sm font-body focus:outline-none focus:border-[hsl(var(--primary))]/50"
+                >
+                  <option value="" className="bg-[hsl(220,30%,15%)]">Choose a template to auto-fill...</option>
+                  {TECH_OPTIONS.map((tech) => {
+                    const templates = getTemplatesForTechnology(tech);
+                    if (templates.length === 0) return null;
+                    return templates.map((t) => (
+                      <option key={t.id} value={t.id} className="bg-[hsl(220,30%,15%)]">
+                        [{tech}] {t.title} — {t.difficultyLevel}
+                      </option>
+                    ));
+                  })}
+                </select>
+                <p className="text-[10px] text-white/30 font-body mt-1">Templates pre-fill all fields. You can customize anything after loading.</p>
+              </div>
+
               {/* Row 1 */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
