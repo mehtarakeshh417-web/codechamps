@@ -80,6 +80,149 @@ export type Database = {
           },
         ]
       }
+      attendance: {
+        Row: {
+          date: string
+          id: string
+          marked_at: string
+          school_id: string
+          status: string
+          student_id: string
+          teacher_id: string
+        }
+        Insert: {
+          date?: string
+          id?: string
+          marked_at?: string
+          school_id: string
+          status?: string
+          student_id: string
+          teacher_id: string
+        }
+        Update: {
+          date?: string
+          id?: string
+          marked_at?: string
+          school_id?: string
+          status?: string
+          student_id?: string
+          teacher_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "attendance_school_id_fkey"
+            columns: ["school_id"]
+            isOneToOne: false
+            referencedRelation: "schools"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "attendance_student_id_fkey"
+            columns: ["student_id"]
+            isOneToOne: false
+            referencedRelation: "students"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "attendance_teacher_id_fkey"
+            columns: ["teacher_id"]
+            isOneToOne: false
+            referencedRelation: "teachers"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      discussion_replies: {
+        Row: {
+          author_id: string
+          author_name: string
+          author_role: string
+          created_at: string
+          discussion_id: string
+          id: string
+          message: string
+        }
+        Insert: {
+          author_id: string
+          author_name?: string
+          author_role?: string
+          created_at?: string
+          discussion_id: string
+          id?: string
+          message?: string
+        }
+        Update: {
+          author_id?: string
+          author_name?: string
+          author_role?: string
+          created_at?: string
+          discussion_id?: string
+          id?: string
+          message?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "discussion_replies_discussion_id_fkey"
+            columns: ["discussion_id"]
+            isOneToOne: false
+            referencedRelation: "discussions"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      discussions: {
+        Row: {
+          author_id: string
+          author_name: string
+          author_role: string
+          class_name: string
+          created_at: string
+          id: string
+          is_pinned: boolean
+          is_resolved: boolean
+          message: string
+          school_id: string
+          title: string
+          topic_id: string | null
+        }
+        Insert: {
+          author_id: string
+          author_name?: string
+          author_role?: string
+          class_name: string
+          created_at?: string
+          id?: string
+          is_pinned?: boolean
+          is_resolved?: boolean
+          message?: string
+          school_id: string
+          title: string
+          topic_id?: string | null
+        }
+        Update: {
+          author_id?: string
+          author_name?: string
+          author_role?: string
+          class_name?: string
+          created_at?: string
+          id?: string
+          is_pinned?: boolean
+          is_resolved?: boolean
+          message?: string
+          school_id?: string
+          title?: string
+          topic_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "discussions_school_id_fkey"
+            columns: ["school_id"]
+            isOneToOne: false
+            referencedRelation: "schools"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       notifications: {
         Row: {
           created_at: string
@@ -268,6 +411,47 @@ export type Database = {
             columns: ["teacher_id"]
             isOneToOne: false
             referencedRelation: "teachers"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      quiz_attempts: {
+        Row: {
+          answers: Json
+          id: string
+          score: number
+          student_id: string
+          submitted_at: string
+          topic_id: string
+          total_questions: number
+          xp_earned: number
+        }
+        Insert: {
+          answers?: Json
+          id?: string
+          score?: number
+          student_id: string
+          submitted_at?: string
+          topic_id: string
+          total_questions?: number
+          xp_earned?: number
+        }
+        Update: {
+          answers?: Json
+          id?: string
+          score?: number
+          student_id?: string
+          submitted_at?: string
+          topic_id?: string
+          total_questions?: number
+          xp_earned?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "quiz_attempts_student_id_fkey"
+            columns: ["student_id"]
+            isOneToOne: false
+            referencedRelation: "students"
             referencedColumns: ["id"]
           },
         ]
