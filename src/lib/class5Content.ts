@@ -324,7 +324,17 @@ const pptAnimations: TopicTextbook = {
         },
         {
           heading: "Where to Find These Tools",
-          body: "📍 **Transitions** are in the **Transitions** tab\n📍 **Animations** are in the **Animations** tab\n📍 **Media (Audio/Video)** are in the **Insert** tab\n\nLet's explore each one in detail on the following pages!"
+          body: "📍 **Transitions** are in the **Transitions** tab\n📍 **Animations** are in the **Animations** tab\n📍 **Media (Audio/Video)** are in the **Insert** tab\n\nLet's explore each one in detail on the following pages!",
+          comparison: {
+            left: {
+              title: "Animations",
+              points: ["Applied to objects (text, images, shapes)", "Control how items appear on a slide", "Found in the Animations tab", "Types: Entrance, Exit, Emphasis, Motion Path"]
+            },
+            right: {
+              title: "Transitions",
+              points: ["Applied between slides", "Control how slides change", "Found in the Transitions tab", "Types: Subtle, Exciting, Dynamic"]
+            }
+          }
         }
       ]
     },
