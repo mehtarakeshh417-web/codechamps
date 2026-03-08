@@ -23,28 +23,28 @@ const SchoolAnalytics = () => {
     name: `${t.firstName} ${t.lastName}`.slice(0, 14),
     fullName: `${t.firstName} ${t.lastName}`,
     students: students.filter((s) => s.teacherId === t.id).length,
-    classes: t.classes.length,
+    classes: t.classes.length
   }));
 
   // Class distribution
-  const classDistribution = students.reduce((acc, s) => { acc[s.class] = (acc[s.class] || 0) + 1; return acc; }, {} as Record<string, number>);
+  const classDistribution = students.reduce((acc, s) => {acc[s.class] = (acc[s.class] || 0) + 1;return acc;}, {} as Record<string, number>);
   const classPieData = Object.entries(classDistribution).map(([name, value]) => ({ name, value }));
 
   // Section distribution
-  const sectionData = students.reduce((acc, s) => { const sec = s.section || "A"; acc[sec] = (acc[sec] || 0) + 1; return acc; }, {} as Record<string, number>);
+  const sectionData = students.reduce((acc, s) => {const sec = s.section || "A";acc[sec] = (acc[sec] || 0) + 1;return acc;}, {} as Record<string, number>);
   const sectionBarData = Object.entries(sectionData).map(([name, count]) => ({ name: `Section ${name}`, count }));
 
   // XP distribution histogram
   const xpRanges = [
-    { range: "0-100", min: 0, max: 100 },
-    { range: "101-500", min: 101, max: 500 },
-    { range: "501-1000", min: 501, max: 1000 },
-    { range: "1001-5000", min: 1001, max: 5000 },
-    { range: "5001+", min: 5001, max: Infinity },
-  ];
+  { range: "0-100", min: 0, max: 100 },
+  { range: "101-500", min: 101, max: 500 },
+  { range: "501-1000", min: 501, max: 1000 },
+  { range: "1001-5000", min: 1001, max: 5000 },
+  { range: "5001+", min: 5001, max: Infinity }];
+
   const xpHistogram = xpRanges.map((r) => ({
     range: r.range,
-    count: students.filter((s) => s.xp >= r.min && s.xp <= r.max).length,
+    count: students.filter((s) => s.xp >= r.min && s.xp <= r.max).length
   }));
 
   // Class-wise average XP
@@ -61,7 +61,7 @@ const SchoolAnalytics = () => {
       subject: cls,
       count: classStudents.length,
       avgXP: classStudents.length > 0 ? Math.round(classStudents.reduce((sum, s) => sum + s.xp, 0) / classStudents.length) : 0,
-      avgProgress: classStudents.length > 0 ? Math.round(classStudents.reduce((sum, s) => sum + s.progress, 0) / classStudents.length) : 0,
+      avgProgress: classStudents.length > 0 ? Math.round(classStudents.reduce((sum, s) => sum + s.progress, 0) / classStudents.length) : 0
     };
   });
 
@@ -76,26 +76,26 @@ const SchoolAnalytics = () => {
 
     // Summary sheet
     const summaryData = [
-      { Metric: "Total Teachers", Value: teachers.length },
-      { Metric: "Total Students", Value: students.length },
-      { Metric: "Avg Students per Teacher", Value: teachers.length > 0 ? Math.round(students.length / teachers.length) : 0 },
-      { Metric: "Total XP Earned", Value: students.reduce((sum, s) => sum + s.xp, 0) },
-      { Metric: "Avg XP per Student", Value: students.length > 0 ? Math.round(students.reduce((sum, s) => sum + s.xp, 0) / students.length) : 0 },
-    ];
+    { Metric: "Total Teachers", Value: teachers.length },
+    { Metric: "Total Students", Value: students.length },
+    { Metric: "Avg Students per Teacher", Value: teachers.length > 0 ? Math.round(students.length / teachers.length) : 0 },
+    { Metric: "Total XP Earned", Value: students.reduce((sum, s) => sum + s.xp, 0) },
+    { Metric: "Avg XP per Student", Value: students.length > 0 ? Math.round(students.reduce((sum, s) => sum + s.xp, 0) / students.length) : 0 }];
+
     XLSX.utils.book_append_sheet(wb, XLSX.utils.json_to_sheet(summaryData), "Summary");
 
     // Students sheet
     const studentSheet = students.map((s) => ({
       Name: s.name, "Father Name": s.fatherName, Class: s.class, Section: s.section,
       "Roll No": s.rollNo, Username: s.username, XP: s.xp, "Progress %": s.progress,
-      Teacher: teachers.find((t) => t.id === s.teacherId)?.firstName + " " + (teachers.find((t) => t.id === s.teacherId)?.lastName || ""),
+      Teacher: teachers.find((t) => t.id === s.teacherId)?.firstName + " " + (teachers.find((t) => t.id === s.teacherId)?.lastName || "")
     }));
     XLSX.utils.book_append_sheet(wb, XLSX.utils.json_to_sheet(studentSheet), "Students");
 
     // Teachers sheet
     const teacherSheet = teachers.map((t) => ({
       Name: `${t.firstName} ${t.lastName}`, Username: t.username,
-      Classes: t.classes.join(", "), "Student Count": students.filter((s) => s.teacherId === t.id).length,
+      Classes: t.classes.join(", "), "Student Count": students.filter((s) => s.teacherId === t.id).length
     }));
     XLSX.utils.book_append_sheet(wb, XLSX.utils.json_to_sheet(teacherSheet), "Teachers");
 
@@ -110,7 +110,7 @@ const SchoolAnalytics = () => {
   const printReport = useCallback(() => {
     if (!reportRef.current) return;
     const printWindow = window.open("", "_blank");
-    if (!printWindow) { toast.error("Popup blocked. Allow popups to print."); return; }
+    if (!printWindow) {toast.error("Popup blocked. Allow popups to print.");return;}
     printWindow.document.write(`
       <html><head><title>School Analytics Report</title>
       <style>body{font-family:system-ui;padding:40px;color:#1a1a2e;background:#fff}
@@ -157,7 +157,7 @@ const SchoolAnalytics = () => {
       <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="flex items-center justify-between mb-6">
         <div>
           <h1 className="font-display text-3xl font-bold mb-1"><span className="text-gradient-brand">Analytics</span></h1>
-          <p className="text-white/50 font-body">School performance insights</p>
+          <p className="font-body text-primary-foreground">School Performance Insights</p>
         </div>
         <div className="flex gap-3">
           <Button variant="glass" size="lg" onClick={exportToExcel}>
@@ -172,30 +172,30 @@ const SchoolAnalytics = () => {
       {/* Summary */}
       <div className="grid md:grid-cols-4 gap-4 mb-8">
         {[
-          { icon: Users, label: "Teachers", value: teachers.length, color: "text-neon-blue" },
-          { icon: GraduationCap, label: "Students", value: students.length, color: "text-neon-green" },
-          { icon: Award, label: "Total XP", value: students.reduce((s, st) => s + st.xp, 0), color: "text-neon-orange" },
-          { icon: TrendingUp, label: "Avg XP", value: students.length > 0 ? Math.round(students.reduce((s, st) => s + st.xp, 0) / students.length) : 0, color: "text-neon-purple" },
-        ].map((item, i) => (
-          <motion.div key={item.label} initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: i * 0.05 }} className="glass-card p-5 text-center">
+        { icon: Users, label: "Teachers", value: teachers.length, color: "text-neon-blue" },
+        { icon: GraduationCap, label: "Students", value: students.length, color: "text-neon-green" },
+        { icon: Award, label: "Total XP", value: students.reduce((s, st) => s + st.xp, 0), color: "text-neon-orange" },
+        { icon: TrendingUp, label: "Avg XP", value: students.length > 0 ? Math.round(students.reduce((s, st) => s + st.xp, 0) / students.length) : 0, color: "text-neon-purple" }].
+        map((item, i) =>
+        <motion.div key={item.label} initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: i * 0.05 }} className="glass-card p-5 text-center">
             <item.icon className={`w-7 h-7 mx-auto mb-2 ${item.color}`} />
             <div className="font-display text-2xl font-bold">{item.value}</div>
             <div className="text-white/50 text-xs font-body">{item.label}</div>
           </motion.div>
-        ))}
+        )}
       </div>
 
-      {noData ? (
-        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="glass-card p-12 text-center">
+      {noData ?
+      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="glass-card p-12 text-center">
           <BarChart3 className="w-16 h-16 text-white/20 mx-auto mb-4" />
           <p className="text-white/40 font-body">No data yet. Add teachers and students to see analytics.</p>
-        </motion.div>
-      ) : (
-        <>
+        </motion.div> :
+
+      <>
           <div className="grid md:grid-cols-2 gap-6 mb-6">
             {/* Teacher-wise students */}
-            {teacherData.length > 0 && (
-              <motion.div initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.2 }} className="glass-card p-6">
+            {teacherData.length > 0 &&
+          <motion.div initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.2 }} className="glass-card p-6">
                 <h2 className="font-display text-lg font-bold mb-4 flex items-center gap-2">
                   <BarChart3 className="w-5 h-5 text-neon-blue" /> Students per Teacher
                 </h2>
@@ -209,11 +209,11 @@ const SchoolAnalytics = () => {
                   </BarChart>
                 </ResponsiveContainer>
               </motion.div>
-            )}
+          }
 
             {/* Class pie chart */}
-            {classPieData.length > 0 && (
-              <motion.div initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.25 }} className="glass-card p-6">
+            {classPieData.length > 0 &&
+          <motion.div initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.25 }} className="glass-card p-6">
                 <h2 className="font-display text-lg font-bold mb-4 flex items-center gap-2">
                   <TrendingUp className="w-5 h-5 text-neon-green" /> Students by Class
                 </h2>
@@ -227,13 +227,13 @@ const SchoolAnalytics = () => {
                   </PieChart>
                 </ResponsiveContainer>
               </motion.div>
-            )}
+          }
           </div>
 
           <div className="grid md:grid-cols-2 gap-6 mb-6">
             {/* Section distribution */}
-            {sectionBarData.length > 0 && (
-              <motion.div initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.3 }} className="glass-card p-6">
+            {sectionBarData.length > 0 &&
+          <motion.div initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.3 }} className="glass-card p-6">
                 <h2 className="font-display text-lg font-bold mb-4 flex items-center gap-2">
                   <BarChart3 className="w-5 h-5 text-neon-orange" /> Students by Section
                 </h2>
@@ -247,7 +247,7 @@ const SchoolAnalytics = () => {
                   </BarChart>
                 </ResponsiveContainer>
               </motion.div>
-            )}
+          }
 
             {/* XP Histogram */}
             <motion.div initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.35 }} className="glass-card p-6">
@@ -267,8 +267,8 @@ const SchoolAnalytics = () => {
           </div>
 
           {/* Class-wise Avg XP Area Chart */}
-          {classXpData.length > 0 && (
-            <motion.div initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.4 }} className="glass-card p-6 mb-6">
+          {classXpData.length > 0 &&
+        <motion.div initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.4 }} className="glass-card p-6 mb-6">
               <h2 className="font-display text-lg font-bold mb-4 flex items-center gap-2">
                 <TrendingUp className="w-5 h-5 text-neon-green" /> Class-wise Average XP
               </h2>
@@ -282,11 +282,11 @@ const SchoolAnalytics = () => {
                 </AreaChart>
               </ResponsiveContainer>
             </motion.div>
-          )}
+        }
 
           {/* Radar Chart */}
-          {radarData.length > 2 && (
-            <motion.div initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.45 }} className="glass-card p-6 mb-6">
+          {radarData.length > 2 &&
+        <motion.div initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.45 }} className="glass-card p-6 mb-6">
               <h2 className="font-display text-lg font-bold mb-4 flex items-center gap-2">
                 <BarChart3 className="w-5 h-5 text-neon-blue" /> Class Engagement Radar
               </h2>
@@ -302,30 +302,30 @@ const SchoolAnalytics = () => {
                 </RadarChart>
               </ResponsiveContainer>
             </motion.div>
-          )}
+        }
 
           {/* Teachers List */}
           <motion.div initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.5 }} className="glass-card p-6 mb-6">
             <h2 className="font-display font-bold mb-4 flex items-center gap-2"><Users className="w-5 h-5 text-neon-blue" /> Teachers ({teachers.length})</h2>
-            {teachers.length === 0 ? <p className="text-white/40 text-sm font-body">No teacher data yet</p> : (
-              <div className="space-y-2">{teachers.map((t) => (
-                <div key={t.id} className="bg-white/5 rounded-xl px-4 py-2 flex justify-between text-sm">
+            {teachers.length === 0 ? <p className="text-white/40 text-sm font-body">No teacher data yet</p> :
+          <div className="space-y-2">{teachers.map((t) =>
+            <div key={t.id} className="bg-white/5 rounded-xl px-4 py-2 flex justify-between text-sm">
                   <span className="text-white/80">{t.firstName} {t.lastName}</span>
                   <div className="flex gap-3 text-white/40">
                     <span>{t.classes.length} classes</span>
                     <span>{students.filter((s) => s.teacherId === t.id).length} students</span>
                   </div>
                 </div>
-              ))}</div>
-            )}
+            )}</div>
+          }
           </motion.div>
 
           {/* Top Students */}
-          {topStudents.length > 0 && (
-            <motion.div initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.55 }} className="glass-card p-6">
+          {topStudents.length > 0 &&
+        <motion.div initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.55 }} className="glass-card p-6">
               <h2 className="font-display font-bold mb-4 flex items-center gap-2"><GraduationCap className="w-5 h-5 text-neon-green" /> Top Students by XP</h2>
-              <div className="space-y-2">{topStudents.map((s, i) => (
-                <div key={s.id} className="bg-white/5 rounded-xl px-4 py-2 flex justify-between text-sm items-center">
+              <div className="space-y-2">{topStudents.map((s, i) =>
+            <div key={s.id} className="bg-white/5 rounded-xl px-4 py-2 flex justify-between text-sm items-center">
                   <div className="flex items-center gap-3">
                     <span className={`w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold ${i < 3 ? "bg-neon-orange/20 text-neon-orange" : "bg-white/10 text-white/40"}`}>{i + 1}</span>
                     <span className="text-white/80">{s.name}</span>
@@ -335,13 +335,13 @@ const SchoolAnalytics = () => {
                     <span className="text-neon-green font-medium">{s.xp} XP</span>
                   </div>
                 </div>
-              ))}</div>
+            )}</div>
             </motion.div>
-          )}
+        }
         </>
-      )}
-    </div>
-  );
+      }
+    </div>);
+
 };
 
 export default SchoolAnalytics;
