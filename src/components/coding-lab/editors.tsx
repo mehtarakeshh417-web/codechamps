@@ -181,19 +181,10 @@ export const MsWordEditor = () => {
   );
 };
 
-// MS Excel Editor - CryptPad Sheet (OnlyOffice-powered, no login, white Excel UI)
+// MS Excel Editor - JSpreadsheet with white Excel theme
 export const MsExcelEditor = () => (
   <EditorWrapper title="MS Excel Editor">
-    <div className="h-[650px] rounded-xl overflow-hidden border border-white/10 bg-white">
-      <iframe
-        src="https://cryptpad.fr/sheet/"
-        className="w-full h-full border-0"
-        title="MS Excel (CryptPad Sheet)"
-        allow="clipboard-read; clipboard-write"
-        sandbox="allow-scripts allow-same-origin allow-popups allow-forms allow-modals allow-downloads"
-        loading="lazy"
-      />
-    </div>
+    <JSpreadsheetExcel />
   </EditorWrapper>
 );
 
