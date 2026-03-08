@@ -2,6 +2,14 @@
 import c6Html from "@/assets/curriculum/c6-html-basics.jpg";
 import c6Python from "@/assets/curriculum/c6-python-basics.jpg";
 import c6InternetImg from "@/assets/curriculum/c6-internet.jpg";
+import c6ExcelFormulas from "@/assets/curriculum/c6-excel-formulas.jpg";
+import c6GimpInterface from "@/assets/curriculum/c6-gimp-interface.jpg";
+import c6AiBasics from "@/assets/curriculum/c6-ai-basics.jpg";
+import c7ExcelCharts from "@/assets/curriculum/c7-excel-charts.jpg";
+import c8MsAccess from "@/assets/curriculum/c8-ms-access.jpg";
+import c8KritaInterface from "@/assets/curriculum/c8-krita-interface.jpg";
+import c8CanvaInterface from "@/assets/curriculum/c8-canva-interface.jpg";
+import c8AppInventor from "@/assets/curriculum/c8-appinventor.jpg";
 
 import type { TopicTextbook } from "./class5Content";
 
