@@ -407,6 +407,7 @@ const c3ScratchStart: TopicTextbook = {
       sections: [
         {
           heading: "How to Save",
+          image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&h=400&fit=crop",
           body: "**On Scratch website (scratch.mit.edu):**\n1. Create a free account\n2. Your projects save automatically!\n3. Click **File → Save Now** to save immediately\n4. Click **File → Save as a Copy** to make a duplicate\n\n**Downloading your project:**\n1. Click **File → Save to your computer**\n2. This downloads a .sb3 file\n3. You can open it later with File → Load from your computer\n\n**Sharing your project:**\n1. Click the **Share** button (top-right)\n2. Add a title and description\n3. Anyone with the link can play your project!\n\n**In the block coding editor (PenguinMod):**\n• Use File → Save to your computer\n• Your project saves as a .pmp or .sb3 file",
           tip: "Save your work often! It's heartbreaking to lose a project you've been working on."
         }

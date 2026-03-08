@@ -984,6 +984,7 @@ const c2ScratchJrAdv: TopicTextbook = {
       sections: [
         {
           heading: "Adding Sound",
+          image: "https://images.unsplash.com/photo-1535016120720-40c646be5580?w=800&h=400&fit=crop",
           body: "**Sound blocks** let your sprites make noise!\n\n🔊 **Pop Sound** — A quick pop sound effect\n🎵 **Record Sound** — Record your own voice or sounds!\n\n**How to add sounds:**\n1. Tap a sprite to select it\n2. Find the **Sound blocks** (green blocks)\n3. Drag a sound block into your script\n4. Place it where you want the sound to play\n\n**Recording Custom Sounds:**\n1. Tap the **microphone** icon\n2. Press the **record** button\n3. Say something or make a sound\n4. Press **stop**\n5. Your recording appears as a new sound block!\n\n**Cool ideas:**\n🐱 Make the cat say \"Meow!\" (record yourself!)\n🎵 Add background music to your story\n💥 Add sound effects when sprites touch\n🗣️ Make characters speak with recorded dialogue",
           funFact: "You can record your own voice and make your sprite 'talk' — it's like making a cartoon!"
         }
