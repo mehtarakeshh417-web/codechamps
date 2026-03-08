@@ -480,6 +480,16 @@ const c1ScratchWork: TopicTextbook = {
         {
           heading: "Say and Think Blocks",
           body: "You can make your sprite say things!\n\n💬 **Say Block** (Purple) — Shows a speech bubble with text above the sprite\n💭 **Think Block** — Shows a thought bubble\n\n**How to add text:**\n1. Drag a **Say** block to your script\n2. Tap the block to type what the sprite should say\n3. Connect it after a Green Flag block\n4. Run your program!\n\n**Make a Conversation:**\nYou can make two sprites talk to each other by using:\n- Say blocks on Sprite 1\n- Wait blocks between them\n- Say blocks on Sprite 2",
+          comparison: {
+            left: {
+              title: "Say Block 💬",
+              points: ["Shows a speech bubble", "Character is talking out loud", "Other characters can 'hear' it", "Use for dialogue & conversations"]
+            },
+            right: {
+              title: "Think Block 💭",
+              points: ["Shows a thought bubble", "Character is thinking silently", "Private thoughts only", "Use for inner feelings & ideas"]
+            }
+          }
         }
       ],
       exercises: [
