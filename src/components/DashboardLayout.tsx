@@ -220,6 +220,7 @@ const DashboardLayout = ({ children }: Props) => {
       {user.role === "student" && 
         !location.pathname.includes("/assignments") && 
         !location.pathname.includes("/projects") && 
+        !location.pathname.includes("/curriculum/topic/") && 
         <AiTutorChat />
       }
     </div>

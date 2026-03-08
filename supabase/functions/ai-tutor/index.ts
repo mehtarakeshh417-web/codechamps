@@ -77,8 +77,7 @@ function needsWebSearch(message: string): boolean {
     "python", "javascript", "html", "css", "java", "scratch",
     "ai ", "artificial intelligence", "machine learning", "chatgpt", "gemini",
     "computer", "technology", "software", "hardware", "internet",
-    "cbse", "icse", "syllabus", "exam", "board",
-    "?", "how", "what", "why", "which", "where", "when"
+    "cbse", "icse", "syllabus", "exam", "board"
   ];
   return searchTriggers.some((t) => lower.includes(t));
 }

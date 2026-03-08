@@ -8,7 +8,8 @@ import {
   Users, BookOpen, School, ChevronRight, CheckCircle2, Star, ArrowRight, MessageSquare, Mail,
 } from "lucide-react";
 import logo from "@/assets/logo.jpg";
-import { useState } from "react";
+import React, { useState } from "react";
+import { toast } from "sonner";
 
 const features = [
   { icon: GraduationCap, title: "Smart Curriculum", desc: "Class-wise structured CS education from Class 1 to 10", color: "neon-glow-blue" },
@@ -74,7 +75,7 @@ const faqs = [
   { q: "Do you offer a free trial?", a: "Yes! We offer a 30-day free trial for schools with up to 50 students. Contact us to get started — no credit card required." },
 ];
 
-const Landing = () => {
+const Landing = React.forwardRef<HTMLDivElement>((_, ref) => {
   const navigate = useNavigate();
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [contactForm, setContactForm] = useState({ name: "", email: "", school: "", message: "" });
@@ -433,7 +434,7 @@ const Landing = () => {
             <Button
               onClick={() => {
                 setContactForm({ name: "", email: "", school: "", message: "" });
-                alert("Thank you! We'll contact you within 24 hours.");
+                toast.success("Thank you! We'll contact you within 24 hours.");
               }}
               className="w-full bg-gradient-to-r from-primary to-secondary text-white rounded-xl h-12 font-bold"
             >
@@ -455,6 +456,8 @@ const Landing = () => {
       </footer>
     </div>
   );
-};
+});
+
+Landing.displayName = "Landing";
 
 export default Landing;
