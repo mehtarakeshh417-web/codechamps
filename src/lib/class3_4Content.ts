@@ -255,6 +255,7 @@ const c3PaintMore: TopicTextbook = {
       sections: [
         {
           heading: "Adding Text in Paint",
+          image: "https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=800&h=400&fit=crop",
           body: "**How to add text:**\n1. Click the **A** (Text) tool\n2. Click and drag on the canvas to create a text box\n3. A text toolbar appears with options:\n   • Font name (Arial, Comic Sans, etc.)\n   • Font size\n   • Bold, Italic, Underline\n4. Type your text\n5. Click outside the text box when done\n\n⚠️ **Important:** Once you click outside the text box, you CANNOT edit the text anymore! It becomes part of the image.\n\n**Text Tips:**\n• Use transparent background for text over images\n• Choose opaque background for text with a colored box behind it\n• Large fonts work best for titles\n• Small fonts for details",
         }
       ],
