@@ -165,6 +165,7 @@ const wordPageFormatting: TopicTextbook = {
       sections: [
         {
           heading: "Adding a Background Color",
+          image: "https://images.unsplash.com/photo-1502691876148-a84978e59af8?w=800&h=400&fit=crop",
           body: "You can change the entire background color of your page to make it more attractive or to match a theme.\n\n**How to Add Page Color:**\n1. Go to **Page Layout** tab\n2. Click **Page Color** in the Page Background group\n3. Choose a color from the color palette\n4. Your entire page background will change!\n\n**More Options:**\n• Click **More Colors** to see the full color spectrum\n• Click **Fill Effects** to add gradients, textures, or patterns\n\n**Types of Fill Effects:**\n🎨 **Gradient** — smooth blend of two colors\n🎨 **Texture** — looks like fabric, marble, wood, etc.\n🎨 **Pattern** — repeating designs like stripes or dots\n🎨 **Picture** — use an image as background",
           tip: "Light colors work best for page backgrounds. Dark backgrounds make text hard to read!"
         },
