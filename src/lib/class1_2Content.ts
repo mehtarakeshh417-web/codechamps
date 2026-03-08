@@ -707,6 +707,7 @@ const c1PaintParts: TopicTextbook = {
       sections: [
         {
           heading: "Working with Colors",
+          image: "https://images.unsplash.com/photo-1502691876148-a84978e59af8?w=800&h=400&fit=crop",
           body: "The **Color Palette** is in the Home tab and shows all available colors.\n\n🎨 **Color 1** — Your main drawing color (used when you left-click)\n🎨 **Color 2** — Your background color (used when you right-click)\n\n**How to choose a color:**\n1. Click on **Color 1** box\n2. Click any color in the palette\n3. Now draw — your lines will be that color!\n\n**Edit Colors:**\n• Click **Edit Colors** button\n• A big color chart appears\n• Click anywhere to pick a custom color\n• You can even type exact color numbers!\n\n**Default colors include:**\n🔴 Red, 🟠 Orange, 🟡 Yellow, 🟢 Green\n🔵 Blue, 🟣 Purple, ⚫ Black, ⚪ White\n🟤 Brown, 🩷 Pink, and many more!\n\n**Tip:** Color 2 is used as the eraser background color and as the fill color when you right-click with the Fill tool.",
         }
       ],
