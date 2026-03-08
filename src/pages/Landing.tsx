@@ -89,9 +89,9 @@ const Landing = () => {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          className="font-display text-3xl md:text-4xl font-bold text-center mb-12"
+          className="font-display text-3xl md:text-4xl font-bold text-center mb-12 text-foreground"
         >
-          <span className="text-gradient-purple">Powerful Features</span>
+          Powerful Features
         </motion.h2>
         <div className="grid md:grid-cols-3 gap-6">
           {features.map((f, i) => (
