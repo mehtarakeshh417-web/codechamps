@@ -725,6 +725,7 @@ const c9Cybersec: TopicTextbook = {
       sections: [
         {
           heading: "Understanding Encryption",
+          image: "https://images.unsplash.com/photo-1614064641938-3bbee52942c7?w=800&h=400&fit=crop",
           body: "**Encryption** converts readable data (plaintext) into an unreadable format (ciphertext) using a mathematical algorithm and a key. Only someone with the correct key can decrypt and read the data.\n\nThere are two main types: **Symmetric encryption** uses the same key for encryption and decryption (like a shared padlock key). **Asymmetric encryption** uses a pair of keys — a public key (for encrypting) and a private key (for decrypting). This is what secures your online banking, emails, and messages.\n\nModern encryption like **AES-256** is so strong that it would take billions of years for the world's fastest computers to crack it by brute force.",
           comparison: {
             left: { title: "Symmetric Encryption", points: ["Same key encrypts and decrypts", "Faster performance", "Challenge: sharing the key securely", "Example: AES (Advanced Encryption Standard)"] },
