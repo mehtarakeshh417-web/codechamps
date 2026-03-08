@@ -44,7 +44,7 @@ const editorMeta: Record<string, { label: string; icon: React.ElementType; compo
   mspowerpoint:  { label: "PowerPoint",     icon: Presentation, component: MsPowerPointEditor },
   gimp:          { label: "GIMP",           icon: ImageIcon,    component: GimpEditor },
   krita:         { label: "Krita",          icon: PenTool,      component: KritaEditor },
-  canva:         { label: "Canva",          icon: LayoutDashboard, component: CanvaEditor },
+  canva:         { label: "Design",         icon: LayoutDashboard, component: CanvaEditor },
 };
 
 const StudentCodingLab = () => {
