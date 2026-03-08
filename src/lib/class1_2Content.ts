@@ -919,6 +919,7 @@ const c2WordIntro: TopicTextbook = {
       sections: [
         {
           heading: "Basic Text Formatting",
+          image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&h=400&fit=crop",
           body: "**Formatting** means changing how your text looks.\n\n**Select your text first**, then apply formatting:\n\n**B** **Bold** (Ctrl+B) — Makes text **thick and heavy**\n*I* **Italic** (Ctrl+I) — Makes text *slanted*\nU **Underline** (Ctrl+U) — Adds a line under text\n\n**Font (Style):**\n• Click the font dropdown box\n• Choose a style: Arial, Comic Sans MS, Times New Roman, etc.\n• Each font looks different!\n\n**Font Size:**\n• Click the size dropdown (usually shows 11)\n• Choose a bigger number for bigger text\n• Headings: 18-28, Body text: 11-14\n\n**Font Color:**\n• Click the **A** with a colored bar under it\n• Choose any color for your text!\n\n**Alignment:**\n⬅️ **Left align** — text starts from the left\n🔳 **Center** — text is in the middle\n➡️ **Right align** — text is on the right side",
         }
       ],
