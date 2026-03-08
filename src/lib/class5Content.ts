@@ -225,6 +225,7 @@ const wordPageFormatting: TopicTextbook = {
       sections: [
         {
           heading: "What are Page Borders?",
+          image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&h=400&fit=crop",
           body: "**Page borders** are decorative frames that go around the entire page. They make your documents look attractive and professional — perfect for certificates, greeting cards, and project covers!\n\n**Types of Page Borders:**\n🔲 **Box** — simple rectangular border all around\n🔲 **Shadow** — border with a shadow effect\n🔲 **3-D** — border with a 3D raised effect\n🔲 **Custom** — different borders on each side\n🎨 **Art** — decorative borders with shapes like stars, hearts, trees, balloons, and more!",
           table: {
             headers: ["Border Type", "Description", "Best Use"],
