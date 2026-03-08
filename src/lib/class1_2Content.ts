@@ -527,6 +527,12 @@ const c1ScratchWork: TopicTextbook = {
         {
           heading: "What You Learned",
           body: "🎉 Congratulations! You learned:\n\n✅ What Scratch Jr is and why it's fun\n✅ Parts of the Scratch Jr screen\n✅ How to make sprites move with Motion blocks\n✅ How to make sprites talk with Say blocks\n✅ How to add backgrounds and new characters\n\nYou're ready to create your own animated stories and games!",
+          keyTerms: [
+            { term: "Sprite", definition: "A character or object in your Scratch Jr project that you can program." },
+            { term: "Script", definition: "A set of connected blocks that tells a sprite what to do." },
+            { term: "Stage", definition: "The area where sprites perform and your project plays." },
+            { term: "Block", definition: "A colorful puzzle piece that represents one instruction or action." },
+          ]
         }
       ],
       exercises: [
