@@ -4,9 +4,9 @@ const SimulatedKritaEditor = () => (
       <span className="text-xs text-white/80 font-body">Krita Digital Painting — Powered by Photopea</span>
     </div>
     <iframe
-      src="https://www.photopea.com#%7B%22environment%22:%7B%22theme%22:0%7D%7D"
+      src={"https://www.photopea.com#" + encodeURIComponent(JSON.stringify({environment:{theme:0},script:"app.newDocument(1200,900,'Krita Canvas',null,150,'RGB');app.activeDocument.flatten();"}))}
       className="flex-1 w-full border-0"
-      title="Krita Digital Painting (Photopea)"
+      title="Krita Digital Painting"
       allow="clipboard-read; clipboard-write"
       sandbox="allow-scripts allow-same-origin allow-popups allow-forms allow-modals allow-downloads"
       loading="lazy"

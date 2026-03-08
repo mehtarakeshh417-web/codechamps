@@ -4,9 +4,9 @@ const SimulatedGimpEditor = () => (
       <span className="text-xs text-white/80 font-body">GIMP Image Editor — Powered by Photopea</span>
     </div>
     <iframe
-      src="https://www.photopea.com#%7B%22environment%22:%7B%22theme%22:1%7D%7D"
+      src={"https://www.photopea.com#" + encodeURIComponent(JSON.stringify({environment:{theme:1},script:"app.newDocument(1024,768,'GIMP Project',null,72,'RGB');app.activeDocument.flatten();"}))}
       className="flex-1 w-full border-0"
-      title="GIMP Image Editor (Photopea)"
+      title="GIMP Image Editor"
       allow="clipboard-read; clipboard-write"
       sandbox="allow-scripts allow-same-origin allow-popups allow-forms allow-modals allow-downloads"
       loading="lazy"
