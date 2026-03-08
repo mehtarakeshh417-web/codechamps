@@ -87,17 +87,17 @@ const Landing = () => {
       <motion.nav
         initial={{ y: -40, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        className="relative z-10 flex items-center justify-between px-6 md:px-12 py-4"
+        className="relative z-10 flex items-center justify-between px-6 md:px-12 py-4 backdrop-blur-sm border-b border-white/5"
       >
         <div className="flex items-center gap-3">
           <img src={logo} alt="CodeChamps logo" className="w-10 h-10 rounded-xl object-contain" />
           <span className="font-display text-2xl md:text-3xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">CodeChamps</span>
         </div>
-        <div className="hidden md:flex items-center gap-6 text-sm font-body text-white/60">
-          <a href="#features" className="hover:text-white transition-colors">Features</a>
-          <a href="#pricing" className="hover:text-white transition-colors">Pricing</a>
-          <a href="#faq" className="hover:text-white transition-colors">FAQ</a>
-          <a href="#contact" className="hover:text-white transition-colors">Contact</a>
+        <div className="hidden md:flex items-center gap-8 text-sm font-body text-white/60">
+          <a href="#features" className="hover:text-white transition-colors relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-primary after:transition-all hover:after:w-full">Features</a>
+          <a href="#pricing" className="hover:text-white transition-colors relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-primary after:transition-all hover:after:w-full">Pricing</a>
+          <a href="#faq" className="hover:text-white transition-colors relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-primary after:transition-all hover:after:w-full">FAQ</a>
+          <a href="#contact" className="hover:text-white transition-colors relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-primary after:transition-all hover:after:w-full">Contact</a>
         </div>
         <Button variant="hero" size="xl" onClick={() => navigate("/login")}>
           Login
@@ -105,35 +105,46 @@ const Landing = () => {
       </motion.nav>
 
       {/* Hero */}
-      <section className="relative z-10 container mx-auto px-6 pt-12 pb-20 md:pt-20 md:pb-32">
+      <section className="relative z-10 container mx-auto px-6 pt-16 pb-24 md:pt-24 md:pb-36">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <motion.div
             initial={{ x: -60, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             transition={{ duration: 0.7, delay: 0.2 }}
           >
-            <div className="inline-flex items-center gap-2 glass-card px-4 py-2 mb-6">
+            <motion.div 
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ delay: 0.3 }}
+              className="inline-flex items-center gap-2 glass-card px-4 py-2 mb-6 gradient-border"
+            >
               <Zap className="w-4 h-4 text-neon-green" />
-              <span className="text-base md:text-lg font-body text-neon-green">The Future of Computer Education</span>
-            </div>
-            <h1 className="font-display text-4xl md:text-6xl font-bold leading-tight mb-6">
-              <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Gamified</span>{" "}
-              <span className="text-white">Computer</span>
+              <span className="text-base md:text-lg font-body text-neon-green font-semibold">The Future of Computer Education</span>
+            </motion.div>
+            <h1 className="font-display text-4xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6">
+              <motion.span 
+                initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }}
+                className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent inline-block"
+              >Gamified</motion.span>{" "}
+              <motion.span initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5 }} className="text-white inline-block">Computer</motion.span>
               <br />
-              <span className="text-white">Education for</span>{" "}
-              <span className="text-gradient-fire">Schools</span>
+              <motion.span initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.6 }} className="text-white inline-block">Education for</motion.span>{" "}
+              <motion.span initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.7 }} className="text-gradient-fire inline-block">Schools</motion.span>
             </h1>
-            <p className="font-body text-lg text-white/70 mb-8 max-w-lg">
+            <motion.p 
+              initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.8 }}
+              className="font-body text-lg text-white/60 mb-8 max-w-lg leading-relaxed"
+            >
               CodeChamps transforms computer science teaching with XP systems, AI assignments, live coding sandboxes, and class-wise curriculum — from Class 1 to 10.
-            </p>
-            <div className="flex flex-wrap gap-4">
-              <Button variant="hero" size="xl" onClick={() => navigate("/login")}>
-                Get Started
+            </motion.p>
+            <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.9 }} className="flex flex-wrap gap-4">
+              <Button variant="hero" size="xl" onClick={() => navigate("/login")} className="group">
+                Get Started <ChevronRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
               </Button>
               <Button variant="hero" size="xl" onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}>
                 Book Demo
               </Button>
-            </div>
+            </motion.div>
           </motion.div>
 
           <motion.div
@@ -142,12 +153,28 @@ const Landing = () => {
             transition={{ duration: 0.7, delay: 0.4 }}
             className="relative"
           >
-            <div className="relative rounded-2xl overflow-hidden neon-glow-blue">
+            <div className="absolute -inset-4 bg-gradient-to-r from-primary/20 to-secondary/20 rounded-3xl blur-2xl opacity-50 animate-glow-pulse" />
+            <div className="relative rounded-2xl overflow-hidden gradient-border">
               <img src={heroBg} alt="CodeChamps gamified classroom" className="w-full rounded-2xl" />
-              <div className="absolute inset-0 bg-gradient-to-t from-cyber-darker/60 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-cyber-darker/70 via-transparent to-transparent" />
             </div>
           </motion.div>
         </div>
+
+        {/* Scroll hint */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.2 }}
+          className="hidden md:flex justify-center mt-12"
+        >
+          <div className="flex flex-col items-center gap-2 text-white/20">
+            <span className="text-xs font-body">Scroll to explore</span>
+            <motion.div animate={{ y: [0, 8, 0] }} transition={{ duration: 2, repeat: Infinity }} className="w-5 h-8 rounded-full border-2 border-white/20 flex justify-center pt-1.5">
+              <div className="w-1 h-2 rounded-full bg-white/30" />
+            </motion.div>
+          </div>
+        </motion.div>
       </section>
 
       {/* Stats Counter */}
@@ -417,8 +444,14 @@ const Landing = () => {
       </section>
 
       {/* Footer */}
-      <footer className="relative z-10 text-center py-8 text-white/30 text-sm font-body border-t border-white/5">
-        © 2026 CodeChamps. All rights reserved.
+      <footer className="relative z-10 py-10 border-t border-white/5">
+        <div className="container mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4">
+          <div className="flex items-center gap-2">
+            <img src={logo} alt="CodeChamps" className="w-6 h-6 rounded-lg object-contain" />
+            <span className="font-display text-sm font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">CodeChamps</span>
+          </div>
+          <p className="text-white/30 text-xs font-body">© 2026 CodeChamps. All rights reserved. Made with ❤️ in India.</p>
+        </div>
       </footer>
     </div>
   );
