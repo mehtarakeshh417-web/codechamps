@@ -134,6 +134,7 @@ const c9PythonAdv: TopicTextbook = {
       sections: [
         {
           heading: "Working with Files",
+          image: "https://images.unsplash.com/photo-1544396821-4dd40b938ad3?w=800&h=400&fit=crop",
           body: "Programs often need to read data from files or save results to files. Python makes file handling straightforward with built-in functions.\n\nFiles can be opened in different **modes**: read ('r'), write ('w'), append ('a'), and read+write ('r+'). The write mode creates a new file or overwrites an existing one, while append mode adds to the end without erasing existing content.\n\nThe most important best practice is using the `with` statement, which automatically closes the file when you're done — even if an error occurs. This prevents resource leaks and data corruption.",
           table: {
             headers: ["Mode", "Symbol", "Description", "Creates File?"],
