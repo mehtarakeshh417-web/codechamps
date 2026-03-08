@@ -14,6 +14,7 @@ const c9PythonAdv: TopicTextbook = {
       sections: [
         {
           heading: "Python Data Structures",
+          image: "https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=800&h=400&fit=crop",
           body: "Python provides powerful built-in data structures that let you organize and manage data efficiently. Understanding when to use each data structure is a critical skill for any programmer.\n\n**Lists** are the most versatile — they store ordered collections that can be modified. **Tuples** are similar but immutable, making them perfect for data that shouldn't change. **Dictionaries** map unique keys to values, enabling lightning-fast lookups. **Sets** store only unique values and support powerful mathematical operations like union and intersection.\n\nChoosing the right data structure can make the difference between a program that runs in seconds vs minutes. As your datasets grow larger, efficiency matters more and more.",
           youtubeId: "kqtD5dpn9C8",
           tip: "Use lists for ordered collections, dictionaries for key-value data, sets for unique items, and tuples for fixed data.",
