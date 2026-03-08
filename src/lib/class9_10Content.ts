@@ -77,6 +77,7 @@ const c9PythonAdv: TopicTextbook = {
       sections: [
         {
           heading: "Introduction to OOP",
+          image: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=800&h=400&fit=crop",
           body: "**Object-Oriented Programming (OOP)** is a programming paradigm that organizes code around objects rather than functions. Objects bundle data (attributes) and behavior (methods) together, mirroring how we think about real-world things.\n\nImagine a Car object: it has attributes like color, speed, and fuel level, and methods like start(), accelerate(), and brake(). OOP lets us model complex systems by breaking them into manageable, reusable pieces.\n\nPython is a fully object-oriented language — in fact, everything in Python is an object, including numbers, strings, and even functions!",
           illustration: [
             { emoji: "🏗️", label: "Class (Blueprint)" },
