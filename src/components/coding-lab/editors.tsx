@@ -250,15 +250,15 @@ export const ScratchJrEditor = () => (
   </EditorWrapper>
 );
 
-// Canva Editor
+// Design Editor (Polotno Studio - free Canva alternative, no login required)
 export const CanvaEditor = () => (
-  <EditorWrapper title="Canva Editor">
+  <EditorWrapper title="Design Editor">
     <div className="h-[650px] rounded-xl overflow-hidden border border-white/10 bg-white">
       <iframe
-        src="https://www.canva.com/"
+        src="https://studio.polotno.com/"
         className="w-full h-full border-0"
-        title="Canva Design Editor"
-        allow="clipboard-read; clipboard-write; camera; microphone"
+        title="Design Editor (Polotno Studio)"
+        allow="clipboard-read; clipboard-write"
         sandbox="allow-scripts allow-same-origin allow-popups allow-forms allow-modals allow-downloads allow-popups-to-escape-sandbox"
         loading="lazy"
       />
@@ -275,11 +275,11 @@ export const EDITOR_URLS: Record<string, { url: string; label: string }> = {
   scratchjr: { url: "https://codejr.org/scratchjr/index.html", label: "Scratch Jr" },
   mspaint: { url: "https://paint.js.org/", label: "MS Paint" },
   msword: { url: "about:blank", label: "MS Word Editor" },
-  msexcel: { url: "about:blank", label: "MS Excel Editor" },
+  msexcel: { url: "https://ethercalc.net/_new", label: "MS Excel Editor" },
   mspowerpoint: { url: "about:blank", label: "MS PowerPoint Editor" },
   gimp: { url: "about:blank", label: "GIMP Editor" },
   krita: { url: "about:blank", label: "Krita Editor" },
-  canva: { url: "https://www.canva.com/", label: "Canva Editor" },
+  canva: { url: "https://studio.polotno.com/", label: "Design Editor" },
 };
 
 // Re-export simulated editors
