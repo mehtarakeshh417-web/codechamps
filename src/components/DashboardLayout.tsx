@@ -128,13 +128,20 @@ const DashboardLayout = ({ children }: Props) => {
             <button
               key={item.path}
               onClick={() => handleNav(item.path)}
-              className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-body transition-all duration-200 ${
+              className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-body transition-all duration-200 relative group ${
                 isActive
-                  ? "bg-primary/15 text-primary neon-glow-blue"
+                  ? "bg-primary/15 text-primary font-semibold"
                   : "text-white/50 hover:text-white/80 hover:bg-white/5"
               }`}
             >
-              <item.icon className="w-5 h-5" />
+              {isActive && (
+                <motion.div
+                  layoutId="sidebar-indicator"
+                  className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-6 rounded-r-full bg-gradient-to-b from-primary to-secondary"
+                  transition={{ type: "spring", damping: 25, stiffness: 300 }}
+                />
+              )}
+              <item.icon className={`w-5 h-5 transition-transform duration-200 ${isActive ? "" : "group-hover:scale-110"}`} />
               {item.label}
             </button>
           );
