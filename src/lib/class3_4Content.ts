@@ -70,6 +70,7 @@ const c3Ipo: TopicTextbook = {
       sections: [
         {
           heading: "Types of Output Devices",
+          image: "https://images.unsplash.com/photo-1588508065123-287b28e013da?w=800&h=400&fit=crop",
           body: "**Output devices** show or give the RESULTS from the computer:\n\n🖥️ **Monitor** — displays text, images, videos on screen\n🖨️ **Printer** — prints documents on paper\n🔊 **Speakers** — play sounds and music\n🎧 **Headphones** — play sound privately\n📽️ **Projector** — displays on a big screen/wall\n💡 **LED indicators** — show status lights\n\n**Types of Output:**\n• **Visual** — things you SEE (monitor, projector)\n• **Audio** — things you HEAR (speakers, headphones)\n• **Physical** — things you TOUCH (printed paper, 3D printed objects)\n\n**Remember:** If it gives information FROM the computer, it's an OUTPUT device!",
           tip: "Headphones and speakers do the same job — play sound. The difference is speakers share with everyone, headphones are private!"
         }
