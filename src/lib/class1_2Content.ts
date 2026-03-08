@@ -460,6 +460,7 @@ const c1ScratchWork: TopicTextbook = {
       sections: [
         {
           heading: "Parts of Scratch Jr",
+          image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=800&h=400&fit=crop",
           body: "When you open Scratch Jr, you see:\n\n🎬 **Stage** — The big area at the top where your characters perform. This is like a theater stage!\n\n🐱 **Sprites** — The characters in your project. The default sprite is a cat. You can add more!\n\n🧱 **Block Palette** — The colored blocks at the bottom. These are your coding instructions.\n\n📜 **Scripts Area** — Where you drag blocks to build your code.\n\n🎨 **Paint Editor** — Draw and customize your own characters!\n\n**Block Colors:**\n🟡 Yellow — Trigger blocks (start events)\n🔵 Blue — Motion blocks (make things move)\n🟣 Purple — Looks blocks (change appearance)\n🟢 Green — Sound blocks\n🟠 Orange — Control blocks (wait, repeat)\n🔴 Red — End blocks",
         }
       ],
