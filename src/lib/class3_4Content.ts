@@ -390,6 +390,7 @@ const c3ScratchStart: TopicTextbook = {
       sections: [
         {
           heading: "Making the Cat Move",
+          image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=800&h=400&fit=crop",
           body: "**Step 1:** Find the **Events** category (yellow blocks)\n**Step 2:** Drag **'when green flag clicked'** to the Scripts Area\n**Step 3:** Go to **Motion** category (blue blocks)\n**Step 4:** Drag **'move 10 steps'** and connect it below the flag block\n**Step 5:** Click the **Green Flag** on the stage!\n\n🎉 The cat moves 10 steps to the right!\n\n**Make it better:**\n• Change 10 to a bigger number for more movement\n• Add **'turn 15 degrees'** to make it rotate\n• Add **'glide 1 secs to random position'** for smooth movement\n• Add **'if on edge, bounce'** so it doesn't disappear\n\n**Complete Walking Script:**\nwhen green flag clicked\nforever\n  move 10 steps\n  if on edge, bounce\nend",
         }
       ],
