@@ -264,6 +264,7 @@ const wordPageFormatting: TopicTextbook = {
         },
         {
           heading: "How to Create Columns",
+          image: "https://images.unsplash.com/photo-1504711434969-e33886168d6c?w=800&h=400&fit=crop",
           body: "**Steps to add columns:**\n1. Select the text you want to put in columns (or select all text with Ctrl+A)\n2. Go to **Page Layout** tab\n3. Click **Columns**\n4. Choose **Two** or **Three**\n5. Your text automatically reformats into columns!\n\n**For More Options:**\n1. Click **Columns → More Columns**\n2. Set the exact number of columns\n3. Adjust the **spacing** between columns\n4. Check **Line between** to add a vertical line separating columns\n5. Click **OK**\n\n**Column Break:**\nTo force text to move to the next column:\n1. Place your cursor where you want the break\n2. Go to **Page Layout → Breaks → Column**",
           tip: "Columns work great for newsletters, brochures, and newspaper-style projects. Try combining columns with a large heading that spans the full width!"
         }
