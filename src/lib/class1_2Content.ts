@@ -297,6 +297,7 @@ const c1PaintStart: TopicTextbook = {
       sections: [
         {
           heading: "How to Save",
+          image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&h=400&fit=crop",
           body: "**Saving your drawing:**\n1. Click **File** → **Save As**\n2. Choose where to save (Desktop, Documents, etc.)\n3. Type a **name** for your file (like 'My House Drawing')\n4. Click **Save**!\n\n**File formats:**\n🖼️ **PNG** — best quality, keeps transparency\n🖼️ **JPEG/JPG** — smaller file size, good for photos\n🖼️ **BMP** — Paint's original format, very large files\n🖼️ **GIF** — small size, limited colors\n\n**Quick Save:** Press **Ctrl+S** to save quickly (uses the same name and location)\n\n**Save vs Save As:**\n• **Save** — saves over the existing file\n• **Save As** — lets you choose a new name or location",
           tip: "Always save your work often! Press Ctrl+S every few minutes so you don't lose anything."
         }
