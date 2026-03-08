@@ -30,7 +30,7 @@ const Landing = () => {
       >
         <div className="flex items-center gap-3">
           <img src={logo} alt="CodeChamps logo" className="w-10 h-10 rounded-xl object-contain" />
-          <span className="font-display text-xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">CodeChamps</span>
+          <span className="font-display text-2xl md:text-3xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">CodeChamps</span>
         </div>
         <Button variant="hero" size="xl" onClick={() => navigate("/login")}>
           Login
