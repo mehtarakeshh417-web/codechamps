@@ -472,7 +472,7 @@ const c3ScratchSay: TopicTextbook = {
 };
 
 const c3ScratchSound: TopicTextbook = {
-  topicId: "c3-scr-snd",
+  topicId: "c3-scr-sound",
   topicTitle: "Sound & Music in Scratch",
   subjectColor: "neon-green",
   pages: [
