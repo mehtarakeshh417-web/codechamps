@@ -17,6 +17,7 @@ import TopicProgressPanel from "@/components/topic-viewer/TopicProgressPanel";
 import { PremiumSection, PremiumExercise, PremiumPageHeader } from "@/components/topic-viewer/PremiumContentSections";
 import WatchAndLearn from "@/components/topic-viewer/WatchAndLearn";
 import TopicQuiz from "@/components/topic-viewer/TopicQuiz";
+import StudentNotes from "@/components/topic-viewer/StudentNotes";
 
 const xpLevel = (xp: number) => {
   if (xp < 500) return 1;
