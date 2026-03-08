@@ -324,6 +324,7 @@ const c1PaintShapes: TopicTextbook = {
       sections: [
         {
           heading: "Drawing Lines and Rectangles",
+          image: "https://images.unsplash.com/photo-1509228468518-180dd4864904?w=800&h=400&fit=crop",
           body: "**Drawing a Line:**\n1. Select the **Line** tool\n2. Choose a thickness\n3. Click where you want the line to start\n4. Drag to where you want it to end\n5. Release!\n\n**Drawing a Rectangle:**\n1. Select the **Rectangle** tool\n2. Click and drag on the canvas\n3. A rectangle appears!\n4. Hold **Shift** to make a perfect square\n\n**Drawing an Oval/Circle:**\n1. Select the **Oval** tool\n2. Click and drag\n3. Hold **Shift** for a perfect circle",
           youtubeId: "Xn7Ac-ujT9A"
         }
