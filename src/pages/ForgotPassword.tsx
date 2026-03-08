@@ -42,7 +42,7 @@ const ForgotPassword = () => {
   };
 
   const handleReset = async () => {
-    if (!newPassword || newPassword.length < 4) { setError("Password must be at least 4 characters"); return; }
+    if (!newPassword) { setError("Please enter a new password"); return; }
     if (newPassword !== confirmPassword) { setError("Passwords do not match"); return; }
     if (!verificationValue.trim()) { setError("Please fill in the verification field"); return; }
 
