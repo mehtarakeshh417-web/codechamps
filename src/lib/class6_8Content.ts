@@ -27,9 +27,28 @@ const c6HtmlIntro: TopicTextbook = {
       sections: [
         {
           heading: "Understanding HTML",
-          body: "**HTML** stands for **HyperText Markup Language**. It's the language used to create web pages!\n\nEvery website you visit — Google, YouTube, Wikipedia — is built with HTML.\n\n**What HTML does:**\n📄 Defines the **structure** of a web page\n📝 Adds **text** (headings, paragraphs, lists)\n🖼️ Adds **images** and videos\n🔗 Creates **links** to other pages\n📊 Creates **tables** for organized data\n📋 Creates **forms** for user input\n\n**HTML uses tags** — special instructions wrapped in angle brackets:\n`<tagname>content</tagname>`\n\n**Example:**\n`<h1>Hello World!</h1>` — creates a big heading\n`<p>This is a paragraph.</p>` — creates a paragraph",
+          body: "**HTML** stands for **HyperText Markup Language**. It's the language used to create web pages!\n\nEvery website you visit — Google, YouTube, Wikipedia — is built with HTML.\n\n**What HTML does:**\n📄 Defines the **structure** of a web page\n📝 Adds **text** (headings, paragraphs, lists)\n🖼️ Adds **images** and videos\n🔗 Creates **links** to other pages\n📊 Creates **tables** for organized data\n📋 Creates **forms** for user input",
           youtubeId: "FG44xi1ujac",
-          funFact: "HTML was invented by Tim Berners-Lee in 1991. He also invented the World Wide Web!"
+          funFact: "HTML was invented by Tim Berners-Lee in 1991. He also invented the World Wide Web!",
+          keyTerms: [
+            { term: "HTML", definition: "HyperText Markup Language — the standard language for creating web pages" },
+            { term: "Tag", definition: "A special keyword surrounded by angle brackets like <p> that defines elements" },
+            { term: "Element", definition: "An HTML tag plus its content, e.g. <p>Hello</p>" },
+            { term: "Attribute", definition: "Extra information added to a tag, like href in <a href='...'>" }
+          ],
+          codeBlock: {
+            language: "html",
+            code: "<h1>Hello World!</h1>\n<p>This is my first paragraph.</p>\n<a href=\"https://google.com\">Visit Google</a>"
+          }
+        },
+        {
+          heading: "HTML vs Other Technologies",
+          body: "HTML works together with CSS and JavaScript to build modern websites. Each technology has a specific role:",
+          comparison: {
+            left: { title: "HTML (Structure)", points: ["Defines what is on the page", "Headings, paragraphs, images", "The skeleton of a website", "Cannot style or animate"] },
+            right: { title: "CSS (Styling)", points: ["Defines how things look", "Colors, fonts, spacing", "The clothing of a website", "Cannot add content"] }
+          },
+          warningNote: "HTML alone creates plain-looking pages. You'll need CSS (which you'll learn later) to make them beautiful!"
         }
       ]
     },
@@ -40,14 +59,39 @@ const c6HtmlIntro: TopicTextbook = {
       sections: [
         {
           heading: "The HTML Skeleton",
-          body: "Every HTML page has this basic structure:\n\n```\n<!DOCTYPE html>\n<html>\n<head>\n  <title>My Page Title</title>\n</head>\n<body>\n  <h1>Welcome!</h1>\n  <p>This is my first webpage.</p>\n</body>\n</html>\n```\n\n**Breaking it down:**\n📜 `<!DOCTYPE html>` — tells the browser this is an HTML5 document\n🏠 `<html>` — the root element, wraps everything\n🧠 `<head>` — contains info ABOUT the page (title, styles) — not visible\n📖 `<title>` — the text shown in the browser tab\n📄 `<body>` — contains everything VISIBLE on the page\n🔚 Closing tags start with `/` — like `</html>`",
-          tip: "Think of `<head>` as the brain (thinking but invisible) and `<body>` as the body (visible to everyone)!"
+          body: "Every HTML page has this basic structure. Think of it as the **blueprint** — without it, the browser won't know how to display your content!",
+          tip: "Think of `<head>` as the brain (thinking but invisible) and `<body>` as the body (visible to everyone)!",
+          codeBlock: {
+            language: "html",
+            code: "<!DOCTYPE html>\n<html>\n<head>\n  <title>My Page Title</title>\n</head>\n<body>\n  <h1>Welcome!</h1>\n  <p>This is my first webpage.</p>\n</body>\n</html>"
+          },
+          stepByStep: {
+            steps: [
+              { title: "DOCTYPE Declaration", description: "Write `<!DOCTYPE html>` to tell the browser this is an HTML5 document" },
+              { title: "Open the HTML tag", description: "Add `<html>` — this is the root element that wraps everything" },
+              { title: "Add the Head section", description: "Inside `<head>`, add `<title>` for the browser tab text. This section is **invisible** to visitors" },
+              { title: "Add the Body section", description: "Inside `<body>`, add your visible content — headings, paragraphs, images, everything!" },
+              { title: "Close all tags", description: "Close every tag in reverse order: `</body>`, then `</html>`. Always close what you open!" }
+            ]
+          },
+          table: {
+            headers: ["Tag", "Purpose", "Visible?"],
+            rows: [
+              ["`<!DOCTYPE>`", "Declares HTML5 document type", "No"],
+              ["`<html>`", "Root element — wraps everything", "No"],
+              ["`<head>`", "Page metadata, title, styles", "No"],
+              ["`<title>`", "Text shown in browser tab", "Tab only"],
+              ["`<body>`", "All visible page content", "Yes"]
+            ]
+          }
         }
       ],
       exercises: [
         { type: "fill-in-blank", question: "HTML stands for HyperText ___ Language.", answer: "markup" },
         { type: "fill-in-blank", question: "The content visible on a webpage goes inside the ___ tag.", answer: "body" },
         { type: "true-false", question: "The <head> section content is visible on the webpage.", answer: "False", options: ["True", "False"] },
+        { type: "mcq", question: "Which tag contains the text that appears in the browser tab?", answer: "<title>", choices: ["<head>", "<title>", "<body>", "<h1>"] },
+        { type: "ordering", question: "Arrange these HTML tags in the correct nesting order (outermost to innermost):", answer: "", orderItems: ["<!DOCTYPE html>", "<html>", "<head>", "<body>", "<p>Content</p>"] },
         { type: "practice", question: "Open the HTML editor. Create a basic HTML page with a title, a heading (h1), and two paragraphs about yourself. Click Run to see the preview!", answer: "" },
       ]
     },
