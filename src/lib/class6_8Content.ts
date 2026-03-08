@@ -27,9 +27,28 @@ const c6HtmlIntro: TopicTextbook = {
       sections: [
         {
           heading: "Understanding HTML",
-          body: "**HTML** stands for **HyperText Markup Language**. It's the language used to create web pages!\n\nEvery website you visit — Google, YouTube, Wikipedia — is built with HTML.\n\n**What HTML does:**\n📄 Defines the **structure** of a web page\n📝 Adds **text** (headings, paragraphs, lists)\n🖼️ Adds **images** and videos\n🔗 Creates **links** to other pages\n📊 Creates **tables** for organized data\n📋 Creates **forms** for user input\n\n**HTML uses tags** — special instructions wrapped in angle brackets:\n`<tagname>content</tagname>`\n\n**Example:**\n`<h1>Hello World!</h1>` — creates a big heading\n`<p>This is a paragraph.</p>` — creates a paragraph",
+          body: "**HTML** stands for **HyperText Markup Language**. It's the language used to create web pages!\n\nEvery website you visit — Google, YouTube, Wikipedia — is built with HTML.\n\n**What HTML does:**\n📄 Defines the **structure** of a web page\n📝 Adds **text** (headings, paragraphs, lists)\n🖼️ Adds **images** and videos\n🔗 Creates **links** to other pages\n📊 Creates **tables** for organized data\n📋 Creates **forms** for user input",
           youtubeId: "FG44xi1ujac",
-          funFact: "HTML was invented by Tim Berners-Lee in 1991. He also invented the World Wide Web!"
+          funFact: "HTML was invented by Tim Berners-Lee in 1991. He also invented the World Wide Web!",
+          keyTerms: [
+            { term: "HTML", definition: "HyperText Markup Language — the standard language for creating web pages" },
+            { term: "Tag", definition: "A special keyword surrounded by angle brackets like <p> that defines elements" },
+            { term: "Element", definition: "An HTML tag plus its content, e.g. <p>Hello</p>" },
+            { term: "Attribute", definition: "Extra information added to a tag, like href in <a href='...'>" }
+          ],
+          codeBlock: {
+            language: "html",
+            code: "<h1>Hello World!</h1>\n<p>This is my first paragraph.</p>\n<a href=\"https://google.com\">Visit Google</a>"
+          }
+        },
+        {
+          heading: "HTML vs Other Technologies",
+          body: "HTML works together with CSS and JavaScript to build modern websites. Each technology has a specific role:",
+          comparison: {
+            left: { title: "HTML (Structure)", points: ["Defines what is on the page", "Headings, paragraphs, images", "The skeleton of a website", "Cannot style or animate"] },
+            right: { title: "CSS (Styling)", points: ["Defines how things look", "Colors, fonts, spacing", "The clothing of a website", "Cannot add content"] }
+          },
+          warningNote: "HTML alone creates plain-looking pages. You'll need CSS (which you'll learn later) to make them beautiful!"
         }
       ]
     },
