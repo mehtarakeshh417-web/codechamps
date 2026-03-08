@@ -32,6 +32,7 @@ import StudentLeaderboard from "./student/StudentLeaderboard";
 import StudentCertificates from "./student/StudentCertificates";
 import StudentProgress from "./student/StudentProgress";
 import StudentProjects from "./student/StudentProjects";
+import StudentPortfolio from "./student/StudentPortfolio";
 
 const adminRoutes = (
   <>
