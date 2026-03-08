@@ -53,6 +53,7 @@ const c3Ipo: TopicTextbook = {
       sections: [
         {
           heading: "What is Processing?",
+          image: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&h=400&fit=crop",
           body: "**Processing** is when the computer works on the input data.\n\nThe **CPU (Central Processing Unit)** does all the processing. It's called the **brain** of the computer.\n\n**What the CPU does:**\n🧮 Performs calculations (math)\n📊 Sorts and organizes data\n🔍 Searches for information\n🎨 Creates graphics for the screen\n🎵 Processes audio for speakers\n\n**Speed of Processing:**\nModern CPUs can do **billions** of calculations per second!\nThis is measured in **GHz (Gigahertz)**\n• 1 GHz = 1 billion operations per second\n• 3 GHz = 3 billion operations per second!",
           funFact: "The CPU in your computer is smaller than a postage stamp, but it contains billions of tiny switches called transistors!"
         }
