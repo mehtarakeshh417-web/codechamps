@@ -29,6 +29,7 @@ const navConfig: Record<UserRole, NavItem[]> = {
     { icon: Users, label: "Teachers", path: "/dashboard/teachers" },
     { icon: GraduationCap, label: "Students", path: "/dashboard/students" },
     { icon: BookOpen, label: "Classes", path: "/dashboard/classes" },
+    { icon: CalendarDays, label: "Attendance", path: "/dashboard/attendance" },
     { icon: BarChart3, label: "Analytics", path: "/dashboard/analytics" },
     { icon: Settings, label: "Settings", path: "/dashboard/settings" },
   ],
