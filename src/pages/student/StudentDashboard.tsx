@@ -4,7 +4,8 @@ import { useAuth } from "@/contexts/AuthContext";
 import { useData } from "@/contexts/DataContext";
 import { getCurriculumForClass, countTotalTopics, countActivitiesAndProjects } from "@/lib/curriculumData";
 import { Trophy, Target, BookOpen, Award, TrendingUp, Gamepad2 } from "lucide-react";
-import { useMemo } from "react";
+import { useMemo, useState, useEffect } from "react";
+import { supabase } from "@/integrations/supabase/client";
 
 const xpLevel = (xp: number) => {
   if (xp < 500) return { level: 1, title: "Byte Beginner", next: 500 };
@@ -19,18 +20,25 @@ const StudentDashboard = () => {
   const { students } = useData();
   const navigate = useNavigate();
 
-  const student = students.find((s) => s.id === user?.id);
+  const student = students.find((s) => s.user_id === user?.id);
   const xp = student?.xp || 0;
   const lvl = xpLevel(xp);
   const progress = Math.round((xp / lvl.next) * 100);
 
   const curriculum = useMemo(() => getCurriculumForClass(user?.className || ""), [user?.className]);
-  const completedTopics = useMemo(() => {
-    try {
-      const stored = localStorage.getItem(`cc_completed_${user?.id}`);
-      return stored ? JSON.parse(stored) as string[] : [];
-    } catch { return []; }
-  }, [user?.id]);
+
+  // Fetch completed topics from DB
+  const [completedTopics, setCompletedTopics] = useState<string[]>([]);
+  useEffect(() => {
+    if (!student) return;
+    supabase
+      .from("topic_completions")
+      .select("topic_id")
+      .eq("student_id", student.id)
+      .then(({ data }) => {
+        if (data) setCompletedTopics(data.map((d: any) => d.topic_id));
+      });
+  }, [student]);
 
   const totalTopics = curriculum ? countTotalTopics(curriculum) : 0;
   const completedCount = completedTopics.length;

@@ -1,10 +1,11 @@
-import { useMemo } from "react";
+import { useMemo, useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { useAuth } from "@/contexts/AuthContext";
 import { useData } from "@/contexts/DataContext";
 import { getCurriculumForClass, countTotalTopics } from "@/lib/curriculumData";
 import { TrendingUp, CheckCircle2, Clock, Zap, BookOpen } from "lucide-react";
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip, BarChart, Bar, XAxis, YAxis, CartesianGrid } from "recharts";
+import { supabase } from "@/integrations/supabase/client";
 
 const COLORS = ["hsl(145,80%,50%)", "hsl(200,100%,50%)", "hsl(260,80%,60%)", "hsl(25,100%,55%)", "hsl(330,90%,60%)"];
 
@@ -19,17 +20,24 @@ const xpLevel = (xp: number) => {
 const StudentProgress = () => {
   const { user } = useAuth();
   const { students } = useData();
-  const student = students.find((s) => s.id === user?.id);
+  const student = students.find((s) => s.user_id === user?.id);
   const xp = student?.xp || 0;
   const lvl = xpLevel(xp);
 
   const curriculum = useMemo(() => getCurriculumForClass(user?.className || ""), [user?.className]);
-  const completedTopics = useMemo(() => {
-    try {
-      const stored = localStorage.getItem(`cc_completed_${user?.id}`);
-      return stored ? JSON.parse(stored) as string[] : [];
-    } catch { return []; }
-  }, [user?.id]);
+
+  // Fetch completed topics from DB
+  const [completedTopics, setCompletedTopics] = useState<string[]>([]);
+  useEffect(() => {
+    if (!student) return;
+    supabase
+      .from("topic_completions")
+      .select("topic_id")
+      .eq("student_id", student.id)
+      .then(({ data }) => {
+        if (data) setCompletedTopics(data.map((d: any) => d.topic_id));
+      });
+  }, [student]);
 
   const totalTopics = curriculum ? countTotalTopics(curriculum) : 0;
   const completedCount = completedTopics.length;
