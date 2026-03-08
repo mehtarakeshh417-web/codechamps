@@ -937,6 +937,7 @@ const c2WordIntro: TopicTextbook = {
       sections: [
         {
           heading: "How to Save",
+          image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&h=400&fit=crop",
           body: "**Saving for the first time:**\n1. Click **File** → **Save As**\n2. Choose **This PC** → **Desktop** (or any location)\n3. Type a name for your file\n4. Click **Save**!\n\n**Quick Save:** Press **Ctrl+S** (saves instantly!)\n\n**File Types:**\n📄 **.docx** — Word document (default, best choice)\n📄 **.pdf** — Cannot be edited, looks the same on every computer\n📄 **.txt** — Plain text, no formatting\n\n**Opening a Saved File:**\n1. Click **File** → **Open**\n2. Browse to find your file\n3. Double-click to open it!\n\nOR simply double-click any Word file on the Desktop!\n\n⚠️ **Save often!** Press Ctrl+S every few minutes so you don't lose your work if something goes wrong.",
           tip: "Develop the habit of pressing Ctrl+S after every paragraph you write. It takes just a second and saves you from losing your work!"
         }
