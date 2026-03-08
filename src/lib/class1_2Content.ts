@@ -20,6 +20,7 @@ const c1ComputerIntro: TopicTextbook = {
       sections: [
         {
           heading: "Meet the Computer!",
+          image: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=800&h=400&fit=crop",
           body: "A **computer** is an electronic machine that can:\n\n🖥️ **Store** information (like photos, games, and homework)\n🧮 **Calculate** numbers very fast\n🎮 **Play** games and videos\n✏️ **Help** us draw and write\n\nComputers are everywhere! They are in your school, your home, your parents' phones, and even in cars!\n\n**Think of a computer like a very smart helper** — you tell it what to do, and it does it for you!",
           youtubeId: "z9-yDaTwMHk",
           funFact: "The first computer was so big that it filled an entire room! Today, your phone is more powerful than that giant computer.",
@@ -85,6 +86,7 @@ const c1ComputerIntro: TopicTextbook = {
       sections: [
         {
           heading: "How to Hold the Mouse",
+          image: "https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=800&h=400&fit=crop",
           body: "🖱️ Place your hand gently on top of the mouse.\n\n**Your fingers should be like this:**\n👆 **Index finger** (pointer finger) — rests on the **left button**\n👆 **Middle finger** — rests on the **right button**\n👍 **Thumb** — holds the side of the mouse\n\n**Mouse Actions:**\n\n🖱️ **Click** — Press the left button once, quickly. Used to select things.\n🖱️🖱️ **Double-click** — Press the left button twice, very fast. Used to open things.\n➡️ **Right-click** — Press the right button once. Shows a menu with options.\n✋ **Drag** — Hold down the left button while moving the mouse. Used to move things around.\n🔄 **Scroll** — Roll the wheel in the middle to move up and down on a page.",
           tip: "Practice clicking slowly at first. Once you get good, try double-clicking! It takes practice to be fast enough.",
           table: {
@@ -113,6 +115,7 @@ const c1ComputerIntro: TopicTextbook = {
       sections: [
         {
           heading: "Important Keys on the Keyboard",
+          image: "https://images.unsplash.com/photo-1587831990711-23ca6441447b?w=800&h=400&fit=crop",
           body: "The keyboard has many keys. Let's learn the most important ones:\n\n🔤 **Letter Keys** (A-Z) — Type letters to make words\n🔢 **Number Keys** (0-9) — Type numbers\n⬜ **Space Bar** — The longest key at the bottom. Makes a space between words.\n⏎ **Enter Key** — Goes to a new line, or says \"OK\" to the computer\n⬅️ **Backspace** — Deletes the letter BEFORE the cursor (goes backward)\n🔠 **Caps Lock** — Makes ALL letters CAPITAL when turned on\n⬆️ **Shift** — Hold it while pressing a letter to make ONE capital letter\n\n**Special Keys:**\n🔼 **Arrow Keys** — Move up, down, left, right\n⎋ **Escape (Esc)** — Cancels or closes something\n📋 **Tab** — Makes a big space (indent)",
           youtubeId: "n7LBLjnF_qs",
           illustration: [
@@ -141,6 +144,7 @@ const c1ComputerIntro: TopicTextbook = {
       sections: [
         {
           heading: "Turning On the Computer",
+          image: "https://images.unsplash.com/photo-1531297484001-80022131f5a1?w=800&h=400&fit=crop",
           body: "**To start the computer:**\n1. Press the **Power button** on the CPU box\n2. Press the **Power button** on the Monitor\n3. Wait for the computer to start up (this is called **booting**)\n4. The **Desktop** appears — this is your home screen!\n\n**The Desktop shows:**\n🖼️ **Icons** — Small pictures that represent programs\n📁 **Folders** — Where you keep your files organized\n📋 **Taskbar** — The bar at the bottom with the Start button\n🪟 **Start Button** — Click it to see all your programs",
           keyTerms: [
             { term: "Booting", definition: "The process of turning on a computer and loading the operating system." },
@@ -156,6 +160,7 @@ const c1ComputerIntro: TopicTextbook = {
         },
         {
           heading: "Shutting Down Safely",
+          image: "https://images.unsplash.com/photo-1563206767-5b18f218e8de?w=800&h=400&fit=crop",
           body: "**Never just press the power button to turn off!** This can hurt the computer.\n\n**The correct way to shut down:**\n1. Click the **Start button** (bottom-left corner)\n2. Click **Power** (the power icon)\n3. Click **Shut Down**\n4. Wait for the computer to turn off completely\n5. Then turn off the monitor\n\n**Other options:**\n😴 **Sleep** — Computer rests but doesn't fully turn off\n🔄 **Restart** — Turns off and turns back on (useful when something is stuck)\n\n⚠️ **Always save your work before shutting down!**",
           tip: "Think of Shut Down like going to sleep properly — you brush your teeth, change clothes, and then sleep. Don't just fall on the floor!"
         }
@@ -174,6 +179,7 @@ const c1ComputerIntro: TopicTextbook = {
       sections: [
         {
           heading: "Summary",
+          image: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=800&h=400&fit=crop",
           body: "Great job! You learned about:\n\n✅ What a computer is and what it can do\n✅ The main parts: Monitor, Keyboard, Mouse, CPU, Speakers\n✅ How to use the mouse — click, double-click, right-click, drag\n✅ Important keyboard keys\n✅ How to start and safely shut down a computer\n\nYou're now ready to start using the computer! 🎉",
           comparison: {
             left: {
@@ -225,6 +231,7 @@ const c1PaintStart: TopicTextbook = {
       sections: [
         {
           heading: "The Paint Interface",
+          image: "https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=800&h=400&fit=crop",
           body: "When you open Paint, you see:\n\n🎨 **Drawing Area (Canvas)** — The big white area where you draw. This is your paper!\n\n🔧 **Tool Bar / Ribbon** — At the top. Has all the drawing tools like pencil, brush, shapes, colors.\n\n🎨 **Color Palette** — Shows all the colors you can use. Click a color to select it.\n\n📏 **Size Options** — Choose how thick your lines should be.\n\n📋 **Menu Bar** — File, Home, View menus at the very top.\n\n**The most important tools:**\n✏️ Pencil — draws thin lines\n🖌️ Brush — draws thick, artistic lines\n🪣 Fill — fills a shape with color\n🔤 Text — adds words to your drawing\n📐 Shapes — draws circles, squares, lines\n🧽 Eraser — removes mistakes",
           tip: "The Pencil tool is best for thin lines and details. The Brush tool is better for coloring large areas!",
           illustration: [
@@ -253,6 +260,7 @@ const c1PaintStart: TopicTextbook = {
       sections: [
         {
           heading: "How to Draw Shapes",
+          image: "https://images.unsplash.com/photo-1509228468518-180dd4864904?w=800&h=400&fit=crop",
           body: "**Steps to draw a shape:**\n1. Click the **Shapes** button in the toolbar\n2. Choose a shape (rectangle, oval, line, triangle, etc.)\n3. Click and drag on the canvas to draw it!\n\n**Shape tips:**\n⬛ **Rectangle** — click and drag to make a box\n⭕ **Oval** — click and drag to make a circle (hold Shift for perfect circle!)\n📐 **Triangle** — use the polygon tool\n➖ **Line** — draw straight lines\n⭐ **Star** — make star shapes\n\n**Outline vs Filled:**\n• **Outline** — only the border of the shape\n• **Filled** — the shape is colored inside\n• **No outline** — only the fill, no border",
           youtubeId: "4ZDt8KRo6vE"
         }
@@ -270,6 +278,7 @@ const c1PaintStart: TopicTextbook = {
       sections: [
         {
           heading: "Using Colors",
+          image: "https://images.unsplash.com/photo-1502691876148-a84978e59af8?w=800&h=400&fit=crop",
           body: "**How to choose a color:**\n1. Look at the **Color Palette** at the top\n2. **Click a color** to select it (this becomes your drawing color)\n3. Start drawing — everything will be in that color!\n\n**Color 1 vs Color 2:**\n🎨 **Color 1** (left-click color) — the main drawing color\n🎨 **Color 2** (right-click color) — the background/secondary color\n\n**Fill with Color (Paint Bucket):**\n1. Click the **Fill** tool (paint bucket icon)\n2. Click inside any closed shape\n3. The shape fills with Color 1!\n\n**Edit Colors:**\n• Click **Edit Colors** to see ALL possible colors\n• You can create custom colors by mixing!\n\n⚠️ **Important:** The Fill tool only works inside **closed shapes**. If there's even a tiny gap, color will leak everywhere!",
           tip: "If color leaks when you fill, press Ctrl+Z to undo, zoom in to find the gap, close it with the Pencil tool, then try filling again."
         }
@@ -288,6 +297,7 @@ const c1PaintStart: TopicTextbook = {
       sections: [
         {
           heading: "How to Save",
+          image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&h=400&fit=crop",
           body: "**Saving your drawing:**\n1. Click **File** → **Save As**\n2. Choose where to save (Desktop, Documents, etc.)\n3. Type a **name** for your file (like 'My House Drawing')\n4. Click **Save**!\n\n**File formats:**\n🖼️ **PNG** — best quality, keeps transparency\n🖼️ **JPEG/JPG** — smaller file size, good for photos\n🖼️ **BMP** — Paint's original format, very large files\n🖼️ **GIF** — small size, limited colors\n\n**Quick Save:** Press **Ctrl+S** to save quickly (uses the same name and location)\n\n**Save vs Save As:**\n• **Save** — saves over the existing file\n• **Save As** — lets you choose a new name or location",
           tip: "Always save your work often! Press Ctrl+S every few minutes so you don't lose anything."
         }
@@ -314,6 +324,7 @@ const c1PaintShapes: TopicTextbook = {
       sections: [
         {
           heading: "Drawing Lines and Rectangles",
+          image: "https://images.unsplash.com/photo-1509228468518-180dd4864904?w=800&h=400&fit=crop",
           body: "**Drawing a Line:**\n1. Select the **Line** tool\n2. Choose a thickness\n3. Click where you want the line to start\n4. Drag to where you want it to end\n5. Release!\n\n**Drawing a Rectangle:**\n1. Select the **Rectangle** tool\n2. Click and drag on the canvas\n3. A rectangle appears!\n4. Hold **Shift** to make a perfect square\n\n**Drawing an Oval/Circle:**\n1. Select the **Oval** tool\n2. Click and drag\n3. Hold **Shift** for a perfect circle",
           youtubeId: "Xn7Ac-ujT9A"
         }
@@ -330,6 +341,7 @@ const c1PaintShapes: TopicTextbook = {
       sections: [
         {
           heading: "Pencil and Brush Drawing",
+          image: "https://images.unsplash.com/photo-1452860606245-08befc0ff44b?w=800&h=400&fit=crop",
           body: "**Pencil Tool:**\n• Makes thin, precise lines\n• Great for details and outlines\n• Click and hold while moving the mouse\n\n**Brush Tool:**\n• Makes thicker, more artistic strokes\n• You can choose different brush styles:\n  - Round brush\n  - Square brush\n  - Calligraphy brush\n  - Oil brush\n\n**Eraser Tool:**\n• Removes anything you've drawn\n• You can change the eraser size\n• Right-click with eraser to erase only Color 1\n\n**Tip:** Zoom in (View → Zoom In) to draw small details more easily!",
           comparison: {
             left: {
@@ -355,6 +367,7 @@ const c1PaintShapes: TopicTextbook = {
       sections: [
         {
           heading: "Creative Drawing Projects",
+          image: "https://images.unsplash.com/photo-1560421683-6856ea585c78?w=800&h=400&fit=crop",
           body: "Now that you know all the tools, try these fun projects:\n\n🏠 **Project 1: My Dream House**\nDraw a house with windows, a door, a roof, trees, sun, and clouds. Use shapes for the building and freeform for decorations.\n\n🌳 **Project 2: Nature Scene**\nDraw a garden with flowers, trees, butterflies, and a bright sun. Use lots of colors!\n\n🐱 **Project 3: My Favorite Animal**\nDraw your favorite animal. Try to use circles for the head and body, and lines for legs and whiskers.\n\n🌈 **Project 4: Rainbow Art**\nDraw a beautiful rainbow over mountains with clouds. Fill each band with the correct color.",
           illustration: [
             { emoji: "🏠", label: "Dream House" },
@@ -383,6 +396,7 @@ const c1PaintColor: TopicTextbook = {
       sections: [
         {
           heading: "Primary and Secondary Colors",
+          image: "https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?w=800&h=400&fit=crop",
           body: "**Primary Colors** — These are the 3 main colors that can't be made by mixing:\n🔴 **Red**\n🔵 **Blue**\n🟡 **Yellow**\n\n**Secondary Colors** — Made by mixing two primary colors:\n🟠 **Orange** = Red + Yellow\n🟢 **Green** = Blue + Yellow\n🟣 **Purple** = Red + Blue\n\n**In MS Paint:**\n• Find these colors in the Color Palette\n• Use **Edit Colors** to create custom colors\n• Mix colors using the Custom Color picker!",
           funFact: "A rainbow has 7 colors: Red, Orange, Yellow, Green, Blue, Indigo, Violet — remember it as ROY G. BIV!"
         }
@@ -401,6 +415,7 @@ const c1PaintColor: TopicTextbook = {
       sections: [
         {
           heading: "Advanced Coloring",
+          image: "https://images.unsplash.com/photo-1560421683-6856ea585c78?w=800&h=400&fit=crop",
           body: "**Fill Tool (Paint Bucket):**\nThe fastest way to color large areas. Just click inside a closed shape!\n\n**Airbrush Effect:**\nUse the Brush tool with a spray pattern for a softer, gradient-like effect.\n\n**Color Picker (Eyedropper):**\n1. Click the **Color Picker** tool\n2. Click on any color in your drawing\n3. That color is now selected!\n4. Great for matching colors!\n\n**Tips for Beautiful Colors:**\n• Use light colors for backgrounds\n• Use dark colors for outlines\n• Don't use too many bright colors together\n• Try different shades of the same color for depth",
           warningNote: "The Fill tool only works inside **completely closed shapes**. If there is even a tiny gap in your shape's outline, the color will leak out and fill the whole canvas! Always zoom in to check for gaps before filling.",
           keyTerms: [
@@ -445,6 +460,7 @@ const c1ScratchWork: TopicTextbook = {
       sections: [
         {
           heading: "Parts of Scratch Jr",
+          image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=800&h=400&fit=crop",
           body: "When you open Scratch Jr, you see:\n\n🎬 **Stage** — The big area at the top where your characters perform. This is like a theater stage!\n\n🐱 **Sprites** — The characters in your project. The default sprite is a cat. You can add more!\n\n🧱 **Block Palette** — The colored blocks at the bottom. These are your coding instructions.\n\n📜 **Scripts Area** — Where you drag blocks to build your code.\n\n🎨 **Paint Editor** — Draw and customize your own characters!\n\n**Block Colors:**\n🟡 Yellow — Trigger blocks (start events)\n🔵 Blue — Motion blocks (make things move)\n🟣 Purple — Looks blocks (change appearance)\n🟢 Green — Sound blocks\n🟠 Orange — Control blocks (wait, repeat)\n🔴 Red — End blocks",
         }
       ],
@@ -462,6 +478,7 @@ const c1ScratchWork: TopicTextbook = {
       sections: [
         {
           heading: "Motion Blocks",
+          image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=800&h=400&fit=crop",
           body: "Let's make the cat walk!\n\n**Step 1:** Drag the **Green Flag** block (yellow) to the scripts area — this starts your program.\n\n**Step 2:** Connect a **Move Right** block (blue arrow pointing right)\n\n**Step 3:** Tap the Green Flag on the stage — the cat moves right!\n\n**More Motion Blocks:**\n➡️ **Move Right** — sprite moves right\n⬅️ **Move Left** — sprite moves left\n⬆️ **Move Up** — sprite moves up\n⬇️ **Move Down** — sprite moves down\n🔄 **Turn Right** — sprite rotates clockwise\n🔄 **Turn Left** — sprite rotates counter-clockwise\n↩️ **Go Home** — sprite goes back to starting position",
           tip: "You can change the number inside each block to control HOW FAR the sprite moves! Bigger number = moves more."
         }
@@ -479,6 +496,7 @@ const c1ScratchWork: TopicTextbook = {
       sections: [
         {
           heading: "Say and Think Blocks",
+          image: "https://images.unsplash.com/photo-1535016120720-40c646be5580?w=800&h=400&fit=crop",
           body: "You can make your sprite say things!\n\n💬 **Say Block** (Purple) — Shows a speech bubble with text above the sprite\n💭 **Think Block** — Shows a thought bubble\n\n**How to add text:**\n1. Drag a **Say** block to your script\n2. Tap the block to type what the sprite should say\n3. Connect it after a Green Flag block\n4. Run your program!\n\n**Make a Conversation:**\nYou can make two sprites talk to each other by using:\n- Say blocks on Sprite 1\n- Wait blocks between them\n- Say blocks on Sprite 2",
           comparison: {
             left: {
@@ -504,6 +522,7 @@ const c1ScratchWork: TopicTextbook = {
       sections: [
         {
           heading: "Changing Backgrounds",
+          image: "https://images.unsplash.com/photo-1533628635777-112b2239b1c7?w=800&h=400&fit=crop",
           body: "**Adding a Background:**\n1. Tap the **background button** (landscape icon at top)\n2. Choose from the library (park, beach, city, space, etc.)\n3. Or draw your own background!\n\n**Adding New Characters:**\n1. Tap the **+** button (add sprite)\n2. Choose from the library (animals, people, things)\n3. Or draw your own character using the Paint Editor!\n\n**The Paint Editor lets you:**\n✏️ Draw with different colors\n🔄 Use stamps and stickers\n🧽 Erase parts\n📏 Add shapes\n🎨 Fill with color",
           illustration: [
             { emoji: "🏖️", label: "Beach" },
@@ -526,6 +545,7 @@ const c1ScratchWork: TopicTextbook = {
       sections: [
         {
           heading: "What You Learned",
+          image: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=800&h=400&fit=crop",
           body: "🎉 Congratulations! You learned:\n\n✅ What Scratch Jr is and why it's fun\n✅ Parts of the Scratch Jr screen\n✅ How to make sprites move with Motion blocks\n✅ How to make sprites talk with Say blocks\n✅ How to add backgrounds and new characters\n\nYou're ready to create your own animated stories and games!",
           keyTerms: [
             { term: "Sprite", definition: "A character or object in your Scratch Jr project that you can program." },
@@ -651,6 +671,7 @@ const c1PaintParts: TopicTextbook = {
       sections: [
         {
           heading: "Understanding the Menus",
+          image: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=800&h=400&fit=crop",
           body: "**File Menu:**\n📁 **New** — Start a new blank drawing\n📂 **Open** — Open a drawing you saved before\n💾 **Save** — Save your current drawing\n💾 **Save As** — Save with a new name\n🖨️ **Print** — Print your drawing on paper\n\n**Home Tab:**\n✂️ **Clipboard** — Cut, Copy, Paste tools\n🖼️ **Image** — Select, Crop, Resize, Rotate\n🔧 **Tools** — Pencil, Fill, Text, Eraser, Color Picker, Magnifier\n📐 **Shapes** — Lines, Rectangles, Circles, Stars, Arrows\n📏 **Size** — Thin, Medium, Thick lines\n🎨 **Colors** — Color 1, Color 2, Color Palette\n\n**View Tab:**\n🔍 **Zoom** — Zoom In, Zoom Out, 100%\n📏 **Rulers** — Show rulers on top and left\n📊 **Status Bar** — Show or hide the bottom bar",
         }
       ],
@@ -667,6 +688,7 @@ const c1PaintParts: TopicTextbook = {
       sections: [
         {
           heading: "Drawing Tools Explained",
+          image: "https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=800&h=400&fit=crop",
           body: "Let's learn about each drawing tool:\n\n✏️ **Pencil** — Draws thin freehand lines. Click and drag to draw!\n\n🖌️ **Brushes** — Draws thicker artistic strokes. You can choose different brush styles:\n• Regular brush\n• Calligraphy brush\n• Airbrush\n• Oil brush\n• Crayon\n• Marker\n\n🪣 **Fill with Color** — Fills a closed area with the selected color. Like pouring paint!\n\n🔤 **Text** — Type words on your drawing. You can choose font, size, and color.\n\n🧽 **Eraser** — Removes parts of your drawing. Click and drag to erase.\n\n🔍 **Magnifier** — Zooms in to see details closely.\n\n💧 **Color Picker** — Click on any color in your drawing to select that exact color.\n\n📐 **Shapes** — Ready-made shapes you can draw by clicking and dragging.",
           tip: "Try every tool one by one! The best way to learn Paint is by practicing with each tool."
         }
@@ -685,6 +707,7 @@ const c1PaintParts: TopicTextbook = {
       sections: [
         {
           heading: "Working with Colors",
+          image: "https://images.unsplash.com/photo-1502691876148-a84978e59af8?w=800&h=400&fit=crop",
           body: "The **Color Palette** is in the Home tab and shows all available colors.\n\n🎨 **Color 1** — Your main drawing color (used when you left-click)\n🎨 **Color 2** — Your background color (used when you right-click)\n\n**How to choose a color:**\n1. Click on **Color 1** box\n2. Click any color in the palette\n3. Now draw — your lines will be that color!\n\n**Edit Colors:**\n• Click **Edit Colors** button\n• A big color chart appears\n• Click anywhere to pick a custom color\n• You can even type exact color numbers!\n\n**Default colors include:**\n🔴 Red, 🟠 Orange, 🟡 Yellow, 🟢 Green\n🔵 Blue, 🟣 Purple, ⚫ Black, ⚪ White\n🟤 Brown, 🩷 Pink, and many more!\n\n**Tip:** Color 2 is used as the eraser background color and as the fill color when you right-click with the Fill tool.",
         }
       ],
@@ -730,10 +753,12 @@ const c2AdvComputer: TopicTextbook = {
       sections: [
         {
           heading: "Input Devices — Giving Data to the Computer",
+          image: "https://images.unsplash.com/photo-1587831990711-23ca6441447b?w=800&h=400&fit=crop",
           body: "**Input devices** send information TO the computer:\n\n⌨️ **Keyboard** — Type letters, numbers, and commands\n🖱️ **Mouse** — Point, click, and drag\n🎤 **Microphone** — Record your voice\n📷 **Camera / Webcam** — Take photos and videos\n📱 **Touchscreen** — Tap and swipe with your fingers\n🎮 **Joystick** — Play video games\n📠 **Scanner** — Turn paper pictures into computer pictures",
         },
         {
           heading: "Output Devices — Getting Information from the Computer",
+          image: "https://images.unsplash.com/photo-1588508065123-287b28e013da?w=800&h=400&fit=crop",
           body: "**Output devices** show information FROM the computer:\n\n🖥️ **Monitor** — Shows pictures, text, and videos\n🔊 **Speakers** — Play music and sounds\n🎧 **Headphones** — Listen privately\n🖨️ **Printer** — Print on paper\n📽️ **Projector** — Show on a big screen\n\n**Remember the simple rule:**\n📥 **Input = IN** to the computer\n📤 **Output = OUT** from the computer",
           tip: "Touchscreen is BOTH input AND output — it shows things (output) and accepts touch (input)!"
         }
@@ -752,6 +777,7 @@ const c2AdvComputer: TopicTextbook = {
       sections: [
         {
           heading: "Booting Up & Shutting Down",
+          image: "https://images.unsplash.com/photo-1531297484001-80022131f5a1?w=800&h=400&fit=crop",
           body: "**Starting the Computer (Booting):**\n1. Press the **Power button** on the CPU\n2. Press the **Power button** on the Monitor\n3. Wait for the **Desktop** to appear\n4. Now you can start using your computer!\n\n**Shutting Down Safely:**\n1. Close all open programs\n2. Click the **Start button** (bottom-left)\n3. Click the **Power** icon\n4. Select **Shut Down**\n5. Wait until the computer fully turns off\n\n**Other Options:**\n😴 **Sleep** — Computer rests but wakes up fast\n🔄 **Restart** — Turns off and back on (fixes problems!)\n🔒 **Lock** — Shows login screen but keeps programs open\n\n⚠️ **NEVER just press the power button to turn off!** This can damage your files and the computer.",
           tip: "Always save your work before shutting down! Press Ctrl+S in every program."
         }
@@ -769,6 +795,7 @@ const c2AdvComputer: TopicTextbook = {
       sections: [
         {
           heading: "Understanding Files and Folders",
+          image: "https://images.unsplash.com/photo-1544396821-4dd40b938ad3?w=800&h=400&fit=crop",
           body: "**Files** are like papers in your school bag. Each file has information inside.\n\n📄 **Types of Files:**\n• **Document files** — Letters, stories, homework (.docx, .txt)\n• **Image files** — Photos and drawings (.jpg, .png)\n• **Music files** — Songs (.mp3)\n• **Video files** — Movies and clips (.mp4)\n\n📁 **Folders** are like bags or boxes that hold your files.\n\n**How to Create a Folder:**\n1. Right-click on the Desktop\n2. Click **New** → **Folder**\n3. Type a name for your folder\n4. Press **Enter**\n\n**How to Move a File into a Folder:**\n1. Click and hold the file\n2. Drag it onto the folder\n3. Release the mouse button!\n\n**How to Delete:**\n• Select the file or folder\n• Press the **Delete** key\n• It goes to the **Recycle Bin** (you can get it back!)",
           funFact: "The Recycle Bin is like a trash can — you can take things out of it if you change your mind! Just open it and click 'Restore'."
         }
@@ -815,6 +842,7 @@ const c2PaintAdv: TopicTextbook = {
       sections: [
         {
           heading: "Copy, Paste, Resize, and Rotate",
+          image: "https://images.unsplash.com/photo-1452860606245-08befc0ff44b?w=800&h=400&fit=crop",
           body: "**Copy & Paste:**\n1. Select an area using the selection tool\n2. Press **Ctrl+C** to copy\n3. Press **Ctrl+V** to paste\n4. Move the pasted copy where you want it!\n\n**This is great for:**\n• Making patterns (copy one flower, paste many!)\n• Creating symmetrical designs\n• Duplicating characters in a scene\n\n**Resize / Stretch:**\n1. Select the area\n2. Go to **Home** → **Resize**\n3. Change **Percentage** or **Pixels**\n4. Check **Maintain aspect ratio** to keep proportions!\n\n**Rotate / Flip:**\n1. Select the area\n2. Go to **Home** → **Rotate**\n3. Options: Rotate 90° right/left, 180°, Flip horizontal/vertical\n\n**Undo:** Press **Ctrl+Z** to undo your last action (up to 3 times!)",
         }
       ],
@@ -831,6 +859,7 @@ const c2PaintAdv: TopicTextbook = {
       sections: [
         {
           heading: "Adding Text to Drawings",
+          image: "https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=800&h=400&fit=crop",
           body: "**The Text Tool** lets you type words on your drawing:\n\n1. Click the **A** (Text) tool\n2. Click and drag to create a text box on the canvas\n3. Type your text!\n4. A Text toolbar appears with options:\n\n**Text Options:**\n🔤 **Font** — Choose the style (Arial, Comic Sans, etc.)\n📏 **Size** — How big the text is (12, 18, 24, 36...)\n**B** **Bold** — Makes text thick and heavy\n*I* **Italic** — Makes text slanted\nU **Underline** — Adds a line under the text\n🎨 **Color** — Change the text color\n\n**Two text modes:**\n• **Opaque** — text has a colored background\n• **Transparent** — text has no background (floats on the drawing)\n\n⚠️ Once you click outside the text box, the text becomes part of the drawing and CANNOT be edited!",
           tip: "Always check your spelling before clicking outside the text box — you can't change it after!"
         }
@@ -857,6 +886,7 @@ const c2WordIntro: TopicTextbook = {
       sections: [
         {
           heading: "Meet Microsoft Word!",
+          image: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=800&h=400&fit=crop",
           body: "**MS Word** is a program for writing on the computer. You can use it to:\n\n📝 Write stories and letters\n📄 Make homework and projects\n🎨 Add pictures and colors to your writing\n🖨️ Print your documents on paper\n\n**How to Open MS Word:**\n1. Click the **Start button**\n2. Type **Word**\n3. Click on **Microsoft Word**\n4. Click **Blank document** to start!\n\n**The Word Window has these parts:**\n📋 **Title Bar** — Shows the document name\n🎀 **Ribbon** — Big toolbar with all features\n📄 **Document Area** — The white page where you type\n📊 **Status Bar** — Shows page number and word count\n📐 **Ruler** — Shows measurements at the top",
           youtubeId: "S-nHYzK-BVg",
           funFact: "Microsoft Word was first released in 1983 — that's over 40 years ago!"
@@ -870,6 +900,7 @@ const c2WordIntro: TopicTextbook = {
       sections: [
         {
           heading: "Basic Typing",
+          image: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=800&h=400&fit=crop",
           body: "**How to type in Word:**\n1. Click on the white page\n2. A blinking line appears — this is the **cursor**\n3. Start typing! The cursor moves as you type.\n\n**Important Keys:**\n⏎ **Enter** — Start a new paragraph (new line)\n⬜ **Space Bar** — Add space between words\n⬅️ **Backspace** — Delete the character BEFORE the cursor\n🗑️ **Delete** — Delete the character AFTER the cursor\n⬆️ **Shift** — Hold for capital letters or special characters\n🔠 **Caps Lock** — All capital letters\n↹ **Tab** — Indent (move text to the right)\n\n**Moving the Cursor:**\n⬆️⬇️⬅️➡️ Arrow keys move the cursor around\n🏠 **Home** — Go to the beginning of the line\n🔚 **End** — Go to the end of the line\n\n**Selecting Text:**\n1. Click at the start of the text\n2. Hold **Shift** and click at the end\n3. OR click and drag to highlight text",
           tip: "You can also double-click a word to select just that word, or triple-click to select the entire paragraph!"
         }
@@ -888,6 +919,7 @@ const c2WordIntro: TopicTextbook = {
       sections: [
         {
           heading: "Basic Text Formatting",
+          image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&h=400&fit=crop",
           body: "**Formatting** means changing how your text looks.\n\n**Select your text first**, then apply formatting:\n\n**B** **Bold** (Ctrl+B) — Makes text **thick and heavy**\n*I* **Italic** (Ctrl+I) — Makes text *slanted*\nU **Underline** (Ctrl+U) — Adds a line under text\n\n**Font (Style):**\n• Click the font dropdown box\n• Choose a style: Arial, Comic Sans MS, Times New Roman, etc.\n• Each font looks different!\n\n**Font Size:**\n• Click the size dropdown (usually shows 11)\n• Choose a bigger number for bigger text\n• Headings: 18-28, Body text: 11-14\n\n**Font Color:**\n• Click the **A** with a colored bar under it\n• Choose any color for your text!\n\n**Alignment:**\n⬅️ **Left align** — text starts from the left\n🔳 **Center** — text is in the middle\n➡️ **Right align** — text is on the right side",
         }
       ],
@@ -905,6 +937,7 @@ const c2WordIntro: TopicTextbook = {
       sections: [
         {
           heading: "How to Save",
+          image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&h=400&fit=crop",
           body: "**Saving for the first time:**\n1. Click **File** → **Save As**\n2. Choose **This PC** → **Desktop** (or any location)\n3. Type a name for your file\n4. Click **Save**!\n\n**Quick Save:** Press **Ctrl+S** (saves instantly!)\n\n**File Types:**\n📄 **.docx** — Word document (default, best choice)\n📄 **.pdf** — Cannot be edited, looks the same on every computer\n📄 **.txt** — Plain text, no formatting\n\n**Opening a Saved File:**\n1. Click **File** → **Open**\n2. Browse to find your file\n3. Double-click to open it!\n\nOR simply double-click any Word file on the Desktop!\n\n⚠️ **Save often!** Press Ctrl+S every few minutes so you don't lose your work if something goes wrong.",
           tip: "Develop the habit of pressing Ctrl+S after every paragraph you write. It takes just a second and saves you from losing your work!"
         }
@@ -951,6 +984,7 @@ const c2ScratchJrAdv: TopicTextbook = {
       sections: [
         {
           heading: "Adding Sound",
+          image: "https://images.unsplash.com/photo-1535016120720-40c646be5580?w=800&h=400&fit=crop",
           body: "**Sound blocks** let your sprites make noise!\n\n🔊 **Pop Sound** — A quick pop sound effect\n🎵 **Record Sound** — Record your own voice or sounds!\n\n**How to add sounds:**\n1. Tap a sprite to select it\n2. Find the **Sound blocks** (green blocks)\n3. Drag a sound block into your script\n4. Place it where you want the sound to play\n\n**Recording Custom Sounds:**\n1. Tap the **microphone** icon\n2. Press the **record** button\n3. Say something or make a sound\n4. Press **stop**\n5. Your recording appears as a new sound block!\n\n**Cool ideas:**\n🐱 Make the cat say \"Meow!\" (record yourself!)\n🎵 Add background music to your story\n💥 Add sound effects when sprites touch\n🗣️ Make characters speak with recorded dialogue",
           funFact: "You can record your own voice and make your sprite 'talk' — it's like making a cartoon!"
         }

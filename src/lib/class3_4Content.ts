@@ -19,6 +19,7 @@ const c3Ipo: TopicTextbook = {
       sections: [
         {
           heading: "Input → Process → Output",
+          image: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&h=400&fit=crop",
           body: "Every computer follows a simple cycle called **IPO**:\n\n📥 **Input** — Data that goes INTO the computer (what you give it)\n⚙️ **Process** — The computer WORKS on the data (thinking)\n📤 **Output** — The RESULT that comes out (what you get back)\n\n**Example:**\nInput: You type '2 + 3' on a calculator\nProcess: The calculator adds the numbers\nOutput: The screen shows '5'\n\n**Another Example:**\nInput: You press keys on the keyboard\nProcess: The computer converts keystrokes to letters\nOutput: Letters appear on the monitor",
           youtubeId: "MDlRH8JmTII",
           funFact: "Even your brain works on the IPO model! Your eyes INPUT information, your brain PROCESSES it, and your body OUTPUTS a response!"
@@ -52,6 +53,7 @@ const c3Ipo: TopicTextbook = {
       sections: [
         {
           heading: "What is Processing?",
+          image: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&h=400&fit=crop",
           body: "**Processing** is when the computer works on the input data.\n\nThe **CPU (Central Processing Unit)** does all the processing. It's called the **brain** of the computer.\n\n**What the CPU does:**\n🧮 Performs calculations (math)\n📊 Sorts and organizes data\n🔍 Searches for information\n🎨 Creates graphics for the screen\n🎵 Processes audio for speakers\n\n**Speed of Processing:**\nModern CPUs can do **billions** of calculations per second!\nThis is measured in **GHz (Gigahertz)**\n• 1 GHz = 1 billion operations per second\n• 3 GHz = 3 billion operations per second!",
           funFact: "The CPU in your computer is smaller than a postage stamp, but it contains billions of tiny switches called transistors!"
         }
@@ -68,6 +70,7 @@ const c3Ipo: TopicTextbook = {
       sections: [
         {
           heading: "Types of Output Devices",
+          image: "https://images.unsplash.com/photo-1588508065123-287b28e013da?w=800&h=400&fit=crop",
           body: "**Output devices** show or give the RESULTS from the computer:\n\n🖥️ **Monitor** — displays text, images, videos on screen\n🖨️ **Printer** — prints documents on paper\n🔊 **Speakers** — play sounds and music\n🎧 **Headphones** — play sound privately\n📽️ **Projector** — displays on a big screen/wall\n💡 **LED indicators** — show status lights\n\n**Types of Output:**\n• **Visual** — things you SEE (monitor, projector)\n• **Audio** — things you HEAR (speakers, headphones)\n• **Physical** — things you TOUCH (printed paper, 3D printed objects)\n\n**Remember:** If it gives information FROM the computer, it's an OUTPUT device!",
           tip: "Headphones and speakers do the same job — play sound. The difference is speakers share with everyone, headphones are private!"
         }
@@ -85,6 +88,7 @@ const c3Ipo: TopicTextbook = {
       sections: [
         {
           heading: "Real-Life IPO Examples",
+          image: "https://images.unsplash.com/photo-1498049794561-7780e7231661?w=800&h=400&fit=crop",
           body: "IPO isn't just for computers — it's everywhere!\n\n🍳 **Cooking:**\nInput: Raw ingredients\nProcess: Cooking on the stove\nOutput: Delicious meal!\n\n🚦 **Traffic Light:**\nInput: Timer and sensors detect cars\nProcess: Controller decides which light\nOutput: Red, Yellow, or Green light\n\n📱 **Making a Phone Call:**\nInput: Dial a number, speak into microphone\nProcess: Phone converts voice to signals\nOutput: Person on other end hears you\n\n🏧 **ATM Machine:**\nInput: Insert card, enter PIN, choose amount\nProcess: Bank checks your balance\nOutput: Cash comes out!\n\n📺 **Watching TV:**\nInput: Press buttons on remote\nProcess: TV decodes the signal\nOutput: Picture and sound appear",
         }
       ],
@@ -140,6 +144,7 @@ const c3Windows_: TopicTextbook = {
       sections: [
         {
           heading: "Parts of the Desktop",
+          image: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=800&h=400&fit=crop",
           body: "When Windows starts, you see the **Desktop**:\n\n🖼️ **Desktop Icons** — Small pictures that open programs or files\n📋 **Taskbar** — The bar at the bottom of the screen\n🪟 **Start Button** — Bottom-left corner, opens the Start Menu\n🔍 **Search Bar** — Type to find anything on your computer\n📌 **Pinned Apps** — Your favorite apps on the taskbar\n🔔 **System Tray** — Bottom-right, shows time, battery, WiFi, volume\n\n**Common Desktop Icons:**\n🗑️ **Recycle Bin** — Deleted files go here\n💻 **This PC** — Access all your drives and folders\n📁 **File Explorer** — Browse all your files\n🌐 **Browser** — Opens the internet",
           tip: "You can customize your desktop! Right-click on it to change the wallpaper, add icons, or organize them."
         }
@@ -157,6 +162,7 @@ const c3Windows_: TopicTextbook = {
       sections: [
         {
           heading: "Understanding Files and Folders",
+          image: "https://images.unsplash.com/photo-1544396821-4dd40b938ad3?w=800&h=400&fit=crop",
           body: "**Files** are individual items — like documents, photos, music, or videos.\n\n**Folders** are containers that hold files — like a real folder that holds papers!\n\n**File Explorer** is the tool to browse, create, and manage files and folders.\n\n**Creating a New Folder:**\n1. Open File Explorer\n2. Navigate to where you want the folder\n3. Right-click → **New** → **Folder**\n4. Type a name → Press Enter\n\n**Organizing Files:**\n📁 School → 📁 Maths, 📁 Science, 📁 English\n📁 Pictures → 📁 Vacation, 📁 Family, 📁 Art\n📁 Games → 📁 Scratch, 📁 Projects\n\n**Important Operations:**\n📋 **Copy** (Ctrl+C) — makes a duplicate\n✂️ **Cut** (Ctrl+X) — moves the original\n📌 **Paste** (Ctrl+V) — places the copy/cut item\n🗑️ **Delete** — sends to Recycle Bin\n✏️ **Rename** — F2 key or right-click → Rename",
           tip: "Create separate folders for each subject! It makes finding homework much easier."
         }
@@ -175,6 +181,7 @@ const c3Windows_: TopicTextbook = {
       sections: [
         {
           heading: "Using the Start Menu",
+          image: "https://images.unsplash.com/photo-1531297484001-80022131f5a1?w=800&h=400&fit=crop",
           body: "The **Start Menu** is your gateway to everything on the computer!\n\n**How to open the Start Menu:**\n• Click the **Windows icon** (bottom-left)\n• Or press the **Windows key** on your keyboard\n\n**What's in the Start Menu:**\n📌 **Pinned Apps** — your most used apps\n🔍 **Search** — type to find anything\n📋 **All Apps** — alphabetical list of all programs\n⚙️ **Settings** — change computer settings\n📁 **Documents** — quick access to your files\n🔌 **Power** — Sleep, Shut Down, Restart\n\n**Opening a Program:**\n1. Click Start\n2. Find the program (scroll or search)\n3. Click on it!\n4. It opens in a **window**",
         }
       ],
@@ -213,6 +220,7 @@ const c3PaintMore: TopicTextbook = {
       sections: [
         {
           heading: "Brush Styles & Airbrush",
+          image: "https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=800&h=400&fit=crop",
           body: "Paint has several **brush styles**:\n\n🖌️ **Round Brush** — smooth, round strokes\n🖌️ **Calligraphy Brush** — thick/thin strokes like fancy writing\n🖌️ **Oil Brush** — textured, artistic strokes\n🖌️ **Crayon** — looks like crayon on paper\n🖌️ **Marker** — smooth, semi-transparent\n🖌️ **Natural Pencil** — like a real pencil\n\n**To change brush style:**\n1. Click the **Brushes** dropdown in the toolbar\n2. Select the style you want\n3. Choose the **size** (thickness)\n4. Start painting!\n\n**Airbrush effect:** Use the spray can tool for a soft, spray-paint look. Great for clouds, fog, and backgrounds!",
           youtubeId: "Q5mH88NAOA0"
         }
@@ -229,6 +237,7 @@ const c3PaintMore: TopicTextbook = {
       sections: [
         {
           heading: "Selection Tools",
+          image: "https://images.unsplash.com/photo-1452860606245-08befc0ff44b?w=800&h=400&fit=crop",
           body: "**Selection tools** let you select parts of your drawing to move, copy, or edit them.\n\n🔲 **Rectangle Select** — draws a rectangle around what you want to select\n✏️ **Free-form Select** — draw any shape around what you want\n\n**After selecting:**\n• **Move** — click and drag the selection\n• **Copy** — Ctrl+C then Ctrl+V\n• **Resize** — drag the corner handles\n• **Rotate** — use Rotate buttons in the toolbar\n• **Flip** — flip horizontal or vertical\n• **Delete** — press Delete key\n\n**Transparent vs Opaque:**\n• **Opaque** — moves everything including white background\n• **Transparent** — moves only the colored parts, ignores white\n\nThis is useful for placing a drawing on top of another!",
           tip: "Use Transparent selection when you want to place a character on a background without the white box around it!"
         }
@@ -246,6 +255,7 @@ const c3PaintMore: TopicTextbook = {
       sections: [
         {
           heading: "Adding Text in Paint",
+          image: "https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=800&h=400&fit=crop",
           body: "**How to add text:**\n1. Click the **A** (Text) tool\n2. Click and drag on the canvas to create a text box\n3. A text toolbar appears with options:\n   • Font name (Arial, Comic Sans, etc.)\n   • Font size\n   • Bold, Italic, Underline\n4. Type your text\n5. Click outside the text box when done\n\n⚠️ **Important:** Once you click outside the text box, you CANNOT edit the text anymore! It becomes part of the image.\n\n**Text Tips:**\n• Use transparent background for text over images\n• Choose opaque background for text with a colored box behind it\n• Large fonts work best for titles\n• Small fonts for details",
         }
       ],
@@ -270,6 +280,7 @@ const c3WordAdv: TopicTextbook = {
       sections: [
         {
           heading: "Changing How Text Looks",
+          image: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=800&h=400&fit=crop",
           body: "MS Word lets you change how your text looks:\n\n**Font Name:**\nThe style of letters (Arial, Comic Sans, Times New Roman, etc.)\n\n**Font Size:**\nHow big or small the text is (8pt to 72pt)\n\n**Font Color:**\nChange the color of your text to any color!\n\n**Text Effects:**\n• **Bold** (Ctrl+B) — makes text **darker and thicker**\n• **Italic** (Ctrl+I) — makes text *slanted*\n• **Underline** (Ctrl+U) — adds a line under text\n• **Highlight** — marks text with a colored background\n\n**How to apply:**\n1. Select the text you want to change\n2. Use the Font group in the Home tab\n3. Choose your formatting!",
           youtubeId: "hVs3w3Xb4Lg",
           tip: "Select text first, THEN apply formatting. A common mistake is forgetting to select!"
@@ -288,6 +299,7 @@ const c3WordAdv: TopicTextbook = {
       sections: [
         {
           heading: "Aligning Text",
+          image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&h=400&fit=crop",
           body: "**Alignment** controls where text sits on the page:\n\n⬅️ **Left Align** (Ctrl+L) — default, text lines up on the left\n🔄 **Center** (Ctrl+E) — text is centered\n➡️ **Right Align** (Ctrl+R) — text lines up on the right\n📐 **Justify** (Ctrl+J) — text stretches to fill both edges\n\n**Bullets & Numbering:**\nMake organized lists easily!\n• Click **Bullets** button for dot lists\n• Click **Numbering** for numbered lists\n• Choose from different bullet styles\n\n**Line Spacing:**\n• 1.0 = single space\n• 1.5 = one-and-a-half space\n• 2.0 = double space",
         }
       ],
@@ -303,6 +315,7 @@ const c3WordAdv: TopicTextbook = {
       sections: [
         {
           heading: "Adding Images to Word",
+          image: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=800&h=400&fit=crop",
           body: "**How to insert a picture:**\n1. Place your cursor where you want the image\n2. Go to **Insert** tab\n3. Click **Pictures**\n4. Choose **This Device** (from your computer) or **Online Pictures**\n5. Select the image → Click **Insert**\n\n**Resizing Images:**\n• Click the image to select it\n• Drag the **corner handles** to resize\n• Hold **Shift** while dragging to keep proportions\n\n**Text Wrapping:**\nControls how text flows around the image:\n• **In Line with Text** — image sits like a big letter\n• **Square** — text wraps around in a square\n• **Tight** — text wraps closely around\n• **Behind Text** — image goes behind\n• **In Front of Text** — image covers text",
           tip: "Always use corner handles to resize — side handles will stretch and distort your image!"
         }
@@ -320,6 +333,7 @@ const c3WordAdv: TopicTextbook = {
       sections: [
         {
           heading: "Adding Page Borders",
+          image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&h=400&fit=crop",
           body: "**Page borders** make your document look beautiful!\n\n**How to add:**\n1. Go to **Design** tab (or Page Layout in older versions)\n2. Click **Page Borders**\n3. Choose a border style, color, and width\n4. Or choose **Art borders** for decorative designs!\n\n**Printing Your Document:**\n1. Press **Ctrl+P** (or File → Print)\n2. Choose your printer\n3. Set number of copies\n4. Choose pages to print (All, Current Page, or specific pages)\n5. Click **Print**!\n\n**Print Preview:**\nAlways check Print Preview before printing! It shows exactly how your document will look on paper.",
         }
       ],
@@ -344,6 +358,7 @@ const c3ScratchStart: TopicTextbook = {
       sections: [
         {
           heading: "Welcome to Scratch!",
+          image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=800&h=400&fit=crop",
           body: "**Scratch** is a visual programming language where you code by snapping colorful blocks together!\n\n**Scratch vs Scratch Jr:**\n• Scratch Jr is for ages 5-7 with simple blocks\n• **Scratch** is for ages 8+ with MORE blocks and features\n• Scratch runs in a web browser at scratch.mit.edu\n• Scratch can make real games, animations, and stories!\n\n**What can you make in Scratch?**\n🎮 Video games\n📖 Interactive stories\n🎵 Music and art projects\n📊 Quizzes and educational tools\n🤖 Simulations\n💬 Chatbots",
           youtubeId: "E19zGN8fA90",
           funFact: "Over 100 million projects have been shared on the Scratch website! Kids from every country use Scratch."
@@ -357,6 +372,7 @@ const c3ScratchStart: TopicTextbook = {
       sections: [
         {
           heading: "Parts of the Scratch Editor",
+          image: "https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=800&h=400&fit=crop",
           body: "**The Scratch editor has these parts:**\n\n🎬 **Stage** — Top-right. Where your project runs. Shows sprites and backgrounds.\n\n🐱 **Sprite Panel** — Below the stage. Shows all your sprites. Click one to edit it.\n\n🧱 **Block Palette** — Left side. All the coding blocks organized by category:\n• 🔵 Motion (movement)\n• 🟣 Looks (appearance)\n• 🔴 Sound (audio)\n• 🟡 Events (triggers)\n• 🟠 Control (loops, conditions)\n• 🔵 Sensing (detection)\n• 🟢 Operators (math, logic)\n• 🟠 Variables (data storage)\n• 🔴 My Blocks (custom blocks)\n\n📜 **Scripts Area** — Center. Where you drag blocks to build your code.\n\n👗 **Costumes Tab** — Edit sprite appearances\n🔊 **Sounds Tab** — Add and edit sounds",
           tip: "Click any block in the palette to see a quick preview of what it does!"
         }
@@ -374,6 +390,7 @@ const c3ScratchStart: TopicTextbook = {
       sections: [
         {
           heading: "Making the Cat Move",
+          image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=800&h=400&fit=crop",
           body: "**Step 1:** Find the **Events** category (yellow blocks)\n**Step 2:** Drag **'when green flag clicked'** to the Scripts Area\n**Step 3:** Go to **Motion** category (blue blocks)\n**Step 4:** Drag **'move 10 steps'** and connect it below the flag block\n**Step 5:** Click the **Green Flag** on the stage!\n\n🎉 The cat moves 10 steps to the right!\n\n**Make it better:**\n• Change 10 to a bigger number for more movement\n• Add **'turn 15 degrees'** to make it rotate\n• Add **'glide 1 secs to random position'** for smooth movement\n• Add **'if on edge, bounce'** so it doesn't disappear\n\n**Complete Walking Script:**\nwhen green flag clicked\nforever\n  move 10 steps\n  if on edge, bounce\nend",
         }
       ],
@@ -390,6 +407,7 @@ const c3ScratchStart: TopicTextbook = {
       sections: [
         {
           heading: "How to Save",
+          image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&h=400&fit=crop",
           body: "**On Scratch website (scratch.mit.edu):**\n1. Create a free account\n2. Your projects save automatically!\n3. Click **File → Save Now** to save immediately\n4. Click **File → Save as a Copy** to make a duplicate\n\n**Downloading your project:**\n1. Click **File → Save to your computer**\n2. This downloads a .sb3 file\n3. You can open it later with File → Load from your computer\n\n**Sharing your project:**\n1. Click the **Share** button (top-right)\n2. Add a title and description\n3. Anyone with the link can play your project!\n\n**In the block coding editor (PenguinMod):**\n• Use File → Save to your computer\n• Your project saves as a .pmp or .sb3 file",
           tip: "Save your work often! It's heartbreaking to lose a project you've been working on."
         }
