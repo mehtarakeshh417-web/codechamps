@@ -306,6 +306,7 @@ const c6PythonIntro: TopicTextbook = {
       sections: [
         {
           heading: "for and while Loops",
+          image: "https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=800&h=400&fit=crop",
           body: "**for loop** — repeat a specific number of times:\n```python\nfor i in range(5):\n    print(\"Hello!\", i)\n# Prints Hello! 0, Hello! 1, ... Hello! 4\n\nfor i in range(1, 11):\n    print(i, \"x 5 =\", i * 5)\n# Prints the 5 times table!\n```\n\n**while loop** — repeat while a condition is true:\n```python\ncount = 1\nwhile count <= 10:\n    print(count)\n    count = count + 1\n# Prints 1 to 10\n```\n\n**Useful with loops:**\n• `range(5)` → 0, 1, 2, 3, 4\n• `range(1, 6)` → 1, 2, 3, 4, 5\n• `range(0, 10, 2)` → 0, 2, 4, 6, 8\n• `break` — exit the loop early\n• `continue` — skip to next iteration",
         }
       ],
