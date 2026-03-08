@@ -472,6 +472,7 @@ const excelIntro: TopicTextbook = {
       sections: [
         {
           heading: "What is Microsoft Excel?",
+          image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=400&fit=crop",
           body: "**Microsoft Excel** is a powerful spreadsheet application. It organizes data in a grid of **rows** and **columns**.\n\n**What can you do with Excel?**\n📊 Organize data neatly in tables\n📊 Perform calculations using formulas\n📊 Create colorful charts and graphs\n📊 Sort and filter large amounts of data\n📊 Track scores, budgets, and attendance\n📊 Create timetables and schedules\n\n**Real-life uses of Excel:**\n• Teachers use it to maintain student marks\n• Companies use it to track sales and expenses\n• Scientists use it to analyze data\n• Students use it for projects and record-keeping",
           funFact: "Microsoft Excel was first released in 1985 for Apple Macintosh! The Windows version came in 1987. Today, over 750 million people use Excel worldwide!"
         }
