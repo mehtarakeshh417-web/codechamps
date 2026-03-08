@@ -51,7 +51,7 @@ const StudentLeaderboard = () => {
     return (
       <div className="space-y-2">
         {data.slice(0, 50).map((s) => {
-          const isMe = s.id === user?.id;
+          const isMe = s.user_id === user?.id;
           const RankIcon = s.rank <= 3 ? rankIcons[s.rank - 1] : null;
           return (
             <motion.div
