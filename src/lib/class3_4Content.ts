@@ -237,6 +237,7 @@ const c3PaintMore: TopicTextbook = {
       sections: [
         {
           heading: "Selection Tools",
+          image: "https://images.unsplash.com/photo-1452860606245-08befc0ff44b?w=800&h=400&fit=crop",
           body: "**Selection tools** let you select parts of your drawing to move, copy, or edit them.\n\n🔲 **Rectangle Select** — draws a rectangle around what you want to select\n✏️ **Free-form Select** — draw any shape around what you want\n\n**After selecting:**\n• **Move** — click and drag the selection\n• **Copy** — Ctrl+C then Ctrl+V\n• **Resize** — drag the corner handles\n• **Rotate** — use Rotate buttons in the toolbar\n• **Flip** — flip horizontal or vertical\n• **Delete** — press Delete key\n\n**Transparent vs Opaque:**\n• **Opaque** — moves everything including white background\n• **Transparent** — moves only the colored parts, ignores white\n\nThis is useful for placing a drawing on top of another!",
           tip: "Use Transparent selection when you want to place a character on a background without the white box around it!"
         }
