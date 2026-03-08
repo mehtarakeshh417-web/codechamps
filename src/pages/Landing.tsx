@@ -75,7 +75,7 @@ const faqs = [
   { q: "Do you offer a free trial?", a: "Yes! We offer a 30-day free trial for schools with up to 50 students. Contact us to get started — no credit card required." },
 ];
 
-const Landing = () => {
+const Landing = React.forwardRef<HTMLDivElement>((_, ref) => {
   const navigate = useNavigate();
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [contactForm, setContactForm] = useState({ name: "", email: "", school: "", message: "" });
