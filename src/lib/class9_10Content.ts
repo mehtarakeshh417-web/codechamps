@@ -1214,6 +1214,7 @@ const c10WebApps: TopicTextbook = {
       sections: [
         {
           heading: "Deploying Your Web Application",
+          image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&h=400&fit=crop",
           body: "**Deployment** is the process of making your web application accessible on the internet. During development, your app runs locally (only you can access it). Deployment puts it on a server that anyone with the URL can reach.\n\nModern deployment platforms make this incredibly easy — many offer free tiers for student projects. The key concepts are **hosting** (where your code runs), **domains** (your URL), **environment variables** (configuration like database passwords), and **continuous deployment** (automatic updates when you push code to GitHub).\n\nBefore deploying, always test your app thoroughly, set up proper error handling, secure sensitive data, and optimize performance.",
           stepByStep: {
             steps: [
