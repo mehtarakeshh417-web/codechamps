@@ -671,6 +671,7 @@ const c1PaintParts: TopicTextbook = {
       sections: [
         {
           heading: "Understanding the Menus",
+          image: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=800&h=400&fit=crop",
           body: "**File Menu:**\n📁 **New** — Start a new blank drawing\n📂 **Open** — Open a drawing you saved before\n💾 **Save** — Save your current drawing\n💾 **Save As** — Save with a new name\n🖨️ **Print** — Print your drawing on paper\n\n**Home Tab:**\n✂️ **Clipboard** — Cut, Copy, Paste tools\n🖼️ **Image** — Select, Crop, Resize, Rotate\n🔧 **Tools** — Pencil, Fill, Text, Eraser, Color Picker, Magnifier\n📐 **Shapes** — Lines, Rectangles, Circles, Stars, Arrows\n📏 **Size** — Thin, Medium, Thick lines\n🎨 **Colors** — Color 1, Color 2, Color Palette\n\n**View Tab:**\n🔍 **Zoom** — Zoom In, Zoom Out, 100%\n📏 **Rulers** — Show rulers on top and left\n📊 **Status Bar** — Show or hide the bottom bar",
         }
       ],
