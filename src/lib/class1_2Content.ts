@@ -278,6 +278,7 @@ const c1PaintStart: TopicTextbook = {
       sections: [
         {
           heading: "Using Colors",
+          image: "https://images.unsplash.com/photo-1502691876148-a84978e59af8?w=800&h=400&fit=crop",
           body: "**How to choose a color:**\n1. Look at the **Color Palette** at the top\n2. **Click a color** to select it (this becomes your drawing color)\n3. Start drawing — everything will be in that color!\n\n**Color 1 vs Color 2:**\n🎨 **Color 1** (left-click color) — the main drawing color\n🎨 **Color 2** (right-click color) — the background/secondary color\n\n**Fill with Color (Paint Bucket):**\n1. Click the **Fill** tool (paint bucket icon)\n2. Click inside any closed shape\n3. The shape fills with Color 1!\n\n**Edit Colors:**\n• Click **Edit Colors** to see ALL possible colors\n• You can create custom colors by mixing!\n\n⚠️ **Important:** The Fill tool only works inside **closed shapes**. If there's even a tiny gap, color will leak everywhere!",
           tip: "If color leaks when you fill, press Ctrl+Z to undo, zoom in to find the gap, close it with the Pencil tool, then try filling again."
         }
