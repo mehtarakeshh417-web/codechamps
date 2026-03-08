@@ -499,6 +499,7 @@ const excelIntro: TopicTextbook = {
       sections: [
         {
           heading: "Workbook vs Worksheet",
+          image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=400&fit=crop",
           body: "📗 **Workbook** = The entire Excel file. When you save an Excel file, you save a workbook. The file extension is **.xlsx**\n\n📄 **Worksheet** (or Sheet) = A single page within the workbook. Each worksheet is a separate grid of cells.\n\n**Think of it like this:**\n• A **workbook** is like a **notebook**\n• A **worksheet** is like a **page** in that notebook\n• You can have many pages (worksheets) in one notebook (workbook)!",
         },
         {
