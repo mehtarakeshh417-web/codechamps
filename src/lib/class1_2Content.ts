@@ -231,6 +231,7 @@ const c1PaintStart: TopicTextbook = {
       sections: [
         {
           heading: "The Paint Interface",
+          image: "https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=800&h=400&fit=crop",
           body: "When you open Paint, you see:\n\n🎨 **Drawing Area (Canvas)** — The big white area where you draw. This is your paper!\n\n🔧 **Tool Bar / Ribbon** — At the top. Has all the drawing tools like pencil, brush, shapes, colors.\n\n🎨 **Color Palette** — Shows all the colors you can use. Click a color to select it.\n\n📏 **Size Options** — Choose how thick your lines should be.\n\n📋 **Menu Bar** — File, Home, View menus at the very top.\n\n**The most important tools:**\n✏️ Pencil — draws thin lines\n🖌️ Brush — draws thick, artistic lines\n🪣 Fill — fills a shape with color\n🔤 Text — adds words to your drawing\n📐 Shapes — draws circles, squares, lines\n🧽 Eraser — removes mistakes",
           tip: "The Pencil tool is best for thin lines and details. The Brush tool is better for coloring large areas!",
           illustration: [
