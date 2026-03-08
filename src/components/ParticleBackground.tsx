@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 
-const ParticleBackground = () => {
+const ParticleBackground = React.forwardRef<HTMLCanvasElement>((_, ref) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
