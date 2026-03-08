@@ -245,6 +245,11 @@ const TopicViewer = () => {
           </motion.div>
         </AnimatePresence>
 
+        {/* Watch & Learn Video Section */}
+        {isLastPage && topicVideos.length > 0 && (
+          <WatchAndLearn videos={topicVideos} topicTitle={textbook.topicTitle} />
+        )}
+
         {/* Bottom Navigation */}
         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="mt-14 mb-12">
           {/* Page selector pills */}
