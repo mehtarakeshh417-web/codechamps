@@ -63,7 +63,7 @@ const Landing = () => {
               <Button variant="hero" size="xl" onClick={() => navigate("/login")}>
                 Get Started
               </Button>
-              <Button variant="glass" size="xl">
+              <Button variant="hero" size="xl">
                 Watch Demo
               </Button>
             </div>
