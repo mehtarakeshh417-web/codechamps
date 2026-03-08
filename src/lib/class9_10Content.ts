@@ -841,6 +841,7 @@ const c9DataSci: TopicTextbook = {
       sections: [
         {
           heading: "Pandas — Data Manipulation",
+          image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=400&fit=crop",
           body: "**Pandas** is Python's most popular library for data analysis. It provides **DataFrames** — powerful table-like structures that make working with data intuitive and efficient.\n\nWith Pandas, you can load data from CSV files, Excel spreadsheets, and databases. Then filter rows, select columns, calculate statistics, group data, merge tables, and much more — all with concise, readable code.\n\nPandas handles millions of rows efficiently and integrates seamlessly with other data science libraries.",
           codeBlock: {
             language: "python",
