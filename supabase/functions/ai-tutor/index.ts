@@ -18,7 +18,70 @@ Rules:
 - Use emojis sparingly to keep it fun 🎮
 - Format code examples with markdown code blocks.
 - Keep responses concise — students have short attention spans!
-- If the student seems stuck, break the problem into smaller steps.`;
+- If the student seems stuck, break the problem into smaller steps.
+- You have access to real-time web search results. When search results are provided, use them to give accurate, up-to-date information. Always prefer search results over your training data for factual/current info.
+- When citing info from search results, keep it natural — don't say "according to search results".`;
+
+// Simple web search using DuckDuckGo HTML endpoint
+async function webSearch(query: string): Promise<string> {
+  try {
+    const url = `https://html.duckduckgo.com/html/?q=${encodeURIComponent(query)}`;
+    const resp = await fetch(url, {
+      headers: {
+        "User-Agent": "Mozilla/5.0 (compatible; CodeChamps/1.0)",
+      },
+    });
+    if (!resp.ok) return "";
+
+    const html = await resp.text();
+
+    // Extract search result snippets from DuckDuckGo HTML
+    const snippets: string[] = [];
+    const snippetRegex = /<a class="result__snippet"[^>]*>([\s\S]*?)<\/a>/gi;
+    let match;
+    while ((match = snippetRegex.exec(html)) !== null && snippets.length < 5) {
+      // Strip HTML tags
+      const text = match[1].replace(/<[^>]+>/g, "").replace(/&amp;/g, "&").replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&quot;/g, '"').replace(/&#x27;/g, "'").trim();
+      if (text.length > 20) snippets.push(text);
+    }
+
+    // Also extract titles
+    const titleRegex = /<a class="result__a"[^>]*>([\s\S]*?)<\/a>/gi;
+    const titles: string[] = [];
+    while ((match = titleRegex.exec(html)) !== null && titles.length < 5) {
+      const text = match[1].replace(/<[^>]+>/g, "").trim();
+      if (text.length > 5) titles.push(text);
+    }
+
+    if (snippets.length === 0) return "";
+
+    let searchContext = "Web Search Results:\n";
+    for (let i = 0; i < snippets.length; i++) {
+      searchContext += `${i + 1}. ${titles[i] || ""}: ${snippets[i]}\n`;
+    }
+    return searchContext;
+  } catch (e) {
+    console.error("Web search error:", e);
+    return "";
+  }
+}
+
+// Determine if a query needs web search (current events, recent info, factual questions)
+function needsWebSearch(message: string): boolean {
+  const lower = message.toLowerCase();
+  const searchTriggers = [
+    "latest", "recent", "current", "today", "2024", "2025", "2026", "new",
+    "what is", "who is", "when did", "how to", "tell me about",
+    "explain", "define", "meaning of", "difference between",
+    "best", "top", "popular", "trending", "update",
+    "python", "javascript", "html", "css", "java", "scratch",
+    "ai ", "artificial intelligence", "machine learning", "chatgpt", "gemini",
+    "computer", "technology", "software", "hardware", "internet",
+    "cbse", "icse", "syllabus", "exam", "board",
+    "?", "how", "what", "why", "which", "where", "when"
+  ];
+  return searchTriggers.some((t) => lower.includes(t));
+}
 
 serve(async (req) => {
   if (req.method === "OPTIONS") {
@@ -34,6 +97,21 @@ serve(async (req) => {
       ? `\nThe student is in ${classLevel}. Adjust your language complexity accordingly.`
       : "";
 
+    // Get the latest user message for web search
+    const lastUserMsg = [...messages].reverse().find((m: any) => m.role === "user");
+    let searchContext = "";
+
+    if (lastUserMsg && needsWebSearch(lastUserMsg.content)) {
+      // Build a focused search query
+      const searchQuery = `${lastUserMsg.content} computer science education`;
+      searchContext = await webSearch(searchQuery);
+      if (searchContext) {
+        searchContext = `\n\n--- REAL-TIME WEB SEARCH RESULTS (use these for accurate, current information) ---\n${searchContext}--- END SEARCH RESULTS ---\n`;
+      }
+    }
+
+    const systemContent = SYSTEM_PROMPT + classContext + searchContext;
+
     const response = await fetch(
       "https://ai.gateway.lovable.dev/v1/chat/completions",
       {
@@ -45,7 +123,7 @@ serve(async (req) => {
         body: JSON.stringify({
           model: "google/gemini-3-flash-preview",
           messages: [
-            { role: "system", content: SYSTEM_PROMPT + classContext },
+            { role: "system", content: systemContent },
             ...messages,
           ],
           stream: true,
