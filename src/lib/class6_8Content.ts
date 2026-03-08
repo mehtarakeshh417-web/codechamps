@@ -777,6 +777,7 @@ const c6AiAct: TopicTextbook = {
       sections: [
         {
           heading: "AI Applications You Use Every Day",
+          image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=800&h=400&fit=crop",
           body: "You interact with AI every day without even knowing!\n\n📱 **Voice Assistants** — Siri, Google Assistant, Alexa understand your speech and respond\n🎬 **Recommendations** — Netflix suggests movies, YouTube suggests videos based on what you like\n📷 **Photo Features** — Your phone recognizes faces, adds filters, and organizes photos\n🔍 **Google Search** — AI understands your question and finds the best answers\n📧 **Spam Filters** — AI identifies and blocks spam emails\n🗺️ **Maps & Navigation** — Google Maps finds the fastest route using AI\n🛒 **Online Shopping** — Amazon suggests products you might like\n🎮 **Games** — AI controls computer opponents\n🌐 **Translation** — Google Translate converts languages instantly\n🏥 **Healthcare** — AI helps doctors detect diseases from X-rays\n\n**How AI Learns:**\n1. It receives **data** (examples)\n2. It finds **patterns** in the data\n3. It makes **predictions** based on patterns\n4. It gets **feedback** (right or wrong)\n5. It improves with more data!",
         }
       ],
