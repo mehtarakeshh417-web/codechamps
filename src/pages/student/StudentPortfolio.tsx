@@ -75,7 +75,7 @@ const StudentPortfolio = () => {
 
       // leaderboard rank
       const { data: allStudents } = await supabase
-        .from("students").select("id, xp").eq("school_id", student.school_id).order("xp", { ascending: false });
+        .from("students").select("id, xp").eq("school_id", student.schoolId).order("xp", { ascending: false });
       if (allStudents) {
         const idx = allStudents.findIndex((s: any) => s.id === student.id);
         setLeaderboardRank(idx >= 0 ? idx + 1 : null);
