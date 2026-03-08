@@ -59,6 +59,7 @@ const schoolRoutes = (
     <Route path="students" element={<SchoolStudents />} />
     <Route path="classes" element={<SchoolClasses />} />
     <Route path="attendance" element={<SchoolAttendance />} />
+    <Route path="announcements" element={<SchoolAnnouncements />} />
     <Route path="analytics" element={<SchoolAnalytics />} />
     <Route path="settings" element={<SchoolSettings />} />
   </>
