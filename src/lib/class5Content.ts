@@ -20,10 +20,16 @@ import c5ScratchBlocks from "@/assets/curriculum/c5-scratch-blocks.jpg";
 import c5ScratchVariables from "@/assets/curriculum/c5-scratch-variables.jpg";
 
 export interface Exercise {
-  type: "fill-in-blank" | "true-false" | "practice";
+  type: "fill-in-blank" | "true-false" | "practice" | "mcq" | "match" | "ordering";
   question: string;
   answer: string;
   options?: string[];
+  /** MCQ: 4 choices, answer is the correct one */
+  choices?: string[];
+  /** Match: pairs of [term, definition] */
+  matchPairs?: [string, string][];
+  /** Ordering: correct order of items (user must reorder) */
+  orderItems?: string[];
 }
 
 export interface ContentSection {
@@ -33,6 +39,18 @@ export interface ContentSection {
   tip?: string;
   funFact?: string;
   youtubeId?: string; // YouTube video ID for embedding
+  /** Syntax-highlighted code block */
+  codeBlock?: { language: string; code: string };
+  /** Comparison/data table */
+  table?: { headers: string[]; rows: string[][] };
+  /** Glossary-style key terms */
+  keyTerms?: { term: string; definition: string }[];
+  /** Warning or important note callout */
+  warningNote?: string;
+  /** Side-by-side comparison */
+  comparison?: { left: { title: string; points: string[] }; right: { title: string; points: string[] } };
+  /** Numbered step-by-step guide */
+  stepByStep?: { steps: { title: string; description: string; image?: string }[] };
 }
 
 export interface TextbookPage {
