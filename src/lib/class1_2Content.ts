@@ -142,6 +142,17 @@ const c1ComputerIntro: TopicTextbook = {
         {
           heading: "Turning On the Computer",
           body: "**To start the computer:**\n1. Press the **Power button** on the CPU box\n2. Press the **Power button** on the Monitor\n3. Wait for the computer to start up (this is called **booting**)\n4. The **Desktop** appears — this is your home screen!\n\n**The Desktop shows:**\n🖼️ **Icons** — Small pictures that represent programs\n📁 **Folders** — Where you keep your files organized\n📋 **Taskbar** — The bar at the bottom with the Start button\n🪟 **Start Button** — Click it to see all your programs",
+          keyTerms: [
+            { term: "Booting", definition: "The process of turning on a computer and loading the operating system." },
+            { term: "Desktop", definition: "The main screen you see after the computer starts. It shows icons and the taskbar." },
+            { term: "Taskbar", definition: "The bar at the bottom of the screen that shows the Start button and open programs." },
+          ],
+          illustration: [
+            { emoji: "🖼️", label: "Icons" },
+            { emoji: "📁", label: "Folders" },
+            { emoji: "📋", label: "Taskbar" },
+            { emoji: "🪟", label: "Start Menu" },
+          ]
         },
         {
           heading: "Shutting Down Safely",
