@@ -148,16 +148,17 @@ export const JavaEditor = () => (
   </EditorWrapper>
 );
 
-// MS Paint (Kleki - Modern Paint App)
+// MS Paint (Photopea - Advanced Paint App)
 export const MsPaintEditor = () => (
   <EditorWrapper title="MS Paint">
-    <div className="h-[600px] rounded-xl overflow-hidden border border-white/10">
+    <div className="h-[650px] rounded-xl overflow-hidden border border-white/10">
       <iframe
-        src="https://kleki.com"
+        src="https://www.photopea.com#%7B%22environment%22:%7B%22theme%22:2%7D%7D"
         className="w-full h-full border-0"
-        title="MS Paint (Kleki)"
+        title="MS Paint (Photopea)"
         allow="clipboard-read; clipboard-write"
         sandbox="allow-scripts allow-same-origin allow-popups allow-forms allow-modals allow-downloads"
+        loading="lazy"
       />
     </div>
   </EditorWrapper>
@@ -264,7 +265,7 @@ export const EDITOR_URLS: Record<string, { url: string; label: string }> = {
   java: { url: "https://onecompiler.com/java", label: "Java Compiler" },
   scratch: { url: "https://studio.penguinmod.com/editor.html", label: "Block Coding Editor" },
   scratchjr: { url: "https://codejr.org/scratchjr/index.html", label: "Scratch Jr" },
-  mspaint: { url: "https://kleki.com", label: "MS Paint" },
+  mspaint: { url: "https://www.photopea.com", label: "MS Paint" },
   msword: { url: "about:blank", label: "MS Word Editor" },
   msexcel: { url: "about:blank", label: "MS Excel Editor" },
   mspowerpoint: { url: "about:blank", label: "MS PowerPoint Editor" },

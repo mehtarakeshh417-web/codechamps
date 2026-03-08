@@ -1,15 +1,16 @@
 import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Bell, X, CheckCircle2, FileText, Star, MessageCircle } from "lucide-react";
+import { Bell, X, CheckCircle2, FileText, Star, MessageCircle, Megaphone } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/contexts/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 interface Notification {
   id: string;
   title: string;
   message: string;
   type: string;
-  reference_id: string;
+  reference_id: string | null;
   is_read: boolean;
   created_at: string;
 }
@@ -19,6 +20,8 @@ const typeIcons: Record<string, React.ElementType> = {
   project_submitted: CheckCircle2,
   project_graded: Star,
   feedback_received: MessageCircle,
+  announcement: Megaphone,
+  assignment: FileText,
   info: Bell,
 };
 
@@ -27,11 +30,31 @@ const typeColors: Record<string, string> = {
   project_submitted: "text-[hsl(var(--neon-green))]",
   project_graded: "text-[hsl(var(--neon-orange))]",
   feedback_received: "text-[hsl(var(--secondary))]",
+  announcement: "text-[hsl(var(--neon-orange))]",
+  assignment: "text-[hsl(var(--neon-blue))]",
   info: "text-white/60",
+};
+
+const getNotificationRoute = (type: string, role: string): string | null => {
+  const prefix = role === "teacher" ? "/teacher" : role === "school" ? "/school" : "/student";
+  switch (type) {
+    case "project_assigned":
+    case "project_submitted":
+    case "project_graded":
+    case "feedback_received":
+      return `${prefix}/projects`;
+    case "assignment":
+      return `${prefix}/assignments`;
+    case "announcement":
+      return role === "school" ? "/school/announcements" : `${prefix}/dashboard`;
+    default:
+      return null;
+  }
 };
 
 const NotificationBell = () => {
   const { user } = useAuth();
+  const navigate = useNavigate();
   const [notifications, setNotifications] = useState<Notification[]>([]);
   const [open, setOpen] = useState(false);
 
@@ -79,9 +102,18 @@ const NotificationBell = () => {
     setNotifications((prev) => prev.map((n) => ({ ...n, is_read: true })));
   };
 
-  const markRead = async (id: string) => {
-    await supabase.from("notifications").update({ is_read: true }).eq("id", id);
-    setNotifications((prev) => prev.map((n) => n.id === id ? { ...n, is_read: true } : n));
+  const handleNotificationClick = async (n: Notification) => {
+    // Mark as read
+    if (!n.is_read) {
+      await supabase.from("notifications").update({ is_read: true }).eq("id", n.id);
+      setNotifications((prev) => prev.map((item) => item.id === n.id ? { ...item, is_read: true } : item));
+    }
+    // Navigate to relevant page
+    const route = getNotificationRoute(n.type, user?.role || "student");
+    if (route) {
+      setOpen(false);
+      navigate(route);
+    }
   };
 
   const timeAgo = (date: string) => {
@@ -152,11 +184,12 @@ const NotificationBell = () => {
                   notifications.map((n) => {
                     const Icon = typeIcons[n.type] || Bell;
                     const color = typeColors[n.type] || "text-white/60";
+                    const route = getNotificationRoute(n.type, user?.role || "student");
                     return (
                       <button
                         key={n.id}
-                        onClick={() => markRead(n.id)}
-                        className={`w-full text-left p-3 border-b border-white/5 hover:bg-white/5 transition-colors ${!n.is_read ? "bg-white/[0.03]" : ""}`}
+                        onClick={() => handleNotificationClick(n)}
+                        className={`w-full text-left p-3 border-b border-white/5 hover:bg-white/5 transition-colors cursor-pointer ${!n.is_read ? "bg-white/[0.03]" : ""}`}
                       >
                         <div className="flex gap-3">
                           <div className={`mt-0.5 ${color}`}>
@@ -170,7 +203,10 @@ const NotificationBell = () => {
                               {!n.is_read && <span className="w-2 h-2 rounded-full bg-[hsl(var(--neon-blue))] shrink-0" />}
                             </div>
                             <p className="text-[11px] text-white/50 font-body mt-0.5 line-clamp-2">{n.message}</p>
-                            <p className="text-[10px] text-white/30 font-body mt-1">{timeAgo(n.created_at)}</p>
+                            <div className="flex items-center gap-2 mt-1">
+                              <p className="text-[10px] text-white/30 font-body">{timeAgo(n.created_at)}</p>
+                              {route && <span className="text-[10px] text-[hsl(var(--neon-blue))]/60 font-body">→ View</span>}
+                            </div>
                           </div>
                         </div>
                       </button>
