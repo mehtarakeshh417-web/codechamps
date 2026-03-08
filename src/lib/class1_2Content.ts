@@ -842,6 +842,7 @@ const c2PaintAdv: TopicTextbook = {
       sections: [
         {
           heading: "Copy, Paste, Resize, and Rotate",
+          image: "https://images.unsplash.com/photo-1452860606245-08befc0ff44b?w=800&h=400&fit=crop",
           body: "**Copy & Paste:**\n1. Select an area using the selection tool\n2. Press **Ctrl+C** to copy\n3. Press **Ctrl+V** to paste\n4. Move the pasted copy where you want it!\n\n**This is great for:**\n• Making patterns (copy one flower, paste many!)\n• Creating symmetrical designs\n• Duplicating characters in a scene\n\n**Resize / Stretch:**\n1. Select the area\n2. Go to **Home** → **Resize**\n3. Change **Percentage** or **Pixels**\n4. Check **Maintain aspect ratio** to keep proportions!\n\n**Rotate / Flip:**\n1. Select the area\n2. Go to **Home** → **Rotate**\n3. Options: Rotate 90° right/left, 180°, Flip horizontal/vertical\n\n**Undo:** Press **Ctrl+Z** to undo your last action (up to 3 times!)",
         }
       ],
