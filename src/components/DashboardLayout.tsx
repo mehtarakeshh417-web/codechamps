@@ -106,7 +106,7 @@ const DashboardLayout = ({ children }: Props) => {
             </div>
           </div>
           {user.schoolName && (
-            <div className="mt-2 text-xs text-white/40 font-body">{user.schoolName}</div>
+            <div className="mt-2 text-xs text-white/80 font-body font-semibold">{user.schoolName}</div>
           )}
         </div>
 
