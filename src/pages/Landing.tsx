@@ -7,7 +7,7 @@ import { Code, Gamepad2, GraduationCap, Shield, Trophy, Zap } from "lucide-react
 import logo from "@/assets/logo.jpg";
 
 const features = [
-  { icon: GraduationCap, title: "Smart Curriculum", desc: "Class-wise structured CS education from Class 1 to 8", color: "neon-glow-blue" },
+  { icon: GraduationCap, title: "Smart Curriculum", desc: "Class-wise structured CS education from Class 1 to 10", color: "neon-glow-blue" },
   { icon: Gamepad2, title: "Gamified Learning", desc: "XP, levels, badges, and leaderboards keep students engaged", color: "neon-glow-green" },
   { icon: Code, title: "Live Coding", desc: "Built-in sandbox for HTML, CSS, and Python projects", color: "neon-glow-purple" },
   { icon: Zap, title: "AI-Powered", desc: "Auto-generate assignments and detect weak topics", color: "neon-glow-orange" },
