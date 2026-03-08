@@ -33,6 +33,7 @@ const TopicViewer = () => {
   const { students, refreshData } = useData();
   const textbook = useMemo(() => getTopicTextbook(topicId || ""), [topicId]);
   const topicVideos = useMemo(() => getTopicVideos(topicId || ""), [topicId]);
+  const quizQuestions = useMemo(() => getQuizForTopic(topicId || ""), [topicId]);
   const student = useMemo(() => students.find((s) => s.user_id === user?.id), [students, user?.id]);
   const curriculum = useMemo(() => getCurriculumForClass(user?.className || ""), [user?.className]);
 
