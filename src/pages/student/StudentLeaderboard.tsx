@@ -22,7 +22,7 @@ const StudentLeaderboard = () => {
 
   // School-level: same schoolId, sorted by XP desc
   const schoolRanking = useMemo(() => {
-    const student = students.find((s) => s.id === user?.id);
+    const student = students.find((s) => s.user_id === user?.id);
     if (!student) return [];
     return students
       .filter((s) => s.schoolId === student.schoolId)
