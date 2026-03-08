@@ -442,7 +442,7 @@ const c3ScratchSprite: TopicTextbook = {
 };
 
 const c3ScratchAppear: TopicTextbook = {
-  topicId: "c3-scr-a",
+  topicId: "c3-scr-appear",
   topicTitle: "Change Sprite Appearance",
   subjectColor: "neon-green",
   pages: [
