@@ -900,6 +900,7 @@ const c2WordIntro: TopicTextbook = {
       sections: [
         {
           heading: "Basic Typing",
+          image: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=800&h=400&fit=crop",
           body: "**How to type in Word:**\n1. Click on the white page\n2. A blinking line appears — this is the **cursor**\n3. Start typing! The cursor moves as you type.\n\n**Important Keys:**\n⏎ **Enter** — Start a new paragraph (new line)\n⬜ **Space Bar** — Add space between words\n⬅️ **Backspace** — Delete the character BEFORE the cursor\n🗑️ **Delete** — Delete the character AFTER the cursor\n⬆️ **Shift** — Hold for capital letters or special characters\n🔠 **Caps Lock** — All capital letters\n↹ **Tab** — Indent (move text to the right)\n\n**Moving the Cursor:**\n⬆️⬇️⬅️➡️ Arrow keys move the cursor around\n🏠 **Home** — Go to the beginning of the line\n🔚 **End** — Go to the end of the line\n\n**Selecting Text:**\n1. Click at the start of the text\n2. Hold **Shift** and click at the end\n3. OR click and drag to highlight text",
           tip: "You can also double-click a word to select just that word, or triple-click to select the entire paragraph!"
         }
