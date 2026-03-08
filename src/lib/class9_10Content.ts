@@ -1394,6 +1394,7 @@ const c10AiFund: TopicTextbook = {
       sections: [
         {
           heading: "AI Applications Today",
+          image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=800&h=400&fit=crop",
           body: "AI is transforming every industry. Here's how AI is being used right now to solve real problems:\n\n**Healthcare:** AI analyzes medical images to detect diseases earlier than human doctors, predicts patient outcomes, and accelerates drug discovery. DeepMind's AlphaFold predicted the structure of 200 million proteins.\n\n**Education:** Adaptive learning platforms personalize content for each student, chatbots answer student questions 24/7, and AI helps teachers identify struggling students early.\n\n**Transportation:** Self-driving cars use computer vision and decision-making AI. Route optimization reduces delivery times and fuel consumption. Traffic management systems reduce congestion.\n\n**Creative Arts:** AI generates art, writes stories, composes music, and creates realistic images. Tools like DALL-E, Midjourney, and ChatGPT are changing how creative work is done.",
           table: {
             headers: ["Field", "AI Application", "Technology Used", "Impact"],

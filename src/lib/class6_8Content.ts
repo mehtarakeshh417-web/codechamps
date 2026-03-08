@@ -924,6 +924,7 @@ const c7PyOps: TopicTextbook = {
       sections: [
         {
           heading: "Python Operators",
+          image: "https://images.unsplash.com/photo-1509228468518-180dd4864904?w=800&h=400&fit=crop",
           body: "**Arithmetic Operators:**\n`+` Addition: `5 + 3 = 8`\n`-` Subtraction: `10 - 4 = 6`\n`*` Multiplication: `3 * 7 = 21`\n`/` Division: `15 / 4 = 3.75`\n`//` Floor division: `15 // 4 = 3` (whole number only)\n`%` Modulus: `15 % 4 = 3` (remainder)\n`**` Power: `2 ** 3 = 8` (2³)\n\n**Comparison Operators:**\n`==` Equal to\n`!=` Not equal to\n`>` Greater than\n`<` Less than\n`>=` Greater than or equal\n`<=` Less than or equal\n\n**Logical Operators:**\n`and` — both must be True\n`or` — at least one must be True\n`not` — reverses True/False\n\n**Examples:**\n```python\nage = 15\nif age >= 13 and age <= 19:\n    print(\"You're a teenager!\")\n\nday = \"Sunday\"\nif day == \"Saturday\" or day == \"Sunday\":\n    print(\"Weekend!\")\n```",
         }
       ],

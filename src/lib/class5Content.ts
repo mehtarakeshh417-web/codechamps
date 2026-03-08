@@ -876,6 +876,7 @@ const wordTextFormatting: TopicTextbook = {
       sections: [
         {
           heading: "Text Style Options",
+          image: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=800&h=400&fit=crop",
           body: "**Bold (Ctrl+B)** — Makes text **thicker and darker**. Use for headings and important words.\n\n*Italic (Ctrl+I)* — Makes text *slanted*. Use for book titles, foreign words, or emphasis.\n\n**Underline (Ctrl+U)** — Adds a line under text. Use sparingly — too much underline is hard to read.\n\n~~Strikethrough~~ — Draws a line through text. Shows deleted or incorrect information.\n\n**Subscript** — Makes text smaller and lower (like H₂O)\n**Superscript** — Makes text smaller and higher (like x²)\n\n**Text Highlight** — Marks text with a colored background (like a highlighter pen)\n**Font Color** — Changes the color of the text itself",
         },
         {
