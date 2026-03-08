@@ -580,6 +580,100 @@ export const CURRICULUM: ClassCurriculum[] = [
       },
     ],
   },
+  // =================== CLASS 9 ===================
+  {
+    classId: "9th",
+    className: "Class 9",
+    subjects: [
+      {
+        id: "c9-python", title: "Advanced Python", icon: "Terminal", color: "neon-green",
+        topics: [{
+          id: "c9-py-adv", title: "Advanced Python Programming",
+          lessons: makeLessons(["Data Structures (Lists, Tuples, Dicts)", "Object-Oriented Programming", "File Handling", "Error Handling", "Modules & Packages", "Regular Expressions"], "c9-py"),
+          activities: makeActivities(["Activity: OOP Design", "Project: Library Manager", "Project: Student Grade System"], "c9-py"),
+        }],
+      },
+      {
+        id: "c9-web", title: "Web Development", icon: "Code", color: "neon-blue",
+        topics: [{
+          id: "c9-web-dev", title: "HTML, CSS & JavaScript",
+          lessons: makeLessons(["JavaScript Basics", "DOM Manipulation", "Events & Interactivity", "Responsive Design", "CSS Flexbox & Grid", "Web Project Development"], "c9-web"),
+          activities: makeActivities(["Activity: Interactive Web Page", "Project: Portfolio Website", "Project: Web Calculator"], "c9-web"),
+        }],
+      },
+      {
+        id: "c9-db", title: "Databases & SQL", icon: "Database", color: "neon-purple",
+        topics: [{
+          id: "c9-sql-db", title: "Introduction to SQL",
+          lessons: makeLessons(["What is a Database?", "SQL Basics (CREATE, INSERT)", "Querying Data (SELECT, WHERE)", "UPDATE & DELETE", "Joins & Relationships", "Database Design"], "c9-sql"),
+          activities: makeActivities(["Activity: Build Student Database", "Project: Library Catalog System", "Project: E-Commerce Database"], "c9-sql"),
+        }],
+      },
+      {
+        id: "c9-cyber", title: "Cybersecurity", icon: "Shield", color: "neon-orange",
+        topics: [{
+          id: "c9-cybersec", title: "Cybersecurity Basics",
+          lessons: makeLessons(["Digital Threats Overview", "Password Security", "Phishing & Social Engineering", "Network Security", "Encryption Basics", "Online Privacy"], "c9-cyber"),
+          activities: makeActivities(["Activity: Security Audit", "Project: Cybersecurity Awareness Poster", "Project: Password Strength Checker"], "c9-cyber"),
+        }],
+      },
+      {
+        id: "c9-datasci", title: "Data Science", icon: "BarChart3", color: "neon-pink",
+        topics: [{
+          id: "c9-data-sci", title: "Introduction to Data Science",
+          lessons: makeLessons(["What is Data Science?", "Data Collection & Cleaning", "Basic Statistics", "Data Visualization", "Python for Data (Pandas)", "Real-World Case Studies"], "c9-ds"),
+          activities: makeActivities(["Activity: Data Analysis Project", "Project: Survey Data Dashboard", "Project: Weather Data Report"], "c9-ds"),
+        }],
+      },
+    ],
+  },
+  // =================== CLASS 10 ===================
+  {
+    classId: "10th",
+    className: "Class 10",
+    subjects: [
+      {
+        id: "c10-python", title: "Programming Projects", icon: "Terminal", color: "neon-green",
+        topics: [{
+          id: "c10-py-projects", title: "Advanced Programming Projects",
+          lessons: makeLessons(["Project Planning & Design", "APIs & Web Services", "Database Integration", "Testing & Debugging", "Version Control (Git)", "Documentation"], "c10-py"),
+          activities: makeActivities(["Activity: API Integration", "Project: Task Manager App", "Project: Data Dashboard"], "c10-py"),
+        }],
+      },
+      {
+        id: "c10-webapp", title: "Web Applications", icon: "Globe", color: "neon-blue",
+        topics: [{
+          id: "c10-web-apps", title: "Building Web Applications",
+          lessons: makeLessons(["Web App Architecture", "Frontend Frameworks", "Backend Basics", "REST APIs", "Authentication", "Deployment"], "c10-web"),
+          activities: makeActivities(["Activity: Build a REST API", "Project: Blog Platform", "Project: Chat Application"], "c10-web"),
+        }],
+      },
+      {
+        id: "c10-ai", title: "AI Fundamentals", icon: "Brain", color: "neon-pink",
+        topics: [{
+          id: "c10-ai-fund", title: "Artificial Intelligence Fundamentals",
+          lessons: makeLessons(["AI vs ML vs Deep Learning", "Supervised Learning", "Unsupervised Learning", "Neural Networks Basics", "AI Ethics & Bias", "AI Project Development"], "c10-ai"),
+          activities: makeActivities(["Activity: Train a Classifier", "Project: Image Recognition", "Project: AI Ethics Report"], "c10-ai"),
+        }],
+      },
+      {
+        id: "c10-appdev", title: "App Development", icon: "Smartphone", color: "neon-orange",
+        topics: [{
+          id: "c10-app-dev", title: "Mobile App Projects",
+          lessons: makeLessons(["Native vs Hybrid Apps", "UI/UX Design Principles", "App Architecture", "Data Storage in Apps", "Publishing Apps", "App Marketing Basics"], "c10-app"),
+          activities: makeActivities(["Activity: Design App Wireframes", "Project: Utility App", "Project: Educational Quiz App"], "c10-app"),
+        }],
+      },
+      {
+        id: "c10-capstone", title: "Capstone Project", icon: "Award", color: "neon-purple",
+        topics: [{
+          id: "c10-capstone", title: "Capstone Technology Project",
+          lessons: makeLessons(["Project Proposal Writing", "Technology Selection", "Development Methodology", "Project Presentation", "Portfolio Development", "Career in Technology"], "c10-cap"),
+          activities: makeActivities(["Activity: Write Project Proposal", "Project: Capstone Development", "Project: Final Presentation"], "c10-cap"),
+        }],
+      },
+    ],
+  },
 ];
 
 // Get curriculum for a specific class
