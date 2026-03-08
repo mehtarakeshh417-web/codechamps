@@ -522,6 +522,7 @@ const c1ScratchWork: TopicTextbook = {
       sections: [
         {
           heading: "Changing Backgrounds",
+          image: "https://images.unsplash.com/photo-1533628635777-112b2239b1c7?w=800&h=400&fit=crop",
           body: "**Adding a Background:**\n1. Tap the **background button** (landscape icon at top)\n2. Choose from the library (park, beach, city, space, etc.)\n3. Or draw your own background!\n\n**Adding New Characters:**\n1. Tap the **+** button (add sprite)\n2. Choose from the library (animals, people, things)\n3. Or draw your own character using the Paint Editor!\n\n**The Paint Editor lets you:**\n✏️ Draw with different colors\n🔄 Use stamps and stickers\n🧽 Erase parts\n📏 Add shapes\n🎨 Fill with color",
           illustration: [
             { emoji: "🏖️", label: "Beach" },
