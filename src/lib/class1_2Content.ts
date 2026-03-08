@@ -859,6 +859,7 @@ const c2PaintAdv: TopicTextbook = {
       sections: [
         {
           heading: "Adding Text to Drawings",
+          image: "https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=800&h=400&fit=crop",
           body: "**The Text Tool** lets you type words on your drawing:\n\n1. Click the **A** (Text) tool\n2. Click and drag to create a text box on the canvas\n3. Type your text!\n4. A Text toolbar appears with options:\n\n**Text Options:**\n🔤 **Font** — Choose the style (Arial, Comic Sans, etc.)\n📏 **Size** — How big the text is (12, 18, 24, 36...)\n**B** **Bold** — Makes text thick and heavy\n*I* **Italic** — Makes text slanted\nU **Underline** — Adds a line under the text\n🎨 **Color** — Change the text color\n\n**Two text modes:**\n• **Opaque** — text has a colored background\n• **Transparent** — text has no background (floats on the drawing)\n\n⚠️ Once you click outside the text box, the text becomes part of the drawing and CANNOT be edited!",
           tip: "Always check your spelling before clicking outside the text box — you can't change it after!"
         }
