@@ -886,6 +886,7 @@ const c2WordIntro: TopicTextbook = {
       sections: [
         {
           heading: "Meet Microsoft Word!",
+          image: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=800&h=400&fit=crop",
           body: "**MS Word** is a program for writing on the computer. You can use it to:\n\n📝 Write stories and letters\n📄 Make homework and projects\n🎨 Add pictures and colors to your writing\n🖨️ Print your documents on paper\n\n**How to Open MS Word:**\n1. Click the **Start button**\n2. Type **Word**\n3. Click on **Microsoft Word**\n4. Click **Blank document** to start!\n\n**The Word Window has these parts:**\n📋 **Title Bar** — Shows the document name\n🎀 **Ribbon** — Big toolbar with all features\n📄 **Document Area** — The white page where you type\n📊 **Status Bar** — Shows page number and word count\n📐 **Ruler** — Shows measurements at the top",
           youtubeId: "S-nHYzK-BVg",
           funFact: "Microsoft Word was first released in 1983 — that's over 40 years ago!"
