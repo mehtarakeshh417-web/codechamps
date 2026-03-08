@@ -299,6 +299,7 @@ const c3WordAdv: TopicTextbook = {
       sections: [
         {
           heading: "Aligning Text",
+          image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&h=400&fit=crop",
           body: "**Alignment** controls where text sits on the page:\n\n⬅️ **Left Align** (Ctrl+L) — default, text lines up on the left\n🔄 **Center** (Ctrl+E) — text is centered\n➡️ **Right Align** (Ctrl+R) — text lines up on the right\n📐 **Justify** (Ctrl+J) — text stretches to fill both edges\n\n**Bullets & Numbering:**\nMake organized lists easily!\n• Click **Bullets** button for dot lists\n• Click **Numbering** for numbered lists\n• Choose from different bullet styles\n\n**Line Spacing:**\n• 1.0 = single space\n• 1.5 = one-and-a-half space\n• 2.0 = double space",
         }
       ],
