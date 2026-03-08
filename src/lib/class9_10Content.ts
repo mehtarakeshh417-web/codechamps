@@ -195,6 +195,7 @@ const c9PythonAdv: TopicTextbook = {
       sections: [
         {
           heading: "Advanced Function Concepts",
+          image: "https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=800&h=400&fit=crop",
           body: "Beyond basic functions, Python offers powerful functional programming features that make your code more concise and expressive.\n\n**Lambda functions** are small, anonymous functions defined in a single line. They're useful for short operations that don't need a full function definition. **Higher-order functions** like `map()`, `filter()`, and `sorted()` take other functions as arguments, enabling powerful data transformations.\n\n**Decorators** are a way to modify the behavior of functions without changing their code. They 'wrap' a function with additional functionality — common uses include logging, timing, and access control.",
           codeBlock: {
             language: "python",
