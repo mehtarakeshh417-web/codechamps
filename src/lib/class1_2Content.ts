@@ -175,6 +175,16 @@ const c1ComputerIntro: TopicTextbook = {
         {
           heading: "Summary",
           body: "Great job! You learned about:\n\n✅ What a computer is and what it can do\n✅ The main parts: Monitor, Keyboard, Mouse, CPU, Speakers\n✅ How to use the mouse — click, double-click, right-click, drag\n✅ Important keyboard keys\n✅ How to start and safely shut down a computer\n\nYou're now ready to start using the computer! 🎉",
+          comparison: {
+            left: {
+              title: "Input Devices",
+              points: ["Keyboard — for typing", "Mouse — for pointing & clicking", "Microphone — for voice input", "Camera — for taking pictures"]
+            },
+            right: {
+              title: "Output Devices",
+              points: ["Monitor — shows pictures & text", "Speakers — plays sounds", "Printer — prints on paper", "Headphones — plays sound privately"]
+            }
+          }
         }
       ],
       exercises: [
