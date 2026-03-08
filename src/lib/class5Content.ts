@@ -169,7 +169,18 @@ const wordPageFormatting: TopicTextbook = {
         {
           heading: "Important Things to Remember",
           body: "⚠️ **Page color does NOT print by default!** To print the background color:\n1. Go to **File → Options → Display**\n2. Check **Print Background Colors and Images**\n\n⚠️ Use **light colors** so the text remains readable\n⚠️ Page color applies to the **entire document** — you cannot color just one page easily\n⚠️ To remove the color, go to **Page Color → No Color**",
-          funFact: "Did you know? Professional designers often use very light pastel backgrounds instead of pure white. It's easier on the eyes!"
+          funFact: "Did you know? Professional designers often use very light pastel backgrounds instead of pure white. It's easier on the eyes!",
+          warningNote: "Page background color does NOT print by default! You must go to **File → Options → Display** and check **Print Background Colors and Images** to make it appear on printed copies.",
+          comparison: {
+            left: {
+              title: "Solid Colors",
+              points: ["Simple, clean look", "Easy to apply", "Best for formal documents", "Light pastel colors recommended"]
+            },
+            right: {
+              title: "Fill Effects",
+              points: ["Gradients blend two colors", "Textures add depth", "Patterns create visual interest", "Pictures as background possible"]
+            }
+          }
         }
       ],
       exercises: [
