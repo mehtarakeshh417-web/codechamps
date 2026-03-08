@@ -6,6 +6,7 @@ import { useData } from "@/contexts/DataContext";
 import { getTopicTextbook } from "@/lib/class5Content";
 import { getCurriculumForClass } from "@/lib/curriculumData";
 import { getTopicVideos } from "@/lib/topicVideos";
+import { getQuizForTopic } from "@/lib/quizData";
 import { BookOpen, ChevronLeft, ArrowLeft, ArrowRight, CheckCircle2, Award, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
@@ -15,6 +16,7 @@ import TopicSidebar from "@/components/topic-viewer/TopicSidebar";
 import TopicProgressPanel from "@/components/topic-viewer/TopicProgressPanel";
 import { PremiumSection, PremiumExercise, PremiumPageHeader } from "@/components/topic-viewer/PremiumContentSections";
 import WatchAndLearn from "@/components/topic-viewer/WatchAndLearn";
+import TopicQuiz from "@/components/topic-viewer/TopicQuiz";
 
 const xpLevel = (xp: number) => {
   if (xp < 500) return 1;
