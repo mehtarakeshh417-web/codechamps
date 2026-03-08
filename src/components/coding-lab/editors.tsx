@@ -148,12 +148,12 @@ export const JavaEditor = () => (
   </EditorWrapper>
 );
 
-// MS Paint (Photopea - Advanced Paint App)
+// MS Paint (Photopea - opens directly into editor with blank canvas)
 export const MsPaintEditor = () => (
   <EditorWrapper title="MS Paint">
     <div className="h-[650px] rounded-xl overflow-hidden border border-white/10">
       <iframe
-        src="https://www.photopea.com#%7B%22environment%22:%7B%22theme%22:2%7D%7D"
+        src={"https://www.photopea.com#" + encodeURIComponent(JSON.stringify({environment:{theme:2},script:"app.newDocument(800,600,'Untitled Paint',null,72,'RGB');app.activeDocument.flatten();"}))}
         className="w-full h-full border-0"
         title="MS Paint (Photopea)"
         allow="clipboard-read; clipboard-write"
