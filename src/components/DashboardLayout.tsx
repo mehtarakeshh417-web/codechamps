@@ -7,8 +7,9 @@ import NotificationBell from "@/components/NotificationBell";
 import dashboardBg from "@/assets/dashboard-bg.jpg";
 import {
   LayoutDashboard, School, Users, BookOpen, Trophy, Settings, LogOut, GraduationCap,
-  BarChart3, Code, FileText, Gamepad2, Award, UserCircle, Menu, X, CalendarDays, MessageSquare
+  BarChart3, Code, FileText, Gamepad2, Award, UserCircle, Menu, X, CalendarDays, MessageSquare, Keyboard
 } from "lucide-react";
+import AiTutorChat from "@/components/AiTutorChat";
 
 interface NavItem {
   icon: React.ElementType;
@@ -58,6 +59,7 @@ const navConfig: Record<UserRole, NavItem[]> = {
     { icon: Trophy, label: "Achievements", path: "/dashboard/achievements" },
     { icon: Award, label: "Leaderboard", path: "/dashboard/leaderboard" },
     { icon: GraduationCap, label: "Certificates", path: "/dashboard/certificates" },
+    { icon: Keyboard, label: "Typing Practice", path: "/dashboard/typing" },
     { icon: Settings, label: "Change Password", path: "/dashboard/settings" },
   ],
 };
@@ -203,6 +205,9 @@ const DashboardLayout = ({ children }: Props) => {
           {children}
         </div>
       </main>
+
+      {/* AI Tutor Chat - Student only */}
+      {user.role === "student" && <AiTutorChat />}
     </div>
   );
 };
