@@ -19,6 +19,8 @@ import TeacherDashboard from "./teacher/TeacherDashboard";
 import TeacherClasses from "./teacher/TeacherClasses";
 import TeacherAssignments from "./teacher/TeacherAssignments";
 import TeacherProjects from "./teacher/TeacherProjects";
+import TeacherCurriculum from "./teacher/TeacherCurriculum";
+import TeacherCodingLab from "./teacher/TeacherCodingLab";
 import TeacherAnalytics from "./teacher/TeacherAnalytics";
 import TeacherStudentProgress from "./teacher/TeacherStudentProgress";
 import ChangePassword from "./shared/ChangePassword";
@@ -61,6 +63,9 @@ const teacherRoutes = (
     <Route path="classes" element={<TeacherClasses />} />
     <Route path="assignments" element={<TeacherAssignments />} />
     <Route path="projects" element={<TeacherProjects />} />
+    <Route path="curriculum" element={<TeacherCurriculum />} />
+    <Route path="curriculum/topic/:topicId" element={<TopicViewer />} />
+    <Route path="coding-lab" element={<TeacherCodingLab />} />
     <Route path="student-progress" element={<TeacherStudentProgress />} />
     <Route path="analytics" element={<TeacherAnalytics />} />
     <Route path="settings" element={<ChangePassword />} />
