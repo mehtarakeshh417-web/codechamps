@@ -753,6 +753,7 @@ const c2AdvComputer: TopicTextbook = {
       sections: [
         {
           heading: "Input Devices — Giving Data to the Computer",
+          image: "https://images.unsplash.com/photo-1587831990711-23ca6441447b?w=800&h=400&fit=crop",
           body: "**Input devices** send information TO the computer:\n\n⌨️ **Keyboard** — Type letters, numbers, and commands\n🖱️ **Mouse** — Point, click, and drag\n🎤 **Microphone** — Record your voice\n📷 **Camera / Webcam** — Take photos and videos\n📱 **Touchscreen** — Tap and swipe with your fingers\n🎮 **Joystick** — Play video games\n📠 **Scanner** — Turn paper pictures into computer pictures",
         },
         {
