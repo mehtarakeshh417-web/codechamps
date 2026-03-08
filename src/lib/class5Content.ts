@@ -760,6 +760,7 @@ const scratchBlocks: TopicTextbook = {
       sections: [
         {
           heading: "What are Sensing Blocks?",
+          image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=800&h=400&fit=crop",
           body: "**Sensing blocks** (light blue) let your program **detect** what's happening in the project.\n\n🖱️ **Mouse Sensing:**\n• **mouse x** / **mouse y** — gets the mouse cursor position\n• **mouse down?** — checks if mouse button is pressed\n\n⌨️ **Keyboard Sensing:**\n• **key ( ) pressed?** — checks if a specific key is pressed\n• Choose any key: space, arrows, letters, numbers\n\n👆 **Touch Sensing:**\n• **touching ( )?** — checks if sprite is touching another sprite, edge, or mouse\n• **touching color ( )?** — checks if sprite touches a specific color\n• **color ( ) is touching ( )?** — checks if one color on the sprite touches another color\n\n📏 **Distance:**\n• **distance to ( )** — measures distance to mouse or another sprite",
         },
         {
