@@ -280,6 +280,14 @@ const wordPageFormatting: TopicTextbook = {
         {
           heading: "Summary — What You Learned",
           body: "In this chapter, you learned about **Page Formatting** in MS Word:\n\n✅ **Margins** — blank spaces around the edges (Normal, Narrow, Wide, Custom)\n✅ **Orientation** — Portrait (tall) or Landscape (wide)\n✅ **Page Color** — background color with gradients, textures, and patterns\n✅ **Watermarks** — faded text/images behind content\n✅ **Page Borders** — decorative frames including Art borders\n✅ **Columns** — newspaper-style text layouts\n\nAll these tools are found in the **Page Layout** tab. Together, they help you create beautiful, professional-looking documents!",
+          illustration: [
+            { emoji: "📏", label: "Margins" },
+            { emoji: "📄", label: "Orientation" },
+            { emoji: "🎨", label: "Page Color" },
+            { emoji: "💧", label: "Watermark" },
+            { emoji: "🖼️", label: "Page Border" },
+            { emoji: "📰", label: "Columns" },
+          ]
         }
       ],
       exercises: [
