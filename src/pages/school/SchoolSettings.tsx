@@ -53,10 +53,10 @@ const SchoolSettings = () => {
   return (
     <div className="space-y-8">
       <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
-        <h1 className="font-display text-3xl font-bold mb-1">
+        <h1 className="font-display text-3xl font-bold mb-1 text-secondary-foreground">
           <span className="text-gradient-brand">School</span> Settings
         </h1>
-        <p className="text-white/60 font-body">Customize your school configuration</p>
+        <p className="font-body text-primary-foreground">Customize your school configuration</p>
       </motion.div>
 
       {/* Section Names Configuration */}
