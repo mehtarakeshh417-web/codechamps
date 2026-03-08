@@ -63,7 +63,7 @@ const Login = () => {
                 className="w-24 h-24 rounded-2xl object-contain mx-auto mb-5 ring-2 ring-primary/30 shadow-lg shadow-primary/20"
               />
             </motion.div>
-            <h1 className="font-display text-3xl font-bold text-gradient-brand tracking-wide">CodeChamps</h1>
+            <h1 className="font-display text-3xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent tracking-wide">CodeChamps</h1>
             <p className="text-white/50 font-body text-sm mt-2">Welcome back — sign in to continue</p>
           </div>
 
