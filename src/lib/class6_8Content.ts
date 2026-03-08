@@ -378,6 +378,7 @@ const c6Internet: TopicTextbook = {
       sections: [
         {
           heading: "Online Safety Rules",
+          image: "https://images.unsplash.com/photo-1614064641938-3bbee52942c7?w=800&h=400&fit=crop",
           body: "**The internet is powerful but can be dangerous. Follow these rules:**\n\n🔒 **Passwords:**\n• Use strong passwords (letters + numbers + symbols)\n• Never share your password\n• Use different passwords for different sites\n\n🚫 **Personal Information:**\n• NEVER share your address, phone number, or school name with strangers\n• Don't post photos with location information\n• Be careful what you share on social media\n\n👤 **Stranger Danger:**\n• Not everyone online is who they say they are\n• Never meet someone from the internet in person\n• Tell a trusted adult if someone makes you uncomfortable\n\n📧 **Email & Messages:**\n• Don't open emails from unknown senders\n• Don't click suspicious links\n• Don't download unknown files\n\n🛡️ **Cyberbullying:**\n• Be kind online — treat others as you want to be treated\n• If someone is mean to you, tell a trusted adult\n• Block and report bullies",
           tip: "A good rule: if you wouldn't say or do something in real life, don't do it online either!"
         }
