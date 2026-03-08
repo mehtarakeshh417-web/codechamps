@@ -148,16 +148,16 @@ export const JavaEditor = () => (
   </EditorWrapper>
 );
 
-// MS Paint (JSPaint clone)
+// MS Paint (Kleki - Modern Paint App)
 export const MsPaintEditor = () => (
   <EditorWrapper title="MS Paint">
     <div className="h-[600px] rounded-xl overflow-hidden border border-white/10">
       <iframe
-        src="https://jspaint.app"
+        src="https://kleki.com"
         className="w-full h-full border-0"
-        title="MS Paint"
+        title="MS Paint (Kleki)"
         allow="clipboard-read; clipboard-write"
-        sandbox="allow-scripts allow-same-origin allow-popups allow-forms allow-modals"
+        sandbox="allow-scripts allow-same-origin allow-popups allow-forms allow-modals allow-downloads"
       />
     </div>
   </EditorWrapper>
