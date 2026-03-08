@@ -266,6 +266,10 @@ const TopicViewer = () => {
           </div>
         )}
 
+        {/* Student Notes */}
+        {user?.role === "student" && student && (
+          <StudentNotes studentId={student.id} topicId={topicId || ""} />
+        )}
         {/* Bottom Navigation */}
         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="mt-14 mb-12">
           {/* Page selector pills */}

@@ -137,6 +137,27 @@ const StudentDashboard = () => {
         ))}
       </div>
 
+      {/* Announcements */}
+      {announcements.length > 0 && (
+        <motion.div initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.55 }} className="mb-8">
+          <h3 className="font-display text-lg font-bold text-white mb-3 flex items-center gap-2">
+            <Megaphone className="w-5 h-5 text-neon-orange" /> Announcements
+          </h3>
+          <div className="space-y-3">
+            {announcements.map((a: any) => (
+              <div key={a.id} className={`glass-card p-4 ${a.priority === "urgent" ? "border-red-400/30" : ""}`}>
+                <div className="flex items-center gap-2 mb-1">
+                  <span className="font-display text-sm font-bold text-white">{a.title}</span>
+                  {a.priority === "urgent" && <span className="text-[10px] bg-red-400/20 text-red-400 px-2 py-0.5 rounded-full font-bold">URGENT</span>}
+                </div>
+                {a.message && <p className="text-white/60 font-body text-xs">{a.message}</p>}
+                <p className="text-white/30 font-body text-[10px] mt-1">{new Date(a.created_at).toLocaleDateString()}</p>
+              </div>
+            ))}
+          </div>
+        </motion.div>
+      )}
+
       {/* Quick Stats */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         {[
