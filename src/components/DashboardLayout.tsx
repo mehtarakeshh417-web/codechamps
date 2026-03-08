@@ -54,6 +54,7 @@ const navConfig: Record<UserRole, NavItem[]> = {
     { icon: Code, label: "Projects", path: "/dashboard/projects" },
     { icon: UserCircle, label: "Portfolio", path: "/dashboard/portfolio" },
     { icon: Gamepad2, label: "Coding Lab", path: "/dashboard/coding-lab" },
+    { icon: MessageSquare, label: "Discussions", path: "/dashboard/discussions" },
     { icon: Trophy, label: "Achievements", path: "/dashboard/achievements" },
     { icon: Award, label: "Leaderboard", path: "/dashboard/leaderboard" },
     { icon: GraduationCap, label: "Certificates", path: "/dashboard/certificates" },
