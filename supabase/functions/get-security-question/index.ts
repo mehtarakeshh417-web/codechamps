@@ -2,12 +2,18 @@ import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
-  "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
+  "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type, x-supabase-client-platform, x-supabase-client-platform-version, x-supabase-client-runtime, x-supabase-client-runtime-version",
 };
+
+const jsonResponse = (body: object) =>
+  new Response(JSON.stringify(body), {
+    status: 200,
+    headers: { ...corsHeaders, "Content-Type": "application/json" },
+  });
 
 Deno.serve(async (req) => {
   if (req.method === "OPTIONS") {
-    return new Response(null, { headers: corsHeaders });
+    return new Response("ok", { headers: corsHeaders });
   }
 
   try {
@@ -17,15 +23,11 @@ Deno.serve(async (req) => {
 
     const { username } = await req.json();
     if (!username) {
-      return new Response(JSON.stringify({ error: "Missing username" }), {
-        status: 400,
-        headers: { ...corsHeaders, "Content-Type": "application/json" },
-      });
+      return jsonResponse({ error: "Missing username" });
     }
 
     const email = `${username}@codechamps.local`;
 
-    // Find user with pagination
     let authUser = null;
     let page = 1;
     const perPage = 100;
@@ -38,10 +40,7 @@ Deno.serve(async (req) => {
     }
 
     if (!authUser) {
-      return new Response(JSON.stringify({ error: "User not found" }), {
-        status: 404,
-        headers: { ...corsHeaders, "Content-Type": "application/json" },
-      });
+      return jsonResponse({ error: "User not found" });
     }
 
     const { data: sec } = await supabase
@@ -50,16 +49,12 @@ Deno.serve(async (req) => {
       .eq("user_id", authUser.id)
       .maybeSingle();
 
-    return new Response(JSON.stringify({
+    return jsonResponse({
       has_security: !!sec,
       security_question: sec?.security_question || null,
-    }), {
-      headers: { ...corsHeaders, "Content-Type": "application/json" },
     });
   } catch (err) {
-    return new Response(JSON.stringify({ error: err.message }), {
-      status: 500,
-      headers: { ...corsHeaders, "Content-Type": "application/json" },
-    });
+    console.error("Error:", err.message);
+    return jsonResponse({ error: err.message });
   }
 });

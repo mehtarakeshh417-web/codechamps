@@ -2,7 +2,7 @@ import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
-  "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
+  "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type, x-supabase-client-platform, x-supabase-client-platform-version, x-supabase-client-runtime, x-supabase-client-runtime-version",
 };
 
 const jsonResponse = (body: object) =>
@@ -13,7 +13,7 @@ const jsonResponse = (body: object) =>
 
 Deno.serve(async (req) => {
   if (req.method === "OPTIONS") {
-    return new Response(null, { headers: corsHeaders });
+    return new Response("ok", { headers: corsHeaders });
   }
 
   try {
@@ -66,17 +66,18 @@ Deno.serve(async (req) => {
         .eq("user_id", userId)
         .maybeSingle();
 
-      console.log("PIN lookup result:", { found: !!sec, error: secError?.message });
+      console.log("PIN lookup:", { found: !!sec, error: secError?.message });
       if (!sec || sec.pin !== verification_value) {
         return jsonResponse({ error: "Incorrect PIN" });
       }
     } else if (method === "security_question") {
-      const { data: sec } = await supabase
+      const { data: sec, error: secError } = await supabase
         .from("user_security")
         .select("security_answer")
         .eq("user_id", userId)
         .maybeSingle();
 
+      console.log("Security Q lookup:", { found: !!sec, error: secError?.message });
       if (!sec || sec.security_answer !== verification_value.trim().toLowerCase()) {
         return jsonResponse({ error: "Incorrect security answer" });
       }
@@ -84,11 +85,11 @@ Deno.serve(async (req) => {
       return jsonResponse({ error: "Invalid method" });
     }
 
-    // Update password
+    // Update password - no restrictions
     const { error: updateError } = await supabase.auth.admin.updateUser(userId, { password: new_password });
     if (updateError) {
       console.log("Password update failed:", updateError.message);
-      return jsonResponse({ error: updateError.message });
+      return jsonResponse({ error: "Password update failed: " + updateError.message });
     }
 
     console.log("Password reset successful for:", username);
