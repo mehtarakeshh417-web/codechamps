@@ -23,19 +23,19 @@ Deno.serve(async (req) => {
         headers: { ...corsHeaders, "Content-Type": "application/json" },
       });
     }
-
-    if (new_password.length < 4) {
-      return new Response(JSON.stringify({ error: "Password must be at least 4 characters" }), {
-        status: 400,
-        headers: { ...corsHeaders, "Content-Type": "application/json" },
-      });
-    }
-
     const email = `${username}@codechamps.local`;
 
-    // Find the user by email
-    const { data: listData } = await supabase.auth.admin.listUsers();
-    const authUser = listData?.users?.find((u: any) => u.email === email);
+    // Find the user by email - paginate through all users
+    let authUser = null;
+    let page = 1;
+    const perPage = 100;
+    while (!authUser) {
+      const { data: listData } = await supabase.auth.admin.listUsers({ page, perPage });
+      if (!listData?.users?.length) break;
+      authUser = listData.users.find((u: any) => u.email === email) || null;
+      if (listData.users.length < perPage) break;
+      page++;
+    }
 
     if (!authUser) {
       return new Response(JSON.stringify({ error: "User not found" }), {
