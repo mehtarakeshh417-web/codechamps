@@ -3,7 +3,7 @@ import { Play, RotateCcw, Maximize2, Minimize2, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 import SimulatedWordEditor from "./SimulatedWordEditor";
-import SimulatedExcelEditor from "./SimulatedExcelEditor";
+
 import SimulatedPowerPointEditor from "./SimulatedPowerPointEditor";
 import SimulatedGimpEditor from "./SimulatedGimpEditor";
 import SimulatedKritaEditor from "./SimulatedKritaEditor";
@@ -148,14 +148,14 @@ export const JavaEditor = () => (
   </EditorWrapper>
 );
 
-// MS Paint (miniPaint - open source image editor with layers, filters, tools)
+// MS Paint (paint.js.org - open source MS Paint clone using Web Components)
 export const MsPaintEditor = () => (
   <EditorWrapper title="MS Paint">
-    <div className="h-[650px] rounded-xl overflow-hidden border border-white/10">
+    <div className="h-[650px] rounded-xl overflow-hidden border border-white/10 bg-white">
       <iframe
-        src="https://viliusle.github.io/miniPaint/"
+        src="https://paint.js.org/"
         className="w-full h-full border-0"
-        title="MS Paint (miniPaint)"
+        title="MS Paint (paint.js.org)"
         allow="clipboard-read; clipboard-write; camera"
         sandbox="allow-scripts allow-same-origin allow-popups allow-forms allow-modals allow-downloads"
         loading="lazy"
@@ -180,29 +180,21 @@ export const MsWordEditor = () => {
   );
 };
 
-// MS Excel Editor - Simulated with save
-export const MsExcelEditor = () => {
-  const handleSave = () => {
-    const table = document.querySelector('.jss_content table, .jexcel') as HTMLTableElement;
-    if (!table) { toast.error("No spreadsheet data to save"); return; }
-    let csv = "";
-    const rows = table.querySelectorAll("tr");
-    rows.forEach(row => {
-      const cells: string[] = [];
-      row.querySelectorAll("td").forEach(cell => {
-        cells.push(`"${(cell.textContent || "").replace(/"/g, '""')}"`);
-      });
-      if (cells.length > 0) csv += cells.join(",") + "\n";
-    });
-    downloadFile(csv, "spreadsheet.csv", "text/csv");
-  };
-
-  return (
-    <EditorWrapper title="MS Excel Editor" onSave={handleSave}>
-      <SimulatedExcelEditor />
-    </EditorWrapper>
-  );
-};
+// MS Excel Editor - Google Sheets embed
+export const MsExcelEditor = () => (
+  <EditorWrapper title="MS Excel Editor">
+    <div className="h-[650px] rounded-xl overflow-hidden border border-white/10 bg-white">
+      <iframe
+        src="https://docs.google.com/spreadsheets/create?usp=sharing"
+        className="w-full h-full border-0"
+        title="MS Excel (Google Sheets)"
+        allow="clipboard-read; clipboard-write"
+        sandbox="allow-scripts allow-same-origin allow-popups allow-forms allow-modals allow-downloads"
+        loading="lazy"
+      />
+    </div>
+  </EditorWrapper>
+);
 
 // MS PowerPoint Editor - Simulated
 export const MsPowerPointEditor = () => (
@@ -265,7 +257,7 @@ export const EDITOR_URLS: Record<string, { url: string; label: string }> = {
   java: { url: "https://onecompiler.com/java", label: "Java Compiler" },
   scratch: { url: "https://studio.penguinmod.com/editor.html", label: "Block Coding Editor" },
   scratchjr: { url: "https://codejr.org/scratchjr/index.html", label: "Scratch Jr" },
-  mspaint: { url: "https://viliusle.github.io/miniPaint/", label: "MS Paint" },
+  mspaint: { url: "https://paint.js.org/", label: "MS Paint" },
   msword: { url: "about:blank", label: "MS Word Editor" },
   msexcel: { url: "about:blank", label: "MS Excel Editor" },
   mspowerpoint: { url: "about:blank", label: "MS PowerPoint Editor" },
