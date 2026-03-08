@@ -14,6 +14,53 @@ export type Database = {
   }
   public: {
     Tables: {
+      announcements: {
+        Row: {
+          author_id: string
+          author_name: string
+          author_role: string
+          created_at: string
+          id: string
+          message: string
+          priority: string
+          school_id: string
+          target_class: string | null
+          title: string
+        }
+        Insert: {
+          author_id: string
+          author_name?: string
+          author_role?: string
+          created_at?: string
+          id?: string
+          message?: string
+          priority?: string
+          school_id: string
+          target_class?: string | null
+          title: string
+        }
+        Update: {
+          author_id?: string
+          author_name?: string
+          author_role?: string
+          created_at?: string
+          id?: string
+          message?: string
+          priority?: string
+          school_id?: string
+          target_class?: string | null
+          title?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "announcements_school_id_fkey"
+            columns: ["school_id"]
+            isOneToOne: false
+            referencedRelation: "schools"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       assignments: {
         Row: {
           assignment_type: string
@@ -497,6 +544,38 @@ export type Database = {
           user_id?: string | null
         }
         Relationships: []
+      }
+      student_notes: {
+        Row: {
+          content: string
+          id: string
+          student_id: string
+          topic_id: string
+          updated_at: string
+        }
+        Insert: {
+          content?: string
+          id?: string
+          student_id: string
+          topic_id: string
+          updated_at?: string
+        }
+        Update: {
+          content?: string
+          id?: string
+          student_id?: string
+          topic_id?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "student_notes_student_id_fkey"
+            columns: ["student_id"]
+            isOneToOne: false
+            referencedRelation: "students"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       students: {
         Row: {
