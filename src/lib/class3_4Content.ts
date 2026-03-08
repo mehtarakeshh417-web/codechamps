@@ -372,6 +372,7 @@ const c3ScratchStart: TopicTextbook = {
       sections: [
         {
           heading: "Parts of the Scratch Editor",
+          image: "https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=800&h=400&fit=crop",
           body: "**The Scratch editor has these parts:**\n\n🎬 **Stage** — Top-right. Where your project runs. Shows sprites and backgrounds.\n\n🐱 **Sprite Panel** — Below the stage. Shows all your sprites. Click one to edit it.\n\n🧱 **Block Palette** — Left side. All the coding blocks organized by category:\n• 🔵 Motion (movement)\n• 🟣 Looks (appearance)\n• 🔴 Sound (audio)\n• 🟡 Events (triggers)\n• 🟠 Control (loops, conditions)\n• 🔵 Sensing (detection)\n• 🟢 Operators (math, logic)\n• 🟠 Variables (data storage)\n• 🔴 My Blocks (custom blocks)\n\n📜 **Scripts Area** — Center. Where you drag blocks to build your code.\n\n👗 **Costumes Tab** — Edit sprite appearances\n🔊 **Sounds Tab** — Add and edit sounds",
           tip: "Click any block in the palette to see a quick preview of what it does!"
         }
