@@ -1258,6 +1258,7 @@ const c10AiFund: TopicTextbook = {
       sections: [
         {
           heading: "What is Artificial Intelligence?",
+          image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=800&h=400&fit=crop",
           body: "**Artificial Intelligence (AI)** is the ability of machines to perform tasks that normally require human intelligence — understanding language, recognizing images, making decisions, and learning from experience.\n\nAI isn't one single technology — it's an umbrella term covering many approaches. **Machine Learning** teaches computers to learn from data. **Deep Learning** uses neural networks inspired by the brain. **Natural Language Processing** enables machines to understand and generate human language.\n\nAI is already part of your daily life: voice assistants (Alexa, Siri), auto-correct on your phone, face unlock, Netflix recommendations, spam filters, and Google search results are all powered by AI.",
           illustration: [
             { emoji: "🤖", label: "AI" },
