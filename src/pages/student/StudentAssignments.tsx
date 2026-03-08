@@ -145,6 +145,17 @@ const StudentAssignments = () => {
 
     if (error) { toast.error("Failed to submit. Try again."); console.error(error); return; }
 
+    // Notify the teacher that student submitted assignment
+    const assignmentTeacher = teachers.find(t => t.id === (assignment as any).teacherId);
+    if (assignmentTeacher?.user_id) {
+      await supabase.from("notifications").insert({
+        user_id: assignmentTeacher.user_id,
+        title: `📋 ${student.name} submitted an assignment`,
+        message: `${student.name} (${student.class}-${student.section}) has submitted "${assignment.title}" and scored ${score}% (${correct}/${assignment.questions.length} correct).`,
+        type: "project_submitted",
+      } as any);
+    }
+
     const sub: Submission = { assignmentId: assignment.id, studentId: student.id, answers: { ...answers }, submittedAt: new Date().toISOString(), score };
     setSubmissions([...submissions, sub]);
     setAnswers({});
