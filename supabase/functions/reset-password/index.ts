@@ -5,6 +5,12 @@ const corsHeaders = {
   "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
 };
 
+const jsonResponse = (body: object) =>
+  new Response(JSON.stringify(body), {
+    status: 200,
+    headers: { ...corsHeaders, "Content-Type": "application/json" },
+  });
+
 Deno.serve(async (req) => {
   if (req.method === "OPTIONS") {
     return new Response(null, { headers: corsHeaders });
@@ -16,16 +22,15 @@ Deno.serve(async (req) => {
     const supabase = createClient(supabaseUrl, serviceRoleKey);
 
     const { username, method, verification_value, new_password } = await req.json();
+    console.log("Reset request for:", username, "method:", method);
 
     if (!username || !method || !new_password) {
-      return new Response(JSON.stringify({ error: "Missing required fields" }), {
-        status: 400,
-        headers: { ...corsHeaders, "Content-Type": "application/json" },
-      });
+      return jsonResponse({ error: "Missing required fields" });
     }
+
     const email = `${username}@codechamps.local`;
 
-    // Find the user by email - paginate through all users
+    // Find user by email with pagination
     let authUser = null;
     let page = 1;
     const perPage = 100;
@@ -38,39 +43,32 @@ Deno.serve(async (req) => {
     }
 
     if (!authUser) {
-      return new Response(JSON.stringify({ error: "User not found" }), {
-        status: 404,
-        headers: { ...corsHeaders, "Content-Type": "application/json" },
-      });
+      console.log("User not found:", email);
+      return jsonResponse({ error: "User not found" });
     }
 
     const userId = authUser.id;
+    console.log("Found user:", userId);
 
     if (method === "old_password") {
-      // Verify old password by attempting sign-in
       const anonKey = Deno.env.get("SUPABASE_ANON_KEY")!;
       const anonClient = createClient(supabaseUrl, anonKey);
       const { error: signInError } = await anonClient.auth.signInWithPassword({ email, password: verification_value });
       if (signInError) {
-        return new Response(JSON.stringify({ error: "Incorrect old password" }), {
-          status: 401,
-          headers: { ...corsHeaders, "Content-Type": "application/json" },
-        });
+        console.log("Old password verification failed:", signInError.message);
+        return jsonResponse({ error: "Incorrect old password" });
       }
-      // Sign out the temp session
       await anonClient.auth.signOut();
     } else if (method === "pin") {
-      const { data: sec } = await supabase
+      const { data: sec, error: secError } = await supabase
         .from("user_security")
         .select("pin")
         .eq("user_id", userId)
         .maybeSingle();
 
+      console.log("PIN lookup result:", { found: !!sec, error: secError?.message });
       if (!sec || sec.pin !== verification_value) {
-        return new Response(JSON.stringify({ error: "Incorrect PIN" }), {
-          status: 401,
-          headers: { ...corsHeaders, "Content-Type": "application/json" },
-        });
+        return jsonResponse({ error: "Incorrect PIN" });
       }
     } else if (method === "security_question") {
       const { data: sec } = await supabase
@@ -80,34 +78,23 @@ Deno.serve(async (req) => {
         .maybeSingle();
 
       if (!sec || sec.security_answer !== verification_value.trim().toLowerCase()) {
-        return new Response(JSON.stringify({ error: "Incorrect security answer" }), {
-          status: 401,
-          headers: { ...corsHeaders, "Content-Type": "application/json" },
-        });
+        return jsonResponse({ error: "Incorrect security answer" });
       }
     } else {
-      return new Response(JSON.stringify({ error: "Invalid method" }), {
-        status: 400,
-        headers: { ...corsHeaders, "Content-Type": "application/json" },
-      });
+      return jsonResponse({ error: "Invalid method" });
     }
 
     // Update password
     const { error: updateError } = await supabase.auth.admin.updateUser(userId, { password: new_password });
     if (updateError) {
-      return new Response(JSON.stringify({ error: updateError.message }), {
-        status: 500,
-        headers: { ...corsHeaders, "Content-Type": "application/json" },
-      });
+      console.log("Password update failed:", updateError.message);
+      return jsonResponse({ error: updateError.message });
     }
 
-    return new Response(JSON.stringify({ success: true }), {
-      headers: { ...corsHeaders, "Content-Type": "application/json" },
-    });
+    console.log("Password reset successful for:", username);
+    return jsonResponse({ success: true });
   } catch (err) {
-    return new Response(JSON.stringify({ error: err.message }), {
-      status: 500,
-      headers: { ...corsHeaders, "Content-Type": "application/json" },
-    });
+    console.error("Unexpected error:", err.message);
+    return jsonResponse({ error: err.message });
   }
 });
