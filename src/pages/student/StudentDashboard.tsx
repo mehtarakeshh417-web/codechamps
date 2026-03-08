@@ -29,6 +29,8 @@ const StudentDashboard = () => {
 
   // Fetch completed topics from DB
   const [completedTopics, setCompletedTopics] = useState<string[]>([]);
+  const [announcements, setAnnouncements] = useState<any[]>([]);
+
   useEffect(() => {
     if (!student) return;
     supabase
@@ -39,6 +41,18 @@ const StudentDashboard = () => {
         if (data) setCompletedTopics(data.map((d: any) => d.topic_id));
       });
   }, [student]);
+
+  // Fetch latest announcements
+  useEffect(() => {
+    supabase
+      .from("announcements")
+      .select("*")
+      .order("created_at", { ascending: false })
+      .limit(3)
+      .then(({ data }) => {
+        if (data) setAnnouncements(data);
+      });
+  }, []);
 
   const totalTopics = curriculum ? countTotalTopics(curriculum) : 0;
   const completedCount = completedTopics.length;
