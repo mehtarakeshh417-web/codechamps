@@ -358,6 +358,7 @@ const c3ScratchStart: TopicTextbook = {
       sections: [
         {
           heading: "Welcome to Scratch!",
+          image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=800&h=400&fit=crop",
           body: "**Scratch** is a visual programming language where you code by snapping colorful blocks together!\n\n**Scratch vs Scratch Jr:**\n• Scratch Jr is for ages 5-7 with simple blocks\n• **Scratch** is for ages 8+ with MORE blocks and features\n• Scratch runs in a web browser at scratch.mit.edu\n• Scratch can make real games, animations, and stories!\n\n**What can you make in Scratch?**\n🎮 Video games\n📖 Interactive stories\n🎵 Music and art projects\n📊 Quizzes and educational tools\n🤖 Simulations\n💬 Chatbots",
           youtubeId: "E19zGN8fA90",
           funFact: "Over 100 million projects have been shared on the Scratch website! Kids from every country use Scratch."
