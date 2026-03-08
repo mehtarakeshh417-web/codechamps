@@ -85,6 +85,7 @@ const wordPageFormatting: TopicTextbook = {
       sections: [
         {
           heading: "What is Page Formatting?",
+          image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&h=400&fit=crop",
           body: "**Page formatting** means changing how your document page looks. It includes setting margins, choosing page orientation, adding backgrounds, watermarks, borders, and columns.\n\nWhen you write a letter, a report, or a project, page formatting makes it look neat and professional. Imagine reading a book with no margins — the text would go right to the edge of the paper! Formatting fixes that.\n\n**Why is Page Formatting Important?**\n• Makes documents easy to read\n• Gives a professional appearance\n• Helps organize information\n• Makes printed documents look great",
           tip: "All page formatting options are found in the **Page Layout** tab in MS Word.",
           illustration: [
