@@ -1309,6 +1309,7 @@ const c10AiFund: TopicTextbook = {
       sections: [
         {
           heading: "Supervised Learning",
+          image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=800&h=400&fit=crop",
           body: "**Supervised learning** is the most common type of ML. The model learns from **labeled data** — examples where we already know the correct answer. It's like learning from a textbook with an answer key.\n\nFor example, to build a spam filter, you show the model thousands of emails labeled as 'spam' or 'not spam'. The model learns patterns (certain words, sender addresses) and can then classify new emails it hasn't seen before.\n\nSupervised learning is used for **classification** (predicting categories: spam/not spam, cat/dog) and **regression** (predicting numbers: house prices, temperature tomorrow).",
           comparison: {
             left: { title: "Classification", points: ["Predicts categories/labels", "Email: spam or not spam?", "Image: cat, dog, or bird?", "Medical: disease or healthy?", "Output: discrete classes"] },
