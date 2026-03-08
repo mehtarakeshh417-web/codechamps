@@ -23,8 +23,6 @@ Deno.serve(async (req) => {
         headers: { ...corsHeaders, "Content-Type": "application/json" },
       });
     }
-
-    if (new_password.length < 4) {
       return new Response(JSON.stringify({ error: "Password must be at least 4 characters" }), {
         status: 400,
         headers: { ...corsHeaders, "Content-Type": "application/json" },
