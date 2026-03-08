@@ -357,6 +357,7 @@ const pptAnimations: TopicTextbook = {
         },
         {
           heading: "How to Apply Transitions",
+          image: "https://images.unsplash.com/photo-1557804506-669a67965ba0?w=800&h=400&fit=crop",
           body: "**Steps to add a transition:**\n1. Click on the slide you want to add a transition to\n2. Go to the **Transitions** tab\n3. Browse the transition effects\n4. Click on one to preview it!\n5. The transition plays automatically so you can see the effect\n\n**Customizing Transitions:**\n• **Effect Options** — change direction (from left, right, top, bottom)\n• **Sound** — add a sound effect (like applause, drum roll)\n• **Duration** — how long the transition takes (fast: 0.5s, slow: 3s)\n• **Apply To All** — same transition on every slide\n\n**Advancing Slides:**\n• **On Mouse Click** — click to move to next slide\n• **After** — automatically advance after set time (e.g., 5 seconds)",
           tip: "The **Morph** transition is one of the coolest! It smoothly animates objects from one position to another between slides."
         }
