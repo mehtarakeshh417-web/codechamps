@@ -1,9 +1,11 @@
-import { useMemo } from "react";
+import { useMemo, useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { useAuth } from "@/contexts/AuthContext";
 import { useData } from "@/contexts/DataContext";
 import { getCurriculumForClass } from "@/lib/curriculumData";
-import { Award, Zap, BookOpen, Star, Trophy, Target, Shield, Flame, Crown, Rocket } from "lucide-react";
+import { Award, Zap, BookOpen, Star, Trophy, Target, Shield, Flame, Crown, Rocket, Download } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
+import { Button } from "@/components/ui/button";
 
 interface BadgeDef {
   id: string;
@@ -46,20 +48,105 @@ const BADGES: BadgeDef[] = [
   { id: "level-5", title: "Legendary Coder", description: "Reach Level 5", icon: Crown, gradient: "from-[hsl(45,100%,55%)] to-[hsl(25,100%,55%)]", condition: (c) => c.level >= 5 },
 ];
 
+const downloadCertificate = (subjectName: string, studentName: string, className: string) => {
+  const canvas = document.createElement("canvas");
+  canvas.width = 1200;
+  canvas.height = 800;
+  const ctx = canvas.getContext("2d")!;
+
+  // Background
+  const bg = ctx.createLinearGradient(0, 0, 1200, 800);
+  bg.addColorStop(0, "#1a1a2e");
+  bg.addColorStop(1, "#16213e");
+  ctx.fillStyle = bg;
+  ctx.fillRect(0, 0, 1200, 800);
+
+  // Border
+  ctx.strokeStyle = "#6c2bd9";
+  ctx.lineWidth = 8;
+  ctx.strokeRect(30, 30, 1140, 740);
+  ctx.strokeStyle = "rgba(108,43,217,0.3)";
+  ctx.lineWidth = 2;
+  ctx.strokeRect(50, 50, 1100, 700);
+
+  // Header
+  ctx.fillStyle = "#6c2bd9";
+  ctx.font = "bold 24px system-ui";
+  ctx.textAlign = "center";
+  ctx.fillText("🏆 CODECHAMPS", 600, 120);
+
+  ctx.fillStyle = "#ffffff";
+  ctx.font = "bold 48px system-ui";
+  ctx.fillText("Certificate of Completion", 600, 200);
+
+  // Divider
+  const divider = ctx.createLinearGradient(300, 230, 900, 230);
+  divider.addColorStop(0, "transparent");
+  divider.addColorStop(0.5, "#6c2bd9");
+  divider.addColorStop(1, "transparent");
+  ctx.strokeStyle = divider;
+  ctx.lineWidth = 3;
+  ctx.beginPath();
+  ctx.moveTo(300, 230);
+  ctx.lineTo(900, 230);
+  ctx.stroke();
+
+  // Body
+  ctx.fillStyle = "rgba(255,255,255,0.7)";
+  ctx.font = "20px system-ui";
+  ctx.fillText("This certifies that", 600, 300);
+
+  ctx.fillStyle = "#00ff88";
+  ctx.font = "bold 40px system-ui";
+  ctx.fillText(studentName, 600, 360);
+
+  ctx.fillStyle = "rgba(255,255,255,0.7)";
+  ctx.font = "20px system-ui";
+  ctx.fillText(`Class ${className}`, 600, 410);
+
+  ctx.fillText("has successfully completed all topics in", 600, 470);
+
+  ctx.fillStyle = "#00d4ff";
+  ctx.font = "bold 36px system-ui";
+  ctx.fillText(subjectName, 600, 530);
+
+  // Date
+  ctx.fillStyle = "rgba(255,255,255,0.5)";
+  ctx.font = "16px system-ui";
+  ctx.fillText(`Awarded on ${new Date().toLocaleDateString("en-IN", { dateStyle: "long" })}`, 600, 620);
+
+  // Stars decoration
+  ctx.font = "40px system-ui";
+  ctx.fillText("⭐ 🏆 ⭐", 600, 700);
+
+  // Download
+  const link = document.createElement("a");
+  link.download = `Certificate_${subjectName.replace(/\s+/g, "_")}.png`;
+  link.href = canvas.toDataURL("image/png");
+  link.click();
+};
+
 const StudentAchievements = () => {
   const { user } = useAuth();
   const { students } = useData();
-  const student = students.find((s) => s.id === user?.id);
+  const student = students.find((s) => s.user_id === user?.id);
   const xp = student?.xp || 0;
   const level = xpLevel(xp);
 
   const curriculum = useMemo(() => getCurriculumForClass(user?.className || ""), [user?.className]);
-  const completedTopics = useMemo(() => {
-    try {
-      const stored = localStorage.getItem(`cc_completed_${user?.id}`);
-      return stored ? JSON.parse(stored) as string[] : [];
-    } catch { return []; }
-  }, [user?.id]);
+
+  // Fetch completed topics from DB
+  const [completedTopics, setCompletedTopics] = useState<string[]>([]);
+  useEffect(() => {
+    if (!student) return;
+    supabase
+      .from("topic_completions")
+      .select("topic_id")
+      .eq("student_id", student.id)
+      .then(({ data }) => {
+        if (data) setCompletedTopics(data.map((d: any) => d.topic_id));
+      });
+  }, [student]);
 
   const totalTopics = curriculum?.subjects.reduce((s, sub) => s + sub.topics.length, 0) || 0;
   const completedCount = completedTopics.length;
@@ -170,10 +257,17 @@ const StudentAchievements = () => {
               <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-[hsl(45,100%,55%)] to-[hsl(25,100%,55%)] flex items-center justify-center shrink-0">
                 <Award className="w-7 h-7 text-white" />
               </div>
-              <div>
+              <div className="flex-1">
                 <h3 className="font-display text-lg font-bold text-white">{cert}</h3>
                 <p className="text-xs text-white/50 font-body">Technology Completion Certificate</p>
               </div>
+              <Button
+                size="sm"
+                variant="hero"
+                onClick={() => downloadCertificate(cert, student?.name || user?.displayName || "Student", user?.className || "")}
+              >
+                <Download className="w-4 h-4 mr-1" /> Download
+              </Button>
             </motion.div>
           ))}
         </div>

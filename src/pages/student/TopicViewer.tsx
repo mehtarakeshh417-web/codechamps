@@ -287,17 +287,22 @@ const TopicViewer = () => {
       });
   }, [student, topicId]);
 
+  const { refreshData } = useData();
+
   const toggleComplete = useCallback(async () => {
     if (!student || !topicId) return;
     if (isCompleted) {
       await supabase.from("topic_completions").delete().eq("student_id", student.id).eq("topic_id", topicId);
       setIsCompleted(false);
+      toast.success("Topic unmarked");
     } else {
       await supabase.from("topic_completions").insert({ student_id: student.id, topic_id: topicId });
       setIsCompleted(true);
       toast.success("Topic completed! +50 XP 🎉");
     }
-  }, [student, topicId, isCompleted]);
+    // Refresh student data so XP updates everywhere
+    await refreshData();
+  }, [student, topicId, isCompleted, refreshData]);
 
   if (!textbook) {
     return (

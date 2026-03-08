@@ -46,18 +46,23 @@ const StudentCurriculum = () => {
       });
   }, [student]);
 
+  const { refreshData } = useData();
+
   const toggleComplete = useCallback(async (topicId: string) => {
     if (!student) return;
     const isCompleted = completedTopics.includes(topicId);
     if (isCompleted) {
       setCompletedTopics((prev) => prev.filter((id) => id !== topicId));
       await supabase.from("topic_completions").delete().eq("student_id", student.id).eq("topic_id", topicId);
+      toast.success("Topic unmarked");
     } else {
       setCompletedTopics((prev) => [...prev, topicId]);
       await supabase.from("topic_completions").insert({ student_id: student.id, topic_id: topicId });
       toast.success("Topic completed! +50 XP 🎉");
     }
-  }, [student, completedTopics]);
+    // Refresh student data so XP updates everywhere
+    await refreshData();
+  }, [student, completedTopics, refreshData]);
 
   if (!curriculum) {
     return (
