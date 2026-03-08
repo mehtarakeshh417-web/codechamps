@@ -181,6 +181,7 @@ const c3Windows_: TopicTextbook = {
       sections: [
         {
           heading: "Using the Start Menu",
+          image: "https://images.unsplash.com/photo-1531297484001-80022131f5a1?w=800&h=400&fit=crop",
           body: "The **Start Menu** is your gateway to everything on the computer!\n\n**How to open the Start Menu:**\n• Click the **Windows icon** (bottom-left)\n• Or press the **Windows key** on your keyboard\n\n**What's in the Start Menu:**\n📌 **Pinned Apps** — your most used apps\n🔍 **Search** — type to find anything\n📋 **All Apps** — alphabetical list of all programs\n⚙️ **Settings** — change computer settings\n📁 **Documents** — quick access to your files\n🔌 **Power** — Sleep, Shut Down, Restart\n\n**Opening a Program:**\n1. Click Start\n2. Find the program (scroll or search)\n3. Click on it!\n4. It opens in a **window**",
         }
       ],
