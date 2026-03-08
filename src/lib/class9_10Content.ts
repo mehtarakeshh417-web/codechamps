@@ -241,6 +241,7 @@ const c9PythonAdv: TopicTextbook = {
       sections: [
         {
           heading: "Writing Clean Python Code",
+          image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=800&h=400&fit=crop",
           body: "Professional Python code follows established conventions that make it readable and maintainable. The **PEP 8** style guide is the official standard for Python code formatting.\n\nClean code is not just about making things work — it's about making things understandable. Code is read far more often than it's written, so clarity matters. Use descriptive variable names, keep functions focused on one task, and add docstrings to explain what your code does.\n\nThe Zen of Python (type `import this` in Python) summarizes the philosophy: 'Beautiful is better than ugly. Simple is better than complex. Readability counts.'",
           stepByStep: {
             steps: [
