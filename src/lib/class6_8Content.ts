@@ -405,6 +405,7 @@ const c7HtmlAdv: TopicTextbook = {
       sections: [
         {
           heading: "HTML Forms",
+          image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=800&h=400&fit=crop",
           body: "**Forms** let users input data on web pages — like login forms, sign-up forms, and search bars.\n\n```html\n<form>\n  <label>Name:</label>\n  <input type=\"text\" placeholder=\"Enter name\">\n  <br><br>\n  <label>Email:</label>\n  <input type=\"email\" placeholder=\"Enter email\">\n  <br><br>\n  <label>Password:</label>\n  <input type=\"password\">\n  <br><br>\n  <input type=\"submit\" value=\"Submit\">\n</form>\n```\n\n**Input Types:**\n• `text` — regular text\n• `email` — email validation\n• `password` — hidden characters\n• `number` — only numbers\n• `date` — date picker\n• `checkbox` — tick boxes\n• `radio` — select one option\n• `submit` — submit button\n• `textarea` — multi-line text\n• `select` — dropdown menu",
         }
       ],
