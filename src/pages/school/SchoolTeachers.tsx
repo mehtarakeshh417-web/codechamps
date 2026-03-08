@@ -125,7 +125,7 @@ const SchoolTeachers = () => {
           <h1 className="font-display text-3xl font-bold mb-1"><span className="text-gradient-brand">Teachers</span></h1>
           <p className="text-white/60 font-body">Manage your school's teaching staff</p>
         </div>
-        <Button variant="hero" size="lg" onClick={() => setShowForm(true)}><Plus className="w-5 h-5 mr-2" /> Add Teacher</Button>
+        <Button variant="hero" size="xl" onClick={() => setShowForm(true)}><Plus className="w-6 h-6 mr-2" /> Add Teacher</Button>
       </motion.div>
 
       {showForm && (
