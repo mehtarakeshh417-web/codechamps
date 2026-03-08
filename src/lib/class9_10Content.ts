@@ -296,6 +296,7 @@ const c9WebDev: TopicTextbook = {
       sections: [
         {
           heading: "Understanding HTML",
+          image: "https://images.unsplash.com/photo-1507721999472-8ed4421c4af2?w=800&h=400&fit=crop",
           body: "**HTML (HyperText Markup Language)** is the foundation of every website. It defines the structure and content — headings, paragraphs, images, links, forms, and more. Every web page you visit is built with HTML at its core.\n\nHTML uses **tags** to define elements. Tags come in pairs: an opening tag `<p>` and a closing tag `</p>`, with content in between. Some tags are self-closing like `<img />` and `<br />`.\n\nA well-structured HTML document has a `<head>` (metadata, title, styles) and a `<body>` (visible content). Understanding HTML is the essential first step for any web developer.",
           illustration: [
             { emoji: "🏗️", label: "HTML (Structure)" },
