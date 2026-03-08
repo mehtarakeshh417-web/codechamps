@@ -77,6 +77,7 @@ const teacherRoutes = (
     <Route path="student-progress" element={<TeacherStudentProgress />} />
     <Route path="attendance" element={<TeacherAttendance />} />
     <Route path="discussions" element={<TeacherDiscussions />} />
+    <Route path="announcements" element={<SchoolAnnouncements />} />
     <Route path="analytics" element={<TeacherAnalytics />} />
     <Route path="settings" element={<ChangePassword />} />
   </>

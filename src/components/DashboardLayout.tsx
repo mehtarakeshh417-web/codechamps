@@ -46,6 +46,7 @@ const navConfig: Record<UserRole, NavItem[]> = {
     { icon: MessageSquare, label: "Discussions", path: "/dashboard/discussions" },
     { icon: Users, label: "Student Progress", path: "/dashboard/student-progress" },
     { icon: BarChart3, label: "Analytics", path: "/dashboard/analytics" },
+    { icon: Megaphone, label: "Announcements", path: "/dashboard/announcements" },
     { icon: Settings, label: "Change Password", path: "/dashboard/settings" },
   ],
   student: [
