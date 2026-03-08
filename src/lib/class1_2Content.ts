@@ -795,6 +795,7 @@ const c2AdvComputer: TopicTextbook = {
       sections: [
         {
           heading: "Understanding Files and Folders",
+          image: "https://images.unsplash.com/photo-1544396821-4dd40b938ad3?w=800&h=400&fit=crop",
           body: "**Files** are like papers in your school bag. Each file has information inside.\n\n📄 **Types of Files:**\n• **Document files** — Letters, stories, homework (.docx, .txt)\n• **Image files** — Photos and drawings (.jpg, .png)\n• **Music files** — Songs (.mp3)\n• **Video files** — Movies and clips (.mp4)\n\n📁 **Folders** are like bags or boxes that hold your files.\n\n**How to Create a Folder:**\n1. Right-click on the Desktop\n2. Click **New** → **Folder**\n3. Type a name for your folder\n4. Press **Enter**\n\n**How to Move a File into a Folder:**\n1. Click and hold the file\n2. Drag it onto the folder\n3. Release the mouse button!\n\n**How to Delete:**\n• Select the file or folder\n• Press the **Delete** key\n• It goes to the **Recycle Bin** (you can get it back!)",
           funFact: "The Recycle Bin is like a trash can — you can take things out of it if you change your mind! Just open it and click 'Restore'."
         }
