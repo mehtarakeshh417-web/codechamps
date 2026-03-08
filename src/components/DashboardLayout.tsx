@@ -100,12 +100,9 @@ const DashboardLayout = ({ children }: Props) => {
   const SidebarContent = () => (
     <>
       <div className="p-6 border-b border-white/10">
-        <div className="flex items-center justify-between mb-3">
-          <div className="flex items-center gap-3">
-            <img src="/assets/logo.jpg" alt="CodeChamps logo" className="w-10 h-10 rounded-xl object-contain" />
-            <span className="font-display text-2xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">CodeChamps</span>
-          </div>
-          <NotificationBell />
+        <div className="flex items-center gap-3">
+          <img src="/assets/logo.jpg" alt="CodeChamps logo" className="w-10 h-10 rounded-xl object-contain" />
+          <span className="font-display text-2xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">CodeChamps</span>
         </div>
         <div className="flex items-center gap-2 mt-4">
           <UserCircle className="w-8 h-8 text-white/40" />
@@ -171,9 +168,12 @@ const DashboardLayout = ({ children }: Props) => {
           <img src="/assets/logo.jpg" alt="CodeChamps" className="w-8 h-8 rounded-lg object-contain" />
           <span className="font-display text-lg font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">CodeChamps</span>
         </div>
-        <button onClick={() => setMobileOpen(!mobileOpen)} className="text-white/70 hover:text-white p-2">
-          {mobileOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-        </button>
+        <div className="flex items-center gap-2">
+          <NotificationBell />
+          <button onClick={() => setMobileOpen(!mobileOpen)} className="text-white/70 hover:text-white p-2">
+            {mobileOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          </button>
+        </div>
       </div>
 
       {/* Mobile sidebar overlay */}
@@ -211,12 +211,16 @@ const DashboardLayout = ({ children }: Props) => {
 
       {/* Main Content */}
       <main className="flex-1 lg:ml-64 relative z-10">
-        <div className="p-6 md:p-8 pt-20 lg:pt-8">
+        {/* Top bar with notification bell (desktop) */}
+        <div className="hidden lg:flex items-center justify-end px-8 pt-4 pb-0">
+          <NotificationBell />
+        </div>
+        <div className="p-6 md:p-8 pt-20 lg:pt-4">
           {children}
         </div>
       </main>
 
-      {/* AI Tutor Chat - Student only, hidden on assignments/projects to prevent cheating */}
+      {/* AI Tutor Chat - Student only, hidden on assignments/projects/quizzes */}
       {user.role === "student" && 
         !location.pathname.includes("/assignments") && 
         !location.pathname.includes("/projects") && 

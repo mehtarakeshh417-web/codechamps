@@ -20,7 +20,7 @@ interface Announcement {
 
 const SchoolAnnouncements = () => {
   const { user } = useAuth();
-  const { getSchoolStudents } = useData();
+  const { schools, teachers, getSchoolStudents, getSchoolTeachers, getTeacherStudents } = useData();
   const [announcements, setAnnouncements] = useState<Announcement[]>([]);
   const [showForm, setShowForm] = useState(false);
   const [title, setTitle] = useState("");
@@ -29,25 +29,79 @@ const SchoolAnnouncements = () => {
   const [priority, setPriority] = useState("normal");
   const [loading, setLoading] = useState(false);
 
-  const students = getSchoolStudents(user?.id || "");
+  // Resolve the actual school table ID based on role
+  const resolveSchoolId = (): string => {
+    if (user?.role === "school") {
+      const school = schools.find(s => s.user_id === user.id);
+      return school?.id || "";
+    }
+    if (user?.role === "teacher") {
+      const teacher = teachers.find(t => t.user_id === user.id);
+      return teacher?.schoolId || "";
+    }
+    return "";
+  };
+
+  const schoolId = resolveSchoolId();
+
+  const students = user?.role === "teacher"
+    ? getTeacherStudents(user?.id || "")
+    : getSchoolStudents(user?.id || "");
   const uniqueClasses = [...new Set(students.map((s) => s.class).filter(Boolean))].sort();
 
   const fetchAnnouncements = async () => {
+    if (!schoolId) return;
     const { data } = await supabase
       .from("announcements")
       .select("*")
+      .eq("school_id", schoolId)
       .order("created_at", { ascending: false })
       .limit(50);
     if (data) setAnnouncements(data as Announcement[]);
   };
 
-  useEffect(() => { fetchAnnouncements(); }, []);
+  useEffect(() => { fetchAnnouncements(); }, [schoolId]);
+
+  const pushNotifications = async (announcementTitle: string, announcementMessage: string, targetCls: string | null) => {
+    if (!schoolId) return;
+    // Get all students (and teachers) to notify
+    const targetStudents = targetCls
+      ? students.filter(s => s.class === targetCls)
+      : students;
+
+    const userIds: string[] = targetStudents
+      .map(s => s.user_id)
+      .filter(Boolean) as string[];
+
+    // Also notify teachers in this school (if announcement is from school)
+    if (user?.role === "school") {
+      const schoolTeachers = getSchoolTeachers(user.id);
+      schoolTeachers.forEach(t => {
+        if (t.user_id) userIds.push(t.user_id);
+      });
+    }
+
+    if (userIds.length === 0) return;
+
+    const notifications = userIds.map(uid => ({
+      user_id: uid,
+      title: `📢 ${announcementTitle}`,
+      message: announcementMessage || "New announcement posted",
+      type: "announcement",
+    }));
+
+    // Insert in batches of 100
+    for (let i = 0; i < notifications.length; i += 100) {
+      await supabase.from("notifications").insert(notifications.slice(i, i + 100));
+    }
+  };
 
   const handleCreate = async () => {
     if (!title.trim()) { toast.error("Title is required"); return; }
+    if (!schoolId) { toast.error("Could not resolve school. Please try again."); return; }
     setLoading(true);
     const { error } = await supabase.from("announcements").insert({
-      school_id: user?.id || "",
+      school_id: schoolId,
       author_id: user?.id || "",
       author_role: user?.role || "school",
       author_name: user?.displayName || "",
@@ -56,10 +110,14 @@ const SchoolAnnouncements = () => {
       target_class: targetClass || null,
       priority,
     } as any);
-    setLoading(false);
-    if (error) { toast.error("Failed to create announcement"); console.error(error); return; }
-    toast.success("Announcement published! 📢");
+    if (error) { toast.error("Failed to create announcement"); console.error(error); setLoading(false); return; }
+
+    // Push notifications to all relevant users
+    await pushNotifications(title.trim(), message.trim(), targetClass || null);
+
+    toast.success("Announcement published & notifications sent! 📢");
     setTitle(""); setMessage(""); setTargetClass(""); setPriority("normal"); setShowForm(false);
+    setLoading(false);
     fetchAnnouncements();
   };
 
@@ -71,8 +129,8 @@ const SchoolAnnouncements = () => {
 
   const priorityIcon = (p: string) => {
     if (p === "urgent") return <AlertTriangle className="w-4 h-4 text-red-400" />;
-    if (p === "important") return <Bell className="w-4 h-4 text-neon-orange" />;
-    return <Info className="w-4 h-4 text-neon-blue" />;
+    if (p === "important") return <Bell className="w-4 h-4 text-[hsl(var(--neon-orange))]" />;
+    return <Info className="w-4 h-4 text-[hsl(var(--neon-blue))]" />;
   };
 
   return (
@@ -89,7 +147,6 @@ const SchoolAnnouncements = () => {
         </Button>
       </motion.div>
 
-      {/* Create Form */}
       {showForm && (
         <motion.div initial={{ y: -10, opacity: 0 }} animate={{ y: 0, opacity: 1 }} className="glass-card p-6 mb-6 neon-glow-blue">
           <h3 className="font-display text-lg font-bold text-white mb-4">Create Announcement</h3>
@@ -130,7 +187,7 @@ const SchoolAnnouncements = () => {
             </div>
             <div className="flex gap-3">
               <Button onClick={handleCreate} disabled={loading} className="bg-gradient-to-r from-primary to-secondary text-white rounded-xl">
-                {loading ? "Publishing..." : "Publish"}
+                {loading ? "Publishing..." : "Publish & Notify"}
               </Button>
               <Button variant="ghost" onClick={() => setShowForm(false)} className="text-white/50">Cancel</Button>
             </div>
@@ -138,7 +195,6 @@ const SchoolAnnouncements = () => {
         </motion.div>
       )}
 
-      {/* Announcements List */}
       <div className="space-y-4">
         {announcements.length === 0 ? (
           <div className="glass-card p-12 text-center">
@@ -152,7 +208,7 @@ const SchoolAnnouncements = () => {
               initial={{ y: 20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ delay: i * 0.05 }}
-              className={`glass-card p-5 ${a.priority === "urgent" ? "border-red-400/30" : a.priority === "important" ? "border-neon-orange/20" : ""}`}
+              className={`glass-card p-5 ${a.priority === "urgent" ? "border-red-400/30" : a.priority === "important" ? "border-[hsl(var(--neon-orange))]/20" : ""}`}
             >
               <div className="flex items-start justify-between">
                 <div className="flex items-start gap-3">
@@ -164,7 +220,7 @@ const SchoolAnnouncements = () => {
                       <span>{a.author_name} ({a.author_role})</span>
                       <span>•</span>
                       <span>{new Date(a.created_at).toLocaleDateString()}</span>
-                      {a.target_class && <><span>•</span><span className="text-neon-blue">{a.target_class}</span></>}
+                      {a.target_class && <><span>•</span><span className="text-[hsl(var(--neon-blue))]">{a.target_class}</span></>}
                     </div>
                   </div>
                 </div>
