@@ -15,6 +15,7 @@ import SchoolStudents from "./school/SchoolStudents";
 import SchoolClasses from "./school/SchoolClasses";
 import SchoolAnalytics from "./school/SchoolAnalytics";
 import SchoolSettings from "./school/SchoolSettings";
+import SchoolAttendance from "./school/SchoolAttendance";
 import TeacherDashboard from "./teacher/TeacherDashboard";
 import TeacherClasses from "./teacher/TeacherClasses";
 import TeacherAssignments from "./teacher/TeacherAssignments";
@@ -23,6 +24,8 @@ import TeacherCurriculum from "./teacher/TeacherCurriculum";
 import TeacherCodingLab from "./teacher/TeacherCodingLab";
 import TeacherAnalytics from "./teacher/TeacherAnalytics";
 import TeacherStudentProgress from "./teacher/TeacherStudentProgress";
+import TeacherAttendance from "./teacher/TeacherAttendance";
+import TeacherDiscussions from "./teacher/TeacherDiscussions";
 import ChangePassword from "./shared/ChangePassword";
 import StudentDashboard from "./student/StudentDashboard";
 import StudentCurriculum from "./student/StudentCurriculum";
@@ -35,6 +38,7 @@ import StudentCertificates from "./student/StudentCertificates";
 import StudentProgress from "./student/StudentProgress";
 import StudentProjects from "./student/StudentProjects";
 import StudentPortfolio from "./student/StudentPortfolio";
+import StudentDiscussions from "./student/StudentDiscussions";
 
 const adminRoutes = (
   <>
