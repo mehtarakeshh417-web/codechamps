@@ -830,6 +830,7 @@ const scratchBlocks: TopicTextbook = {
       sections: [
         {
           heading: "What is Broadcasting?",
+          image: "https://images.unsplash.com/photo-1535016120720-40c646be5580?w=800&h=400&fit=crop",
           body: "**Broadcasting** lets sprites send messages to each other! This is how sprites coordinate and work together.\n\n**How it works:**\n1. One sprite **broadcasts** a message (like shouting a signal)\n2. Other sprites **receive** the message and react\n\n**Broadcasting Blocks:**\n📡 **broadcast [message]** — sends a message to all sprites\n📡 **broadcast [message] and wait** — sends a message and waits until all receivers finish\n📡 **when I receive [message]** — runs code when the message is received\n\n**Example: Traffic Light Game**\n\nSprite 1 (Traffic Light):\n```\nWhen green flag clicked\nForever\n  switch costume to 'green'\n  broadcast 'go'\n  wait 3 secs\n  switch costume to 'red'\n  broadcast 'stop'\n  wait 3 secs\nEnd\n```\n\nSprite 2 (Car):\n```\nWhen I receive 'go'\n  repeat 30\n    move 5 steps\n  end\n\nWhen I receive 'stop'\n  say 'Stopped!' for 1 sec\n```",
         },
         {
