@@ -783,6 +783,7 @@ const scratchBlocks: TopicTextbook = {
       sections: [
         {
           heading: "Math Operators",
+          image: "https://images.unsplash.com/photo-1509228468518-180dd4864904?w=800&h=400&fit=crop",
           body: "**Operator blocks** (green) perform math calculations and comparisons.\n\n**Arithmetic Operators:**\n➕ **( ) + ( )** — Addition (5 + 3 = 8)\n➖ **( ) - ( )** — Subtraction (10 - 4 = 6)\n✖️ **( ) * ( )** — Multiplication (6 * 7 = 42)\n➗ **( ) / ( )** — Division (20 / 5 = 4)\n\n**More Math:**\n🎲 **pick random ( ) to ( )** — generates a random number\n   Example: pick random 1 to 6 = simulates rolling a dice!\n\n📐 **( ) mod ( )** — remainder after division\n   Example: 10 mod 3 = 1 (because 10 ÷ 3 = 3 remainder 1)\n\n🔄 **round ( )** — rounds to nearest whole number\n   Example: round 3.7 = 4",
         },
         {
