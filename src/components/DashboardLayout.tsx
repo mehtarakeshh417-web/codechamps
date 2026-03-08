@@ -7,7 +7,7 @@ import NotificationBell from "@/components/NotificationBell";
 import dashboardBg from "@/assets/dashboard-bg.jpg";
 import {
   LayoutDashboard, School, Users, BookOpen, Trophy, Settings, LogOut, GraduationCap,
-  BarChart3, Code, FileText, Gamepad2, Award, UserCircle, Menu, X, CalendarDays, MessageSquare, Keyboard, Megaphone
+  BarChart3, Code, FileText, Gamepad2, Award, UserCircle, Menu, X, CalendarDays, MessageSquare, Keyboard, Megaphone, Layers
 } from "lucide-react";
 import AiTutorChat from "@/components/AiTutorChat";
 
@@ -61,6 +61,7 @@ const navConfig: Record<UserRole, NavItem[]> = {
     { icon: Trophy, label: "Achievements", path: "/dashboard/achievements" },
     { icon: Award, label: "Leaderboard", path: "/dashboard/leaderboard" },
     { icon: GraduationCap, label: "Certificates", path: "/dashboard/certificates" },
+    { icon: Layers, label: "Flashcards", path: "/dashboard/flashcards" },
     { icon: Keyboard, label: "Typing Practice", path: "/dashboard/typing" },
     { icon: Settings, label: "Change Password", path: "/dashboard/settings" },
   ],

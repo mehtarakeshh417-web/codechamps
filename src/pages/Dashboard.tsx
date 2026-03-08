@@ -41,6 +41,7 @@ import StudentProjects from "./student/StudentProjects";
 import StudentPortfolio from "./student/StudentPortfolio";
 import StudentDiscussions from "./student/StudentDiscussions";
 import StudentTypingPractice from "./student/StudentTypingPractice";
+import StudentFlashcards from "./student/StudentFlashcards";
 
 const adminRoutes = (
   <>
@@ -97,6 +98,7 @@ const studentRoutes = (
     <Route path="discussions" element={<StudentDiscussions />} />
     <Route path="leaderboard" element={<StudentLeaderboard />} />
     <Route path="certificates" element={<StudentCertificates />} />
+    <Route path="flashcards" element={<StudentFlashcards />} />
     <Route path="typing" element={<StudentTypingPractice />} />
     <Route path="settings" element={<ChangePassword />} />
   </>
