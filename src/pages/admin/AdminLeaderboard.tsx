@@ -23,7 +23,7 @@ const AdminLeaderboard = () => {
             {sorted.map((s, i) => (
               <div key={s.id} className="flex items-center gap-4 bg-white/5 rounded-xl px-4 py-3">
                 <span className={`font-display font-bold text-lg w-8 ${i < 3 ? "text-neon-green" : "text-white/40"}`}>#{i + 1}</span>
-                <span className="font-body text-sm text-white/80 flex-1">{s.username}</span>
+                <span className="font-body text-sm text-white/80 flex-1">{s.name}</span>
                 <span className="text-neon-blue font-display font-bold">{s.xp} XP</span>
               </div>
             ))}
