@@ -1355,6 +1355,7 @@ const c10AiFund: TopicTextbook = {
       sections: [
         {
           heading: "Bias in AI Systems",
+          image: "https://images.unsplash.com/photo-1614064641938-3bbee52942c7?w=800&h=400&fit=crop",
           body: "AI systems learn from data — and if that data contains biases, the AI will learn and amplify those biases. This is a critical challenge because AI is increasingly used for important decisions in hiring, lending, healthcare, and criminal justice.\n\n**Data bias** occurs when training data doesn't represent the real world fairly. For example, if a hiring AI is trained on historical data where most hires were male, it might unfairly rank male candidates higher. If a facial recognition system is trained mostly on light-skinned faces, it performs poorly on darker skin tones.\n\n**Algorithmic bias** can also emerge from how models are designed and optimized. Even with balanced data, certain metrics or features can inadvertently discriminate. Identifying and mitigating bias requires conscious effort from developers.",
           warningNote: "AI bias has real consequences: biased hiring tools reject qualified candidates, biased loan algorithms deny credit unfairly, and biased facial recognition leads to wrongful arrests. As future technologists, it's your responsibility to build fair AI systems."
         },
