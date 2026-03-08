@@ -72,18 +72,18 @@ const SchoolSettings = () => {
         </div>
 
         <div className="flex flex-wrap gap-2 mb-4">
-          {sections.map((section, idx) => (
-            <div key={idx} className="flex items-center gap-1 px-3 py-1.5 rounded-lg bg-white/10 border border-white/20 text-white text-sm group">
+          {sections.map((section, idx) =>
+          <div key={idx} className="flex items-center gap-1 px-3 py-1.5 rounded-lg bg-white/10 border border-white/20 text-white text-sm group">
               <GripVertical className="w-3 h-3 text-white/30" />
               <span className="font-medium">{section}</span>
               <button
-                onClick={() => handleRemoveSection(idx)}
-                className="ml-1 text-white/30 hover:text-destructive transition-colors"
-              >
+              onClick={() => handleRemoveSection(idx)}
+              className="ml-1 text-white/30 hover:text-destructive transition-colors">
+              
                 <X className="w-3.5 h-3.5" />
               </button>
             </div>
-          ))}
+          )}
         </div>
 
         <div className="flex gap-2 mb-4">
@@ -92,8 +92,8 @@ const SchoolSettings = () => {
             onChange={(e) => setNewSection(e.target.value)}
             placeholder="Add section name (e.g., Lotus)"
             className="bg-white/10 border-white/20 text-white placeholder:text-white/40 max-w-xs"
-            onKeyDown={(e) => e.key === "Enter" && (e.preventDefault(), handleAddSection())}
-          />
+            onKeyDown={(e) => e.key === "Enter" && (e.preventDefault(), handleAddSection())} />
+          
           <Button variant="glass" size="sm" onClick={handleAddSection}>
             <Plus className="w-4 h-4 mr-1" /> Add
           </Button>
@@ -113,8 +113,8 @@ const SchoolSettings = () => {
       <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}>
         <ChangePassword />
       </motion.div>
-    </div>
-  );
+    </div>);
+
 };
 
 export default SchoolSettings;
