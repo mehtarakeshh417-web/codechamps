@@ -160,6 +160,7 @@ const c1ComputerIntro: TopicTextbook = {
         },
         {
           heading: "Shutting Down Safely",
+          image: "https://images.unsplash.com/photo-1563206767-5b18f218e8de?w=800&h=400&fit=crop",
           body: "**Never just press the power button to turn off!** This can hurt the computer.\n\n**The correct way to shut down:**\n1. Click the **Start button** (bottom-left corner)\n2. Click **Power** (the power icon)\n3. Click **Shut Down**\n4. Wait for the computer to turn off completely\n5. Then turn off the monitor\n\n**Other options:**\n😴 **Sleep** — Computer rests but doesn't fully turn off\n🔄 **Restart** — Turns off and turns back on (useful when something is stuck)\n\n⚠️ **Always save your work before shutting down!**",
           tip: "Think of Shut Down like going to sleep properly — you brush your teeth, change clothes, and then sleep. Don't just fall on the floor!"
         }
