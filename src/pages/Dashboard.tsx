@@ -15,6 +15,7 @@ import SchoolStudents from "./school/SchoolStudents";
 import SchoolClasses from "./school/SchoolClasses";
 import SchoolAnalytics from "./school/SchoolAnalytics";
 import SchoolSettings from "./school/SchoolSettings";
+import SchoolAttendance from "./school/SchoolAttendance";
 import TeacherDashboard from "./teacher/TeacherDashboard";
 import TeacherClasses from "./teacher/TeacherClasses";
 import TeacherAssignments from "./teacher/TeacherAssignments";
@@ -23,6 +24,8 @@ import TeacherCurriculum from "./teacher/TeacherCurriculum";
 import TeacherCodingLab from "./teacher/TeacherCodingLab";
 import TeacherAnalytics from "./teacher/TeacherAnalytics";
 import TeacherStudentProgress from "./teacher/TeacherStudentProgress";
+import TeacherAttendance from "./teacher/TeacherAttendance";
+import TeacherDiscussions from "./teacher/TeacherDiscussions";
 import ChangePassword from "./shared/ChangePassword";
 import StudentDashboard from "./student/StudentDashboard";
 import StudentCurriculum from "./student/StudentCurriculum";
@@ -35,6 +38,7 @@ import StudentCertificates from "./student/StudentCertificates";
 import StudentProgress from "./student/StudentProgress";
 import StudentProjects from "./student/StudentProjects";
 import StudentPortfolio from "./student/StudentPortfolio";
+import StudentDiscussions from "./student/StudentDiscussions";
 
 const adminRoutes = (
   <>
@@ -52,6 +56,7 @@ const schoolRoutes = (
     <Route path="teachers" element={<SchoolTeachers />} />
     <Route path="students" element={<SchoolStudents />} />
     <Route path="classes" element={<SchoolClasses />} />
+    <Route path="attendance" element={<SchoolAttendance />} />
     <Route path="analytics" element={<SchoolAnalytics />} />
     <Route path="settings" element={<SchoolSettings />} />
   </>
@@ -67,6 +72,8 @@ const teacherRoutes = (
     <Route path="curriculum/topic/:topicId" element={<TopicViewer />} />
     <Route path="coding-lab" element={<TeacherCodingLab />} />
     <Route path="student-progress" element={<TeacherStudentProgress />} />
+    <Route path="attendance" element={<TeacherAttendance />} />
+    <Route path="discussions" element={<TeacherDiscussions />} />
     <Route path="analytics" element={<TeacherAnalytics />} />
     <Route path="settings" element={<ChangePassword />} />
   </>
@@ -83,6 +90,7 @@ const studentRoutes = (
     <Route path="achievements" element={<StudentAchievements />} />
     <Route path="projects" element={<StudentProjects />} />
     <Route path="portfolio" element={<StudentPortfolio />} />
+    <Route path="discussions" element={<StudentDiscussions />} />
     <Route path="leaderboard" element={<StudentLeaderboard />} />
     <Route path="certificates" element={<StudentCertificates />} />
     <Route path="settings" element={<ChangePassword />} />

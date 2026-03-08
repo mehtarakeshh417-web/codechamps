@@ -7,7 +7,7 @@ import NotificationBell from "@/components/NotificationBell";
 import dashboardBg from "@/assets/dashboard-bg.jpg";
 import {
   LayoutDashboard, School, Users, BookOpen, Trophy, Settings, LogOut, GraduationCap,
-  BarChart3, Code, FileText, Gamepad2, Award, UserCircle, Menu, X
+  BarChart3, Code, FileText, Gamepad2, Award, UserCircle, Menu, X, CalendarDays, MessageSquare
 } from "lucide-react";
 
 interface NavItem {
@@ -29,6 +29,7 @@ const navConfig: Record<UserRole, NavItem[]> = {
     { icon: Users, label: "Teachers", path: "/dashboard/teachers" },
     { icon: GraduationCap, label: "Students", path: "/dashboard/students" },
     { icon: BookOpen, label: "Classes", path: "/dashboard/classes" },
+    { icon: CalendarDays, label: "Attendance", path: "/dashboard/attendance" },
     { icon: BarChart3, label: "Analytics", path: "/dashboard/analytics" },
     { icon: Settings, label: "Settings", path: "/dashboard/settings" },
   ],
@@ -39,6 +40,8 @@ const navConfig: Record<UserRole, NavItem[]> = {
     { icon: Code, label: "Projects", path: "/dashboard/projects" },
     { icon: GraduationCap, label: "Curriculum", path: "/dashboard/curriculum" },
     { icon: Gamepad2, label: "Coding Lab", path: "/dashboard/coding-lab" },
+    { icon: CalendarDays, label: "Attendance", path: "/dashboard/attendance" },
+    { icon: MessageSquare, label: "Discussions", path: "/dashboard/discussions" },
     { icon: Users, label: "Student Progress", path: "/dashboard/student-progress" },
     { icon: BarChart3, label: "Analytics", path: "/dashboard/analytics" },
     { icon: Settings, label: "Change Password", path: "/dashboard/settings" },
@@ -51,6 +54,7 @@ const navConfig: Record<UserRole, NavItem[]> = {
     { icon: Code, label: "Projects", path: "/dashboard/projects" },
     { icon: UserCircle, label: "Portfolio", path: "/dashboard/portfolio" },
     { icon: Gamepad2, label: "Coding Lab", path: "/dashboard/coding-lab" },
+    { icon: MessageSquare, label: "Discussions", path: "/dashboard/discussions" },
     { icon: Trophy, label: "Achievements", path: "/dashboard/achievements" },
     { icon: Award, label: "Leaderboard", path: "/dashboard/leaderboard" },
     { icon: GraduationCap, label: "Certificates", path: "/dashboard/certificates" },
