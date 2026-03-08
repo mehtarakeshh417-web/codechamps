@@ -758,6 +758,7 @@ const c2AdvComputer: TopicTextbook = {
         },
         {
           heading: "Output Devices — Getting Information from the Computer",
+          image: "https://images.unsplash.com/photo-1588508065123-287b28e013da?w=800&h=400&fit=crop",
           body: "**Output devices** show information FROM the computer:\n\n🖥️ **Monitor** — Shows pictures, text, and videos\n🔊 **Speakers** — Play music and sounds\n🎧 **Headphones** — Listen privately\n🖨️ **Printer** — Print on paper\n📽️ **Projector** — Show on a big screen\n\n**Remember the simple rule:**\n📥 **Input = IN** to the computer\n📤 **Output = OUT** from the computer",
           tip: "Touchscreen is BOTH input AND output — it shows things (output) and accepts touch (input)!"
         }
