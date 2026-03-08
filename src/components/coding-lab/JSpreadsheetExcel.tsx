@@ -26,7 +26,7 @@ const JSpreadsheetExcel = () => {
       align: "left" as const,
     }));
 
-    instanceRef.current = jspreadsheet(sheetRef.current, {
+    instanceRef.current = (jspreadsheet as any)(sheetRef.current, {
       data,
       columns,
       minDimensions: [26, 100],
