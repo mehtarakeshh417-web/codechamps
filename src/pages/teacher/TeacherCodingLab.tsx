@@ -1,13 +1,13 @@
 import { motion } from "framer-motion";
-import { Code, Terminal, Gamepad2, Palette, Coffee, Paintbrush, FileText, Table2, Presentation, ImageIcon, PenTool } from "lucide-react";
+import { Code, Terminal, Gamepad2, Palette, Coffee, Paintbrush, FileText, Table2, Presentation, ImageIcon, PenTool, LayoutDashboard } from "lucide-react";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { useSearchParams } from "react-router-dom";
 import {
   HtmlEditor, PythonEditor, JavaEditor, MsPaintEditor, MsWordEditor,
-  MsExcelEditor, MsPowerPointEditor, GimpEditor, KritaEditor, ScratchEditor, ScratchJrEditor,
+  MsExcelEditor, MsPowerPointEditor, GimpEditor, KritaEditor, ScratchEditor, ScratchJrEditor, CanvaEditor,
 } from "@/components/coding-lab/editors";
 
-const ALL_EDITORS = ["html", "python", "java", "scratch", "scratchjr", "mspaint", "krita", "msword", "msexcel", "mspowerpoint", "gimp"];
+const ALL_EDITORS = ["html", "python", "java", "scratch", "scratchjr", "mspaint", "krita", "msword", "msexcel", "mspowerpoint", "gimp", "canva"];
 
 const editorMeta: Record<string, { label: string; icon: React.ElementType; component: React.FC }> = {
   html:          { label: "HTML/CSS/JS",    icon: Code,         component: HtmlEditor },
@@ -21,6 +21,7 @@ const editorMeta: Record<string, { label: string; icon: React.ElementType; compo
   mspowerpoint:  { label: "PowerPoint",     icon: Presentation, component: MsPowerPointEditor },
   gimp:          { label: "GIMP",           icon: ImageIcon,    component: GimpEditor },
   krita:         { label: "Krita",          icon: PenTool,      component: KritaEditor },
+  canva:         { label: "Canva",          icon: LayoutDashboard, component: CanvaEditor },
 };
 
 const TeacherCodingLab = () => {

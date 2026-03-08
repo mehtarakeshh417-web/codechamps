@@ -3,7 +3,7 @@ import { Play, RotateCcw, Maximize2, Minimize2, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 import SimulatedWordEditor from "./SimulatedWordEditor";
-
+import SimulatedExcelEditor from "./SimulatedExcelEditor";
 import SimulatedPowerPointEditor from "./SimulatedPowerPointEditor";
 import SimulatedGimpEditor from "./SimulatedGimpEditor";
 import SimulatedKritaEditor from "./SimulatedKritaEditor";
@@ -180,21 +180,29 @@ export const MsWordEditor = () => {
   );
 };
 
-// MS Excel Editor - Google Sheets embed
-export const MsExcelEditor = () => (
-  <EditorWrapper title="MS Excel Editor">
-    <div className="h-[650px] rounded-xl overflow-hidden border border-white/10 bg-white">
-      <iframe
-        src="https://docs.google.com/spreadsheets/create?usp=sharing"
-        className="w-full h-full border-0"
-        title="MS Excel (Google Sheets)"
-        allow="clipboard-read; clipboard-write"
-        sandbox="allow-scripts allow-same-origin allow-popups allow-forms allow-modals allow-downloads"
-        loading="lazy"
-      />
-    </div>
-  </EditorWrapper>
-);
+// MS Excel Editor - Simulated with save
+export const MsExcelEditor = () => {
+  const handleSave = () => {
+    const table = document.querySelector('.excel-grid table') as HTMLTableElement;
+    if (!table) { toast.error("No spreadsheet data to save"); return; }
+    let csv = "";
+    const rows = table.querySelectorAll("tr");
+    rows.forEach(row => {
+      const cells: string[] = [];
+      row.querySelectorAll("td").forEach(cell => {
+        cells.push(`"${(cell.textContent || "").replace(/"/g, '""')}"`);
+      });
+      if (cells.length > 0) csv += cells.join(",") + "\n";
+    });
+    downloadFile(csv, "spreadsheet.csv", "text/csv");
+  };
+
+  return (
+    <EditorWrapper title="MS Excel Editor" onSave={handleSave}>
+      <SimulatedExcelEditor />
+    </EditorWrapper>
+  );
+};
 
 // MS PowerPoint Editor - Simulated
 export const MsPowerPointEditor = () => (
@@ -250,6 +258,22 @@ export const ScratchJrEditor = () => (
   </EditorWrapper>
 );
 
+// Canva Editor
+export const CanvaEditor = () => (
+  <EditorWrapper title="Canva Editor">
+    <div className="h-[650px] rounded-xl overflow-hidden border border-white/10 bg-white">
+      <iframe
+        src="https://www.canva.com/"
+        className="w-full h-full border-0"
+        title="Canva Design Editor"
+        allow="clipboard-read; clipboard-write; camera; microphone"
+        sandbox="allow-scripts allow-same-origin allow-popups allow-forms allow-modals allow-downloads allow-popups-to-escape-sandbox"
+        loading="lazy"
+      />
+    </div>
+  </EditorWrapper>
+);
+
 // Editor URLs for popup opening
 export const EDITOR_URLS: Record<string, { url: string; label: string }> = {
   html: { url: "about:blank", label: "HTML Editor" },
@@ -263,6 +287,7 @@ export const EDITOR_URLS: Record<string, { url: string; label: string }> = {
   mspowerpoint: { url: "about:blank", label: "MS PowerPoint Editor" },
   gimp: { url: "about:blank", label: "GIMP Editor" },
   krita: { url: "about:blank", label: "Krita Editor" },
+  canva: { url: "https://www.canva.com/", label: "Canva Editor" },
 };
 
 // Re-export simulated editors

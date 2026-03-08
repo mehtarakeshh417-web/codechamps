@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 import { motion } from "framer-motion";
-import { Code, Terminal, Gamepad2, Palette, Coffee, Paintbrush, FileText, Table2, Presentation, ImageIcon, PenTool } from "lucide-react";
+import { Code, Terminal, Gamepad2, Palette, Coffee, Paintbrush, FileText, Table2, Presentation, ImageIcon, PenTool, LayoutDashboard } from "lucide-react";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { useAuth } from "@/contexts/AuthContext";
 import { useSearchParams } from "react-router-dom";
@@ -16,6 +16,7 @@ import {
   KritaEditor,
   ScratchEditor,
   ScratchJrEditor,
+  CanvaEditor,
 } from "@/components/coding-lab/editors";
 
 const getAvailableEditors = (className?: string): string[] => {
@@ -23,12 +24,12 @@ const getAvailableEditors = (className?: string): string[] => {
   const numMatch = className.match(/(\d+)/);
   const classNum = numMatch ? parseInt(numMatch[1]) : 1;
 
-  if (classNum <= 2) return ["scratchjr", "mspaint", "krita"];
-  if (classNum <= 4) return ["scratch", "scratchjr", "mspaint", "krita", "msword", "gimp"];
-  if (classNum <= 5) return ["scratch", "scratchjr", "python", "html", "java", "mspaint", "krita", "msword", "msexcel", "mspowerpoint", "gimp"];
-  if (classNum === 6) return ["html", "python", "java", "scratch", "mspaint", "krita", "msword", "msexcel", "mspowerpoint", "gimp"];
-  if (classNum === 7) return ["html", "python", "java", "scratch", "mspaint", "krita", "msword", "msexcel", "mspowerpoint", "gimp"];
-  return ["html", "python", "java", "scratch", "mspaint", "krita", "msword", "msexcel", "mspowerpoint", "gimp"];
+  if (classNum <= 2) return ["scratchjr", "mspaint", "krita", "canva"];
+  if (classNum <= 4) return ["scratch", "scratchjr", "mspaint", "krita", "msword", "gimp", "canva"];
+  if (classNum <= 5) return ["scratch", "scratchjr", "python", "html", "java", "mspaint", "krita", "msword", "msexcel", "mspowerpoint", "gimp", "canva"];
+  if (classNum === 6) return ["html", "python", "java", "scratch", "mspaint", "krita", "msword", "msexcel", "mspowerpoint", "gimp", "canva"];
+  if (classNum === 7) return ["html", "python", "java", "scratch", "mspaint", "krita", "msword", "msexcel", "mspowerpoint", "gimp", "canva"];
+  return ["html", "python", "java", "scratch", "mspaint", "krita", "msword", "msexcel", "mspowerpoint", "gimp", "canva"];
 };
 
 const editorMeta: Record<string, { label: string; icon: React.ElementType; component: React.FC }> = {
@@ -43,6 +44,7 @@ const editorMeta: Record<string, { label: string; icon: React.ElementType; compo
   mspowerpoint:  { label: "PowerPoint",     icon: Presentation, component: MsPowerPointEditor },
   gimp:          { label: "GIMP",           icon: ImageIcon,    component: GimpEditor },
   krita:         { label: "Krita",          icon: PenTool,      component: KritaEditor },
+  canva:         { label: "Canva",          icon: LayoutDashboard, component: CanvaEditor },
 };
 
 const StudentCodingLab = () => {
