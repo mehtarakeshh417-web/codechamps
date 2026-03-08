@@ -41,6 +41,7 @@ import StudentProjects from "./student/StudentProjects";
 import StudentPortfolio from "./student/StudentPortfolio";
 import StudentDiscussions from "./student/StudentDiscussions";
 import StudentTypingPractice from "./student/StudentTypingPractice";
+import StudentFlashcards from "./student/StudentFlashcards";
 
 const adminRoutes = (
   <>
