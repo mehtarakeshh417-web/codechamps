@@ -154,7 +154,7 @@ const TeacherProjects = () => {
     // Send notifications to students in this class
     const teacherDisplayName = teacher ? `${teacher.firstName} ${teacher.lastName}`.trim() : "Your teacher";
     const allStudents2 = getTeacherStudents(user?.id || "");
-    const classStudents2 = allStudents2.filter((s) => form.targetClass.includes(s.class));
+    const classStudents2 = allStudents2.filter((s) => `${s.class}-${s.section}` === form.targetClass);
     const notifInserts = classStudents2.filter(s => s.user_id).map(s => ({
       user_id: s.user_id!,
       title: `🚀 New Project from ${teacherDisplayName}`,
@@ -369,7 +369,7 @@ const TeacherProjects = () => {
           {projects.map((p, i) => {
             const isExpanded = expandedId === p.id;
             const subs = projSubsMap[p.id] || [];
-            const classStudents = allStudents.filter((s) => p.targetClass.includes(s.class));
+            const classStudents = allStudents.filter((s) => `${s.class}-${s.section}` === p.targetClass);
             const submittedCount = subs.length;
             const evaluatedCount = subs.filter(s => s.evaluationStatus !== "pending").length;
             const avgMarks = subs.filter(s => s.marks !== null).length > 0
