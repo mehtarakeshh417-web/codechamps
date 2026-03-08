@@ -19,6 +19,8 @@ import TeacherDashboard from "./teacher/TeacherDashboard";
 import TeacherClasses from "./teacher/TeacherClasses";
 import TeacherAssignments from "./teacher/TeacherAssignments";
 import TeacherProjects from "./teacher/TeacherProjects";
+import TeacherCurriculum from "./teacher/TeacherCurriculum";
+import TeacherCodingLab from "./teacher/TeacherCodingLab";
 import TeacherAnalytics from "./teacher/TeacherAnalytics";
 import TeacherStudentProgress from "./teacher/TeacherStudentProgress";
 import ChangePassword from "./shared/ChangePassword";
