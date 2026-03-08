@@ -288,6 +288,7 @@ const c6PythonIntro: TopicTextbook = {
       sections: [
         {
           heading: "Conditional Statements",
+          image: "https://images.unsplash.com/photo-1509228468518-180dd4864904?w=800&h=400&fit=crop",
           body: "**if-else** lets your program make decisions!\n\n```python\nage = int(input(\"Enter your age: \"))\n\nif age >= 18:\n    print(\"You are an adult!\")\nelse:\n    print(\"You are a minor.\")\n```\n\n**Comparison operators:**\n• `==` equal to\n• `!=` not equal to\n• `>` greater than\n• `<` less than\n• `>=` greater than or equal\n• `<=` less than or equal\n\n**if-elif-else** for multiple conditions:\n```python\nmarks = int(input(\"Enter marks: \"))\n\nif marks >= 90:\n    print(\"Grade: A+\")\nelif marks >= 80:\n    print(\"Grade: A\")\nelif marks >= 70:\n    print(\"Grade: B\")\nelif marks >= 60:\n    print(\"Grade: C\")\nelse:\n    print(\"Grade: D\")\n```\n\n⚠️ **Python uses indentation** (spaces) instead of curly braces! Each block MUST be indented with 4 spaces.",
           tip: "Indentation is NOT optional in Python — it's how Python knows which code belongs to which if/else block!"
         }
