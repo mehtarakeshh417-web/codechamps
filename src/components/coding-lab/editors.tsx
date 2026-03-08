@@ -180,21 +180,29 @@ export const MsWordEditor = () => {
   );
 };
 
-// MS Excel Editor - Google Sheets embed
-export const MsExcelEditor = () => (
-  <EditorWrapper title="MS Excel Editor">
-    <div className="h-[650px] rounded-xl overflow-hidden border border-white/10 bg-white">
-      <iframe
-        src="https://docs.google.com/spreadsheets/create?usp=sharing"
-        className="w-full h-full border-0"
-        title="MS Excel (Google Sheets)"
-        allow="clipboard-read; clipboard-write"
-        sandbox="allow-scripts allow-same-origin allow-popups allow-forms allow-modals allow-downloads"
-        loading="lazy"
-      />
-    </div>
-  </EditorWrapper>
-);
+// MS Excel Editor - Simulated with save
+export const MsExcelEditor = () => {
+  const handleSave = () => {
+    const table = document.querySelector('.excel-grid table') as HTMLTableElement;
+    if (!table) { toast.error("No spreadsheet data to save"); return; }
+    let csv = "";
+    const rows = table.querySelectorAll("tr");
+    rows.forEach(row => {
+      const cells: string[] = [];
+      row.querySelectorAll("td").forEach(cell => {
+        cells.push(`"${(cell.textContent || "").replace(/"/g, '""')}"`);
+      });
+      if (cells.length > 0) csv += cells.join(",") + "\n";
+    });
+    downloadFile(csv, "spreadsheet.csv", "text/csv");
+  };
+
+  return (
+    <EditorWrapper title="MS Excel Editor" onSave={handleSave}>
+      <SimulatedExcelEditor />
+    </EditorWrapper>
+  );
+};
 
 // MS PowerPoint Editor - Simulated
 export const MsPowerPointEditor = () => (
