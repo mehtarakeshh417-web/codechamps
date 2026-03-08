@@ -59,14 +59,39 @@ const c6HtmlIntro: TopicTextbook = {
       sections: [
         {
           heading: "The HTML Skeleton",
-          body: "Every HTML page has this basic structure:\n\n```\n<!DOCTYPE html>\n<html>\n<head>\n  <title>My Page Title</title>\n</head>\n<body>\n  <h1>Welcome!</h1>\n  <p>This is my first webpage.</p>\n</body>\n</html>\n```\n\n**Breaking it down:**\n📜 `<!DOCTYPE html>` — tells the browser this is an HTML5 document\n🏠 `<html>` — the root element, wraps everything\n🧠 `<head>` — contains info ABOUT the page (title, styles) — not visible\n📖 `<title>` — the text shown in the browser tab\n📄 `<body>` — contains everything VISIBLE on the page\n🔚 Closing tags start with `/` — like `</html>`",
-          tip: "Think of `<head>` as the brain (thinking but invisible) and `<body>` as the body (visible to everyone)!"
+          body: "Every HTML page has this basic structure. Think of it as the **blueprint** — without it, the browser won't know how to display your content!",
+          tip: "Think of `<head>` as the brain (thinking but invisible) and `<body>` as the body (visible to everyone)!",
+          codeBlock: {
+            language: "html",
+            code: "<!DOCTYPE html>\n<html>\n<head>\n  <title>My Page Title</title>\n</head>\n<body>\n  <h1>Welcome!</h1>\n  <p>This is my first webpage.</p>\n</body>\n</html>"
+          },
+          stepByStep: {
+            steps: [
+              { title: "DOCTYPE Declaration", description: "Write `<!DOCTYPE html>` to tell the browser this is an HTML5 document" },
+              { title: "Open the HTML tag", description: "Add `<html>` — this is the root element that wraps everything" },
+              { title: "Add the Head section", description: "Inside `<head>`, add `<title>` for the browser tab text. This section is **invisible** to visitors" },
+              { title: "Add the Body section", description: "Inside `<body>`, add your visible content — headings, paragraphs, images, everything!" },
+              { title: "Close all tags", description: "Close every tag in reverse order: `</body>`, then `</html>`. Always close what you open!" }
+            ]
+          },
+          table: {
+            headers: ["Tag", "Purpose", "Visible?"],
+            rows: [
+              ["`<!DOCTYPE>`", "Declares HTML5 document type", "No"],
+              ["`<html>`", "Root element — wraps everything", "No"],
+              ["`<head>`", "Page metadata, title, styles", "No"],
+              ["`<title>`", "Text shown in browser tab", "Tab only"],
+              ["`<body>`", "All visible page content", "Yes"]
+            ]
+          }
         }
       ],
       exercises: [
         { type: "fill-in-blank", question: "HTML stands for HyperText ___ Language.", answer: "markup" },
         { type: "fill-in-blank", question: "The content visible on a webpage goes inside the ___ tag.", answer: "body" },
         { type: "true-false", question: "The <head> section content is visible on the webpage.", answer: "False", options: ["True", "False"] },
+        { type: "mcq", question: "Which tag contains the text that appears in the browser tab?", answer: "<title>", choices: ["<head>", "<title>", "<body>", "<h1>"] },
+        { type: "ordering", question: "Arrange these HTML tags in the correct nesting order (outermost to innermost):", answer: "", orderItems: ["<!DOCTYPE html>", "<html>", "<head>", "<body>", "<p>Content</p>"] },
         { type: "practice", question: "Open the HTML editor. Create a basic HTML page with a title, a heading (h1), and two paragraphs about yourself. Click Run to see the preview!", answer: "" },
       ]
     },

@@ -14,14 +14,44 @@ const c9PythonAdv: TopicTextbook = {
       sections: [
         {
           heading: "Python Data Structures",
-          body: "Python provides powerful built-in data structures:\n\n📋 **Lists** — Ordered, mutable collections: `[1, 2, 3]`\n🔒 **Tuples** — Ordered, immutable collections: `(1, 2, 3)`\n📖 **Dictionaries** — Key-value pairs: `{'name': 'John', 'age': 15}`\n🎯 **Sets** — Unordered, unique elements: `{1, 2, 3}`\n\n**List Operations:**\n• `append()` — Add item to end\n• `insert()` — Add item at position\n• `remove()` — Remove first occurrence\n• `sort()` — Sort the list\n• `len()` — Get list length\n• List comprehensions: `[x*2 for x in range(5)]`",
+          body: "Python provides powerful built-in data structures that let you organize and manage data efficiently.",
           youtubeId: "kqtD5dpn9C8",
-          tip: "Use lists for ordered collections, dictionaries for key-value data, sets for unique items, and tuples for fixed data."
+          tip: "Use lists for ordered collections, dictionaries for key-value data, sets for unique items, and tuples for fixed data.",
+          table: {
+            headers: ["Data Structure", "Syntax", "Ordered?", "Mutable?", "Duplicates?"],
+            rows: [
+              ["**List**", "`[1, 2, 3]`", "Yes", "Yes", "Yes"],
+              ["**Tuple**", "`(1, 2, 3)`", "Yes", "No", "Yes"],
+              ["**Dictionary**", "`{'a': 1}`", "Yes (3.7+)", "Yes", "Keys: No"],
+              ["**Set**", "`{1, 2, 3}`", "No", "Yes", "No"]
+            ]
+          },
+          codeBlock: {
+            language: "python",
+            code: "# List operations\nfruits = ['apple', 'banana', 'cherry']\nfruits.append('mango')        # Add to end\nfruits.insert(1, 'grape')      # Insert at position\nfruits.remove('banana')        # Remove item\nfruits.sort()                  # Sort alphabetically\n\n# Dictionary\nstudent = {'name': 'Aarav', 'age': 15, 'grade': 'A'}\nprint(student['name'])         # Access by key\nstudent['city'] = 'Delhi'      # Add new key\n\n# List comprehension\nsquares = [x**2 for x in range(1, 6)]  # [1, 4, 9, 16, 25]"
+          },
+          keyTerms: [
+            { term: "Mutable", definition: "Can be changed after creation (lists, dicts, sets)" },
+            { term: "Immutable", definition: "Cannot be changed after creation (tuples, strings)" },
+            { term: "List Comprehension", definition: "A concise way to create lists: [expression for item in iterable]" },
+            { term: "Key-Value Pair", definition: "A dictionary entry where a unique key maps to a value" }
+          ]
+        },
+        {
+          heading: "Choosing the Right Data Structure",
+          body: "Picking the right data structure is crucial for writing efficient code. Each one has strengths and weaknesses:",
+          comparison: {
+            left: { title: "Lists vs Tuples", points: ["Lists are mutable — use when data changes", "Tuples are immutable — use for fixed data", "Tuples are slightly faster than lists", "Tuples can be used as dictionary keys"] },
+            right: { title: "Dicts vs Sets", points: ["Dicts store key-value pairs — use for lookups", "Sets store unique values only — use to remove duplicates", "Both have O(1) average lookup time", "Sets support mathematical operations (union, intersection)"] }
+          },
+          warningNote: "Never use a mutable type (like a list) as a dictionary key! Use tuples instead."
         }
       ],
       exercises: [
         { type: "fill-in-blank", question: "A ___ is an ordered, immutable collection in Python.", answer: "tuple" },
         { type: "true-false", question: "Dictionaries store data as key-value pairs.", answer: "True", options: ["True", "False"] },
+        { type: "mcq", question: "Which data structure does NOT allow duplicate values?", answer: "Set", choices: ["List", "Tuple", "Dictionary", "Set"] },
+        { type: "match", question: "Match each data structure to its syntax:", answer: "", matchPairs: [["List", "[1, 2, 3]"], ["Tuple", "(1, 2, 3)"], ["Dictionary", "{'key': 'value'}"], ["Set", "{1, 2, 3}"]] },
         { type: "practice", question: "Create a Python program that stores student names and marks in a dictionary, then prints the student with the highest marks.", answer: "" },
       ]
     },
