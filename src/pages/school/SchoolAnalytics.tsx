@@ -160,10 +160,10 @@ const SchoolAnalytics = () => {
           <p className="font-body text-primary-foreground">School Performance Insights</p>
         </div>
         <div className="flex gap-3">
-          <Button variant="glass" size="lg" onClick={exportToExcel}>
+          <Button variant="hero" size="lg" onClick={exportToExcel}>
             <FileSpreadsheet className="w-4 h-4 mr-2" /> Export Excel
           </Button>
-          <Button variant="glass" size="lg" onClick={printReport}>
+          <Button variant="hero" size="lg" onClick={printReport}>
             <Download className="w-4 h-4 mr-2" /> Print Report
           </Button>
         </div>
