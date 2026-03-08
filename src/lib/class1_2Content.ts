@@ -260,6 +260,7 @@ const c1PaintStart: TopicTextbook = {
       sections: [
         {
           heading: "How to Draw Shapes",
+          image: "https://images.unsplash.com/photo-1509228468518-180dd4864904?w=800&h=400&fit=crop",
           body: "**Steps to draw a shape:**\n1. Click the **Shapes** button in the toolbar\n2. Choose a shape (rectangle, oval, line, triangle, etc.)\n3. Click and drag on the canvas to draw it!\n\n**Shape tips:**\n⬛ **Rectangle** — click and drag to make a box\n⭕ **Oval** — click and drag to make a circle (hold Shift for perfect circle!)\n📐 **Triangle** — use the polygon tool\n➖ **Line** — draw straight lines\n⭐ **Star** — make star shapes\n\n**Outline vs Filled:**\n• **Outline** — only the border of the shape\n• **Filled** — the shape is colored inside\n• **No outline** — only the fill, no border",
           youtubeId: "4ZDt8KRo6vE"
         }
