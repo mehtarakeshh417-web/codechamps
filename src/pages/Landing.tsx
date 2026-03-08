@@ -30,7 +30,7 @@ const Landing = () => {
       >
         <div className="flex items-center gap-3">
           <img src={logo} alt="CodeChamps logo" className="w-10 h-10 rounded-xl object-contain" />
-          <span className="font-display text-xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">CodeChamps</span>
+          <span className="font-display text-2xl md:text-3xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">CodeChamps</span>
         </div>
         <Button variant="hero" size="xl" onClick={() => navigate("/login")}>
           Login
@@ -47,7 +47,7 @@ const Landing = () => {
           >
             <div className="inline-flex items-center gap-2 glass-card px-4 py-2 mb-6">
               <Zap className="w-4 h-4 text-neon-green" />
-              <span className="text-sm font-body text-neon-green">The Future of Computer Education</span>
+              <span className="text-base md:text-lg font-body text-neon-green">The Future of Computer Education</span>
             </div>
             <h1 className="font-display text-4xl md:text-6xl font-bold leading-tight mb-6">
               <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Gamified</span>{" "}
