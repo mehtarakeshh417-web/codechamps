@@ -341,6 +341,7 @@ const c1PaintShapes: TopicTextbook = {
       sections: [
         {
           heading: "Pencil and Brush Drawing",
+          image: "https://images.unsplash.com/photo-1452860606245-08befc0ff44b?w=800&h=400&fit=crop",
           body: "**Pencil Tool:**\n• Makes thin, precise lines\n• Great for details and outlines\n• Click and hold while moving the mouse\n\n**Brush Tool:**\n• Makes thicker, more artistic strokes\n• You can choose different brush styles:\n  - Round brush\n  - Square brush\n  - Calligraphy brush\n  - Oil brush\n\n**Eraser Tool:**\n• Removes anything you've drawn\n• You can change the eraser size\n• Right-click with eraser to erase only Color 1\n\n**Tip:** Zoom in (View → Zoom In) to draw small details more easily!",
           comparison: {
             left: {
