@@ -29,7 +29,7 @@ const SchoolTeachers = () => {
   const toggleClassSelection = (cls: string) => {
     setSelectedClasses((prev) => {
       const updated = { ...prev };
-      if (updated[cls]) { delete updated[cls]; } else { updated[cls] = ["A"]; }
+      if (updated[cls]) {delete updated[cls];} else {updated[cls] = ["A"];}
       return updated;
     });
   };
@@ -40,8 +40,8 @@ const SchoolTeachers = () => {
       const sections = updated[cls] || [];
       if (sections.includes(section)) {
         const filtered = sections.filter((s) => s !== section);
-        if (filtered.length === 0) { delete updated[cls]; } else { updated[cls] = filtered; }
-      } else { updated[cls] = [...sections, section]; }
+        if (filtered.length === 0) {delete updated[cls];} else {updated[cls] = filtered;}
+      } else {updated[cls] = [...sections, section];}
       return updated;
     });
   };
@@ -122,14 +122,14 @@ const SchoolTeachers = () => {
     <div>
       <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="flex items-center justify-between mb-8">
         <div>
-          <h1 className="font-display text-3xl font-bold mb-1"><span className="text-gradient-brand">Teachers</span></h1>
-          <p className="text-white/60 font-body">Manage your school's teaching staff</p>
+          <h1 className="font-display text-3xl font-bold mb-1 text-destructive-foreground"><span className="text-gradient-brand">Teachers</span></h1>
+          <p className="font-body text-primary-foreground">Manage your school's teaching staff</p>
         </div>
-        <Button variant="hero" size="xl" onClick={() => setShowForm(true)}><Plus className="w-6 h-6 mr-2" /> Add Teacher</Button>
+        <Button variant="hero" size="lg" onClick={() => setShowForm(true)}><Plus className="w-5 h-5 mr-2" /> Add Teacher</Button>
       </motion.div>
 
-      {showForm && (
-        <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} className="glass-card p-6 mb-8">
+      {showForm &&
+      <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} className="glass-card p-6 mb-8">
           <div className="flex items-center justify-between mb-6">
             <h2 className="font-display text-lg font-bold text-white">New Teacher</h2>
             <Button variant="ghost" size="icon" onClick={() => setShowForm(false)}><X className="w-5 h-5" /></Button>
@@ -160,54 +160,54 @@ const SchoolTeachers = () => {
               <Label className="text-white/80 font-body font-medium">Assign Classes & Sections *</Label>
               <div className="space-y-2">
                 {CLASS_LIST.map((cls) => {
-                  const isSelected = !!selectedClasses[cls];
-                  return (
-                    <div key={cls} className={`rounded-xl border p-3 transition-all ${isSelected ? "border-primary/40 bg-primary/5" : "border-white/10 bg-white/5"}`}>
+                const isSelected = !!selectedClasses[cls];
+                return (
+                  <div key={cls} className={`rounded-xl border p-3 transition-all ${isSelected ? "border-primary/40 bg-primary/5" : "border-white/10 bg-white/5"}`}>
                       <div className="flex items-center gap-3">
                         <button type="button" onClick={() => toggleClassSelection(cls)}
-                          className={`w-6 h-6 rounded-md border flex items-center justify-center transition-all ${isSelected ? "bg-primary border-primary text-white" : "border-white/30"}`}>
+                      className={`w-6 h-6 rounded-md border flex items-center justify-center transition-all ${isSelected ? "bg-primary border-primary text-white" : "border-white/30"}`}>
                           {isSelected && <Check className="w-4 h-4" />}
                         </button>
                         <span className="font-body text-sm text-white/90 font-medium">Class {cls}</span>
-                        {isSelected && (
-                          <div className="flex gap-1.5 ml-auto">
+                        {isSelected &&
+                      <div className="flex gap-1.5 ml-auto">
                             {SECTION_LIST.map((sec) => {
-                              const secSelected = selectedClasses[cls]?.includes(sec);
-                              return (
-                                <button key={sec} type="button" onClick={() => toggleSection(cls, sec)}
-                                  className={`w-8 h-8 rounded-lg text-xs font-bold transition-all ${secSelected ? "bg-neon-green/20 text-neon-green border border-neon-green/40" : "bg-white/10 text-white/50 border border-white/15 hover:bg-white/15"}`}>
+                          const secSelected = selectedClasses[cls]?.includes(sec);
+                          return (
+                            <button key={sec} type="button" onClick={() => toggleSection(cls, sec)}
+                            className={`w-8 h-8 rounded-lg text-xs font-bold transition-all ${secSelected ? "bg-neon-green/20 text-neon-green border border-neon-green/40" : "bg-white/10 text-white/50 border border-white/15 hover:bg-white/15"}`}>
                                   {sec}
-                                </button>
-                              );
-                            })}
+                                </button>);
+
+                        })}
                           </div>
-                        )}
+                      }
                       </div>
-                    </div>
-                  );
-                })}
+                    </div>);
+
+              })}
               </div>
             </div>
 
             <div className="flex justify-end gap-3 mt-4">
-              <Button type="button" variant="ghost" onClick={() => { setShowForm(false); setSelectedClasses({}); }}>Cancel</Button>
+              <Button type="button" variant="ghost" onClick={() => {setShowForm(false);setSelectedClasses({});}}>Cancel</Button>
               <Button type="submit" variant="hero" disabled={isSubmitting}>{isSubmitting ? "Creating..." : "Create Teacher"}</Button>
             </div>
           </form>
         </motion.div>
-      )}
+      }
 
-      {teachers.length === 0 ? (
-        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="glass-card p-12 text-center">
+      {teachers.length === 0 ?
+      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="glass-card p-12 text-center">
           <Users className="w-16 h-16 text-white/30 mx-auto mb-4" />
           <p className="text-white/50 font-body">No teachers added yet</p>
-        </motion.div>
-      ) : (
-        <div className="space-y-3">
-          {teachers.map((t, i) => (
-            <motion.div key={t.id} initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: i * 0.05 }}>
-              {editingId === t.id ? (
-                <div className="glass-card p-4 space-y-3">
+        </motion.div> :
+
+      <div className="space-y-3">
+          {teachers.map((t, i) =>
+        <motion.div key={t.id} initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: i * 0.05 }}>
+              {editingId === t.id ?
+          <div className="glass-card p-4 space-y-3">
                   <div className="grid grid-cols-2 gap-3">
                     <Input value={editForm.firstName} onChange={(e) => setEditForm({ ...editForm, firstName: e.target.value })} className="bg-white/10 border-white/20 text-white" />
                     <Input value={editForm.lastName} onChange={(e) => setEditForm({ ...editForm, lastName: e.target.value })} className="bg-white/10 border-white/20 text-white" />
@@ -216,14 +216,14 @@ const SchoolTeachers = () => {
                     <Button size="sm" variant="hero" onClick={() => saveEdit(t.id)}>Save</Button>
                     <Button size="sm" variant="ghost" onClick={() => setEditingId(null)}>Cancel</Button>
                   </div>
-                </div>
-              ) : (
-                <ExpandableTeacherCard
-                  teacher={t}
-                  students={schoolStudents}
-                  formatClassDisplay={formatClassDisplay}
-                  actions={
-                    <>
+                </div> :
+
+          <ExpandableTeacherCard
+            teacher={t}
+            students={schoolStudents}
+            formatClassDisplay={formatClassDisplay}
+            actions={
+            <>
                       <Button variant="ghost" size="icon" className="text-white/30 hover:text-neon-blue shrink-0" onClick={() => startEdit(t)}>
                         <Edit2 className="w-4 h-4" />
                       </Button>
@@ -231,15 +231,15 @@ const SchoolTeachers = () => {
                         <Trash2 className="w-4 h-4" />
                       </Button>
                     </>
-                  }
-                />
-              )}
+            } />
+
+          }
             </motion.div>
-          ))}
+        )}
         </div>
-      )}
-    </div>
-  );
+      }
+    </div>);
+
 };
 
 export default SchoolTeachers;
