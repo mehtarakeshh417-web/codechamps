@@ -89,7 +89,7 @@ const Landing = () => {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          className="font-display text-3xl md:text-4xl font-bold text-center mb-12 text-foreground"
+          className="font-display text-3xl md:text-4xl font-bold text-center mb-12 text-white"
         >
           Powerful Features
         </motion.h2>
