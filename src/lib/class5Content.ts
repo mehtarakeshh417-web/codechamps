@@ -86,7 +86,20 @@ const wordPageFormatting: TopicTextbook = {
         {
           heading: "What is Page Formatting?",
           body: "**Page formatting** means changing how your document page looks. It includes setting margins, choosing page orientation, adding backgrounds, watermarks, borders, and columns.\n\nWhen you write a letter, a report, or a project, page formatting makes it look neat and professional. Imagine reading a book with no margins — the text would go right to the edge of the paper! Formatting fixes that.\n\n**Why is Page Formatting Important?**\n• Makes documents easy to read\n• Gives a professional appearance\n• Helps organize information\n• Makes printed documents look great",
-          tip: "All page formatting options are found in the **Page Layout** tab in MS Word."
+          tip: "All page formatting options are found in the **Page Layout** tab in MS Word.",
+          illustration: [
+            { emoji: "📏", label: "Margins" },
+            { emoji: "📄", label: "Orientation" },
+            { emoji: "🎨", label: "Page Color" },
+            { emoji: "💧", label: "Watermark" },
+            { emoji: "🖼️", label: "Borders" },
+            { emoji: "📰", label: "Columns" },
+          ],
+          keyTerms: [
+            { term: "Page Formatting", definition: "Changing the layout and appearance of your document pages." },
+            { term: "Page Layout Tab", definition: "The tab in MS Word ribbon where all page formatting tools are located." },
+            { term: "Ribbon", definition: "The toolbar at the top of MS Word with tabs like Home, Insert, Page Layout." },
+          ]
         },
         {
           heading: "Where to Find Page Layout",
