@@ -84,7 +84,7 @@ const AdminDashboard = () => {
               {filteredTeachers.map((t) => (
                 <div key={t.id} className="flex items-center justify-between py-1">
                   <span className="text-sm text-white/80 font-body">{t.firstName} {t.lastName}</span>
-                  <span className="text-xs text-white/40">@{t.username}</span>
+                  <span className="text-xs text-white/40">{t.classes.length} classes</span>
                 </div>
               ))}
             </div>

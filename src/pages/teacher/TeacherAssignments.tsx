@@ -70,11 +70,6 @@ const TeacherAssignments = () => {
     if (!teacher?.id) { setLoading(false); return; }
     setLoading(true);
     try {
-      const [assignRes, subRes] = await Promise.all([
-        supabase.from("assignments").select("*").eq("teacher_id", teacher.id).order("created_at", { ascending: false }),
-        supabase.from("submissions").select("*, students(name)").eq("assignment_id", teacher.id).is("assignment_id", null), // placeholder, will re-fetch below
-      ]);
-
       const { data, error } = await supabase.from("assignments").select("*").eq("teacher_id", teacher.id).order("created_at", { ascending: false });
       if (error) { console.error("Fetch assignments error:", error); toast.error("Failed to load assignments. Please refresh."); }
       else {

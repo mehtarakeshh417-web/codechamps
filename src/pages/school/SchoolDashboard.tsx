@@ -118,7 +118,7 @@ const SchoolDashboard = () => {
                     <span className="font-body text-sm text-white font-bold">{t.firstName} {t.lastName}</span>
                     <span className="text-xs text-white/80 font-semibold ml-2">({t.classes.length} classes)</span>
                   </div>
-                  <span className="text-xs text-neon-green font-medium">@{t.username}</span>
+                  <span className="text-xs text-neon-green font-medium">{t.classes.length} classes</span>
                 </div>
             )}
             </div>
