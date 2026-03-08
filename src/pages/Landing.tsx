@@ -434,7 +434,7 @@ const Landing = () => {
             <Button
               onClick={() => {
                 setContactForm({ name: "", email: "", school: "", message: "" });
-                alert("Thank you! We'll contact you within 24 hours.");
+                toast.success("Thank you! We'll contact you within 24 hours.");
               }}
               className="w-full bg-gradient-to-r from-primary to-secondary text-white rounded-xl h-12 font-bold"
             >

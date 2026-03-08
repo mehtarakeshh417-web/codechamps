@@ -70,6 +70,8 @@ const ParticleBackground = React.forwardRef<HTMLCanvasElement>((_, ref) => {
   }, []);
 
   return <canvas ref={canvasRef} className="fixed inset-0 pointer-events-none z-0" />;
-};
+});
+
+ParticleBackground.displayName = "ParticleBackground";
 
 export default ParticleBackground;
