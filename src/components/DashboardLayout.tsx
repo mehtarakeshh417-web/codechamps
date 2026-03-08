@@ -40,6 +40,8 @@ const navConfig: Record<UserRole, NavItem[]> = {
     { icon: Code, label: "Projects", path: "/dashboard/projects" },
     { icon: GraduationCap, label: "Curriculum", path: "/dashboard/curriculum" },
     { icon: Gamepad2, label: "Coding Lab", path: "/dashboard/coding-lab" },
+    { icon: CalendarDays, label: "Attendance", path: "/dashboard/attendance" },
+    { icon: MessageSquare, label: "Discussions", path: "/dashboard/discussions" },
     { icon: Users, label: "Student Progress", path: "/dashboard/student-progress" },
     { icon: BarChart3, label: "Analytics", path: "/dashboard/analytics" },
     { icon: Settings, label: "Change Password", path: "/dashboard/settings" },
