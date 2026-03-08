@@ -688,6 +688,7 @@ const c1PaintParts: TopicTextbook = {
       sections: [
         {
           heading: "Drawing Tools Explained",
+          image: "https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=800&h=400&fit=crop",
           body: "Let's learn about each drawing tool:\n\n✏️ **Pencil** — Draws thin freehand lines. Click and drag to draw!\n\n🖌️ **Brushes** — Draws thicker artistic strokes. You can choose different brush styles:\n• Regular brush\n• Calligraphy brush\n• Airbrush\n• Oil brush\n• Crayon\n• Marker\n\n🪣 **Fill with Color** — Fills a closed area with the selected color. Like pouring paint!\n\n🔤 **Text** — Type words on your drawing. You can choose font, size, and color.\n\n🧽 **Eraser** — Removes parts of your drawing. Click and drag to erase.\n\n🔍 **Magnifier** — Zooms in to see details closely.\n\n💧 **Color Picker** — Click on any color in your drawing to select that exact color.\n\n📐 **Shapes** — Ready-made shapes you can draw by clicking and dragging.",
           tip: "Try every tool one by one! The best way to learn Paint is by practicing with each tool."
         }
