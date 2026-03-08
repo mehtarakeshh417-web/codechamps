@@ -16,6 +16,7 @@ import SchoolClasses from "./school/SchoolClasses";
 import SchoolAnalytics from "./school/SchoolAnalytics";
 import SchoolSettings from "./school/SchoolSettings";
 import SchoolAttendance from "./school/SchoolAttendance";
+import SchoolAnnouncements from "./school/SchoolAnnouncements";
 import TeacherDashboard from "./teacher/TeacherDashboard";
 import TeacherClasses from "./teacher/TeacherClasses";
 import TeacherAssignments from "./teacher/TeacherAssignments";
