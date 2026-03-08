@@ -324,6 +324,7 @@ const pptAnimations: TopicTextbook = {
       sections: [
         {
           heading: "Why Animations Matter",
+          image: "https://images.unsplash.com/photo-1557804506-669a67965ba0?w=800&h=400&fit=crop",
           body: "**Animations** and **transitions** make your PowerPoint presentations exciting and engaging! Without them, your slides just appear one after another — but with them, text flies in, images spin, and slides fade beautifully.\n\n**Animations** = Effects applied to **objects** on a slide (text, images, shapes)\n**Transitions** = Effects applied **between slides** (how one slide changes to the next)\n\nThink of animations like special effects in a movie — they grab attention and keep your audience interested!",
           tip: "Don't use too many different animations in one presentation. Pick 2-3 effects and use them consistently for a professional look."
         },
