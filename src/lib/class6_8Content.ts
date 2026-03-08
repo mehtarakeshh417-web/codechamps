@@ -361,6 +361,7 @@ const c6Internet: TopicTextbook = {
       sections: [
         {
           heading: "Browsers and Addresses",
+          image: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=800&h=400&fit=crop",
           body: "**Web Browser** — software to view websites:\n🌐 Google Chrome (most popular)\n🦊 Mozilla Firefox\n🧭 Safari (Apple)\n🔵 Microsoft Edge\n\n**URL (Uniform Resource Locator)** — a website's address:\n`https://www.google.com`\n\n**Parts of a URL:**\n• `https://` — protocol (secure connection)\n• `www` — subdomain\n• `google` — domain name\n• `.com` — top-level domain (TLD)\n\n**Common TLDs:**\n• `.com` — commercial\n• `.org` — organization\n• `.edu` — education\n• `.gov` — government\n• `.in` — India\n• `.co.uk` — United Kingdom\n\n**Search Engines** — help you find websites:\n🔍 Google, Bing, Yahoo, DuckDuckGo",
         }
       ],
