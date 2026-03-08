@@ -490,6 +490,7 @@ const c8JavaIntro: TopicTextbook = {
       sections: [
         {
           heading: "Welcome to Java!",
+          image: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=800&h=400&fit=crop",
           body: "**Java** is one of the most popular programming languages in the world!\n\n**Why learn Java?**\n☕ Powers billions of devices\n📱 Android apps are built with Java/Kotlin\n🏢 Used by banks, hospitals, and big companies\n🎮 Minecraft was built in Java!\n💼 One of the most in-demand skills\n\n**Java vs Python:**\n| Feature | Java | Python |\n|---------|------|--------|\n| Syntax | More strict | Simple |\n| Speed | Faster | Slower |\n| Typing | Static (declare types) | Dynamic |\n| Uses | Enterprise, Android | AI, Data, Web |\n\n**Your first Java program:**\n```java\npublic class Hello {\n    public static void main(String[] args) {\n        System.out.println(\"Hello, World!\");\n    }\n}\n```\n\nYes, it's longer than Python — but that structure makes large programs more organized!",
           funFact: "Java was created by James Gosling at Sun Microsystems in 1995. It was originally called 'Oak' after a tree outside his office!"
         }
