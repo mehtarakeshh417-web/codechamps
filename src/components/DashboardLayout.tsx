@@ -205,6 +205,9 @@ const DashboardLayout = ({ children }: Props) => {
           {children}
         </div>
       </main>
+
+      {/* AI Tutor Chat - Student only */}
+      {user.role === "student" && <AiTutorChat />}
     </div>
   );
 };

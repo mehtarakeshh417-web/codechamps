@@ -94,6 +94,7 @@ const studentRoutes = (
     <Route path="discussions" element={<StudentDiscussions />} />
     <Route path="leaderboard" element={<StudentLeaderboard />} />
     <Route path="certificates" element={<StudentCertificates />} />
+    <Route path="typing" element={<StudentTypingPractice />} />
     <Route path="settings" element={<ChangePassword />} />
   </>
 );
