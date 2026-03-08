@@ -144,6 +144,7 @@ const c3Windows_: TopicTextbook = {
       sections: [
         {
           heading: "Parts of the Desktop",
+          image: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=800&h=400&fit=crop",
           body: "When Windows starts, you see the **Desktop**:\n\n🖼️ **Desktop Icons** — Small pictures that open programs or files\n📋 **Taskbar** — The bar at the bottom of the screen\n🪟 **Start Button** — Bottom-left corner, opens the Start Menu\n🔍 **Search Bar** — Type to find anything on your computer\n📌 **Pinned Apps** — Your favorite apps on the taskbar\n🔔 **System Tray** — Bottom-right, shows time, battery, WiFi, volume\n\n**Common Desktop Icons:**\n🗑️ **Recycle Bin** — Deleted files go here\n💻 **This PC** — Access all your drives and folders\n📁 **File Explorer** — Browse all your files\n🌐 **Browser** — Opens the internet",
           tip: "You can customize your desktop! Right-click on it to change the wallpaper, add icons, or organize them."
         }
