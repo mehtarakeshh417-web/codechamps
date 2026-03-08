@@ -32,7 +32,7 @@ const Landing = () => {
           <img src={logo} alt="CodeChamps logo" className="w-10 h-10 rounded-xl object-contain" />
           <span className="font-display text-xl font-bold text-gradient-brand">CodeChamps</span>
         </div>
-        <Button variant="hero" size="lg" onClick={() => navigate("/login")}>
+        <Button variant="hero" size="xl" onClick={() => navigate("/login")}>
           Login
         </Button>
       </motion.nav>
@@ -63,7 +63,7 @@ const Landing = () => {
               <Button variant="hero" size="xl" onClick={() => navigate("/login")}>
                 Get Started
               </Button>
-              <Button variant="glass" size="xl">
+              <Button variant="hero" size="xl">
                 Watch Demo
               </Button>
             </div>
@@ -89,9 +89,9 @@ const Landing = () => {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          className="font-display text-3xl md:text-4xl font-bold text-center mb-12"
+          className="font-display text-3xl md:text-4xl font-bold text-center mb-12 text-foreground"
         >
-          <span className="text-gradient-purple">Powerful Features</span>
+          Powerful Features
         </motion.h2>
         <div className="grid md:grid-cols-3 gap-6">
           {features.map((f, i) => (
