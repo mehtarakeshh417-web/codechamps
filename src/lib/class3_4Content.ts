@@ -88,6 +88,7 @@ const c3Ipo: TopicTextbook = {
       sections: [
         {
           heading: "Real-Life IPO Examples",
+          image: "https://images.unsplash.com/photo-1498049794561-7780e7231661?w=800&h=400&fit=crop",
           body: "IPO isn't just for computers — it's everywhere!\n\n🍳 **Cooking:**\nInput: Raw ingredients\nProcess: Cooking on the stove\nOutput: Delicious meal!\n\n🚦 **Traffic Light:**\nInput: Timer and sensors detect cars\nProcess: Controller decides which light\nOutput: Red, Yellow, or Green light\n\n📱 **Making a Phone Call:**\nInput: Dial a number, speak into microphone\nProcess: Phone converts voice to signals\nOutput: Person on other end hears you\n\n🏧 **ATM Machine:**\nInput: Insert card, enter PIN, choose amount\nProcess: Bank checks your balance\nOutput: Cash comes out!\n\n📺 **Watching TV:**\nInput: Press buttons on remote\nProcess: TV decodes the signal\nOutput: Picture and sound appear",
         }
       ],
