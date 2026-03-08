@@ -545,6 +545,7 @@ const c1ScratchWork: TopicTextbook = {
       sections: [
         {
           heading: "What You Learned",
+          image: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=800&h=400&fit=crop",
           body: "🎉 Congratulations! You learned:\n\n✅ What Scratch Jr is and why it's fun\n✅ Parts of the Scratch Jr screen\n✅ How to make sprites move with Motion blocks\n✅ How to make sprites talk with Say blocks\n✅ How to add backgrounds and new characters\n\nYou're ready to create your own animated stories and games!",
           keyTerms: [
             { term: "Sprite", definition: "A character or object in your Scratch Jr project that you can program." },
