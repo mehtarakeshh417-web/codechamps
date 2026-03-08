@@ -7,7 +7,7 @@ import {
   MsExcelEditor, MsPowerPointEditor, GimpEditor, KritaEditor, ScratchEditor, ScratchJrEditor, CanvaEditor,
 } from "@/components/coding-lab/editors";
 
-const ALL_EDITORS = ["html", "python", "java", "scratch", "scratchjr", "mspaint", "krita", "msword", "msexcel", "mspowerpoint", "gimp"];
+const ALL_EDITORS = ["html", "python", "java", "scratch", "scratchjr", "mspaint", "krita", "msword", "msexcel", "mspowerpoint", "gimp", "canva"];
 
 const editorMeta: Record<string, { label: string; icon: React.ElementType; component: React.FC }> = {
   html:          { label: "HTML/CSS/JS",    icon: Code,         component: HtmlEditor },
