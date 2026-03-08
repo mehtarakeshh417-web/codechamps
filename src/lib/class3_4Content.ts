@@ -162,6 +162,7 @@ const c3Windows_: TopicTextbook = {
       sections: [
         {
           heading: "Understanding Files and Folders",
+          image: "https://images.unsplash.com/photo-1544396821-4dd40b938ad3?w=800&h=400&fit=crop",
           body: "**Files** are individual items — like documents, photos, music, or videos.\n\n**Folders** are containers that hold files — like a real folder that holds papers!\n\n**File Explorer** is the tool to browse, create, and manage files and folders.\n\n**Creating a New Folder:**\n1. Open File Explorer\n2. Navigate to where you want the folder\n3. Right-click → **New** → **Folder**\n4. Type a name → Press Enter\n\n**Organizing Files:**\n📁 School → 📁 Maths, 📁 Science, 📁 English\n📁 Pictures → 📁 Vacation, 📁 Family, 📁 Art\n📁 Games → 📁 Scratch, 📁 Projects\n\n**Important Operations:**\n📋 **Copy** (Ctrl+C) — makes a duplicate\n✂️ **Cut** (Ctrl+X) — moves the original\n📌 **Paste** (Ctrl+V) — places the copy/cut item\n🗑️ **Delete** — sends to Recycle Bin\n✏️ **Rename** — F2 key or right-click → Rename",
           tip: "Create separate folders for each subject! It makes finding homework much easier."
         }
