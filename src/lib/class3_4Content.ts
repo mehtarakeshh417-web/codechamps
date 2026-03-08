@@ -315,6 +315,7 @@ const c3WordAdv: TopicTextbook = {
       sections: [
         {
           heading: "Adding Images to Word",
+          image: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=800&h=400&fit=crop",
           body: "**How to insert a picture:**\n1. Place your cursor where you want the image\n2. Go to **Insert** tab\n3. Click **Pictures**\n4. Choose **This Device** (from your computer) or **Online Pictures**\n5. Select the image → Click **Insert**\n\n**Resizing Images:**\n• Click the image to select it\n• Drag the **corner handles** to resize\n• Hold **Shift** while dragging to keep proportions\n\n**Text Wrapping:**\nControls how text flows around the image:\n• **In Line with Text** — image sits like a big letter\n• **Square** — text wraps around in a square\n• **Tight** — text wraps closely around\n• **Behind Text** — image goes behind\n• **In Front of Text** — image covers text",
           tip: "Always use corner handles to resize — side handles will stretch and distort your image!"
         }
