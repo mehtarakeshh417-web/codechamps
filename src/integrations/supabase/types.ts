@@ -676,6 +676,44 @@ export type Database = {
           },
         ]
       }
+      typing_scores: {
+        Row: {
+          accuracy: number
+          created_at: string
+          duration: number
+          id: string
+          passage_level: string
+          student_id: string
+          wpm: number
+        }
+        Insert: {
+          accuracy?: number
+          created_at?: string
+          duration?: number
+          id?: string
+          passage_level?: string
+          student_id: string
+          wpm?: number
+        }
+        Update: {
+          accuracy?: number
+          created_at?: string
+          duration?: number
+          id?: string
+          passage_level?: string
+          student_id?: string
+          wpm?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "typing_scores_student_id_fkey"
+            columns: ["student_id"]
+            isOneToOne: false
+            referencedRelation: "students"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       user_roles: {
         Row: {
           id: string
