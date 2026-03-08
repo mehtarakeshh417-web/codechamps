@@ -280,6 +280,7 @@ const c3WordAdv: TopicTextbook = {
       sections: [
         {
           heading: "Changing How Text Looks",
+          image: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=800&h=400&fit=crop",
           body: "MS Word lets you change how your text looks:\n\n**Font Name:**\nThe style of letters (Arial, Comic Sans, Times New Roman, etc.)\n\n**Font Size:**\nHow big or small the text is (8pt to 72pt)\n\n**Font Color:**\nChange the color of your text to any color!\n\n**Text Effects:**\n• **Bold** (Ctrl+B) — makes text **darker and thicker**\n• **Italic** (Ctrl+I) — makes text *slanted*\n• **Underline** (Ctrl+U) — adds a line under text\n• **Highlight** — marks text with a colored background\n\n**How to apply:**\n1. Select the text you want to change\n2. Use the Font group in the Home tab\n3. Choose your formatting!",
           youtubeId: "hVs3w3Xb4Lg",
           tip: "Select text first, THEN apply formatting. A common mistake is forgetting to select!"
