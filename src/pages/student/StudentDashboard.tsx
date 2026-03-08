@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "@/contexts/AuthContext";
 import { useData } from "@/contexts/DataContext";
 import { getCurriculumForClass, countTotalTopics, countActivitiesAndProjects } from "@/lib/curriculumData";
-import { Trophy, Target, BookOpen, Award, TrendingUp, Gamepad2 } from "lucide-react";
+import { Trophy, Target, BookOpen, Award, TrendingUp, Gamepad2, Megaphone } from "lucide-react";
 import { useMemo, useState, useEffect } from "react";
 import { supabase } from "@/integrations/supabase/client";
 
