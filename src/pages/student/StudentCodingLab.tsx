@@ -16,6 +16,7 @@ import {
   KritaEditor,
   ScratchEditor,
   ScratchJrEditor,
+  CanvaEditor,
 } from "@/components/coding-lab/editors";
 
 const getAvailableEditors = (className?: string): string[] => {
