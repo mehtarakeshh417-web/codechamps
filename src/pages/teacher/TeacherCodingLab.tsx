@@ -4,7 +4,7 @@ import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { useSearchParams } from "react-router-dom";
 import {
   HtmlEditor, PythonEditor, JavaEditor, MsPaintEditor, MsWordEditor,
-  MsExcelEditor, MsPowerPointEditor, GimpEditor, KritaEditor, ScratchEditor, ScratchJrEditor,
+  MsExcelEditor, MsPowerPointEditor, GimpEditor, KritaEditor, ScratchEditor, ScratchJrEditor, CanvaEditor,
 } from "@/components/coding-lab/editors";
 
 const ALL_EDITORS = ["html", "python", "java", "scratch", "scratchjr", "mspaint", "krita", "msword", "msexcel", "mspowerpoint", "gimp"];
