@@ -190,9 +190,13 @@ const TeacherProjects = () => {
 
     // Send notification to student
     if (studentUserId) {
+      const teacherDisplayName2 = teacher ? `${teacher.firstName} ${teacher.lastName}`.trim() : "Your teacher";
+      const evalSub = (projSubsMap[expandedId || ""] || []).find(s => s.id === submissionId);
+      const projTitle = projects.find(p => p.id === expandedId)?.title || "your project";
       await supabase.from("notifications").insert({
-        user_id: studentUserId, title: "Project Evaluated! 🎉",
-        message: `Your project has been evaluated by your teacher. Grade: ${evalForm.grade || evalForm.marks}`,
+        user_id: studentUserId,
+        title: `⭐ ${teacherDisplayName2} evaluated your project!`,
+        message: `${teacherDisplayName2} has reviewed "${projTitle}". ${evalForm.grade ? `Grade: ${evalForm.grade}.` : ""} ${evalForm.marks ? `Score: ${evalForm.marks} marks.` : ""} ${evalForm.status === "approved" ? "Great work! ✅" : "Some improvements are needed. Check the feedback for details. 📝"}`,
         type: "project_graded",
       } as any);
     }
