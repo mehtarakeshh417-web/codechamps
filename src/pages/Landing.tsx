@@ -8,7 +8,8 @@ import {
   Users, BookOpen, School, ChevronRight, CheckCircle2, Star, ArrowRight, MessageSquare, Mail,
 } from "lucide-react";
 import logo from "@/assets/logo.jpg";
-import { useState } from "react";
+import React, { useState } from "react";
+import { toast } from "sonner";
 
 const features = [
   { icon: GraduationCap, title: "Smart Curriculum", desc: "Class-wise structured CS education from Class 1 to 10", color: "neon-glow-blue" },
