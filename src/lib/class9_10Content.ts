@@ -339,6 +339,7 @@ const c9WebDev: TopicTextbook = {
       sections: [
         {
           heading: "CSS Fundamentals",
+          image: "https://images.unsplash.com/photo-1507721999472-8ed4421c4af2?w=800&h=400&fit=crop",
           body: "**CSS (Cascading Style Sheets)** controls how HTML elements look — colors, fonts, spacing, sizes, backgrounds, and animations. Without CSS, websites would be plain black text on white backgrounds.\n\nCSS works with **selectors** (which elements to style), **properties** (what to change), and **values** (how to change it). Styles can be applied inline, in a `<style>` tag, or in external `.css` files (recommended for maintainability).\n\nThe 'cascading' in CSS means styles can inherit and override each other based on specificity — inline styles override classes, which override tag selectors.",
           codeBlock: {
             language: "css",
