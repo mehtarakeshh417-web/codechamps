@@ -86,6 +86,7 @@ const c1ComputerIntro: TopicTextbook = {
       sections: [
         {
           heading: "How to Hold the Mouse",
+          image: "https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=800&h=400&fit=crop",
           body: "🖱️ Place your hand gently on top of the mouse.\n\n**Your fingers should be like this:**\n👆 **Index finger** (pointer finger) — rests on the **left button**\n👆 **Middle finger** — rests on the **right button**\n👍 **Thumb** — holds the side of the mouse\n\n**Mouse Actions:**\n\n🖱️ **Click** — Press the left button once, quickly. Used to select things.\n🖱️🖱️ **Double-click** — Press the left button twice, very fast. Used to open things.\n➡️ **Right-click** — Press the right button once. Shows a menu with options.\n✋ **Drag** — Hold down the left button while moving the mouse. Used to move things around.\n🔄 **Scroll** — Roll the wheel in the middle to move up and down on a page.",
           tip: "Practice clicking slowly at first. Once you get good, try double-clicking! It takes practice to be fast enough.",
           table: {
