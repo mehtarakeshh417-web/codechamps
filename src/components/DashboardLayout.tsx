@@ -88,9 +88,12 @@ const DashboardLayout = ({ children }: Props) => {
   const SidebarContent = () => (
     <>
       <div className="p-6 border-b border-white/10">
-        <div className="flex items-center gap-3 mb-3">
-          <img src="/assets/logo.jpg" alt="CodeChamps logo" className="w-10 h-10 rounded-xl object-contain" />
-          <span className="font-display text-2xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">CodeChamps</span>
+        <div className="flex items-center justify-between mb-3">
+          <div className="flex items-center gap-3">
+            <img src="/assets/logo.jpg" alt="CodeChamps logo" className="w-10 h-10 rounded-xl object-contain" />
+            <span className="font-display text-2xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">CodeChamps</span>
+          </div>
+          <NotificationBell />
         </div>
         <div className="flex items-center gap-2 mt-4">
           <UserCircle className="w-8 h-8 text-white/40" />
