@@ -148,14 +148,14 @@ export const JavaEditor = () => (
   </EditorWrapper>
 );
 
-// MS Paint (miniPaint - open source image editor with layers, filters, tools)
+// MS Paint (paint.js.org - open source MS Paint clone using Web Components)
 export const MsPaintEditor = () => (
   <EditorWrapper title="MS Paint">
-    <div className="h-[650px] rounded-xl overflow-hidden border border-white/10">
+    <div className="h-[650px] rounded-xl overflow-hidden border border-white/10 bg-white">
       <iframe
-        src="https://viliusle.github.io/miniPaint/"
+        src="https://paint.js.org/"
         className="w-full h-full border-0"
-        title="MS Paint (miniPaint)"
+        title="MS Paint (paint.js.org)"
         allow="clipboard-read; clipboard-write; camera"
         sandbox="allow-scripts allow-same-origin allow-popups allow-forms allow-modals allow-downloads"
         loading="lazy"
