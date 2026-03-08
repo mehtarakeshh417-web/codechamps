@@ -61,12 +61,12 @@ const StudentDashboard = () => {
       {/* Header */}
       <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
         {user?.schoolName && (
-          <p className="text-sm font-body text-neon-blue mb-1 tracking-wider uppercase">{user.schoolName}</p>
+          <p className="text-sm font-body text-neon-blue mb-1 tracking-wider uppercase font-bold">{user.schoolName}</p>
         )}
         <h1 className="font-display text-3xl font-bold mb-1">
           Hey, <span className="text-gradient-brand">{user?.displayName}</span>! 🚀
         </h1>
-        <p className="text-white/70 font-body mb-2">{user?.className} {student?.section && `· Section ${student.section}`}</p>
+        <p className="text-white/90 font-body font-bold mb-2">{user?.className} {student?.section && `· Section ${student.section}`}</p>
       </motion.div>
 
       {/* XP Bar */}
@@ -78,12 +78,12 @@ const StudentDashboard = () => {
             </div>
             <div>
               <div className="font-display text-lg font-bold text-white">{lvl.title}</div>
-              <div className="text-xs text-white/50 font-body">Level {lvl.level}</div>
+              <div className="text-xs text-white/90 font-body font-bold">Level {lvl.level}</div>
             </div>
           </div>
           <div className="text-right">
             <div className="font-display text-2xl font-bold text-neon-green">{xp} XP</div>
-            <div className="text-xs text-white/50 font-body">{lvl.next - xp} XP to next level</div>
+            <div className="text-xs text-white/90 font-body font-bold">{lvl.next - xp} XP to next level</div>
           </div>
         </div>
         <div className="w-full h-4 rounded-full bg-white/10 overflow-hidden">
@@ -108,7 +108,7 @@ const StudentDashboard = () => {
               </div>
               <div>
                 <h2 className="font-display text-xl font-bold text-white">{card.title}</h2>
-                <p className="text-white/60 font-body text-sm mt-1">{card.desc}</p>
+                <p className="text-white/90 font-body text-sm mt-1 font-semibold">{card.desc}</p>
               </div>
             </div>
           </motion.div>
@@ -127,7 +127,7 @@ const StudentDashboard = () => {
             className="glass-card p-4 text-center">
             <s.icon className={`w-6 h-6 mx-auto mb-2 ${s.color}`} />
             <div className="font-display text-2xl font-bold text-white">{s.value}</div>
-            <div className="text-xs text-white/50 font-body">{s.label}</div>
+            <div className="text-xs text-white/90 font-body font-bold">{s.label}</div>
           </motion.div>
         ))}
       </div>

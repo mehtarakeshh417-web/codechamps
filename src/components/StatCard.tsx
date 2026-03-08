@@ -36,7 +36,7 @@ const StatCard = ({ icon: Icon, label, value, trend, glowClass = "neon-glow-blue
       >
         <div className="flex items-start justify-between">
           <div>
-            <p className="text-white/60 text-sm font-body mb-1">{label}</p>
+            <p className="text-white/90 text-sm font-body font-bold mb-1">{label}</p>
             <p className="text-3xl font-display font-bold text-white">{value}</p>
             {trend && <p className="text-neon-green text-xs font-body mt-1">{trend}</p>}
           </div>
