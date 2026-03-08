@@ -30,13 +30,11 @@ const StudentLeaderboard = () => {
       .map((s, i) => ({ ...s, rank: i + 1 }));
   }, [students, user?.id]);
 
-  // Platform-level: all students, but only show username (no school data leakage)
-  const platformRanking = useMemo(() =>
-    [...students]
-      .sort((a, b) => b.xp - a.xp)
-      .map((s, i) => ({ ...s, rank: i + 1 })),
-    [students]
-  );
+  // Platform-level: all students visible (RLS may limit to same school)
+  const platformRanking = useMemo(() => {
+    const sorted = [...students].sort((a, b) => b.xp - a.xp).map((s, i) => ({ ...s, rank: i + 1 }));
+    return sorted;
+  }, [students]);
 
   const RankingTable = ({ data, showSchool }: { data: typeof schoolRanking; showSchool?: boolean }) => {
     if (data.length === 0) {
