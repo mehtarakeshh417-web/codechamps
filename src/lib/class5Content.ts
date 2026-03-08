@@ -1017,7 +1017,7 @@ const scratchGames: TopicTextbook = {
   ]
 };
 
-// Export all topic textbooks
+// Export all topic textbooks (Class 5 only)
 export const TOPIC_TEXTBOOKS: TopicTextbook[] = [
   wordPageFormatting,
   wordTextFormatting,
@@ -1030,6 +1030,20 @@ export const TOPIC_TEXTBOOKS: TopicTextbook[] = [
   scratchGames,
 ];
 
+// Import all class textbooks for unified lookup
+import { CLASS_1_2_TEXTBOOKS } from "./class1_2Content";
+import { CLASS_3_4_TEXTBOOKS } from "./class3_4Content";
+import { CLASS_6_8_TEXTBOOKS } from "./class6_8Content";
+import { CLASS_9_10_TEXTBOOKS } from "./class9_10Content";
+
+const ALL_TEXTBOOKS: TopicTextbook[] = [
+  ...CLASS_1_2_TEXTBOOKS,
+  ...CLASS_3_4_TEXTBOOKS,
+  ...TOPIC_TEXTBOOKS,
+  ...CLASS_6_8_TEXTBOOKS,
+  ...CLASS_9_10_TEXTBOOKS,
+];
+
 export const getTopicTextbook = (topicId: string): TopicTextbook | undefined => {
-  return TOPIC_TEXTBOOKS.find((t) => t.topicId === topicId);
+  return ALL_TEXTBOOKS.find((t) => t.topicId === topicId);
 };
