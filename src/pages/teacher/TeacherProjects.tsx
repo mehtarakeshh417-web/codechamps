@@ -152,11 +152,13 @@ const TeacherProjects = () => {
     if (error) { toast.error("Failed to save project: " + error.message); return; }
 
     // Send notifications to students in this class
-    const allStudents = getTeacherStudents(user?.id || "");
-    const classStudents = allStudents.filter((s) => form.targetClass.includes(s.class));
-    const notifInserts = classStudents.filter(s => s.user_id).map(s => ({
-      user_id: s.user_id!, title: "New Project Assigned",
-      message: `"${form.title}" has been assigned to your class. Check it out!`,
+    const teacherDisplayName = teacher ? `${teacher.firstName} ${teacher.lastName}`.trim() : "Your teacher";
+    const allStudents2 = getTeacherStudents(user?.id || "");
+    const classStudents2 = allStudents2.filter((s) => form.targetClass.includes(s.class));
+    const notifInserts = classStudents2.filter(s => s.user_id).map(s => ({
+      user_id: s.user_id!,
+      title: `🚀 New Project from ${teacherDisplayName}`,
+      message: `${teacherDisplayName} has assigned a new project: "${form.title}" (${form.technology}). ${form.dueDate ? `Due by ${new Date(form.dueDate).toLocaleDateString()}.` : ""} Open it to see instructions and start working!`,
       type: "project_assigned",
     }));
     if (notifInserts.length > 0) {
