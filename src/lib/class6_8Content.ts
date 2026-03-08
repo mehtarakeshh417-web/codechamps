@@ -446,6 +446,7 @@ const c7PythonAdv: TopicTextbook = {
       sections: [
         {
           heading: "Defining Functions",
+          image: "https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=800&h=400&fit=crop",
           body: "**Functions** are reusable blocks of code with a name.\n\n```python\ndef greet(name):\n    print(\"Hello,\", name + \"!\")\n\ngreet(\"Arjun\")   # Hello, Arjun!\ngreet(\"Priya\")   # Hello, Priya!\n```\n\n**Function with return value:**\n```python\ndef add(a, b):\n    return a + b\n\nresult = add(5, 3)\nprint(result)  # 8\n```\n\n**Default parameters:**\n```python\ndef greet(name, greeting=\"Hello\"):\n    print(greeting + \",\", name)\n\ngreet(\"Arjun\")              # Hello, Arjun\ngreet(\"Priya\", \"Namaste\")  # Namaste, Priya\n```\n\n**Why use functions?**\n• Avoid repeating code\n• Organize your program\n• Make code easier to read\n• Easy to test and fix bugs",
           tip: "Name your functions with verbs that describe what they DO: calculate_area(), check_password(), display_menu()"
         }
