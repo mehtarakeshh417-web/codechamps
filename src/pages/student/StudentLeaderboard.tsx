@@ -22,7 +22,7 @@ const StudentLeaderboard = () => {
 
   // School-level: same schoolId, sorted by XP desc
   const schoolRanking = useMemo(() => {
-    const student = students.find((s) => s.id === user?.id);
+    const student = students.find((s) => s.user_id === user?.id);
     if (!student) return [];
     return students
       .filter((s) => s.schoolId === student.schoolId)
@@ -51,7 +51,7 @@ const StudentLeaderboard = () => {
     return (
       <div className="space-y-2">
         {data.slice(0, 50).map((s) => {
-          const isMe = s.id === user?.id;
+          const isMe = s.user_id === user?.id;
           const RankIcon = s.rank <= 3 ? rankIcons[s.rank - 1] : null;
           return (
             <motion.div
