@@ -333,7 +333,7 @@ const c6Internet: TopicTextbook = {
 
 // ======================== CLASS 7: ADVANCED HTML/CSS ========================
 const c7HtmlAdv: TopicTextbook = {
-  topicId: "c7-html-adv",
+  topicId: "c7-html",
   topicTitle: "Advanced HTML & CSS",
   subjectColor: "neon-blue",
   pages: [
