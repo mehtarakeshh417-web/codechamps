@@ -181,10 +181,19 @@ export const MsWordEditor = () => {
   );
 };
 
-// MS Excel Editor - JSpreadsheet (full Excel-like features)
+// MS Excel Editor - Luckysheet (open-source Excel clone with full features)
 export const MsExcelEditor = () => (
   <EditorWrapper title="MS Excel Editor">
-    <JSpreadsheetExcel />
+    <div className="h-[650px] rounded-xl overflow-hidden border border-white/10 bg-white">
+      <iframe
+        src="https://dream-num.github.io/LuckysheetDemo/"
+        className="w-full h-full border-0"
+        title="MS Excel (Luckysheet)"
+        allow="clipboard-read; clipboard-write"
+        sandbox="allow-scripts allow-same-origin allow-popups allow-forms allow-modals allow-downloads"
+        loading="lazy"
+      />
+    </div>
   </EditorWrapper>
 );
 
