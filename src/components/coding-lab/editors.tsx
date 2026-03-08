@@ -1,19 +1,36 @@
 import { useState, useRef, useEffect } from "react";
-import { Play, RotateCcw, Maximize2, Minimize2, ExternalLink } from "lucide-react";
+import { Play, RotateCcw, Maximize2, Minimize2, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { toast } from "sonner";
 import SimulatedWordEditor from "./SimulatedWordEditor";
 import SimulatedExcelEditor from "./SimulatedExcelEditor";
 import SimulatedPowerPointEditor from "./SimulatedPowerPointEditor";
 import SimulatedGimpEditor from "./SimulatedGimpEditor";
 import SimulatedKritaEditor from "./SimulatedKritaEditor";
 
+// Helper to download a blob
+const downloadFile = (content: string, filename: string, mimeType: string) => {
+  const blob = new Blob([content], { type: mimeType });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = filename;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+  toast.success(`Saved ${filename} to your downloads!`);
+};
+
 // Fullscreen wrapper for all editors
 const EditorWrapper = ({
   children,
   title,
+  onSave,
 }: {
   children: React.ReactNode;
   title: string;
+  onSave?: () => void;
 }) => {
   const [isFullscreen, setIsFullscreen] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -35,6 +52,17 @@ const EditorWrapper = ({
   return (
     <div ref={containerRef} className={`relative ${isFullscreen ? "bg-[hsl(var(--background))]" : ""}`}>
       <div className="absolute top-2 right-2 z-20 flex gap-2">
+        {onSave && (
+          <Button
+            size="sm"
+            variant="ghost"
+            onClick={onSave}
+            className="bg-black/60 hover:bg-black/80 text-white/80 hover:text-white backdrop-blur-sm text-xs gap-1"
+          >
+            <Download className="w-3.5 h-3.5" />
+            Save to Local
+          </Button>
+        )}
         <Button
           size="sm"
           variant="ghost"
@@ -64,8 +92,10 @@ export const HtmlEditor = () => {
   const [html, setHtml] = useState("<!DOCTYPE html>\n<html>\n<head>\n  <style>\n    body { font-family: Arial; text-align: center; padding: 40px; background: #f0f8ff; }\n    h1 { color: #2563eb; }\n  </style>\n</head>\n<body>\n  <h1>Hello, World!</h1>\n  <p>Edit this code and click Run!</p>\n</body>\n</html>");
   const [output, setOutput] = useState("");
 
+  const handleSave = () => downloadFile(html, "index.html", "text/html");
+
   return (
-    <EditorWrapper title="HTML/CSS/JS Editor">
+    <EditorWrapper title="HTML/CSS/JS Editor" onSave={handleSave}>
       <div className="grid md:grid-cols-2 gap-4 h-[500px]">
         <div className="flex flex-col">
           <div className="flex items-center justify-between mb-2">
@@ -133,19 +163,45 @@ export const MsPaintEditor = () => (
   </EditorWrapper>
 );
 
-// MS Word Editor - Simulated
-export const MsWordEditor = () => (
-  <EditorWrapper title="MS Word Editor">
-    <SimulatedWordEditor />
-  </EditorWrapper>
-);
+// MS Word Editor - Simulated with save
+export const MsWordEditor = () => {
+  const handleSave = () => {
+    const editor = document.querySelector('[contenteditable="true"]') as HTMLElement;
+    if (!editor) { toast.error("No content to save"); return; }
+    const content = `<!DOCTYPE html><html><head><meta charset="utf-8"><title>Document</title><style>body{font-family:Calibri,sans-serif;padding:40px;max-width:800px;margin:auto;}</style></head><body>${editor.innerHTML}</body></html>`;
+    downloadFile(content, "document.html", "text/html");
+  };
 
-// MS Excel Editor - Simulated
-export const MsExcelEditor = () => (
-  <EditorWrapper title="MS Excel Editor">
-    <SimulatedExcelEditor />
-  </EditorWrapper>
-);
+  return (
+    <EditorWrapper title="MS Word Editor" onSave={handleSave}>
+      <SimulatedWordEditor />
+    </EditorWrapper>
+  );
+};
+
+// MS Excel Editor - Simulated with save
+export const MsExcelEditor = () => {
+  const handleSave = () => {
+    const table = document.querySelector('.jss_content table, .jexcel') as HTMLTableElement;
+    if (!table) { toast.error("No spreadsheet data to save"); return; }
+    let csv = "";
+    const rows = table.querySelectorAll("tr");
+    rows.forEach(row => {
+      const cells: string[] = [];
+      row.querySelectorAll("td").forEach(cell => {
+        cells.push(`"${(cell.textContent || "").replace(/"/g, '""')}"`);
+      });
+      if (cells.length > 0) csv += cells.join(",") + "\n";
+    });
+    downloadFile(csv, "spreadsheet.csv", "text/csv");
+  };
+
+  return (
+    <EditorWrapper title="MS Excel Editor" onSave={handleSave}>
+      <SimulatedExcelEditor />
+    </EditorWrapper>
+  );
+};
 
 // MS PowerPoint Editor - Simulated
 export const MsPowerPointEditor = () => (
@@ -222,4 +278,3 @@ export { default as SimulatedExcelEditor } from "./SimulatedExcelEditor";
 export { default as SimulatedPowerPointEditor } from "./SimulatedPowerPointEditor";
 export { default as SimulatedGimpEditor } from "./SimulatedGimpEditor";
 export { default as SimulatedKritaEditor } from "./SimulatedKritaEditor";
-
