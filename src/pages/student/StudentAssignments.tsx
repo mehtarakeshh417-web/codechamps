@@ -151,7 +151,7 @@ const StudentAssignments = () => {
     const assignmentTeacherUserId = (assignmentData as any)?.teachers?.user_id;
     if (assignmentTeacherUserId) {
       await supabase.from("notifications").insert({
-        user_id: assignmentTeacher.user_id,
+        user_id: assignmentTeacherUserId,
         title: `📋 ${student.name} submitted an assignment`,
         message: `${student.name} (${student.class}-${student.section}) has submitted "${assignment.title}" and scored ${score}% (${correct}/${assignment.questions.length} correct).`,
         type: "project_submitted",

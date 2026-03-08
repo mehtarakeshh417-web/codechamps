@@ -369,7 +369,7 @@ const TeacherProjects = () => {
           {projects.map((p, i) => {
             const isExpanded = expandedId === p.id;
             const subs = projSubsMap[p.id] || [];
-            const classStudents = allStudents.filter((s) => p.targetClass.includes(s.class));
+            const classStudents = allStudents.filter((s) => `${s.class}-${s.section}` === p.targetClass);
             const submittedCount = subs.length;
             const evaluatedCount = subs.filter(s => s.evaluationStatus !== "pending").length;
             const avgMarks = subs.filter(s => s.marks !== null).length > 0

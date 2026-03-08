@@ -208,7 +208,7 @@ const TeacherAssignments = () => {
 
     // Send notifications to students in this class
     const allStudents = getTeacherStudents(user?.id || "");
-    const classStudents = allStudents.filter((s) => form.targetClass.includes(s.class));
+    const classStudents = allStudents.filter((s) => `${s.class}-${s.section}` === form.targetClass);
     const notifInserts = classStudents.filter(s => s.user_id).map(s => ({
       user_id: s.user_id!,
       title: "📝 New Assignment from " + teacherName,
