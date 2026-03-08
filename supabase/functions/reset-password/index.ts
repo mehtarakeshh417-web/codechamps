@@ -15,9 +15,12 @@ Deno.serve(async (req) => {
     const serviceRoleKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
     const supabase = createClient(supabaseUrl, serviceRoleKey);
 
-    const { username, method, verification_value, new_password } = await req.json();
+    const body = await req.json();
+    console.log("Reset password request for:", body.username, "method:", body.method);
+    const { username, method, verification_value, new_password } = body;
 
     if (!username || !method || !new_password) {
+      console.log("Missing required fields", { username: !!username, method: !!method, new_password: !!new_password });
       return new Response(JSON.stringify({ error: "Missing required fields" }), {
         status: 400,
         headers: { ...corsHeaders, "Content-Type": "application/json" },
