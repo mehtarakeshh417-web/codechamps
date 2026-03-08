@@ -104,6 +104,7 @@ const c6HtmlIntro: TopicTextbook = {
       sections: [
         {
           heading: "Text Elements",
+          image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=800&h=400&fit=crop",
           body: "**Headings** — 6 levels, from biggest to smallest:\n`<h1>` — Main heading (use once per page)\n`<h2>` — Section heading\n`<h3>` — Sub-section\n`<h4>` — Sub-sub-section\n`<h5>` — Small heading\n`<h6>` — Smallest heading\n\n**Paragraphs:**\n`<p>This is a paragraph of text.</p>`\n\n**Line Breaks:**\n`<br>` — starts a new line (no closing tag needed!)\n\n**Horizontal Rule:**\n`<hr>` — draws a horizontal line across the page\n\n**Text Formatting:**\n`<b>bold text</b>` — **bold**\n`<i>italic text</i>` — *italic*\n`<u>underlined text</u>` — underlined\n`<strong>important</strong>` — **strong emphasis**\n`<em>emphasized</em>` — *emphasized*\n`<mark>highlighted</mark>` — highlighted text\n`<del>deleted</del>` — ~~strikethrough~~",
         }
       ],
