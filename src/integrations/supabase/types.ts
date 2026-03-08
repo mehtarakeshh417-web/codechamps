@@ -80,26 +80,101 @@ export type Database = {
           },
         ]
       }
+      notifications: {
+        Row: {
+          created_at: string
+          id: string
+          is_read: boolean
+          message: string
+          reference_id: string | null
+          title: string
+          type: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          is_read?: boolean
+          message?: string
+          reference_id?: string | null
+          title?: string
+          type?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          is_read?: boolean
+          message?: string
+          reference_id?: string | null
+          title?: string
+          type?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
       project_submissions: {
         Row: {
+          allow_resubmission: boolean | null
+          checklist_progress: Json | null
+          code_content: string | null
+          evaluated_at: string | null
+          evaluated_by: string | null
+          evaluation_status: string | null
+          feedback: string | null
+          file_url: string | null
+          grade: string | null
           id: string
+          improvements: string | null
+          link_url: string | null
+          marks: number | null
           notes: string
           project_id: string
+          strengths: string | null
           student_id: string
+          submission_type: string | null
           submitted_at: string
         }
         Insert: {
+          allow_resubmission?: boolean | null
+          checklist_progress?: Json | null
+          code_content?: string | null
+          evaluated_at?: string | null
+          evaluated_by?: string | null
+          evaluation_status?: string | null
+          feedback?: string | null
+          file_url?: string | null
+          grade?: string | null
           id?: string
+          improvements?: string | null
+          link_url?: string | null
+          marks?: number | null
           notes?: string
           project_id: string
+          strengths?: string | null
           student_id: string
+          submission_type?: string | null
           submitted_at?: string
         }
         Update: {
+          allow_resubmission?: boolean | null
+          checklist_progress?: Json | null
+          code_content?: string | null
+          evaluated_at?: string | null
+          evaluated_by?: string | null
+          evaluation_status?: string | null
+          feedback?: string | null
+          file_url?: string | null
+          grade?: string | null
           id?: string
+          improvements?: string | null
+          link_url?: string | null
+          marks?: number | null
           notes?: string
           project_id?: string
+          strengths?: string | null
           student_id?: string
+          submission_type?: string | null
           submitted_at?: string
         }
         Relationships: [
@@ -123,8 +198,15 @@ export type Database = {
         Row: {
           created_at: string
           description: string
+          difficulty_level: string | null
           due_date: string | null
+          estimated_time: string | null
+          expected_output: string | null
           id: string
+          instructions: Json | null
+          learning_objective: string | null
+          max_marks: number | null
+          reference_resources: Json | null
           school_id: string
           submission_type: string | null
           target_class: string
@@ -136,8 +218,15 @@ export type Database = {
         Insert: {
           created_at?: string
           description?: string
+          difficulty_level?: string | null
           due_date?: string | null
+          estimated_time?: string | null
+          expected_output?: string | null
           id?: string
+          instructions?: Json | null
+          learning_objective?: string | null
+          max_marks?: number | null
+          reference_resources?: Json | null
           school_id: string
           submission_type?: string | null
           target_class: string
@@ -149,8 +238,15 @@ export type Database = {
         Update: {
           created_at?: string
           description?: string
+          difficulty_level?: string | null
           due_date?: string | null
+          estimated_time?: string | null
+          expected_output?: string | null
           id?: string
+          instructions?: Json | null
+          learning_objective?: string | null
+          max_marks?: number | null
+          reference_resources?: Json | null
           school_id?: string
           submission_type?: string | null
           target_class?: string

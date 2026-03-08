@@ -3,6 +3,7 @@ import { useAuth, UserRole } from "@/contexts/AuthContext";
 import { useNavigate, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
+import NotificationBell from "@/components/NotificationBell";
 import dashboardBg from "@/assets/dashboard-bg.jpg";
 import {
   LayoutDashboard, School, Users, BookOpen, Trophy, Settings, LogOut, GraduationCap,
@@ -45,10 +46,11 @@ const navConfig: Record<UserRole, NavItem[]> = {
     { icon: BookOpen, label: "My Curriculum", path: "/dashboard/curriculum" },
     { icon: BarChart3, label: "Progress", path: "/dashboard/progress" },
     { icon: FileText, label: "Assignments", path: "/dashboard/assignments" },
-    { icon: Code, label: "Coding Lab", path: "/dashboard/coding-lab" },
-    { icon: Gamepad2, label: "Achievements", path: "/dashboard/achievements" },
-    { icon: Trophy, label: "Leaderboard", path: "/dashboard/leaderboard" },
-    { icon: Award, label: "Certificates", path: "/dashboard/certificates" },
+    { icon: Code, label: "Projects", path: "/dashboard/projects" },
+    { icon: Gamepad2, label: "Coding Lab", path: "/dashboard/coding-lab" },
+    { icon: Trophy, label: "Achievements", path: "/dashboard/achievements" },
+    { icon: Award, label: "Leaderboard", path: "/dashboard/leaderboard" },
+    { icon: GraduationCap, label: "Certificates", path: "/dashboard/certificates" },
     { icon: Settings, label: "Change Password", path: "/dashboard/settings" },
   ],
 };
@@ -86,9 +88,12 @@ const DashboardLayout = ({ children }: Props) => {
   const SidebarContent = () => (
     <>
       <div className="p-6 border-b border-white/10">
-        <div className="flex items-center gap-3 mb-3">
-          <img src="/assets/logo.jpg" alt="CodeChamps logo" className="w-10 h-10 rounded-xl object-contain" />
-          <span className="font-display text-2xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">CodeChamps</span>
+        <div className="flex items-center justify-between mb-3">
+          <div className="flex items-center gap-3">
+            <img src="/assets/logo.jpg" alt="CodeChamps logo" className="w-10 h-10 rounded-xl object-contain" />
+            <span className="font-display text-2xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">CodeChamps</span>
+          </div>
+          <NotificationBell />
         </div>
         <div className="flex items-center gap-2 mt-4">
           <UserCircle className="w-8 h-8 text-white/40" />
