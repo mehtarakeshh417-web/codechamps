@@ -42,8 +42,9 @@ interface SubmissionRecord {
 
 const TeacherAssignments = () => {
   const { user } = useAuth();
-  const { teachers } = useData();
+  const { teachers, getTeacherStudents } = useData();
   const teacher = teachers.find((t) => t.user_id === user?.id || t.id === user?.id);
+  const teacherName = teacher ? `${teacher.firstName} ${teacher.lastName}`.trim() : "Your teacher";
   const myClasses = teacher?.classes || [];
 
   const [assignments, setAssignments] = useState<Assignment[]>([]);
