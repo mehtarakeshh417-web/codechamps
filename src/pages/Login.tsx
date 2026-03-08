@@ -70,7 +70,7 @@ const Login = () => {
           {/* Form */}
           <form onSubmit={handleSubmit} className="space-y-6">
             <div className="space-y-2">
-              <Label htmlFor="username" className="text-white/70 font-body text-sm">Username</Label>
+              <Label htmlFor="username" className="text-white font-body text-sm font-bold">Username</Label>
               <Input
                 id="username"
                 value={username}
