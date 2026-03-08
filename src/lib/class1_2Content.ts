@@ -415,6 +415,7 @@ const c1PaintColor: TopicTextbook = {
       sections: [
         {
           heading: "Advanced Coloring",
+          image: "https://images.unsplash.com/photo-1560421683-6856ea585c78?w=800&h=400&fit=crop",
           body: "**Fill Tool (Paint Bucket):**\nThe fastest way to color large areas. Just click inside a closed shape!\n\n**Airbrush Effect:**\nUse the Brush tool with a spray pattern for a softer, gradient-like effect.\n\n**Color Picker (Eyedropper):**\n1. Click the **Color Picker** tool\n2. Click on any color in your drawing\n3. That color is now selected!\n4. Great for matching colors!\n\n**Tips for Beautiful Colors:**\n• Use light colors for backgrounds\n• Use dark colors for outlines\n• Don't use too many bright colors together\n• Try different shades of the same color for depth",
           warningNote: "The Fill tool only works inside **completely closed shapes**. If there is even a tiny gap in your shape's outline, the color will leak out and fill the whole canvas! Always zoom in to check for gaps before filling.",
           keyTerms: [
