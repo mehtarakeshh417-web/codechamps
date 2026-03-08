@@ -253,6 +253,18 @@ const TopicViewer = () => {
           <WatchAndLearn videos={topicVideos} topicTitle={textbook.topicTitle} />
         )}
 
+        {/* Topic Quiz */}
+        {isLastPage && quizQuestions && user?.role === "student" && student && (
+          <div className="mt-10">
+            <TopicQuiz
+              questions={quizQuestions}
+              topicId={topicId || ""}
+              studentId={student.id}
+              onComplete={() => refreshData()}
+            />
+          </div>
+        )}
+
         {/* Bottom Navigation */}
         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="mt-14 mb-12">
           {/* Page selector pills */}
