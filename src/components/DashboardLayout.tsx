@@ -59,6 +59,7 @@ const navConfig: Record<UserRole, NavItem[]> = {
     { icon: Trophy, label: "Achievements", path: "/dashboard/achievements" },
     { icon: Award, label: "Leaderboard", path: "/dashboard/leaderboard" },
     { icon: GraduationCap, label: "Certificates", path: "/dashboard/certificates" },
+    { icon: Keyboard, label: "Typing Practice", path: "/dashboard/typing" },
     { icon: Settings, label: "Change Password", path: "/dashboard/settings" },
   ],
 };
