@@ -148,16 +148,16 @@ export const JavaEditor = () => (
   </EditorWrapper>
 );
 
-// MS Paint (JSPaint clone)
+// MS Paint (Kleki - Modern Paint App)
 export const MsPaintEditor = () => (
   <EditorWrapper title="MS Paint">
     <div className="h-[600px] rounded-xl overflow-hidden border border-white/10">
       <iframe
-        src="https://jspaint.app"
+        src="https://kleki.com"
         className="w-full h-full border-0"
-        title="MS Paint"
+        title="MS Paint (Kleki)"
         allow="clipboard-read; clipboard-write"
-        sandbox="allow-scripts allow-same-origin allow-popups allow-forms allow-modals"
+        sandbox="allow-scripts allow-same-origin allow-popups allow-forms allow-modals allow-downloads"
       />
     </div>
   </EditorWrapper>
@@ -264,7 +264,7 @@ export const EDITOR_URLS: Record<string, { url: string; label: string }> = {
   java: { url: "https://onecompiler.com/java", label: "Java Compiler" },
   scratch: { url: "https://studio.penguinmod.com/editor.html", label: "Block Coding Editor" },
   scratchjr: { url: "https://codejr.org/scratchjr/index.html", label: "Scratch Jr" },
-  mspaint: { url: "https://jspaint.app", label: "MS Paint" },
+  mspaint: { url: "https://kleki.com", label: "MS Paint" },
   msword: { url: "about:blank", label: "MS Word Editor" },
   msexcel: { url: "about:blank", label: "MS Excel Editor" },
   mspowerpoint: { url: "about:blank", label: "MS PowerPoint Editor" },
