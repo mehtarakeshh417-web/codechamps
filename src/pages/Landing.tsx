@@ -32,7 +32,7 @@ const Landing = () => {
           <img src={logo} alt="CodeChamps logo" className="w-10 h-10 rounded-xl object-contain" />
           <span className="font-display text-xl font-bold text-gradient-brand">CodeChamps</span>
         </div>
-        <Button variant="hero" size="lg" onClick={() => navigate("/login")}>
+        <Button variant="hero" size="xl" onClick={() => navigate("/login")}>
           Login
         </Button>
       </motion.nav>
