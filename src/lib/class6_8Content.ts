@@ -27,6 +27,7 @@ const c6HtmlIntro: TopicTextbook = {
       sections: [
         {
           heading: "Understanding HTML",
+          image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=800&h=400&fit=crop",
           body: "**HTML** stands for **HyperText Markup Language**. It's the language used to create web pages!\n\nEvery website you visit — Google, YouTube, Wikipedia — is built with HTML.\n\n**What HTML does:**\n📄 Defines the **structure** of a web page\n📝 Adds **text** (headings, paragraphs, lists)\n🖼️ Adds **images** and videos\n🔗 Creates **links** to other pages\n📊 Creates **tables** for organized data\n📋 Creates **forms** for user input",
           youtubeId: "FG44xi1ujac",
           funFact: "HTML was invented by Tim Berners-Lee in 1991. He also invented the World Wide Web!",
