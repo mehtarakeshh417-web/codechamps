@@ -50,7 +50,7 @@ const Landing = () => {
               <span className="text-sm font-body text-neon-green">The Future of Computer Education</span>
             </div>
             <h1 className="font-display text-4xl md:text-6xl font-bold leading-tight mb-6">
-              <span className="text-gradient-brand">Gamified</span>{" "}
+              <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Gamified</span>{" "}
               <span className="text-white">Computer</span>
               <br />
               <span className="text-white">Education for</span>{" "}
