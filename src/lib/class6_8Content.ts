@@ -235,6 +235,7 @@ const c6PythonIntro: TopicTextbook = {
       sections: [
         {
           heading: "print() — Your First Command",
+          image: "https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=800&h=400&fit=crop",
           body: "The `print()` function displays text on the screen.\n\n**Your first program:**\n```python\nprint(\"Hello, World!\")\n```\n\n**Output:** Hello, World!\n\n**More examples:**\n```python\nprint(\"My name is Arjun\")\nprint(\"I am 11 years old\")\nprint(\"I love coding!\")\nprint(2 + 3)  # Prints: 5\nprint(\"2 + 3 =\", 2 + 3)  # Prints: 2 + 3 = 5\n```\n\n**Important rules:**\n• Text (strings) must be in quotes: \"hello\" or 'hello'\n• Numbers don't need quotes: 42, 3.14\n• Python is **case-sensitive**: Print ≠ print\n• Use **#** for comments (notes the computer ignores)",
           tip: "Always use lowercase for print() — Python is case-sensitive, so Print() won't work!"
         }
