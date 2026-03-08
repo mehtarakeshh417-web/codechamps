@@ -464,6 +464,7 @@ const c7PythonAdv: TopicTextbook = {
       sections: [
         {
           heading: "Python Lists",
+          image: "https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=800&h=400&fit=crop",
           body: "A **list** stores multiple values in order.\n\n```python\nfruits = [\"apple\", \"banana\", \"cherry\"]\nmarks = [85, 92, 78, 95, 88]\nmixed = [\"hello\", 42, True, 3.14]\n\n# Accessing items (index starts at 0!)\nprint(fruits[0])    # apple\nprint(fruits[1])    # banana\nprint(fruits[-1])   # cherry (last item)\n\n# List operations\nfruits.append(\"mango\")     # add to end\nfruits.insert(1, \"grape\")  # insert at position\nfruits.remove(\"banana\")    # remove by value\nfruits.pop()               # remove last item\nlen(fruits)                # number of items\nfruits.sort()              # sort alphabetically\n```\n\n**Looping through a list:**\n```python\nfor fruit in fruits:\n    print(\"I like\", fruit)\n```",
         }
       ],
