@@ -19,6 +19,7 @@ const c3Ipo: TopicTextbook = {
       sections: [
         {
           heading: "Input → Process → Output",
+          image: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&h=400&fit=crop",
           body: "Every computer follows a simple cycle called **IPO**:\n\n📥 **Input** — Data that goes INTO the computer (what you give it)\n⚙️ **Process** — The computer WORKS on the data (thinking)\n📤 **Output** — The RESULT that comes out (what you get back)\n\n**Example:**\nInput: You type '2 + 3' on a calculator\nProcess: The calculator adds the numbers\nOutput: The screen shows '5'\n\n**Another Example:**\nInput: You press keys on the keyboard\nProcess: The computer converts keystrokes to letters\nOutput: Letters appear on the monitor",
           youtubeId: "MDlRH8JmTII",
           funFact: "Even your brain works on the IPO model! Your eyes INPUT information, your brain PROCESSES it, and your body OUTPUTS a response!"
