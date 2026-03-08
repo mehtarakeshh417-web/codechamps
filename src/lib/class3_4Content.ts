@@ -568,7 +568,7 @@ const c4PptIntro: TopicTextbook = {
 };
 
 const c4PptSlides: TopicTextbook = {
-  topicId: "c4-ppt-sl",
+  topicId: "c4-ppt-slides",
   topicTitle: "Slides, Templates & Content",
   subjectColor: "neon-orange",
   pages: [

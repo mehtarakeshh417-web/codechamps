@@ -373,7 +373,7 @@ const c7HtmlAdv: TopicTextbook = {
 
 // ======================== CLASS 7-8: PYTHON ADVANCED ========================
 const c7PythonAdv: TopicTextbook = {
-  topicId: "c7-py-adv",
+  topicId: "c7-py-intro",
   topicTitle: "Python — Functions & Data Structures",
   subjectColor: "neon-green",
   pages: [
