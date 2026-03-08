@@ -22,7 +22,20 @@ const c1ComputerIntro: TopicTextbook = {
           heading: "Meet the Computer!",
           body: "A **computer** is an electronic machine that can:\n\n🖥️ **Store** information (like photos, games, and homework)\n🧮 **Calculate** numbers very fast\n🎮 **Play** games and videos\n✏️ **Help** us draw and write\n\nComputers are everywhere! They are in your school, your home, your parents' phones, and even in cars!\n\n**Think of a computer like a very smart helper** — you tell it what to do, and it does it for you!",
           youtubeId: "z9-yDaTwMHk",
-          funFact: "The first computer was so big that it filled an entire room! Today, your phone is more powerful than that giant computer."
+          funFact: "The first computer was so big that it filled an entire room! Today, your phone is more powerful than that giant computer.",
+          illustration: [
+            { emoji: "🖥️", label: "Desktop" },
+            { emoji: "💻", label: "Laptop" },
+            { emoji: "📱", label: "Tablet" },
+            { emoji: "📱", label: "Phone" },
+            { emoji: "⌚", label: "Smartwatch" },
+            { emoji: "🚗", label: "Car Computer" },
+          ],
+          keyTerms: [
+            { term: "Computer", definition: "An electronic machine that processes information and follows instructions." },
+            { term: "Program", definition: "A set of instructions that tells the computer what to do." },
+            { term: "Data", definition: "Information that a computer stores and uses — like numbers, words, and pictures." },
+          ]
         }
       ]
     },
