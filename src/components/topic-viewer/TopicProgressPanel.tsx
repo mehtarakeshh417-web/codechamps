@@ -1,5 +1,8 @@
 import { motion } from "framer-motion";
-import { CheckCircle2, Circle, ArrowRight, ArrowLeft, Zap, Clock, Trophy, Star, Target, Flame, Award } from "lucide-react";
+import {
+  CheckCircle2, Circle, ArrowRight, ArrowLeft, Zap, Clock, Trophy, Star,
+  Target, Award, Flame, Medal, Gift, TrendingUp
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 interface TopicProgressPanelProps {
@@ -28,6 +31,8 @@ const xpLevelEmoji = (level: number) => {
   return emojis[Math.min(level - 1, 4)];
 };
 
+const xpForLevel = (level: number) => [500, 1500, 3000, 5000, 10000][Math.min(level - 1, 4)];
+
 const TopicProgressPanel = ({
   currentPage,
   totalPages,
@@ -46,132 +51,200 @@ const TopicProgressPanel = ({
   const pageProgress = totalPages > 0 ? Math.round(((currentPage + 1) / totalPages) * 100) : 0;
   const moduleProgress = moduleTotalTopics > 0 ? Math.round((moduleCompletedTopics / moduleTotalTopics) * 100) : 0;
   const estimatedMinutes = Math.max(3, totalPages * 4);
+  const nextLevelXp = xpForLevel(level);
+  const xpProgress = Math.min(100, Math.round((xp / nextLevelXp) * 100));
 
   return (
     <motion.aside
       initial={{ x: 20, opacity: 0 }}
       animate={{ x: 0, opacity: 1 }}
       transition={{ delay: 0.2 }}
-      className="w-[280px] shrink-0 hidden xl:block"
+      className="w-[290px] shrink-0 hidden xl:block"
     >
       <div className="sticky top-6 space-y-4">
-        {/* Topic Progress Ring */}
-        <div className="bg-gradient-to-br from-[hsl(220,30%,12%)] to-[hsl(220,25%,9%)] rounded-2xl border border-white/[0.08] p-5 shadow-xl shadow-black/20">
-          <h4 className="font-display text-[10px] font-bold text-foreground/40 uppercase tracking-[0.2em] mb-4">Reading Progress</h4>
-          
-          <div className="flex items-center justify-center mb-4">
-            <div className="relative w-28 h-28">
-              <svg className="w-full h-full -rotate-90" viewBox="0 0 100 100">
-                <circle cx="50" cy="50" r="42" fill="none" stroke="rgba(255,255,255,0.05)" strokeWidth="7" />
-                <motion.circle
-                  cx="50" cy="50" r="42" fill="none"
-                  stroke="url(#progressGrad2)"
-                  strokeWidth="7"
-                  strokeLinecap="round"
-                  initial={{ strokeDasharray: `0 264` }}
-                  animate={{ strokeDasharray: `${pageProgress * 2.64} ${264 - pageProgress * 2.64}` }}
-                  transition={{ duration: 1, ease: "easeOut" }}
-                />
-                <defs>
-                  <linearGradient id="progressGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stopColor="hsl(200,100%,50%)" />
-                    <stop offset="50%" stopColor="hsl(260,80%,60%)" />
-                    <stop offset="100%" stopColor="hsl(145,80%,50%)" />
-                  </linearGradient>
-                </defs>
-              </svg>
-              <div className="absolute inset-0 flex flex-col items-center justify-center">
-                <motion.span
-                  key={pageProgress}
-                  initial={{ scale: 1.3, opacity: 0 }}
-                  animate={{ scale: 1, opacity: 1 }}
-                  className="font-display text-2xl font-bold text-foreground"
-                >
-                  {pageProgress}%
-                </motion.span>
-                <span className="text-[10px] text-foreground/35 font-body mt-0.5">Page {currentPage + 1} of {totalPages}</span>
+        {/* Reading Progress - Premium Glass Card */}
+        <div className="relative rounded-3xl overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-br from-primary/[0.05] via-transparent to-secondary/[0.03]" />
+          <div className="relative bg-[hsl(220,30%,11%)] border border-white/[0.08] rounded-3xl p-6 shadow-2xl shadow-black/30">
+            <div className="flex items-center justify-between mb-5">
+              <h4 className="font-display text-[10px] font-bold text-foreground/40 uppercase tracking-[0.2em]">Reading</h4>
+              <div className="flex items-center gap-1.5 text-foreground/30 text-[10px] font-body">
+                <Clock className="w-3 h-3" />
+                ~{estimatedMinutes}min
               </div>
             </div>
-          </div>
+            
+            {/* Animated Progress Ring */}
+            <div className="flex items-center justify-center mb-5">
+              <div className="relative w-32 h-32">
+                {/* Outer glow */}
+                <div className="absolute inset-2 rounded-full bg-gradient-to-br from-primary/[0.05] to-secondary/[0.03]" />
+                <svg className="w-full h-full -rotate-90" viewBox="0 0 100 100">
+                  <circle cx="50" cy="50" r="40" fill="none" stroke="rgba(255,255,255,0.04)" strokeWidth="6" />
+                  <motion.circle
+                    cx="50" cy="50" r="40" fill="none"
+                    stroke="url(#progressGrad3)"
+                    strokeWidth="6"
+                    strokeLinecap="round"
+                    initial={{ strokeDasharray: `0 252` }}
+                    animate={{ strokeDasharray: `${pageProgress * 2.52} ${252 - pageProgress * 2.52}` }}
+                    transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+                  />
+                  <defs>
+                    <linearGradient id="progressGrad3" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stopColor="hsl(200,100%,50%)" />
+                      <stop offset="50%" stopColor="hsl(260,80%,60%)" />
+                      <stop offset="100%" stopColor="hsl(145,80%,50%)" />
+                    </linearGradient>
+                  </defs>
+                </svg>
+                <div className="absolute inset-0 flex flex-col items-center justify-center">
+                  <motion.span
+                    key={pageProgress}
+                    initial={{ scale: 1.4, opacity: 0 }}
+                    animate={{ scale: 1, opacity: 1 }}
+                    transition={{ type: "spring", stiffness: 300 }}
+                    className="font-display text-3xl font-bold text-foreground"
+                  >
+                    {pageProgress}%
+                  </motion.span>
+                  <span className="text-[10px] text-foreground/30 font-body mt-0.5">Page {currentPage + 1} of {totalPages}</span>
+                </div>
+              </div>
+            </div>
 
-          <div className="flex items-center justify-center gap-2 text-foreground/35 text-xs font-body">
-            <Clock className="w-3.5 h-3.5" />
-            <span>~{estimatedMinutes} min read</span>
+            {/* Page indicator dots */}
+            <div className="flex items-center justify-center gap-1.5 flex-wrap">
+              {Array.from({ length: totalPages }).map((_, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ scale: 0 }}
+                  animate={{ scale: 1 }}
+                  transition={{ delay: 0.5 + i * 0.05 }}
+                  className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
+                    i === currentPage
+                      ? "bg-gradient-to-r from-primary to-secondary scale-125 shadow-md shadow-primary/30"
+                      : i < currentPage
+                      ? "bg-neon-green/40"
+                      : "bg-white/[0.06]"
+                  }`}
+                />
+              ))}
+            </div>
           </div>
         </div>
 
         {/* XP & Level Card */}
-        <div className="bg-gradient-to-br from-[hsl(220,30%,12%)] to-[hsl(220,25%,9%)] rounded-2xl border border-white/[0.08] p-5 shadow-xl shadow-black/20">
-          <h4 className="font-display text-[10px] font-bold text-foreground/40 uppercase tracking-[0.2em] mb-4">Your Level</h4>
-          <div className="flex items-center gap-3 mb-4">
-            <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-neon-green/20 to-neon-blue/20 border border-neon-green/15 flex items-center justify-center shadow-lg shadow-neon-green/5">
+        <div className="relative rounded-3xl overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-br from-neon-green/[0.04] via-transparent to-neon-blue/[0.03]" />
+          <div className="relative bg-[hsl(220,30%,11%)] border border-white/[0.08] rounded-3xl p-6 shadow-2xl shadow-black/30">
+            <div className="flex items-center justify-between mb-4">
+              <h4 className="font-display text-[10px] font-bold text-foreground/40 uppercase tracking-[0.2em]">Your Level</h4>
               <span className="text-2xl">{xpLevelEmoji(level)}</span>
             </div>
-            <div>
-              <div className="font-display text-sm font-bold text-neon-green">{xpLevelTitle(level)}</div>
-              <div className="flex items-center gap-1.5 mt-0.5">
-                <Zap className="w-3.5 h-3.5 text-neon-orange" />
-                <span className="font-display text-sm font-bold text-foreground">{xp} XP</span>
+
+            {/* Level badge */}
+            <div className="flex items-center gap-4 mb-4">
+              <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-neon-green/20 to-neon-blue/15 border border-neon-green/15 flex flex-col items-center justify-center shadow-xl shadow-neon-green/5">
+                <span className="font-display text-xl font-bold text-neon-green">{level}</span>
+                <span className="text-[8px] font-body text-foreground/30 uppercase">Level</span>
+              </div>
+              <div>
+                <div className="font-display text-sm font-bold text-neon-green mb-0.5">{xpLevelTitle(level)}</div>
+                <div className="flex items-center gap-1.5">
+                  <Zap className="w-3.5 h-3.5 text-neon-orange" />
+                  <span className="font-display text-base font-bold text-foreground">{xp}</span>
+                  <span className="text-[10px] text-foreground/30 font-body">XP</span>
+                </div>
+              </div>
+            </div>
+
+            {/* XP progress to next level */}
+            <div className="mb-4">
+              <div className="flex items-center justify-between mb-1.5">
+                <span className="text-[10px] font-body text-foreground/30">Progress to Level {level + 1}</span>
+                <span className="text-[10px] font-display font-bold text-foreground/50">{xp}/{nextLevelXp}</span>
+              </div>
+              <div className="w-full h-2 rounded-full bg-white/[0.05] overflow-hidden">
+                <motion.div
+                  initial={{ width: 0 }}
+                  animate={{ width: `${xpProgress}%` }}
+                  transition={{ duration: 1, delay: 0.3 }}
+                  className="h-full rounded-full bg-gradient-to-r from-neon-green via-neon-blue to-primary"
+                />
+              </div>
+            </div>
+
+            {/* XP Reward */}
+            <div className="flex items-center gap-3 px-4 py-3 rounded-xl bg-gradient-to-r from-neon-green/[0.06] to-neon-blue/[0.03] border border-neon-green/10">
+              <div className="w-9 h-9 rounded-xl bg-neon-green/15 flex items-center justify-center shadow-md shadow-neon-green/10">
+                <Gift className="w-4 h-4 text-neon-green" />
+              </div>
+              <div>
+                <div className="text-xs font-body font-bold text-neon-green flex items-center gap-1">+50 XP <Sparkle /></div>
+                <div className="text-[10px] text-foreground/30 font-body">on completion</div>
               </div>
             </div>
           </div>
-
-          {/* XP Reward Preview */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.5 }}
-            className="flex items-center gap-2.5 px-4 py-3 rounded-xl bg-gradient-to-r from-neon-green/[0.06] to-neon-blue/[0.04] border border-neon-green/10"
-          >
-            <div className="w-8 h-8 rounded-lg bg-neon-green/15 flex items-center justify-center">
-              <Star className="w-4 h-4 text-neon-green" />
-            </div>
-            <div>
-              <div className="text-xs font-body font-bold text-neon-green">+50 XP</div>
-              <div className="text-[10px] text-foreground/35 font-body">on completion</div>
-            </div>
-          </motion.div>
         </div>
 
         {/* Module Progress */}
-        <div className="bg-gradient-to-br from-[hsl(220,30%,12%)] to-[hsl(220,25%,9%)] rounded-2xl border border-white/[0.08] p-5 shadow-xl shadow-black/20">
-          <h4 className="font-display text-[10px] font-bold text-foreground/40 uppercase tracking-[0.2em] mb-3">Module Progress</h4>
-          <div className="flex items-center justify-between mb-2.5">
-            <div className="flex items-center gap-2">
-              <Target className="w-4 h-4 text-primary" />
-              <span className="text-xs font-body font-bold text-foreground/70">{moduleCompletedTopics}/{moduleTotalTopics} topics</span>
+        <div className="relative rounded-3xl overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-br from-primary/[0.04] via-transparent to-neon-purple/[0.03]" />
+          <div className="relative bg-[hsl(220,30%,11%)] border border-white/[0.08] rounded-3xl p-6 shadow-2xl shadow-black/30">
+            <h4 className="font-display text-[10px] font-bold text-foreground/40 uppercase tracking-[0.2em] mb-4">Module Progress</h4>
+            <div className="flex items-center justify-between mb-3">
+              <div className="flex items-center gap-2">
+                <Target className="w-4 h-4 text-primary" />
+                <span className="text-xs font-body font-bold text-foreground/70">{moduleCompletedTopics}/{moduleTotalTopics} topics</span>
+              </div>
+              <span className="text-sm font-display font-bold text-primary">{moduleProgress}%</span>
             </div>
-            <span className="text-xs font-display font-bold text-primary">{moduleProgress}%</span>
+            <div className="w-full h-3 rounded-full bg-white/[0.04] overflow-hidden mb-3">
+              <motion.div
+                initial={{ width: 0 }}
+                animate={{ width: `${moduleProgress}%` }}
+                transition={{ duration: 1, ease: "easeOut" }}
+                className="h-full rounded-full bg-gradient-to-r from-primary via-secondary to-neon-green shadow-lg shadow-primary/20"
+              />
+            </div>
+            
+            {/* Topic dots grid */}
+            <div className="flex flex-wrap gap-1.5 mb-2">
+              {Array.from({ length: moduleTotalTopics }).map((_, i) => (
+                <div
+                  key={i}
+                  className={`w-3 h-3 rounded-md transition-all duration-300 ${
+                    i < moduleCompletedTopics
+                      ? "bg-neon-green/40 shadow-sm shadow-neon-green/20"
+                      : "bg-white/[0.04]"
+                  }`}
+                />
+              ))}
+            </div>
+
+            {moduleProgress === 100 && (
+              <motion.div
+                initial={{ scale: 0.8, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                className="flex items-center gap-2.5 px-4 py-3 rounded-xl bg-gradient-to-r from-neon-green/[0.08] to-neon-blue/[0.05] border border-neon-green/15 mt-3"
+              >
+                <Trophy className="w-5 h-5 text-neon-green" />
+                <span className="text-xs font-body text-neon-green font-bold">Module Complete! 🎉</span>
+              </motion.div>
+            )}
           </div>
-          <div className="w-full h-2.5 rounded-full bg-white/[0.06] overflow-hidden">
-            <motion.div
-              initial={{ width: 0 }}
-              animate={{ width: `${moduleProgress}%` }}
-              transition={{ duration: 1, ease: "easeOut" }}
-              className="h-full rounded-full bg-gradient-to-r from-primary via-secondary to-neon-green shadow-lg shadow-primary/20"
-            />
-          </div>
-          {moduleProgress === 100 && (
-            <motion.div
-              initial={{ scale: 0.8, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              className="flex items-center gap-2 px-3 py-2.5 rounded-xl bg-neon-green/[0.08] border border-neon-green/15 mt-3"
-            >
-              <Trophy className="w-4 h-4 text-neon-green" />
-              <span className="text-xs font-body text-neon-green font-bold">Module Complete! 🎉</span>
-            </motion.div>
-          )}
         </div>
 
-        {/* Navigation Buttons */}
-        <div className="space-y-2.5">
+        {/* Navigation */}
+        <div className="space-y-2.5 pt-1">
           {isLastPage ? (
             <Button
               onClick={onToggleComplete}
-              className={`w-full gap-2 rounded-xl h-12 font-body font-bold text-sm transition-all duration-300 ${
+              className={`w-full gap-2.5 rounded-2xl h-13 font-body font-bold text-sm transition-all duration-500 ${
                 isCompleted
-                  ? "bg-neon-green/15 text-neon-green border-2 border-neon-green/30 hover:bg-neon-green/25 shadow-lg shadow-neon-green/10"
-                  : "bg-gradient-to-r from-primary via-secondary to-neon-purple text-white hover:opacity-90 shadow-xl shadow-primary/25 hover:shadow-primary/40 hover:scale-[1.02]"
+                  ? "bg-neon-green/15 text-neon-green border-2 border-neon-green/30 hover:bg-neon-green/25 shadow-xl shadow-neon-green/10 hover:shadow-neon-green/20"
+                  : "bg-gradient-to-r from-primary via-secondary to-neon-purple text-white hover:opacity-90 shadow-2xl shadow-primary/30 hover:shadow-primary/50 hover:scale-[1.02]"
               }`}
             >
               {isCompleted ? (
@@ -183,7 +256,7 @@ const TopicProgressPanel = ({
           ) : (
             <Button
               onClick={onNextPage}
-              className="w-full gap-2 rounded-xl h-12 bg-gradient-to-r from-primary to-secondary text-white hover:opacity-90 font-body font-bold text-sm shadow-xl shadow-primary/25 hover:shadow-primary/40 hover:scale-[1.02] transition-all duration-300"
+              className="w-full gap-2.5 rounded-2xl h-13 bg-gradient-to-r from-primary to-secondary text-white hover:opacity-90 font-body font-bold text-sm shadow-2xl shadow-primary/30 hover:shadow-primary/50 hover:scale-[1.02] transition-all duration-500"
             >
               Next Page <ArrowRight className="w-4 h-4" />
             </Button>
@@ -192,7 +265,7 @@ const TopicProgressPanel = ({
             onClick={onPrevPage}
             disabled={isFirstPage}
             variant="ghost"
-            className="w-full gap-2 rounded-xl h-10 text-foreground/35 hover:text-foreground/70 disabled:opacity-15 font-body text-sm"
+            className="w-full gap-2 rounded-2xl h-11 text-foreground/30 hover:text-foreground/60 disabled:opacity-10 font-body text-sm"
           >
             <ArrowLeft className="w-4 h-4" /> Previous Page
           </Button>
@@ -201,5 +274,16 @@ const TopicProgressPanel = ({
     </motion.aside>
   );
 };
+
+// Small sparkle animation
+const Sparkle = () => (
+  <motion.span
+    animate={{ rotate: [0, 15, -15, 0], scale: [1, 1.2, 1] }}
+    transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
+    className="inline-block"
+  >
+    ✨
+  </motion.span>
+);
 
 export default TopicProgressPanel;
