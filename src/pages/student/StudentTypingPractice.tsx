@@ -303,7 +303,5 @@ const StudentTypingPractice = () => {
   );
 };
 
-// Need AnimatePresence import
-import { AnimatePresence } from "framer-motion";
 
 export default StudentTypingPractice;
