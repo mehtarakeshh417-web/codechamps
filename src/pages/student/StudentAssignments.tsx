@@ -146,8 +146,10 @@ const StudentAssignments = () => {
     if (error) { toast.error("Failed to submit. Try again."); console.error(error); return; }
 
     // Notify the teacher that student submitted assignment
-    const assignmentTeacher = teachers.find(t => t.id === (assignment as any).teacherId);
-    if (assignmentTeacher?.user_id) {
+    // Fetch teacher via the assignment's teacher_id from DB
+    const { data: assignmentData } = await supabase.from("assignments").select("teacher_id, teachers(user_id, first_name)").eq("id", assignment.id).single();
+    const assignmentTeacherUserId = (assignmentData as any)?.teachers?.user_id;
+    if (assignmentTeacherUserId) {
       await supabase.from("notifications").insert({
         user_id: assignmentTeacher.user_id,
         title: `📋 ${student.name} submitted an assignment`,
