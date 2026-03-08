@@ -33,7 +33,7 @@ const AdminDashboard = () => {
     <div>
       <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
         <h1 className="font-display text-3xl font-bold mb-1">
-          <span className="text-gradient-purple">Master</span> Control Panel
+          <span className="text-gradient-brand">Master</span> Control Panel
         </h1>
         <p className="text-white/60 font-body mb-6">Platform-wide overview and management</p>
       </motion.div>

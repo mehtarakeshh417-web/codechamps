@@ -49,7 +49,7 @@ const ChangePassword = () => {
   return (
     <div>
       <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
-        <h1 className="font-display text-3xl font-bold mb-1"><span className="text-gradient-purple">{roleLabel}</span> Change Password</h1>
+        <h1 className="font-display text-3xl font-bold mb-1"><span className="text-gradient-brand">{roleLabel}</span> Change Password</h1>
         <p className="text-white/60 font-body mb-8">Update your account password</p>
       </motion.div>
       <motion.div initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} className="glass-card p-6 max-w-lg">
