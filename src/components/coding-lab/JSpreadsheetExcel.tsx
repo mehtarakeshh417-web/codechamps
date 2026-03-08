@@ -2,6 +2,7 @@ import { useRef, useEffect, useState } from "react";
 import jspreadsheet from "jspreadsheet-ce";
 import "jspreadsheet-ce/dist/jspreadsheet.css";
 import "jsuites/dist/jsuites.css";
+import "./excel-styles.css";
 
 const JSpreadsheetExcel = () => {
   const sheetRef = useRef<HTMLDivElement>(null);
