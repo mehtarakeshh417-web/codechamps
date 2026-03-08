@@ -20,6 +20,7 @@ const c1ComputerIntro: TopicTextbook = {
       sections: [
         {
           heading: "Meet the Computer!",
+          image: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=800&h=400&fit=crop",
           body: "A **computer** is an electronic machine that can:\n\n🖥️ **Store** information (like photos, games, and homework)\n🧮 **Calculate** numbers very fast\n🎮 **Play** games and videos\n✏️ **Help** us draw and write\n\nComputers are everywhere! They are in your school, your home, your parents' phones, and even in cars!\n\n**Think of a computer like a very smart helper** — you tell it what to do, and it does it for you!",
           youtubeId: "z9-yDaTwMHk",
           funFact: "The first computer was so big that it filled an entire room! Today, your phone is more powerful than that giant computer.",
