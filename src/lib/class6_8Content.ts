@@ -178,6 +178,7 @@ const c6CssIntro: TopicTextbook = {
       sections: [
         {
           heading: "CSS — Cascading Style Sheets",
+          image: "https://images.unsplash.com/photo-1507721999472-8ed4421c4af2?w=800&h=400&fit=crop",
           body: "**CSS** controls how HTML elements LOOK — colors, fonts, sizes, spacing, layouts.\n\n**HTML = structure** (the skeleton)\n**CSS = style** (the clothing and makeup)\n\n**Three ways to add CSS:**\n\n1️⃣ **Inline** — directly on an element:\n`<p style=\"color: blue; font-size: 20px;\">Blue text</p>`\n\n2️⃣ **Internal** — in a `<style>` tag in `<head>`:\n```\n<style>\n  p { color: blue; font-size: 20px; }\n</style>\n```\n\n3️⃣ **External** — separate .css file (best practice):\n`<link rel=\"stylesheet\" href=\"style.css\">`\n\n**CSS Syntax:**\n```\nselector {\n  property: value;\n  property: value;\n}\n```\n\n**Example:**\n```\nh1 {\n  color: red;\n  font-size: 36px;\n  text-align: center;\n}\n```",
           tip: "External CSS is the best practice because you can style your entire website from one file!"
         }
