@@ -777,6 +777,7 @@ const c2AdvComputer: TopicTextbook = {
       sections: [
         {
           heading: "Booting Up & Shutting Down",
+          image: "https://images.unsplash.com/photo-1531297484001-80022131f5a1?w=800&h=400&fit=crop",
           body: "**Starting the Computer (Booting):**\n1. Press the **Power button** on the CPU\n2. Press the **Power button** on the Monitor\n3. Wait for the **Desktop** to appear\n4. Now you can start using your computer!\n\n**Shutting Down Safely:**\n1. Close all open programs\n2. Click the **Start button** (bottom-left)\n3. Click the **Power** icon\n4. Select **Shut Down**\n5. Wait until the computer fully turns off\n\n**Other Options:**\n😴 **Sleep** — Computer rests but wakes up fast\n🔄 **Restart** — Turns off and back on (fixes problems!)\n🔒 **Lock** — Shows login screen but keeps programs open\n\n⚠️ **NEVER just press the power button to turn off!** This can damage your files and the computer.",
           tip: "Always save your work before shutting down! Press Ctrl+S in every program."
         }
