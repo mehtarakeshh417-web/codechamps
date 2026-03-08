@@ -444,8 +444,14 @@ const Landing = () => {
       </section>
 
       {/* Footer */}
-      <footer className="relative z-10 text-center py-8 text-white/30 text-sm font-body border-t border-white/5">
-        © 2026 CodeChamps. All rights reserved.
+      <footer className="relative z-10 py-10 border-t border-white/5">
+        <div className="container mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4">
+          <div className="flex items-center gap-2">
+            <img src={logo} alt="CodeChamps" className="w-6 h-6 rounded-lg object-contain" />
+            <span className="font-display text-sm font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">CodeChamps</span>
+          </div>
+          <p className="text-white/30 text-xs font-body">© 2026 CodeChamps. All rights reserved. Made with ❤️ in India.</p>
+        </div>
       </footer>
     </div>
   );
