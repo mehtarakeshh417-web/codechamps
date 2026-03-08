@@ -5,7 +5,7 @@ import { useAuth } from "@/contexts/AuthContext";
 import { useData } from "@/contexts/DataContext";
 import { getTopicTextbook } from "@/lib/class5Content";
 import { getCurriculumForClass } from "@/lib/curriculumData";
-import { BookOpen, ChevronLeft, ArrowLeft, ArrowRight, CheckCircle2, Circle } from "lucide-react";
+import { BookOpen, ChevronLeft, ArrowLeft, ArrowRight, CheckCircle2, Circle, Award } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
@@ -36,18 +36,15 @@ const TopicViewer = () => {
   const [completedTopics, setCompletedTopics] = useState<string[]>([]);
   const [expandedSubjectId, setExpandedSubjectId] = useState<string | null>(null);
 
-  // Find which subject this topic belongs to
   const currentSubject = useMemo(() => {
     if (!curriculum || !topicId) return null;
     return curriculum.subjects.find((s) => s.topics.some((t) => t.id === topicId)) || null;
   }, [curriculum, topicId]);
 
-  // Auto-expand the current subject
   useEffect(() => {
     if (currentSubject) setExpandedSubjectId(currentSubject.id);
   }, [currentSubject]);
 
-  // Load completion status
   useEffect(() => {
     if (!student || !topicId) return;
     supabase
@@ -61,7 +58,6 @@ const TopicViewer = () => {
       });
   }, [student, topicId]);
 
-  // Load all completed topics
   useEffect(() => {
     if (!student) return;
     supabase
@@ -73,9 +69,9 @@ const TopicViewer = () => {
       });
   }, [student]);
 
-  // Reset page when topic changes
   useEffect(() => {
     setCurrentPage(0);
+    window.scrollTo({ top: 0, behavior: "smooth" });
   }, [topicId]);
 
   const toggleComplete = useCallback(async () => {
@@ -100,17 +96,19 @@ const TopicViewer = () => {
     }
   }, [topicId, navigate]);
 
-  // Module stats
   const moduleTotalTopics = currentSubject?.topics.length || 0;
   const moduleCompletedTopics = currentSubject?.topics.filter((t) => completedTopics.includes(t.id)).length || 0;
 
   if (!textbook) {
     return (
       <div className="text-center py-20">
-        <BookOpen className="w-16 h-16 text-white/20 mx-auto mb-4" />
-        <p className="text-white/40 font-body">Topic content not found.</p>
-        <Button variant="ghost" onClick={() => navigate("/dashboard/curriculum")} className="mt-4 text-primary">
-          <ChevronLeft className="w-4 h-4 mr-1" /> Back to Curriculum
+        <div className="w-20 h-20 rounded-3xl bg-white/[0.03] border border-white/10 flex items-center justify-center mx-auto mb-5">
+          <BookOpen className="w-9 h-9 text-foreground/15" />
+        </div>
+        <h2 className="font-display text-lg text-foreground/50 mb-2">Content Not Found</h2>
+        <p className="text-foreground/30 font-body text-sm mb-6">This topic doesn't have content yet.</p>
+        <Button variant="ghost" onClick={() => navigate("/dashboard/curriculum")} className="text-primary gap-1.5">
+          <ChevronLeft className="w-4 h-4" /> Back to Curriculum
         </Button>
       </div>
     );
@@ -124,7 +122,7 @@ const TopicViewer = () => {
 
   return (
     <div className="flex gap-6 -mx-2">
-      {/* LEFT SIDEBAR - Module Navigation */}
+      {/* LEFT SIDEBAR */}
       {curriculum && (
         <TopicSidebar
           subjects={curriculum.subjects}
@@ -136,31 +134,36 @@ const TopicViewer = () => {
         />
       )}
 
-      {/* CENTER - Main Content */}
+      {/* CENTER CONTENT */}
       <div className="flex-1 min-w-0">
         {/* Top bar */}
-        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="flex items-center justify-between mb-5">
+        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="flex items-center justify-between mb-6">
           <Button
             variant="ghost"
             onClick={() => navigate("/dashboard/curriculum")}
-            className="text-white/50 hover:text-white gap-1.5 text-sm"
+            className="text-foreground/40 hover:text-foreground gap-1.5 text-sm rounded-xl"
           >
-            <ChevronLeft className="w-4 h-4" /> Back to Curriculum
+            <ChevronLeft className="w-4 h-4" /> Curriculum
           </Button>
-          <div className="flex items-center gap-2">
-            {isCompleted && (
-              <span className="flex items-center gap-1 text-xs font-body text-neon-green bg-neon-green/10 border border-neon-green/20 px-3 py-1 rounded-full">
-                <CheckCircle2 className="w-3 h-3" /> Completed
-              </span>
-            )}
-          </div>
+          {isCompleted && (
+            <motion.span
+              initial={{ scale: 0 }}
+              animate={{ scale: 1 }}
+              className="flex items-center gap-1.5 text-xs font-display font-bold text-neon-green bg-neon-green/[0.08] border border-neon-green/20 px-4 py-1.5 rounded-full"
+            >
+              <CheckCircle2 className="w-3.5 h-3.5" /> Completed
+            </motion.span>
+          )}
         </motion.div>
 
         {/* Topic Title */}
-        <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="mb-6">
-          <h1 className="font-display text-2xl font-bold text-white">{textbook.topicTitle}</h1>
+        <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="mb-7">
+          <h1 className="font-display text-xl md:text-2xl font-bold text-foreground leading-tight">{textbook.topicTitle}</h1>
           {currentSubject && (
-            <p className="text-sm text-white/40 font-body mt-1">{currentSubject.title}</p>
+            <p className="text-xs text-foreground/35 font-body mt-1.5 flex items-center gap-1.5">
+              <BookOpen className="w-3 h-3" />
+              {currentSubject.title}
+            </p>
           )}
         </motion.div>
 
@@ -168,12 +171,11 @@ const TopicViewer = () => {
         <AnimatePresence mode="wait">
           <motion.div
             key={`${topicId}-${currentPage}`}
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 25 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.35 }}
+            exit={{ opacity: 0, y: -15 }}
+            transition={{ duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
           >
-            {/* Page Header Banner */}
             <PremiumPageHeader
               pageTitle={page.pageTitle}
               subtitle={page.subtitle}
@@ -183,8 +185,7 @@ const TopicViewer = () => {
               totalPages={totalPages}
             />
 
-            {/* Content Sections */}
-            <div className="space-y-6">
+            <div className="space-y-7">
               {page.sections.map((section, i) => (
                 <PremiumSection key={i} section={section} index={i} />
               ))}
@@ -193,19 +194,21 @@ const TopicViewer = () => {
             {/* Exercises */}
             {page.exercises && page.exercises.length > 0 && (
               <motion.div
-                initial={{ y: 20, opacity: 0 }}
+                initial={{ y: 25, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ delay: 0.3 }}
-                className="mt-8 bg-[hsl(220,30%,10%)] rounded-2xl border-2 border-primary/15 overflow-hidden"
+                className="mt-10 rounded-2xl overflow-hidden border border-primary/15 shadow-xl shadow-black/20"
               >
-                <div className="bg-gradient-to-r from-primary/10 to-transparent px-6 py-4 border-b border-white/5">
-                  <h3 className="font-display text-lg font-bold text-white flex items-center gap-2">
-                    <span className="bg-primary/20 text-primary px-3 py-1 rounded-lg text-sm">📝</span>
+                <div className="bg-gradient-to-r from-primary/[0.08] via-secondary/[0.05] to-transparent px-7 py-5 border-b border-white/[0.06]">
+                  <h3 className="font-display text-base md:text-lg font-bold text-foreground flex items-center gap-3">
+                    <div className="w-9 h-9 rounded-xl bg-primary/15 flex items-center justify-center">
+                      <span className="text-base">📝</span>
+                    </div>
                     Test Your Understanding
                   </h3>
-                  <p className="text-xs text-white/40 font-body mt-1">Answer these questions to reinforce what you've learned</p>
+                  <p className="text-xs text-foreground/35 font-body mt-1 ml-12">Answer these questions to reinforce what you've learned</p>
                 </div>
-                <div className="p-6 space-y-4">
+                <div className="p-6 space-y-4 bg-[hsl(220,30%,9%)]">
                   {page.exercises.map((ex, i) => (
                     <PremiumExercise key={i} exercise={ex} index={i} />
                   ))}
@@ -216,23 +219,22 @@ const TopicViewer = () => {
         </AnimatePresence>
 
         {/* Bottom Navigation */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          className="mt-10 mb-8"
-        >
-          {/* Page selector */}
+        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="mt-12 mb-10">
+          {/* Page selector pills */}
           <div className="flex items-center justify-center gap-2 mb-6 flex-wrap">
             {textbook.pages.map((p, i) => (
               <button
                 key={i}
-                onClick={() => setCurrentPage(i)}
-                className={`min-w-[40px] h-10 px-2.5 rounded-xl text-sm font-body font-bold transition-all duration-200 ${
+                onClick={() => {
+                  setCurrentPage(i);
+                  window.scrollTo({ top: 0, behavior: "smooth" });
+                }}
+                className={`min-w-[42px] h-10 px-3 rounded-xl text-sm font-body font-bold transition-all duration-300 ${
                   i === currentPage
-                    ? "bg-gradient-to-r from-primary to-secondary text-white shadow-lg shadow-primary/30 scale-110"
+                    ? "bg-gradient-to-r from-primary to-secondary text-white shadow-lg shadow-primary/30 scale-110 ring-2 ring-primary/20 ring-offset-2 ring-offset-[hsl(220,30%,8%)]"
                     : i < currentPage
-                    ? "bg-neon-green/15 text-neon-green hover:bg-neon-green/25 border border-neon-green/20"
-                    : "bg-white/8 text-white/60 hover:bg-white/15 hover:text-white border border-white/8"
+                    ? "bg-neon-green/[0.1] text-neon-green hover:bg-neon-green/[0.18] border border-neon-green/15"
+                    : "bg-white/[0.04] text-foreground/40 hover:bg-white/[0.08] hover:text-foreground/60 border border-white/[0.06]"
                 }`}
                 title={p.pageTitle}
               >
@@ -241,13 +243,16 @@ const TopicViewer = () => {
             ))}
           </div>
 
-          {/* Nav buttons (mobile/tablet - visible when right panel hidden) */}
+          {/* Mobile nav buttons */}
           <div className="flex items-center justify-between xl:hidden">
             <Button
               variant="ghost"
-              onClick={() => setCurrentPage((p) => Math.max(0, p - 1))}
+              onClick={() => {
+                setCurrentPage((p) => Math.max(0, p - 1));
+                window.scrollTo({ top: 0, behavior: "smooth" });
+              }}
               disabled={isFirstPage}
-              className="text-white/50 hover:text-white disabled:opacity-20 gap-1"
+              className="text-foreground/40 hover:text-foreground disabled:opacity-15 gap-1.5 rounded-xl"
             >
               <ArrowLeft className="w-4 h-4" /> Previous
             </Button>
@@ -255,22 +260,25 @@ const TopicViewer = () => {
             {isLastPage ? (
               <Button
                 onClick={toggleComplete}
-                className={`gap-1.5 rounded-xl ${
+                className={`gap-2 rounded-xl h-11 font-bold ${
                   isCompleted
-                    ? "bg-neon-green/15 text-neon-green border border-neon-green/30 hover:bg-neon-green/25"
-                    : "bg-gradient-to-r from-primary to-secondary text-white hover:opacity-90 shadow-lg"
+                    ? "bg-neon-green/15 text-neon-green border-2 border-neon-green/30 hover:bg-neon-green/25"
+                    : "bg-gradient-to-r from-primary via-secondary to-neon-purple text-white hover:opacity-90 shadow-xl shadow-primary/25"
                 }`}
               >
                 {isCompleted ? (
                   <><CheckCircle2 className="w-4 h-4" /> Completed ✓</>
                 ) : (
-                  <><Circle className="w-4 h-4" /> Mark Complete</>
+                  <><Award className="w-4 h-4" /> Mark Complete</>
                 )}
               </Button>
             ) : (
               <Button
-                onClick={() => setCurrentPage((p) => Math.min(totalPages - 1, p + 1))}
-                className="bg-gradient-to-r from-primary to-secondary text-white hover:opacity-90 gap-1.5 rounded-xl shadow-lg"
+                onClick={() => {
+                  setCurrentPage((p) => Math.min(totalPages - 1, p + 1));
+                  window.scrollTo({ top: 0, behavior: "smooth" });
+                }}
+                className="bg-gradient-to-r from-primary to-secondary text-white hover:opacity-90 gap-2 rounded-xl shadow-xl shadow-primary/25 h-11 font-bold"
               >
                 Next <ArrowRight className="w-4 h-4" />
               </Button>
@@ -279,7 +287,7 @@ const TopicViewer = () => {
         </motion.div>
       </div>
 
-      {/* RIGHT PANEL - Progress & Actions */}
+      {/* RIGHT PANEL */}
       <TopicProgressPanel
         currentPage={currentPage}
         totalPages={totalPages}
@@ -290,8 +298,14 @@ const TopicViewer = () => {
         moduleTotalTopics={moduleTotalTopics}
         moduleCompletedTopics={moduleCompletedTopics}
         onToggleComplete={toggleComplete}
-        onNextPage={() => setCurrentPage((p) => Math.min(totalPages - 1, p + 1))}
-        onPrevPage={() => setCurrentPage((p) => Math.max(0, p - 1))}
+        onNextPage={() => {
+          setCurrentPage((p) => Math.min(totalPages - 1, p + 1));
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        }}
+        onPrevPage={() => {
+          setCurrentPage((p) => Math.max(0, p - 1));
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        }}
         isFirstPage={isFirstPage}
         isLastPage={isLastPage}
       />
