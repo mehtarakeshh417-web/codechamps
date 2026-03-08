@@ -182,12 +182,24 @@ const StudentProjects = () => {
 
     if (error) { toast.error("Submission failed: " + error.message); setSubmitting(false); return; }
 
-    // Notification: submitted
+    // Notify self (student)
     await supabase.from("notifications").insert({
-      user_id: user?.id, title: "Project Submitted ✅",
-      message: `Your project "${proj?.title}" has been submitted successfully.`,
+      user_id: user?.id,
+      title: "✅ Project Submitted Successfully",
+      message: `Your project "${proj?.title}" has been submitted. Your teacher will review it soon. Keep up the great work, ${student.name}!`,
       type: "project_submitted",
     } as any);
+
+    // Notify teacher
+    const { data: projData } = await supabase.from("projects").select("teacher_id, teachers(user_id, first_name)").eq("id", projectId).single();
+    if (projData && (projData as any).teachers?.user_id) {
+      await supabase.from("notifications").insert({
+        user_id: (projData as any).teachers.user_id,
+        title: `🚀 ${student.name} submitted a project`,
+        message: `${student.name} (${student.class}-${student.section}) has submitted "${proj?.title || ""}". Head to Projects to review their work.`,
+        type: "project_submitted",
+      } as any);
+    }
 
     toast.success(existingSub ? "Project resubmitted!" : "Project submitted! 🎉");
     setSubmitting(false);

@@ -42,8 +42,9 @@ interface SubmissionRecord {
 
 const TeacherAssignments = () => {
   const { user } = useAuth();
-  const { teachers } = useData();
+  const { teachers, getTeacherStudents } = useData();
   const teacher = teachers.find((t) => t.user_id === user?.id || t.id === user?.id);
+  const teacherName = teacher ? `${teacher.firstName} ${teacher.lastName}`.trim() : "Your teacher";
   const myClasses = teacher?.classes || [];
 
   const [assignments, setAssignments] = useState<Assignment[]>([]);
@@ -204,6 +205,19 @@ const TeacherAssignments = () => {
     });
 
     if (error) { toast.error("Failed to save assignment: " + error.message); return; }
+
+    // Send notifications to students in this class
+    const allStudents = getTeacherStudents(user?.id || "");
+    const classStudents = allStudents.filter((s) => form.targetClass.includes(s.class));
+    const notifInserts = classStudents.filter(s => s.user_id).map(s => ({
+      user_id: s.user_id!,
+      title: "📝 New Assignment from " + teacherName,
+      message: `${teacherName} has assigned "${form.title}" (${form.subject}) to your class. It has ${questions.length} question(s)${form.dueDate ? ` and is due by ${new Date(form.dueDate).toLocaleDateString()}` : ""}. Good luck!`,
+      type: "project_assigned",
+    }));
+    if (notifInserts.length > 0) {
+      await supabase.from("notifications").insert(notifInserts as any);
+    }
 
     await fetchAssignments();
     setShowForm(false);

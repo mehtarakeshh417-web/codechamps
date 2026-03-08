@@ -145,6 +145,17 @@ const StudentAssignments = () => {
 
     if (error) { toast.error("Failed to submit. Try again."); console.error(error); return; }
 
+    // Notify the teacher that student submitted assignment
+    const assignmentTeacher = teachers.find(t => t.id === (assignment as any).teacherId);
+    if (assignmentTeacher?.user_id) {
+      await supabase.from("notifications").insert({
+        user_id: assignmentTeacher.user_id,
+        title: `📋 ${student.name} submitted an assignment`,
+        message: `${student.name} (${student.class}-${student.section}) has submitted "${assignment.title}" and scored ${score}% (${correct}/${assignment.questions.length} correct).`,
+        type: "project_submitted",
+      } as any);
+    }
+
     const sub: Submission = { assignmentId: assignment.id, studentId: student.id, answers: { ...answers }, submittedAt: new Date().toISOString(), score };
     setSubmissions([...submissions, sub]);
     setAnswers({});
@@ -163,6 +174,21 @@ const StudentAssignments = () => {
     } as any);
 
     if (error) { toast.error("Failed to submit. Try again."); console.error(error); return; }
+
+    // Find the project to get its teacher
+    const proj = projects.find(p => p.id === projectId);
+
+    // Notify the teacher
+    // We need to find the teacher via the project's teacher_id - fetch it
+    const { data: projData } = await supabase.from("projects").select("teacher_id, teachers(user_id, first_name)").eq("id", projectId).single();
+    if (projData && (projData as any).teachers?.user_id) {
+      await supabase.from("notifications").insert({
+        user_id: (projData as any).teachers.user_id,
+        title: `🚀 ${student.name} submitted a project`,
+        message: `${student.name} (${student.class}-${student.section}) has submitted the project "${proj?.title || ""}". Review it in your Projects dashboard.`,
+        type: "project_submitted",
+      } as any);
+    }
 
     setProjSubmissions({ ...projSubmissions, [projectId]: projNote });
     setProjNote("");
