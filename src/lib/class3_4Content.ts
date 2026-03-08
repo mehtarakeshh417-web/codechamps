@@ -426,7 +426,7 @@ const c3ScratchCompDragDrop: TopicTextbook = {
 };
 
 const c3ScratchSprite: TopicTextbook = {
-  topicId: "c3-scr-sp",
+  topicId: "c3-scr-sprite",
   topicTitle: "Moving Sprites & Saving",
   subjectColor: "neon-green",
   pages: [
