@@ -51,6 +51,8 @@ export interface ContentSection {
   comparison?: { left: { title: string; points: string[] }; right: { title: string; points: string[] } };
   /** Numbered step-by-step guide */
   stepByStep?: { steps: { title: string; description: string; image?: string }[] };
+  /** Emoji illustration grid */
+  illustration?: { emoji: string; label: string }[];
 }
 
 export interface TextbookPage {
@@ -84,7 +86,20 @@ const wordPageFormatting: TopicTextbook = {
         {
           heading: "What is Page Formatting?",
           body: "**Page formatting** means changing how your document page looks. It includes setting margins, choosing page orientation, adding backgrounds, watermarks, borders, and columns.\n\nWhen you write a letter, a report, or a project, page formatting makes it look neat and professional. Imagine reading a book with no margins — the text would go right to the edge of the paper! Formatting fixes that.\n\n**Why is Page Formatting Important?**\n• Makes documents easy to read\n• Gives a professional appearance\n• Helps organize information\n• Makes printed documents look great",
-          tip: "All page formatting options are found in the **Page Layout** tab in MS Word."
+          tip: "All page formatting options are found in the **Page Layout** tab in MS Word.",
+          illustration: [
+            { emoji: "📏", label: "Margins" },
+            { emoji: "📄", label: "Orientation" },
+            { emoji: "🎨", label: "Page Color" },
+            { emoji: "💧", label: "Watermark" },
+            { emoji: "🖼️", label: "Borders" },
+            { emoji: "📰", label: "Columns" },
+          ],
+          keyTerms: [
+            { term: "Page Formatting", definition: "Changing the layout and appearance of your document pages." },
+            { term: "Page Layout Tab", definition: "The tab in MS Word ribbon where all page formatting tools are located." },
+            { term: "Ribbon", definition: "The toolbar at the top of MS Word with tabs like Home, Insert, Page Layout." },
+          ]
         },
         {
           heading: "Where to Find Page Layout",
@@ -154,7 +169,18 @@ const wordPageFormatting: TopicTextbook = {
         {
           heading: "Important Things to Remember",
           body: "⚠️ **Page color does NOT print by default!** To print the background color:\n1. Go to **File → Options → Display**\n2. Check **Print Background Colors and Images**\n\n⚠️ Use **light colors** so the text remains readable\n⚠️ Page color applies to the **entire document** — you cannot color just one page easily\n⚠️ To remove the color, go to **Page Color → No Color**",
-          funFact: "Did you know? Professional designers often use very light pastel backgrounds instead of pure white. It's easier on the eyes!"
+          funFact: "Did you know? Professional designers often use very light pastel backgrounds instead of pure white. It's easier on the eyes!",
+          warningNote: "Page background color does NOT print by default! You must go to **File → Options → Display** and check **Print Background Colors and Images** to make it appear on printed copies.",
+          comparison: {
+            left: {
+              title: "Solid Colors",
+              points: ["Simple, clean look", "Easy to apply", "Best for formal documents", "Light pastel colors recommended"]
+            },
+            right: {
+              title: "Fill Effects",
+              points: ["Gradients blend two colors", "Textures add depth", "Patterns create visual interest", "Pictures as background possible"]
+            }
+          }
         }
       ],
       exercises: [
@@ -197,6 +223,16 @@ const wordPageFormatting: TopicTextbook = {
         {
           heading: "What are Page Borders?",
           body: "**Page borders** are decorative frames that go around the entire page. They make your documents look attractive and professional — perfect for certificates, greeting cards, and project covers!\n\n**Types of Page Borders:**\n🔲 **Box** — simple rectangular border all around\n🔲 **Shadow** — border with a shadow effect\n🔲 **3-D** — border with a 3D raised effect\n🔲 **Custom** — different borders on each side\n🎨 **Art** — decorative borders with shapes like stars, hearts, trees, balloons, and more!",
+          table: {
+            headers: ["Border Type", "Description", "Best Use"],
+            rows: [
+              ["Box", "Simple rectangle around page", "Formal reports, essays"],
+              ["Shadow", "Border with shadow effect", "Certificates, awards"],
+              ["3-D", "Raised 3D border effect", "Project covers, cards"],
+              ["Custom", "Different style per side", "Creative documents"],
+              ["Art", "Decorative shapes (stars, flowers)", "Birthday cards, invitations"],
+            ]
+          }
         },
         {
           heading: "How to Add Page Borders",
@@ -244,6 +280,14 @@ const wordPageFormatting: TopicTextbook = {
         {
           heading: "Summary — What You Learned",
           body: "In this chapter, you learned about **Page Formatting** in MS Word:\n\n✅ **Margins** — blank spaces around the edges (Normal, Narrow, Wide, Custom)\n✅ **Orientation** — Portrait (tall) or Landscape (wide)\n✅ **Page Color** — background color with gradients, textures, and patterns\n✅ **Watermarks** — faded text/images behind content\n✅ **Page Borders** — decorative frames including Art borders\n✅ **Columns** — newspaper-style text layouts\n\nAll these tools are found in the **Page Layout** tab. Together, they help you create beautiful, professional-looking documents!",
+          illustration: [
+            { emoji: "📏", label: "Margins" },
+            { emoji: "📄", label: "Orientation" },
+            { emoji: "🎨", label: "Page Color" },
+            { emoji: "💧", label: "Watermark" },
+            { emoji: "🖼️", label: "Page Border" },
+            { emoji: "📰", label: "Columns" },
+          ]
         }
       ],
       exercises: [
@@ -280,7 +324,17 @@ const pptAnimations: TopicTextbook = {
         },
         {
           heading: "Where to Find These Tools",
-          body: "📍 **Transitions** are in the **Transitions** tab\n📍 **Animations** are in the **Animations** tab\n📍 **Media (Audio/Video)** are in the **Insert** tab\n\nLet's explore each one in detail on the following pages!"
+          body: "📍 **Transitions** are in the **Transitions** tab\n📍 **Animations** are in the **Animations** tab\n📍 **Media (Audio/Video)** are in the **Insert** tab\n\nLet's explore each one in detail on the following pages!",
+          comparison: {
+            left: {
+              title: "Animations",
+              points: ["Applied to objects (text, images, shapes)", "Control how items appear on a slide", "Found in the Animations tab", "Types: Entrance, Exit, Emphasis, Motion Path"]
+            },
+            right: {
+              title: "Transitions",
+              points: ["Applied between slides", "Control how slides change", "Found in the Transitions tab", "Types: Subtle, Exciting, Dynamic"]
+            }
+          }
         }
       ]
     },

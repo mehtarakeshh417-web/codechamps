@@ -22,7 +22,20 @@ const c1ComputerIntro: TopicTextbook = {
           heading: "Meet the Computer!",
           body: "A **computer** is an electronic machine that can:\n\n🖥️ **Store** information (like photos, games, and homework)\n🧮 **Calculate** numbers very fast\n🎮 **Play** games and videos\n✏️ **Help** us draw and write\n\nComputers are everywhere! They are in your school, your home, your parents' phones, and even in cars!\n\n**Think of a computer like a very smart helper** — you tell it what to do, and it does it for you!",
           youtubeId: "z9-yDaTwMHk",
-          funFact: "The first computer was so big that it filled an entire room! Today, your phone is more powerful than that giant computer."
+          funFact: "The first computer was so big that it filled an entire room! Today, your phone is more powerful than that giant computer.",
+          illustration: [
+            { emoji: "🖥️", label: "Desktop" },
+            { emoji: "💻", label: "Laptop" },
+            { emoji: "📱", label: "Tablet" },
+            { emoji: "📱", label: "Phone" },
+            { emoji: "⌚", label: "Smartwatch" },
+            { emoji: "🚗", label: "Car Computer" },
+          ],
+          keyTerms: [
+            { term: "Computer", definition: "An electronic machine that processes information and follows instructions." },
+            { term: "Program", definition: "A set of instructions that tells the computer what to do." },
+            { term: "Data", definition: "Information that a computer stores and uses — like numbers, words, and pictures." },
+          ]
         }
       ]
     },
@@ -37,7 +50,25 @@ const c1ComputerIntro: TopicTextbook = {
           body: "Every computer has these important parts:\n\n🖥️ **Monitor** — The screen where you see everything. It shows pictures, words, and videos. It looks like a TV!\n\n⌨️ **Keyboard** — Has letters, numbers, and special keys. You use it to type words and give commands.\n\n🖱️ **Mouse** — A small device you move on the desk. It has buttons to click and a wheel to scroll.\n\n🖥️ **CPU (Central Processing Unit)** — The \"brain\" of the computer. It thinks and processes everything! It's usually inside a big box.\n\n🔊 **Speakers** — Make sounds, music, and voices come out of the computer.",
           image: c1ComputerParts,
           youtubeId: "1UjWdtY8yx4",
-          tip: "Remember: The CPU is the BRAIN, the Monitor is the EYES, the Keyboard is the MOUTH, and the Mouse is the HAND!"
+          tip: "Remember: The CPU is the BRAIN, the Monitor is the EYES, the Keyboard is the MOUTH, and the Mouse is the HAND!",
+          illustration: [
+            { emoji: "🖥️", label: "Monitor" },
+            { emoji: "⌨️", label: "Keyboard" },
+            { emoji: "🖱️", label: "Mouse" },
+            { emoji: "🧠", label: "CPU" },
+            { emoji: "🔊", label: "Speakers" },
+            { emoji: "🖨️", label: "Printer" },
+          ],
+          table: {
+            headers: ["Part", "What It Does", "Looks Like"],
+            rows: [
+              ["Monitor", "Shows pictures and text", "A flat screen like a TV"],
+              ["Keyboard", "Type letters and numbers", "Rectangle with many keys"],
+              ["Mouse", "Point and click on things", "Small oval with buttons"],
+              ["CPU", "Thinks and processes everything", "A big box / tower"],
+              ["Speakers", "Plays sounds and music", "Small boxes near the monitor"],
+            ]
+          }
         }
       ],
       exercises: [
@@ -55,7 +86,17 @@ const c1ComputerIntro: TopicTextbook = {
         {
           heading: "How to Hold the Mouse",
           body: "🖱️ Place your hand gently on top of the mouse.\n\n**Your fingers should be like this:**\n👆 **Index finger** (pointer finger) — rests on the **left button**\n👆 **Middle finger** — rests on the **right button**\n👍 **Thumb** — holds the side of the mouse\n\n**Mouse Actions:**\n\n🖱️ **Click** — Press the left button once, quickly. Used to select things.\n🖱️🖱️ **Double-click** — Press the left button twice, very fast. Used to open things.\n➡️ **Right-click** — Press the right button once. Shows a menu with options.\n✋ **Drag** — Hold down the left button while moving the mouse. Used to move things around.\n🔄 **Scroll** — Roll the wheel in the middle to move up and down on a page.",
-          tip: "Practice clicking slowly at first. Once you get good, try double-clicking! It takes practice to be fast enough."
+          tip: "Practice clicking slowly at first. Once you get good, try double-clicking! It takes practice to be fast enough.",
+          table: {
+            headers: ["Mouse Action", "How To Do It", "When To Use It"],
+            rows: [
+              ["Click", "Press left button once", "Select an item"],
+              ["Double-Click", "Press left button twice fast", "Open a file or folder"],
+              ["Right-Click", "Press right button once", "See a menu of options"],
+              ["Drag", "Hold left button + move mouse", "Move things around"],
+              ["Scroll", "Roll the middle wheel", "Go up/down on a page"],
+            ]
+          }
         }
       ],
       exercises: [
@@ -73,7 +114,17 @@ const c1ComputerIntro: TopicTextbook = {
         {
           heading: "Important Keys on the Keyboard",
           body: "The keyboard has many keys. Let's learn the most important ones:\n\n🔤 **Letter Keys** (A-Z) — Type letters to make words\n🔢 **Number Keys** (0-9) — Type numbers\n⬜ **Space Bar** — The longest key at the bottom. Makes a space between words.\n⏎ **Enter Key** — Goes to a new line, or says \"OK\" to the computer\n⬅️ **Backspace** — Deletes the letter BEFORE the cursor (goes backward)\n🔠 **Caps Lock** — Makes ALL letters CAPITAL when turned on\n⬆️ **Shift** — Hold it while pressing a letter to make ONE capital letter\n\n**Special Keys:**\n🔼 **Arrow Keys** — Move up, down, left, right\n⎋ **Escape (Esc)** — Cancels or closes something\n📋 **Tab** — Makes a big space (indent)",
-          youtubeId: "n7LBLjnF_qs"
+          youtubeId: "n7LBLjnF_qs",
+          illustration: [
+            { emoji: "🔤", label: "Letters A-Z" },
+            { emoji: "🔢", label: "Numbers 0-9" },
+            { emoji: "⬜", label: "Space Bar" },
+            { emoji: "⏎", label: "Enter" },
+            { emoji: "⬅️", label: "Backspace" },
+            { emoji: "⬆️", label: "Shift" },
+            { emoji: "🔠", label: "Caps Lock" },
+            { emoji: "⎋", label: "Escape" },
+          ]
         }
       ],
       exercises: [
@@ -91,6 +142,17 @@ const c1ComputerIntro: TopicTextbook = {
         {
           heading: "Turning On the Computer",
           body: "**To start the computer:**\n1. Press the **Power button** on the CPU box\n2. Press the **Power button** on the Monitor\n3. Wait for the computer to start up (this is called **booting**)\n4. The **Desktop** appears — this is your home screen!\n\n**The Desktop shows:**\n🖼️ **Icons** — Small pictures that represent programs\n📁 **Folders** — Where you keep your files organized\n📋 **Taskbar** — The bar at the bottom with the Start button\n🪟 **Start Button** — Click it to see all your programs",
+          keyTerms: [
+            { term: "Booting", definition: "The process of turning on a computer and loading the operating system." },
+            { term: "Desktop", definition: "The main screen you see after the computer starts. It shows icons and the taskbar." },
+            { term: "Taskbar", definition: "The bar at the bottom of the screen that shows the Start button and open programs." },
+          ],
+          illustration: [
+            { emoji: "🖼️", label: "Icons" },
+            { emoji: "📁", label: "Folders" },
+            { emoji: "📋", label: "Taskbar" },
+            { emoji: "🪟", label: "Start Menu" },
+          ]
         },
         {
           heading: "Shutting Down Safely",
@@ -113,6 +175,16 @@ const c1ComputerIntro: TopicTextbook = {
         {
           heading: "Summary",
           body: "Great job! You learned about:\n\n✅ What a computer is and what it can do\n✅ The main parts: Monitor, Keyboard, Mouse, CPU, Speakers\n✅ How to use the mouse — click, double-click, right-click, drag\n✅ Important keyboard keys\n✅ How to start and safely shut down a computer\n\nYou're now ready to start using the computer! 🎉",
+          comparison: {
+            left: {
+              title: "Input Devices",
+              points: ["Keyboard — for typing", "Mouse — for pointing & clicking", "Microphone — for voice input", "Camera — for taking pictures"]
+            },
+            right: {
+              title: "Output Devices",
+              points: ["Monitor — shows pictures & text", "Speakers — plays sounds", "Printer — prints on paper", "Headphones — plays sound privately"]
+            }
+          }
         }
       ],
       exercises: [
@@ -154,7 +226,17 @@ const c1PaintStart: TopicTextbook = {
         {
           heading: "The Paint Interface",
           body: "When you open Paint, you see:\n\n🎨 **Drawing Area (Canvas)** — The big white area where you draw. This is your paper!\n\n🔧 **Tool Bar / Ribbon** — At the top. Has all the drawing tools like pencil, brush, shapes, colors.\n\n🎨 **Color Palette** — Shows all the colors you can use. Click a color to select it.\n\n📏 **Size Options** — Choose how thick your lines should be.\n\n📋 **Menu Bar** — File, Home, View menus at the very top.\n\n**The most important tools:**\n✏️ Pencil — draws thin lines\n🖌️ Brush — draws thick, artistic lines\n🪣 Fill — fills a shape with color\n🔤 Text — adds words to your drawing\n📐 Shapes — draws circles, squares, lines\n🧽 Eraser — removes mistakes",
-          tip: "The Pencil tool is best for thin lines and details. The Brush tool is better for coloring large areas!"
+          tip: "The Pencil tool is best for thin lines and details. The Brush tool is better for coloring large areas!",
+          illustration: [
+            { emoji: "✏️", label: "Pencil" },
+            { emoji: "🖌️", label: "Brush" },
+            { emoji: "🪣", label: "Fill" },
+            { emoji: "🔤", label: "Text" },
+            { emoji: "📐", label: "Shapes" },
+            { emoji: "🧽", label: "Eraser" },
+            { emoji: "🎨", label: "Colors" },
+            { emoji: "📏", label: "Size" },
+          ]
         }
       ],
       exercises: [
@@ -249,6 +331,16 @@ const c1PaintShapes: TopicTextbook = {
         {
           heading: "Pencil and Brush Drawing",
           body: "**Pencil Tool:**\n• Makes thin, precise lines\n• Great for details and outlines\n• Click and hold while moving the mouse\n\n**Brush Tool:**\n• Makes thicker, more artistic strokes\n• You can choose different brush styles:\n  - Round brush\n  - Square brush\n  - Calligraphy brush\n  - Oil brush\n\n**Eraser Tool:**\n• Removes anything you've drawn\n• You can change the eraser size\n• Right-click with eraser to erase only Color 1\n\n**Tip:** Zoom in (View → Zoom In) to draw small details more easily!",
+          comparison: {
+            left: {
+              title: "Pencil Tool",
+              points: ["Thin, precise lines", "Best for outlines & details", "Single consistent width", "Good for writing text"]
+            },
+            right: {
+              title: "Brush Tool",
+              points: ["Thick, artistic strokes", "Multiple brush styles", "Adjustable size", "Good for coloring & painting"]
+            }
+          }
         }
       ],
       exercises: [
@@ -264,6 +356,12 @@ const c1PaintShapes: TopicTextbook = {
         {
           heading: "Creative Drawing Projects",
           body: "Now that you know all the tools, try these fun projects:\n\n🏠 **Project 1: My Dream House**\nDraw a house with windows, a door, a roof, trees, sun, and clouds. Use shapes for the building and freeform for decorations.\n\n🌳 **Project 2: Nature Scene**\nDraw a garden with flowers, trees, butterflies, and a bright sun. Use lots of colors!\n\n🐱 **Project 3: My Favorite Animal**\nDraw your favorite animal. Try to use circles for the head and body, and lines for legs and whiskers.\n\n🌈 **Project 4: Rainbow Art**\nDraw a beautiful rainbow over mountains with clouds. Fill each band with the correct color.",
+          illustration: [
+            { emoji: "🏠", label: "Dream House" },
+            { emoji: "🌳", label: "Nature Scene" },
+            { emoji: "🐱", label: "Animal Art" },
+            { emoji: "🌈", label: "Rainbow Art" },
+          ]
         }
       ],
       exercises: [
@@ -304,6 +402,12 @@ const c1PaintColor: TopicTextbook = {
         {
           heading: "Advanced Coloring",
           body: "**Fill Tool (Paint Bucket):**\nThe fastest way to color large areas. Just click inside a closed shape!\n\n**Airbrush Effect:**\nUse the Brush tool with a spray pattern for a softer, gradient-like effect.\n\n**Color Picker (Eyedropper):**\n1. Click the **Color Picker** tool\n2. Click on any color in your drawing\n3. That color is now selected!\n4. Great for matching colors!\n\n**Tips for Beautiful Colors:**\n• Use light colors for backgrounds\n• Use dark colors for outlines\n• Don't use too many bright colors together\n• Try different shades of the same color for depth",
+          warningNote: "The Fill tool only works inside **completely closed shapes**. If there is even a tiny gap in your shape's outline, the color will leak out and fill the whole canvas! Always zoom in to check for gaps before filling.",
+          keyTerms: [
+            { term: "Fill Tool", definition: "A tool shaped like a paint bucket that fills a closed area with the selected color." },
+            { term: "Color Picker", definition: "A tool that copies any color from your drawing so you can use it again." },
+            { term: "Airbrush", definition: "A spray paint effect that creates soft, gradient-like coloring." },
+          ]
         }
       ],
       exercises: [
@@ -376,6 +480,16 @@ const c1ScratchWork: TopicTextbook = {
         {
           heading: "Say and Think Blocks",
           body: "You can make your sprite say things!\n\n💬 **Say Block** (Purple) — Shows a speech bubble with text above the sprite\n💭 **Think Block** — Shows a thought bubble\n\n**How to add text:**\n1. Drag a **Say** block to your script\n2. Tap the block to type what the sprite should say\n3. Connect it after a Green Flag block\n4. Run your program!\n\n**Make a Conversation:**\nYou can make two sprites talk to each other by using:\n- Say blocks on Sprite 1\n- Wait blocks between them\n- Say blocks on Sprite 2",
+          comparison: {
+            left: {
+              title: "Say Block 💬",
+              points: ["Shows a speech bubble", "Character is talking out loud", "Other characters can 'hear' it", "Use for dialogue & conversations"]
+            },
+            right: {
+              title: "Think Block 💭",
+              points: ["Shows a thought bubble", "Character is thinking silently", "Private thoughts only", "Use for inner feelings & ideas"]
+            }
+          }
         }
       ],
       exercises: [
@@ -391,6 +505,14 @@ const c1ScratchWork: TopicTextbook = {
         {
           heading: "Changing Backgrounds",
           body: "**Adding a Background:**\n1. Tap the **background button** (landscape icon at top)\n2. Choose from the library (park, beach, city, space, etc.)\n3. Or draw your own background!\n\n**Adding New Characters:**\n1. Tap the **+** button (add sprite)\n2. Choose from the library (animals, people, things)\n3. Or draw your own character using the Paint Editor!\n\n**The Paint Editor lets you:**\n✏️ Draw with different colors\n🔄 Use stamps and stickers\n🧽 Erase parts\n📏 Add shapes\n🎨 Fill with color",
+          illustration: [
+            { emoji: "🏖️", label: "Beach" },
+            { emoji: "🏙️", label: "City" },
+            { emoji: "🌲", label: "Forest" },
+            { emoji: "🚀", label: "Space" },
+            { emoji: "🏔️", label: "Mountain" },
+            { emoji: "🌊", label: "Ocean" },
+          ]
         }
       ],
       exercises: [
@@ -405,6 +527,12 @@ const c1ScratchWork: TopicTextbook = {
         {
           heading: "What You Learned",
           body: "🎉 Congratulations! You learned:\n\n✅ What Scratch Jr is and why it's fun\n✅ Parts of the Scratch Jr screen\n✅ How to make sprites move with Motion blocks\n✅ How to make sprites talk with Say blocks\n✅ How to add backgrounds and new characters\n\nYou're ready to create your own animated stories and games!",
+          keyTerms: [
+            { term: "Sprite", definition: "A character or object in your Scratch Jr project that you can program." },
+            { term: "Script", definition: "A set of connected blocks that tells a sprite what to do." },
+            { term: "Stage", definition: "The area where sprites perform and your project plays." },
+            { term: "Block", definition: "A colorful puzzle piece that represents one instruction or action." },
+          ]
         }
       ],
       exercises: [
