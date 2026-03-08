@@ -367,6 +367,7 @@ const c1PaintShapes: TopicTextbook = {
       sections: [
         {
           heading: "Creative Drawing Projects",
+          image: "https://images.unsplash.com/photo-1560421683-6856ea585c78?w=800&h=400&fit=crop",
           body: "Now that you know all the tools, try these fun projects:\n\n🏠 **Project 1: My Dream House**\nDraw a house with windows, a door, a roof, trees, sun, and clouds. Use shapes for the building and freeform for decorations.\n\n🌳 **Project 2: Nature Scene**\nDraw a garden with flowers, trees, butterflies, and a bright sun. Use lots of colors!\n\n🐱 **Project 3: My Favorite Animal**\nDraw your favorite animal. Try to use circles for the head and body, and lines for legs and whiskers.\n\n🌈 **Project 4: Rainbow Art**\nDraw a beautiful rainbow over mountains with clouds. Fill each band with the correct color.",
           illustration: [
             { emoji: "🏠", label: "Dream House" },
