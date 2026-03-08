@@ -880,6 +880,7 @@ const c9DataSci: TopicTextbook = {
       sections: [
         {
           heading: "Descriptive Statistics",
+          image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=400&fit=crop",
           body: "**Descriptive statistics** summarize and describe data using numbers. They answer: What does our data look like?\n\n**Measures of central tendency** tell you where the 'middle' of your data is: **Mean** (average), **Median** (middle value when sorted), and **Mode** (most frequent value). Each has strengths — mean is affected by outliers, while median is more robust.\n\n**Measures of spread** tell you how spread out the data is: **Range** (max - min), **Variance** (average squared deviation from mean), and **Standard Deviation** (square root of variance — most commonly used because it's in the same units as the data).",
           table: {
             headers: ["Measure", "Formula", "Best For", "Example"],
