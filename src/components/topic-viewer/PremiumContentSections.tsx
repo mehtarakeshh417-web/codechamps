@@ -25,13 +25,13 @@ const getEditorForPractice = (question: string): string | null => {
   return null;
 };
 
-// Section color themes that alternate
+// VIBRANT section color themes
 const sectionThemes = [
-  { accent: "from-primary/15 to-secondary/10", border: "border-primary/15", icon: "text-primary", iconBg: "from-primary/20 to-secondary/15", bar: "from-primary via-secondary to-neon-blue" },
-  { accent: "from-neon-green/12 to-neon-blue/8", border: "border-neon-green/15", icon: "text-neon-green", iconBg: "from-neon-green/20 to-neon-blue/15", bar: "from-neon-green via-neon-blue to-primary" },
-  { accent: "from-neon-purple/12 to-neon-pink/8", border: "border-neon-purple/15", icon: "text-neon-purple", iconBg: "from-neon-purple/20 to-neon-pink/15", bar: "from-neon-purple via-neon-pink to-secondary" },
-  { accent: "from-neon-orange/12 to-neon-pink/8", border: "border-neon-orange/15", icon: "text-neon-orange", iconBg: "from-neon-orange/20 to-neon-pink/15", bar: "from-neon-orange via-neon-pink to-neon-purple" },
-  { accent: "from-neon-blue/12 to-neon-purple/8", border: "border-neon-blue/15", icon: "text-neon-blue", iconBg: "from-neon-blue/20 to-neon-purple/15", bar: "from-neon-blue via-primary to-neon-green" },
+  { accent: "from-primary/20 to-secondary/12", border: "border-primary/20", icon: "text-primary", iconBg: "from-primary/30 to-secondary/20", bar: "from-primary via-secondary to-neon-blue", bg: "from-primary/[0.06] via-[hsl(220,25%,14%)] to-[hsl(220,22%,13%)]", headingGradient: "from-primary to-secondary" },
+  { accent: "from-neon-green/15 to-neon-blue/10", border: "border-neon-green/20", icon: "text-neon-green", iconBg: "from-neon-green/30 to-neon-blue/20", bar: "from-neon-green via-neon-blue to-primary", bg: "from-neon-green/[0.05] via-[hsl(220,25%,14%)] to-[hsl(220,22%,13%)]", headingGradient: "from-neon-green to-neon-blue" },
+  { accent: "from-neon-purple/15 to-neon-pink/10", border: "border-neon-purple/20", icon: "text-neon-purple", iconBg: "from-neon-purple/30 to-neon-pink/20", bar: "from-neon-purple via-neon-pink to-secondary", bg: "from-neon-purple/[0.05] via-[hsl(220,25%,14%)] to-[hsl(220,22%,13%)]", headingGradient: "from-neon-purple to-neon-pink" },
+  { accent: "from-neon-orange/15 to-neon-pink/10", border: "border-neon-orange/20", icon: "text-neon-orange", iconBg: "from-neon-orange/30 to-neon-pink/20", bar: "from-neon-orange via-neon-pink to-neon-purple", bg: "from-neon-orange/[0.05] via-[hsl(220,25%,14%)] to-[hsl(220,22%,13%)]", headingGradient: "from-neon-orange to-neon-pink" },
+  { accent: "from-neon-blue/15 to-neon-purple/10", border: "border-neon-blue/20", icon: "text-neon-blue", iconBg: "from-neon-blue/30 to-neon-purple/20", bar: "from-neon-blue via-primary to-neon-green", bg: "from-neon-blue/[0.05] via-[hsl(220,25%,14%)] to-[hsl(220,22%,13%)]", headingGradient: "from-neon-blue to-primary" },
 ];
 
 const sectionIcons = [BookOpen, Brain, Eye, Monitor, Code2, Cpu, Zap, Sparkles];
@@ -77,12 +77,12 @@ const RichText = ({ text }: { text: string }) => {
                         {li < lines.length - 1 && <div className="absolute top-10 left-1/2 -translate-x-1/2 w-0.5 h-4 bg-gradient-to-b from-primary/20 to-transparent" />}
                       </div>
                       <div className="flex-1 pt-2">
-                        <p className="text-[15px] font-body text-foreground/80 leading-relaxed"><InlineFormat text={stepMatch[2]} /></p>
+                        <p className="text-[15px] font-body text-foreground/85 leading-relaxed"><InlineFormat text={stepMatch[2]} /></p>
                       </div>
                     </motion.div>
                   );
                 }
-                return line.trim() ? <p key={li} className="text-[15px] font-body text-foreground/75 leading-relaxed ml-14"><InlineFormat text={line} /></p> : null;
+                return line.trim() ? <p key={li} className="text-[15px] font-body text-foreground/80 leading-relaxed ml-14"><InlineFormat text={line} /></p> : null;
               })}
             </div>
           );
@@ -103,7 +103,7 @@ const RichText = ({ text }: { text: string }) => {
                       <span className="text-lg mt-0.5 shrink-0">{emojiMatch[1]}</span>
                       <div>
                         <span className="text-[15px] font-body font-bold text-foreground">{emojiMatch[2]}</span>
-                        <span className="text-[15px] font-body text-foreground/65"> — {emojiMatch[3]}</span>
+                        <span className="text-[15px] font-body text-foreground/70"> — {emojiMatch[3]}</span>
                       </div>
                     </div>
                   );
@@ -111,7 +111,7 @@ const RichText = ({ text }: { text: string }) => {
                 return (
                   <div key={li} className="flex gap-3 items-start group/item hover:translate-x-1 transition-transform duration-200">
                     <div className="w-2 h-2 rounded-full bg-gradient-to-r from-primary to-secondary mt-2 shrink-0 group-hover/item:scale-125 transition-transform" />
-                    <p className="text-[15px] font-body text-foreground/75 leading-relaxed"><InlineFormat text={line.replace(/^[•\-]\s*/, "")} /></p>
+                    <p className="text-[15px] font-body text-foreground/80 leading-relaxed"><InlineFormat text={line.replace(/^[•\-]\s*/, "")} /></p>
                   </div>
                 );
               })}
@@ -120,7 +120,7 @@ const RichText = ({ text }: { text: string }) => {
         }
 
         return (
-          <p key={pi} className="text-[15px] font-body text-foreground/75 leading-[1.9]">
+          <p key={pi} className="text-[15px] font-body text-foreground/85 leading-[1.9]">
             {lines.map((line, li) => (
               <span key={li}><InlineFormat text={line} />{li < lines.length - 1 && <br />}</span>
             ))}
@@ -132,7 +132,6 @@ const RichText = ({ text }: { text: string }) => {
 };
 
 const InlineFormat = ({ text }: { text: string }) => {
-  // Handle inline code with backticks
   const parts: React.ReactNode[] = [];
   const codeRegex = /`([^`]+)`/g;
   let lastIndex = 0;
@@ -145,7 +144,7 @@ const InlineFormat = ({ text }: { text: string }) => {
       parts.push(...formatBold(before, parts.length));
     }
     parts.push(
-      <code key={`code-${match.index}`} className="bg-primary/10 text-primary px-1.5 py-0.5 rounded-md text-[13px] font-mono border border-primary/10">
+      <code key={`code-${match.index}`} className="bg-primary/15 text-primary px-1.5 py-0.5 rounded-md text-[13px] font-mono border border-primary/15">
         {match[1]}
       </code>
     );
@@ -160,7 +159,7 @@ const InlineFormat = ({ text }: { text: string }) => {
 const formatBold = (text: string, keyOffset: number): React.ReactNode[] => {
   return text.split("**").map((part, k) =>
     k % 2 === 1 ? (
-      <strong key={`b-${keyOffset}-${k}`} className="text-foreground font-semibold bg-primary/[0.06] px-1 rounded">{part}</strong>
+      <strong key={`b-${keyOffset}-${k}`} className="text-foreground font-semibold bg-primary/[0.08] px-1 rounded">{part}</strong>
     ) : <span key={`t-${keyOffset}-${k}`}>{part}</span>
   );
 };
@@ -169,37 +168,55 @@ const formatBold = (text: string, keyOffset: number): React.ReactNode[] => {
 const SectionDivider = ({ index }: { index: number }) => {
   const theme = sectionThemes[index % sectionThemes.length];
   return (
-    <div className="flex items-center gap-4 py-2">
-      <div className={`flex-1 h-px bg-gradient-to-r ${theme.bar} opacity-20`} />
-      <div className={`w-2 h-2 rounded-full bg-gradient-to-r ${theme.bar} opacity-40`} />
-      <div className={`flex-1 h-px bg-gradient-to-l ${theme.bar} opacity-20`} />
+    <div className="flex items-center gap-4 py-3">
+      <div className={`flex-1 h-px bg-gradient-to-r ${theme.bar} opacity-30`} />
+      <div className={`w-2.5 h-2.5 rounded-full bg-gradient-to-r ${theme.bar} opacity-50 shadow-lg`} />
+      <div className={`flex-1 h-px bg-gradient-to-l ${theme.bar} opacity-30`} />
     </div>
   );
 };
+
+// ===== Illustration Grid =====
+const IllustrationGrid = ({ items }: { items: { emoji: string; label: string }[] }) => (
+  <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 my-6">
+    {items.map((item, i) => (
+      <motion.div
+        key={i}
+        initial={{ opacity: 0, scale: 0.8 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ delay: i * 0.06, type: "spring", stiffness: 300 }}
+        className="flex flex-col items-center gap-2 p-4 rounded-2xl bg-gradient-to-br from-white/[0.06] to-white/[0.02] border border-white/[0.1] hover:border-primary/30 hover:shadow-lg hover:shadow-primary/10 hover:scale-105 transition-all duration-300 group cursor-default"
+      >
+        <span className="text-3xl group-hover:scale-125 transition-transform duration-300">{item.emoji}</span>
+        <span className="text-xs font-display font-bold text-foreground/70 group-hover:text-foreground text-center tracking-wide uppercase">{item.label}</span>
+      </motion.div>
+    ))}
+  </div>
+);
 
 // ===== Code Block with Syntax Highlighting =====
 const CodeBlock = ({ language, code }: { language: string; code: string }) => {
   const [copied, setCopied] = useState(false);
   return (
-    <div className="rounded-2xl overflow-hidden border border-white/[0.08] shadow-xl shadow-black/30 my-5">
-      <div className="flex items-center justify-between bg-gradient-to-r from-white/[0.06] to-white/[0.03] border-b border-white/[0.06] px-4 py-2.5">
+    <div className="rounded-2xl overflow-hidden border border-primary/15 shadow-xl shadow-primary/10 my-5">
+      <div className="flex items-center justify-between bg-gradient-to-r from-primary/[0.1] to-secondary/[0.06] border-b border-white/[0.08] px-4 py-2.5">
         <div className="flex items-center gap-2">
           <div className="flex gap-1.5">
-            <div className="w-2.5 h-2.5 rounded-full bg-red-500/60" />
-            <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/60" />
-            <div className="w-2.5 h-2.5 rounded-full bg-green-500/60" />
+            <div className="w-2.5 h-2.5 rounded-full bg-red-500/70" />
+            <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/70" />
+            <div className="w-2.5 h-2.5 rounded-full bg-green-500/70" />
           </div>
-          <span className="text-[10px] font-mono text-foreground/30 ml-2 uppercase tracking-wider">{language}</span>
+          <span className="text-[10px] font-mono text-primary/60 ml-2 uppercase tracking-wider">{language}</span>
         </div>
         <button
           onClick={() => { navigator.clipboard.writeText(code); setCopied(true); setTimeout(() => setCopied(false), 2000); }}
-          className="text-[10px] font-body text-foreground/30 hover:text-foreground/60 transition-colors px-2 py-1 rounded-lg hover:bg-white/5"
+          className="text-[10px] font-body text-foreground/40 hover:text-primary transition-colors px-2 py-1 rounded-lg hover:bg-primary/10"
         >
           {copied ? "✓ Copied" : "Copy"}
         </button>
       </div>
       <pre className="p-5 overflow-x-auto bg-[hsl(220,30%,8%)]">
-        <code className="text-[13px] font-mono text-neon-green/80 leading-relaxed whitespace-pre">{code}</code>
+        <code className="text-[13px] font-mono text-neon-green/90 leading-relaxed whitespace-pre">{code}</code>
       </pre>
     </div>
   );
@@ -207,25 +224,25 @@ const CodeBlock = ({ language, code }: { language: string; code: string }) => {
 
 // ===== Data Table =====
 const DataTable = ({ headers, rows }: { headers: string[]; rows: string[][] }) => (
-  <div className="rounded-2xl overflow-hidden border border-white/[0.08] shadow-lg my-5">
-    <div className="flex items-center gap-2 bg-gradient-to-r from-neon-blue/10 to-neon-purple/10 border-b border-white/[0.06] px-4 py-2.5">
-      <Table2 className="w-4 h-4 text-neon-blue/60" />
-      <span className="text-[10px] font-display font-bold text-neon-blue/60 uppercase tracking-[0.15em]">Reference Table</span>
+  <div className="rounded-2xl overflow-hidden border border-neon-blue/20 shadow-lg shadow-neon-blue/5 my-5">
+    <div className="flex items-center gap-2 bg-gradient-to-r from-neon-blue/15 to-neon-purple/10 border-b border-white/[0.08] px-4 py-3">
+      <Table2 className="w-4 h-4 text-neon-blue" />
+      <span className="text-[10px] font-display font-bold text-neon-blue uppercase tracking-[0.15em]">Reference Table</span>
     </div>
     <div className="overflow-x-auto">
       <table className="w-full text-sm">
         <thead>
-          <tr className="bg-white/[0.04]">
+          <tr className="bg-gradient-to-r from-white/[0.06] to-white/[0.03]">
             {headers.map((h, i) => (
-              <th key={i} className="px-5 py-3.5 text-left font-display font-bold text-foreground/80 text-xs uppercase tracking-wider border-b border-white/[0.06]">{h}</th>
+              <th key={i} className="px-5 py-3.5 text-left font-display font-bold text-foreground/90 text-xs uppercase tracking-wider border-b border-white/[0.08]">{h}</th>
             ))}
           </tr>
         </thead>
         <tbody>
           {rows.map((row, ri) => (
-            <tr key={ri} className="border-b border-white/[0.04] hover:bg-white/[0.02] transition-colors">
+            <tr key={ri} className="border-b border-white/[0.05] hover:bg-white/[0.04] transition-colors">
               {row.map((cell, ci) => (
-                <td key={ci} className="px-5 py-3 font-body text-foreground/65 text-[13px]"><InlineFormat text={cell} /></td>
+                <td key={ci} className="px-5 py-3.5 font-body text-foreground/75 text-[13px]"><InlineFormat text={cell} /></td>
               ))}
             </tr>
           ))}
@@ -240,15 +257,15 @@ const KeyTermsCards = ({ terms }: { terms: { term: string; definition: string }[
   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 my-5">
     {terms.map((t, i) => (
       <motion.div key={i} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.05 }}
-        className="rounded-xl border border-neon-purple/15 bg-gradient-to-br from-neon-purple/[0.05] to-transparent p-4 hover:border-neon-purple/30 hover:shadow-lg hover:shadow-neon-purple/5 transition-all duration-300 group"
+        className="rounded-xl border border-neon-purple/20 bg-gradient-to-br from-neon-purple/[0.08] to-neon-pink/[0.03] p-4 hover:border-neon-purple/40 hover:shadow-xl hover:shadow-neon-purple/10 transition-all duration-300 group"
       >
         <div className="flex items-start gap-3">
-          <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-neon-purple/25 to-neon-pink/15 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
-            <BookOpen className="w-3.5 h-3.5 text-neon-purple" />
+          <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-neon-purple/30 to-neon-pink/20 flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform shadow-lg shadow-neon-purple/10">
+            <BookOpen className="w-4 h-4 text-neon-purple" />
           </div>
           <div>
             <span className="text-xs font-display font-bold text-neon-purple">{t.term}</span>
-            <p className="text-[12px] font-body text-foreground/60 mt-1 leading-relaxed">{t.definition}</p>
+            <p className="text-[12px] font-body text-foreground/70 mt-1 leading-relaxed">{t.definition}</p>
           </div>
         </div>
       </motion.div>
@@ -260,15 +277,15 @@ const KeyTermsCards = ({ terms }: { terms: { term: string; definition: string }[
 const WarningNote = ({ note }: { note: string }) => (
   <div className="relative rounded-2xl overflow-hidden my-5">
     <div className="absolute left-0 top-0 bottom-0 w-1.5 bg-gradient-to-b from-yellow-500 via-orange-500 to-yellow-500" />
-    <div className="absolute inset-0 bg-gradient-to-br from-yellow-500/[0.06] via-transparent to-orange-500/[0.03]" />
-    <div className="relative bg-white/[0.02] backdrop-blur-sm border border-yellow-500/15 rounded-2xl p-5 pl-6">
+    <div className="absolute inset-0 bg-gradient-to-br from-yellow-500/[0.08] via-transparent to-orange-500/[0.04]" />
+    <div className="relative bg-white/[0.03] backdrop-blur-sm border border-yellow-500/20 rounded-2xl p-5 pl-6">
       <div className="flex items-start gap-3">
-        <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-yellow-500/25 to-orange-500/15 flex items-center justify-center shrink-0 shadow-lg shadow-yellow-500/10">
+        <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-yellow-500/30 to-orange-500/20 flex items-center justify-center shrink-0 shadow-lg shadow-yellow-500/15">
           <AlertTriangle className="w-5 h-5 text-yellow-500" />
         </div>
         <div>
           <span className="text-[10px] font-display font-bold text-yellow-500 uppercase tracking-[0.2em]">Important</span>
-          <p className="text-sm font-body text-foreground/75 leading-relaxed mt-1"><InlineFormat text={note} /></p>
+          <p className="text-sm font-body text-foreground/80 leading-relaxed mt-1"><InlineFormat text={note} /></p>
         </div>
       </div>
     </div>
@@ -279,17 +296,17 @@ const WarningNote = ({ note }: { note: string }) => (
 const ComparisonCard = ({ left, right }: { left: { title: string; points: string[] }; right: { title: string; points: string[] } }) => (
   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 my-5">
     {[left, right].map((side, si) => (
-      <div key={si} className={`rounded-xl border p-5 ${si === 0 ? "border-neon-green/15 bg-gradient-to-br from-neon-green/[0.04] to-transparent" : "border-neon-orange/15 bg-gradient-to-br from-neon-orange/[0.04] to-transparent"}`}>
+      <div key={si} className={`rounded-xl border p-5 transition-all hover:shadow-lg duration-300 ${si === 0 ? "border-neon-green/20 bg-gradient-to-br from-neon-green/[0.07] to-neon-green/[0.02] hover:shadow-neon-green/10" : "border-neon-orange/20 bg-gradient-to-br from-neon-orange/[0.07] to-neon-orange/[0.02] hover:shadow-neon-orange/10"}`}>
         <div className="flex items-center gap-2 mb-3">
-          <div className={`w-7 h-7 rounded-lg flex items-center justify-center ${si === 0 ? "bg-neon-green/15" : "bg-neon-orange/15"}`}>
+          <div className={`w-8 h-8 rounded-lg flex items-center justify-center shadow-lg ${si === 0 ? "bg-neon-green/20 shadow-neon-green/10" : "bg-neon-orange/20 shadow-neon-orange/10"}`}>
             <span className="text-sm">{si === 0 ? "🟢" : "🟠"}</span>
           </div>
           <span className={`text-xs font-display font-bold uppercase tracking-wider ${si === 0 ? "text-neon-green" : "text-neon-orange"}`}>{side.title}</span>
         </div>
         <ul className="space-y-2">
           {side.points.map((p, pi) => (
-            <li key={pi} className="flex items-start gap-2 text-[13px] font-body text-foreground/65">
-              <div className={`w-1.5 h-1.5 rounded-full mt-1.5 shrink-0 ${si === 0 ? "bg-neon-green/50" : "bg-neon-orange/50"}`} />
+            <li key={pi} className="flex items-start gap-2 text-[13px] font-body text-foreground/75">
+              <div className={`w-1.5 h-1.5 rounded-full mt-1.5 shrink-0 ${si === 0 ? "bg-neon-green/60" : "bg-neon-orange/60"}`} />
               <InlineFormat text={p} />
             </li>
           ))}
@@ -307,16 +324,16 @@ const StepByStepGuide = ({ steps }: { steps: { title: string; description: strin
         className="flex gap-4 items-start group"
       >
         <div className="relative flex flex-col items-center">
-          <div className="w-11 h-11 rounded-2xl bg-gradient-to-br from-primary/25 to-neon-blue/20 border border-primary/15 flex items-center justify-center shrink-0 group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-primary/15 transition-all duration-300 z-10">
+          <div className="w-11 h-11 rounded-2xl bg-gradient-to-br from-primary/30 to-neon-blue/25 border border-primary/20 flex items-center justify-center shrink-0 group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-primary/20 transition-all duration-300 z-10">
             <span className="text-sm font-display font-bold text-primary">{i + 1}</span>
           </div>
-          {i < steps.length - 1 && <div className="w-0.5 flex-1 bg-gradient-to-b from-primary/20 to-transparent min-h-[20px]" />}
+          {i < steps.length - 1 && <div className="w-0.5 flex-1 bg-gradient-to-b from-primary/25 to-transparent min-h-[20px]" />}
         </div>
         <div className="flex-1 pb-4">
           <h4 className="text-sm font-display font-bold text-foreground mb-1">{step.title}</h4>
-          <p className="text-[13px] font-body text-foreground/65 leading-relaxed"><InlineFormat text={step.description} /></p>
+          <p className="text-[13px] font-body text-foreground/70 leading-relaxed"><InlineFormat text={step.description} /></p>
           {step.image && (
-            <div className="mt-3 rounded-xl overflow-hidden border border-white/[0.08] max-w-md">
+            <div className="mt-3 rounded-xl overflow-hidden border border-white/[0.1] max-w-md shadow-lg">
               <img src={step.image} alt={step.title} className="w-full object-cover" loading="lazy" />
             </div>
           )}
@@ -334,17 +351,17 @@ const MCQExercise = ({ exercise, index }: { exercise: Exercise; index: number })
 
   return (
     <RevealOnScroll delay={index * 0.05}>
-      <div className="relative rounded-2xl overflow-hidden group hover:shadow-lg transition-all duration-500">
+      <div className="relative rounded-2xl overflow-hidden group hover:shadow-lg hover:shadow-neon-purple/5 transition-all duration-500">
         <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-neon-purple via-primary to-neon-purple" />
-        <div className="border border-white/[0.08] hover:border-white/[0.16] rounded-2xl transition-colors duration-300 bg-gradient-to-br from-white/[0.02] to-transparent">
+        <div className="border border-neon-purple/15 hover:border-neon-purple/30 rounded-2xl transition-colors duration-300 bg-gradient-to-br from-neon-purple/[0.04] to-transparent">
           <div className="p-6">
             <div className="flex items-start gap-4 mb-4">
-              <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-primary/25 to-neon-purple/20 shadow-lg shadow-primary/10 flex items-center justify-center shrink-0 group-hover:scale-110 transition-all">
+              <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-primary/30 to-neon-purple/25 shadow-lg shadow-primary/15 flex items-center justify-center shrink-0 group-hover:scale-110 transition-all">
                 <span className="text-xl">🧠</span>
               </div>
               <div className="flex-1">
                 <div className="text-[10px] font-display font-bold text-primary uppercase tracking-[0.2em] mb-2">Multiple Choice</div>
-                <p className="text-sm text-foreground/85 font-body leading-relaxed">{exercise.question}</p>
+                <p className="text-sm text-foreground/90 font-body leading-relaxed">{exercise.question}</p>
               </div>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 ml-16 mb-4">
@@ -361,17 +378,17 @@ const MCQExercise = ({ exercise, index }: { exercise: Exercise; index: number })
                         : "bg-primary/15 text-primary border-primary/40 shadow-lg shadow-primary/10"
                       : checked && choice === exercise.answer
                         ? "bg-neon-green/10 text-neon-green border-neon-green/30"
-                        : "bg-white/[0.03] text-foreground/60 border-white/[0.08] hover:border-white/15 hover:bg-white/[0.06]"
+                        : "bg-white/[0.04] text-foreground/70 border-white/[0.1] hover:border-primary/25 hover:bg-primary/[0.06]"
                   }`}
                 >
-                  <span className="font-bold mr-2 text-foreground/30">{String.fromCharCode(65 + ci)}.</span>
+                  <span className="font-bold mr-2 text-foreground/40">{String.fromCharCode(65 + ci)}.</span>
                   {choice}
                 </button>
               ))}
             </div>
             <div className="flex items-center gap-3 ml-16">
               <Button size="sm" onClick={() => setChecked(true)} disabled={!selected || checked}
-                className="bg-gradient-to-r from-primary/15 to-secondary/15 hover:from-primary/25 hover:to-secondary/25 text-foreground/70 hover:text-foreground text-xs rounded-xl px-6 h-10 font-body font-bold disabled:opacity-20 transition-all border border-primary/15"
+                className="bg-gradient-to-r from-primary/20 to-secondary/20 hover:from-primary/30 hover:to-secondary/30 text-foreground/80 hover:text-foreground text-xs rounded-xl px-6 h-10 font-body font-bold disabled:opacity-20 transition-all border border-primary/20"
               >Check Answer</Button>
               {checked && (
                 <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ type: "spring", stiffness: 500, damping: 20 }}
@@ -400,32 +417,32 @@ const MatchExercise = ({ exercise, index }: { exercise: Exercise; index: number 
 
   return (
     <RevealOnScroll delay={index * 0.05}>
-      <div className="relative rounded-2xl overflow-hidden group hover:shadow-lg transition-all duration-500">
+      <div className="relative rounded-2xl overflow-hidden group hover:shadow-lg hover:shadow-neon-green/5 transition-all duration-500">
         <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-neon-green via-neon-blue to-neon-green" />
-        <div className="border border-white/[0.08] hover:border-white/[0.16] rounded-2xl transition-colors duration-300 bg-gradient-to-br from-white/[0.02] to-transparent">
+        <div className="border border-neon-green/15 hover:border-neon-green/30 rounded-2xl transition-colors duration-300 bg-gradient-to-br from-neon-green/[0.04] to-transparent">
           <div className="p-6">
             <div className="flex items-center gap-3 mb-4">
-              <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-neon-green/25 to-neon-blue/20 shadow-lg shadow-neon-green/10 flex items-center justify-center shrink-0">
+              <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-neon-green/30 to-neon-blue/25 shadow-lg shadow-neon-green/15 flex items-center justify-center shrink-0">
                 <List className="w-5 h-5 text-neon-green" />
               </div>
               <div>
                 <div className="text-[10px] font-display font-bold text-neon-green uppercase tracking-[0.2em]">Match the Columns</div>
-                <p className="text-sm text-foreground/70 font-body">{exercise.question}</p>
+                <p className="text-sm text-foreground/75 font-body">{exercise.question}</p>
               </div>
             </div>
             <div className="space-y-3 ml-16">
               {pairs.map((pair, pi) => (
                 <div key={pi} className="flex items-center gap-3">
-                  <span className="text-sm font-body font-bold text-foreground/80 w-32 shrink-0">{pair[0]}</span>
+                  <span className="text-sm font-body font-bold text-foreground/85 w-32 shrink-0">{pair[0]}</span>
                   <span className="text-foreground/30">→</span>
                   <select
                     value={selected[pi] || ""}
                     onChange={e => setSelected(prev => ({ ...prev, [pi]: e.target.value }))}
                     disabled={checked}
-                    className={`bg-white/[0.04] border-2 rounded-xl px-3 py-2 text-sm font-body flex-1 focus:outline-none transition-all ${
+                    className={`bg-white/[0.05] border-2 rounded-xl px-3 py-2 text-sm font-body flex-1 focus:outline-none transition-all ${
                       checked
                         ? selected[pi] === pair[1] ? "border-neon-green/40 text-neon-green" : "border-red-400/40 text-red-400"
-                        : "border-white/10 text-foreground/70 focus:border-primary/50"
+                        : "border-white/12 text-foreground/75 focus:border-primary/50"
                     }`}
                   >
                     <option value="">Select...</option>
@@ -436,7 +453,7 @@ const MatchExercise = ({ exercise, index }: { exercise: Exercise; index: number 
             </div>
             <div className="flex items-center gap-3 ml-16 mt-4">
               <Button size="sm" onClick={() => setChecked(true)} disabled={Object.keys(selected).length < pairs.length || checked}
-                className="bg-gradient-to-r from-primary/15 to-secondary/15 hover:from-primary/25 hover:to-secondary/25 text-foreground/70 text-xs rounded-xl px-6 h-10 font-body font-bold disabled:opacity-20 border border-primary/15"
+                className="bg-gradient-to-r from-primary/20 to-secondary/20 hover:from-primary/30 hover:to-secondary/30 text-foreground/80 text-xs rounded-xl px-6 h-10 font-body font-bold disabled:opacity-20 border border-primary/20"
               >Check Matches</Button>
               {checked && (
                 <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }} className={`text-xs font-bold px-4 py-2 rounded-xl ${allCorrect ? "text-neon-green bg-neon-green/10 border border-neon-green/25" : "text-red-400 bg-red-400/10 border border-red-400/25"}`}>
@@ -469,32 +486,32 @@ const OrderingExercise = ({ exercise, index }: { exercise: Exercise; index: numb
 
   return (
     <RevealOnScroll delay={index * 0.05}>
-      <div className="relative rounded-2xl overflow-hidden group hover:shadow-lg transition-all duration-500">
+      <div className="relative rounded-2xl overflow-hidden group hover:shadow-lg hover:shadow-neon-orange/5 transition-all duration-500">
         <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-neon-orange via-neon-pink to-neon-orange" />
-        <div className="border border-white/[0.08] hover:border-white/[0.16] rounded-2xl transition-colors duration-300 bg-gradient-to-br from-white/[0.02] to-transparent">
+        <div className="border border-neon-orange/15 hover:border-neon-orange/30 rounded-2xl transition-colors duration-300 bg-gradient-to-br from-neon-orange/[0.04] to-transparent">
           <div className="p-6">
             <div className="flex items-center gap-3 mb-4">
-              <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-neon-orange/25 to-neon-pink/20 shadow-lg shadow-neon-orange/10 flex items-center justify-center shrink-0">
+              <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-neon-orange/30 to-neon-pink/25 shadow-lg shadow-neon-orange/15 flex items-center justify-center shrink-0">
                 <GripVertical className="w-5 h-5 text-neon-orange" />
               </div>
               <div>
                 <div className="text-[10px] font-display font-bold text-neon-orange uppercase tracking-[0.2em]">Arrange in Order</div>
-                <p className="text-sm text-foreground/70 font-body">{exercise.question}</p>
+                <p className="text-sm text-foreground/75 font-body">{exercise.question}</p>
               </div>
             </div>
             <div className="space-y-2 ml-16">
               {items.map((item, ii) => (
                 <div key={ii} className={`flex items-center gap-3 px-4 py-3 rounded-xl border-2 transition-all ${
                   checked
-                    ? item === correctOrder[ii] ? "border-neon-green/30 bg-neon-green/[0.05]" : "border-red-400/30 bg-red-400/[0.05]"
-                    : "border-white/[0.08] bg-white/[0.02] hover:border-white/15"
+                    ? item === correctOrder[ii] ? "border-neon-green/30 bg-neon-green/[0.06]" : "border-red-400/30 bg-red-400/[0.06]"
+                    : "border-white/[0.1] bg-white/[0.03] hover:border-white/20"
                 }`}>
-                  <span className="text-xs font-bold text-foreground/30 w-5">{ii + 1}.</span>
-                  <span className="text-sm font-body text-foreground/75 flex-1">{item}</span>
+                  <span className="text-xs font-bold text-foreground/40 w-5">{ii + 1}.</span>
+                  <span className="text-sm font-body text-foreground/80 flex-1">{item}</span>
                   {!checked && (
                     <div className="flex flex-col gap-0.5">
-                      <button onClick={() => moveItem(ii, "up")} disabled={ii === 0} className="text-foreground/20 hover:text-foreground/60 disabled:opacity-20"><ArrowUp className="w-3.5 h-3.5" /></button>
-                      <button onClick={() => moveItem(ii, "down")} disabled={ii === items.length - 1} className="text-foreground/20 hover:text-foreground/60 disabled:opacity-20"><ArrowDown className="w-3.5 h-3.5" /></button>
+                      <button onClick={() => moveItem(ii, "up")} disabled={ii === 0} className="text-foreground/25 hover:text-foreground/60 disabled:opacity-20"><ArrowUp className="w-3.5 h-3.5" /></button>
+                      <button onClick={() => moveItem(ii, "down")} disabled={ii === items.length - 1} className="text-foreground/25 hover:text-foreground/60 disabled:opacity-20"><ArrowDown className="w-3.5 h-3.5" /></button>
                     </div>
                   )}
                 </div>
@@ -502,7 +519,7 @@ const OrderingExercise = ({ exercise, index }: { exercise: Exercise; index: numb
             </div>
             <div className="flex items-center gap-3 ml-16 mt-4">
               <Button size="sm" onClick={() => setChecked(true)} disabled={checked}
-                className="bg-gradient-to-r from-primary/15 to-secondary/15 hover:from-primary/25 hover:to-secondary/25 text-foreground/70 text-xs rounded-xl px-6 h-10 font-body font-bold disabled:opacity-20 border border-primary/15"
+                className="bg-gradient-to-r from-primary/20 to-secondary/20 hover:from-primary/30 hover:to-secondary/30 text-foreground/80 text-xs rounded-xl px-6 h-10 font-body font-bold disabled:opacity-20 border border-primary/20"
               >Check Order</Button>
               {checked && (
                 <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }} className={`text-xs font-bold px-4 py-2 rounded-xl ${isCorrect ? "text-neon-green bg-neon-green/10 border border-neon-green/25" : "text-red-400 bg-red-400/10 border border-red-400/25"}`}>
@@ -534,13 +551,13 @@ export const PremiumExercise = ({ exercise, index }: { exercise: Exercise; index
 
     return (
       <RevealOnScroll delay={index * 0.05}>
-        <div className="relative rounded-2xl overflow-hidden group hover:shadow-xl hover:shadow-neon-orange/5 transition-all duration-500">
+        <div className="relative rounded-2xl overflow-hidden group hover:shadow-xl hover:shadow-neon-orange/10 transition-all duration-500">
           <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-neon-orange via-neon-pink to-neon-purple" />
-          <div className="absolute inset-0 bg-gradient-to-br from-neon-orange/[0.04] via-transparent to-neon-pink/[0.03]" />
-          <div className="relative border border-neon-orange/20 hover:border-neon-orange/35 rounded-2xl transition-colors duration-300">
+          <div className="absolute inset-0 bg-gradient-to-br from-neon-orange/[0.06] via-transparent to-neon-pink/[0.04]" />
+          <div className="relative border border-neon-orange/25 hover:border-neon-orange/40 rounded-2xl transition-colors duration-300">
             <div className="p-7">
               <div className="flex items-start gap-5">
-                <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-neon-orange/30 to-neon-pink/25 flex items-center justify-center shrink-0 shadow-xl shadow-neon-orange/15 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500">
+                <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-neon-orange/35 to-neon-pink/30 flex items-center justify-center shrink-0 shadow-xl shadow-neon-orange/20 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500">
                   <Rocket className="w-6 h-6 text-neon-orange" />
                 </div>
                 <div className="flex-1">
@@ -548,11 +565,11 @@ export const PremiumExercise = ({ exercise, index }: { exercise: Exercise; index
                     <span className="text-xs font-display font-bold text-neon-orange uppercase tracking-[0.15em]">Practice Activity</span>
                     <span className="text-lg">🚀</span>
                   </div>
-                  <p className="text-sm text-foreground/80 font-body leading-relaxed mb-5">{exercise.question}</p>
+                  <p className="text-sm text-foreground/85 font-body leading-relaxed mb-5">{exercise.question}</p>
                   {editorInfo && (
                     <div className="flex gap-3 flex-wrap">
                       <Button size="sm" onClick={() => { window.location.href = `/dashboard/coding-lab?editor=${editorKey}`; }}
-                        className="bg-gradient-to-r from-neon-orange to-neon-pink text-white hover:opacity-90 gap-2 text-xs rounded-xl font-body font-bold shadow-lg shadow-neon-orange/20 hover:shadow-neon-orange/30 hover:scale-105 transition-all duration-300 h-10 px-5"
+                        className="bg-gradient-to-r from-neon-orange to-neon-pink text-white hover:opacity-90 gap-2 text-xs rounded-xl font-body font-bold shadow-lg shadow-neon-orange/25 hover:shadow-neon-orange/35 hover:scale-105 transition-all duration-300 h-10 px-5"
                       ><Play className="w-3.5 h-3.5" /> Open {editorInfo.label}</Button>
                       <Button size="sm" onClick={() => { window.open(`/dashboard/coding-lab?editor=${editorKey}&fullscreen=1`, "_blank"); }}
                         variant="ghost" className="text-foreground/40 hover:text-neon-orange text-xs gap-2 rounded-xl h-10"
@@ -576,13 +593,17 @@ export const PremiumExercise = ({ exercise, index }: { exercise: Exercise; index
             ? "bg-gradient-to-r from-neon-purple via-neon-blue to-neon-purple"
             : "bg-gradient-to-r from-neon-blue via-neon-green to-neon-blue"
         }`} />
-        <div className="border border-white/[0.08] hover:border-white/[0.16] rounded-2xl transition-colors duration-300 bg-gradient-to-br from-white/[0.02] to-transparent">
+        <div className={`border rounded-2xl transition-colors duration-300 ${
+          exercise.type === "true-false"
+            ? "border-neon-purple/15 hover:border-neon-purple/30 bg-gradient-to-br from-neon-purple/[0.04] to-transparent"
+            : "border-neon-blue/15 hover:border-neon-blue/30 bg-gradient-to-br from-neon-blue/[0.04] to-transparent"
+        }`}>
           <div className="p-6">
             <div className="flex items-start gap-4 mb-5">
               <div className={`w-12 h-12 rounded-2xl flex items-center justify-center shrink-0 shadow-lg group-hover:scale-110 transition-all duration-300 ${
                 exercise.type === "true-false"
-                  ? "bg-gradient-to-br from-neon-purple/25 to-neon-blue/20 shadow-neon-purple/10"
-                  : "bg-gradient-to-br from-neon-blue/25 to-neon-green/20 shadow-neon-blue/10"
+                  ? "bg-gradient-to-br from-neon-purple/30 to-neon-blue/25 shadow-neon-purple/15"
+                  : "bg-gradient-to-br from-neon-blue/30 to-neon-green/25 shadow-neon-blue/15"
               }`}>
                 <span className="text-xl">{exercise.type === "true-false" ? "⚡" : "✏️"}</span>
               </div>
@@ -592,7 +613,7 @@ export const PremiumExercise = ({ exercise, index }: { exercise: Exercise; index
                 }`}>
                   {exercise.type === "true-false" ? "True or False" : "Fill in the Blank"}
                 </div>
-                <p className="text-sm text-foreground/85 font-body leading-relaxed">{exercise.question}</p>
+                <p className="text-sm text-foreground/90 font-body leading-relaxed">{exercise.question}</p>
               </div>
             </div>
             <div className="flex items-center gap-3 ml-16 flex-wrap">
@@ -604,7 +625,7 @@ export const PremiumExercise = ({ exercise, index }: { exercise: Exercise; index
                         userAnswer === opt
                           ? checked ? isCorrect ? "bg-neon-green/20 text-neon-green border-2 border-neon-green/40 scale-105 shadow-xl shadow-neon-green/15" : "bg-destructive/20 text-red-400 border-2 border-red-400/40 scale-105"
                             : "bg-primary/20 text-primary border-2 border-primary/40 scale-105 shadow-xl shadow-primary/15"
-                          : "bg-white/[0.04] text-foreground/50 hover:bg-white/[0.08] border-2 border-white/[0.08] hover:border-white/15 hover:scale-105"
+                          : "bg-white/[0.05] text-foreground/60 hover:bg-white/[0.1] border-2 border-white/[0.1] hover:border-white/20 hover:scale-105"
                       }`}
                     >{opt}</button>
                   ))}
@@ -612,11 +633,11 @@ export const PremiumExercise = ({ exercise, index }: { exercise: Exercise; index
               ) : (
                 <input value={userAnswer} onChange={(e) => { setUserAnswer(e.target.value); setChecked(false); }}
                   placeholder="Type your answer..."
-                  className="bg-white/[0.04] border-2 border-white/10 rounded-xl px-5 py-3 text-sm text-foreground font-body focus:outline-none focus:border-primary/50 focus:bg-primary/[0.03] focus:shadow-lg focus:shadow-primary/10 w-64 transition-all placeholder:text-foreground/20"
+                  className="bg-white/[0.05] border-2 border-white/12 rounded-xl px-5 py-3 text-sm text-foreground font-body focus:outline-none focus:border-primary/50 focus:bg-primary/[0.05] focus:shadow-lg focus:shadow-primary/15 w-64 transition-all placeholder:text-foreground/25"
                 />
               )}
               <Button size="sm" onClick={() => setChecked(true)} disabled={!userAnswer}
-                className="bg-gradient-to-r from-primary/15 to-secondary/15 hover:from-primary/25 hover:to-secondary/25 text-foreground/70 hover:text-foreground text-xs rounded-xl px-6 h-11 font-body font-bold disabled:opacity-20 transition-all border border-primary/15 hover:border-primary/25"
+                className="bg-gradient-to-r from-primary/20 to-secondary/20 hover:from-primary/30 hover:to-secondary/30 text-foreground/80 hover:text-foreground text-xs rounded-xl px-6 h-11 font-body font-bold disabled:opacity-20 transition-all border border-primary/20 hover:border-primary/30"
               >Check Answer</Button>
               {checked && (
                 <motion.div initial={{ scale: 0, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} transition={{ type: "spring", stiffness: 500, damping: 20 }}
@@ -645,21 +666,24 @@ export const PremiumSection = ({ section, index }: { section: ContentSection; in
     <RevealOnScroll delay={index * 0.08}>
       {index > 0 && <SectionDivider index={index} />}
 
-      <div className="relative rounded-3xl overflow-hidden group hover:shadow-2xl hover:shadow-primary/[0.05] transition-all duration-700">
-        <div className={`absolute left-0 top-0 bottom-0 w-1.5 bg-gradient-to-b ${theme.bar} opacity-30 group-hover:opacity-70 transition-opacity duration-700`} />
-        <div className="absolute top-0 right-0 w-72 h-72 rounded-full opacity-[0.02] bg-gradient-to-br from-primary to-secondary blur-3xl pointer-events-none" />
-        <div className="absolute bottom-0 left-20 w-48 h-48 rounded-full opacity-[0.015] bg-gradient-to-br from-neon-green to-neon-blue blur-3xl pointer-events-none" />
+      <div className="relative rounded-3xl overflow-hidden group hover:shadow-2xl hover:shadow-primary/[0.08] transition-all duration-700">
+        {/* Vibrant left accent bar */}
+        <div className={`absolute left-0 top-0 bottom-0 w-1.5 bg-gradient-to-b ${theme.bar} opacity-50 group-hover:opacity-90 transition-opacity duration-700`} />
+        {/* Ambient glow blobs */}
+        <div className="absolute top-0 right-0 w-72 h-72 rounded-full opacity-[0.04] bg-gradient-to-br from-primary to-secondary blur-3xl pointer-events-none" />
+        <div className="absolute bottom-0 left-20 w-48 h-48 rounded-full opacity-[0.03] bg-gradient-to-br from-neon-green to-neon-blue blur-3xl pointer-events-none" />
 
-        <div className={`border ${theme.border} rounded-3xl bg-gradient-to-br from-[hsl(220,30%,11%)] via-[hsl(220,28%,10%)] to-[hsl(220,25%,9%)] transition-colors duration-500 hover:border-opacity-100`}>
-          {/* Section Header */}
+        {/* BRIGHTER card background with colored tint */}
+        <div className={`border ${theme.border} rounded-3xl bg-gradient-to-br ${theme.bg} transition-colors duration-500 hover:border-opacity-100`}>
+          {/* Section Header with gradient heading */}
           <div className="px-8 pt-8 pb-2">
             <div className="flex items-center gap-4 mb-6">
-              <div className={`w-12 h-12 rounded-2xl bg-gradient-to-br ${theme.iconBg} border border-white/[0.06] flex items-center justify-center shrink-0 group-hover:scale-110 group-hover:rotate-3 group-hover:shadow-xl transition-all duration-500`}>
+              <div className={`w-12 h-12 rounded-2xl bg-gradient-to-br ${theme.iconBg} border border-white/[0.08] flex items-center justify-center shrink-0 group-hover:scale-110 group-hover:rotate-3 group-hover:shadow-xl transition-all duration-500`}>
                 <IconComponent className={`w-5 h-5 ${theme.icon}`} />
               </div>
               <div className="flex-1">
-                <h3 className="font-display text-lg md:text-xl font-bold text-foreground tracking-tight leading-tight">{section.heading}</h3>
-                <div className={`w-16 h-1 rounded-full bg-gradient-to-r ${theme.bar} mt-2 opacity-50 group-hover:w-24 transition-all duration-500`} />
+                <h3 className={`font-display text-lg md:text-xl font-bold bg-gradient-to-r ${theme.headingGradient} bg-clip-text text-transparent tracking-tight leading-tight`}>{section.heading}</h3>
+                <div className={`w-20 h-1 rounded-full bg-gradient-to-r ${theme.bar} mt-2 opacity-60 group-hover:w-28 transition-all duration-500`} />
               </div>
             </div>
           </div>
@@ -667,12 +691,12 @@ export const PremiumSection = ({ section, index }: { section: ContentSection; in
           {/* Image */}
           {section.image && (
             <div className="mx-8 mb-7">
-              <div className="relative rounded-2xl overflow-hidden border border-white/[0.08] shadow-2xl shadow-black/40 group/img">
-                <div className="absolute top-0 left-0 right-0 h-8 bg-gradient-to-r from-white/[0.04] to-white/[0.02] border-b border-white/[0.06] flex items-center gap-1.5 px-3 z-10">
-                  <div className="w-2.5 h-2.5 rounded-full bg-red-500/60" />
-                  <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/60" />
-                  <div className="w-2.5 h-2.5 rounded-full bg-green-500/60" />
-                  <span className="text-[9px] font-body text-foreground/20 ml-2">{section.heading}</span>
+              <div className="relative rounded-2xl overflow-hidden border border-white/[0.1] shadow-2xl shadow-black/40 group/img">
+                <div className="absolute top-0 left-0 right-0 h-8 bg-gradient-to-r from-white/[0.06] to-white/[0.03] border-b border-white/[0.08] flex items-center gap-1.5 px-3 z-10">
+                  <div className="w-2.5 h-2.5 rounded-full bg-red-500/70" />
+                  <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/70" />
+                  <div className="w-2.5 h-2.5 rounded-full bg-green-500/70" />
+                  <span className="text-[9px] font-body text-foreground/25 ml-2">{section.heading}</span>
                 </div>
                 <img src={section.image} alt={section.heading} className="w-full max-h-80 object-cover pt-8 group-hover/img:scale-[1.03] transition-transform duration-1000" loading="lazy" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 group-hover/img:opacity-100 transition-opacity duration-700" />
@@ -683,12 +707,12 @@ export const PremiumSection = ({ section, index }: { section: ContentSection; in
           {/* YouTube Video */}
           {section.youtubeId && (
             <div className="mx-8 mb-7">
-              <div className="relative rounded-2xl overflow-hidden border border-white/[0.08] shadow-2xl shadow-black/40">
-                <div className="absolute top-0 left-0 right-0 h-8 bg-gradient-to-r from-white/[0.04] to-white/[0.02] border-b border-white/[0.06] flex items-center gap-1.5 px-3 z-10">
-                  <div className="w-2.5 h-2.5 rounded-full bg-red-500/60" />
-                  <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/60" />
-                  <div className="w-2.5 h-2.5 rounded-full bg-green-500/60" />
-                  <span className="text-[9px] font-body text-foreground/20 ml-2">📺 Video Lesson</span>
+              <div className="relative rounded-2xl overflow-hidden border border-white/[0.1] shadow-2xl shadow-black/40">
+                <div className="absolute top-0 left-0 right-0 h-8 bg-gradient-to-r from-white/[0.06] to-white/[0.03] border-b border-white/[0.08] flex items-center gap-1.5 px-3 z-10">
+                  <div className="w-2.5 h-2.5 rounded-full bg-red-500/70" />
+                  <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/70" />
+                  <div className="w-2.5 h-2.5 rounded-full bg-green-500/70" />
+                  <span className="text-[9px] font-body text-foreground/25 ml-2">📺 Video Lesson</span>
                 </div>
                 {!youtubeLoaded ? (
                   <button onClick={() => setYoutubeLoaded(true)} className="relative w-full group/yt cursor-pointer" style={{ paddingBottom: '56.25%', marginTop: '32px' }}>
@@ -719,57 +743,64 @@ export const PremiumSection = ({ section, index }: { section: ContentSection; in
             <RichText text={section.body} />
           </div>
 
-          {/* NEW: Code Block */}
+          {/* Illustration Grid */}
+          {section.illustration && (
+            <div className="mx-8">
+              <IllustrationGrid items={section.illustration} />
+            </div>
+          )}
+
+          {/* Code Block */}
           {section.codeBlock && (
             <div className="mx-8">
               <CodeBlock language={section.codeBlock.language} code={section.codeBlock.code} />
             </div>
           )}
 
-          {/* NEW: Data Table */}
+          {/* Data Table */}
           {section.table && (
             <div className="mx-8">
               <DataTable headers={section.table.headers} rows={section.table.rows} />
             </div>
           )}
 
-          {/* NEW: Comparison */}
+          {/* Comparison */}
           {section.comparison && (
             <div className="mx-8">
               <ComparisonCard left={section.comparison.left} right={section.comparison.right} />
             </div>
           )}
 
-          {/* NEW: Step-by-Step Guide */}
+          {/* Step-by-Step Guide */}
           {section.stepByStep && (
             <div className="mx-8">
               <StepByStepGuide steps={section.stepByStep.steps} />
             </div>
           )}
 
-          {/* NEW: Key Terms */}
+          {/* Key Terms */}
           {section.keyTerms && (
             <div className="mx-8">
               <KeyTermsCards terms={section.keyTerms} />
             </div>
           )}
 
-          {/* NEW: Warning Note */}
+          {/* Warning Note */}
           {section.warningNote && (
             <div className="mx-8">
               <WarningNote note={section.warningNote} />
             </div>
           )}
 
-          {/* Tip Box */}
+          {/* Tip Box — VIBRANT */}
           {section.tip && (
             <div className="mx-8 my-6">
               <motion.div initial={{ opacity: 0, x: -15 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.3 }} className="relative rounded-2xl overflow-hidden">
                 <div className="absolute left-0 top-0 bottom-0 w-1.5 bg-gradient-to-b from-neon-blue via-neon-green to-neon-blue" />
-                <div className="absolute inset-0 bg-gradient-to-br from-neon-blue/[0.06] via-transparent to-neon-green/[0.03]" />
-                <div className="relative bg-white/[0.02] backdrop-blur-sm border border-neon-blue/15 rounded-2xl p-6 pl-7">
+                <div className="absolute inset-0 bg-gradient-to-br from-neon-blue/[0.1] via-neon-green/[0.04] to-neon-blue/[0.06]" />
+                <div className="relative bg-white/[0.04] backdrop-blur-sm border border-neon-blue/25 rounded-2xl p-6 pl-7 shadow-lg shadow-neon-blue/5">
                   <div className="flex items-start gap-4">
-                    <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-neon-blue/25 to-neon-green/15 flex items-center justify-center shrink-0 shadow-lg shadow-neon-blue/10">
+                    <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-neon-blue/35 to-neon-green/25 flex items-center justify-center shrink-0 shadow-lg shadow-neon-blue/15">
                       <Lightbulb className="w-5 h-5 text-neon-blue" />
                     </div>
                     <div>
@@ -777,7 +808,7 @@ export const PremiumSection = ({ section, index }: { section: ContentSection; in
                         <span className="text-[10px] font-display font-bold text-neon-blue uppercase tracking-[0.2em]">Pro Tip</span>
                         <span className="text-sm">💡</span>
                       </div>
-                      <p className="text-sm font-body text-foreground/75 leading-relaxed"><InlineFormat text={section.tip} /></p>
+                      <p className="text-sm font-body text-foreground/85 leading-relaxed"><InlineFormat text={section.tip} /></p>
                     </div>
                   </div>
                 </div>
@@ -785,15 +816,15 @@ export const PremiumSection = ({ section, index }: { section: ContentSection; in
             </div>
           )}
 
-          {/* Fun Fact Box */}
+          {/* Fun Fact Box — VIBRANT */}
           {section.funFact && (
             <div className="mx-8 my-6">
               <motion.div initial={{ opacity: 0, x: -15 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.35 }} className="relative rounded-2xl overflow-hidden">
                 <div className="absolute left-0 top-0 bottom-0 w-1.5 bg-gradient-to-b from-neon-orange via-neon-pink to-neon-orange" />
-                <div className="absolute inset-0 bg-gradient-to-br from-neon-orange/[0.06] via-transparent to-neon-pink/[0.03]" />
-                <div className="relative bg-white/[0.02] backdrop-blur-sm border border-neon-orange/15 rounded-2xl p-6 pl-7">
+                <div className="absolute inset-0 bg-gradient-to-br from-neon-orange/[0.1] via-neon-pink/[0.04] to-neon-orange/[0.06]" />
+                <div className="relative bg-white/[0.04] backdrop-blur-sm border border-neon-orange/25 rounded-2xl p-6 pl-7 shadow-lg shadow-neon-orange/5">
                   <div className="flex items-start gap-4">
-                    <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-neon-orange/25 to-neon-pink/15 flex items-center justify-center shrink-0 shadow-lg shadow-neon-orange/10">
+                    <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-neon-orange/35 to-neon-pink/25 flex items-center justify-center shrink-0 shadow-lg shadow-neon-orange/15">
                       <Sparkles className="w-5 h-5 text-neon-orange" />
                     </div>
                     <div>
@@ -801,7 +832,7 @@ export const PremiumSection = ({ section, index }: { section: ContentSection; in
                         <span className="text-[10px] font-display font-bold text-neon-orange uppercase tracking-[0.2em]">Fun Fact</span>
                         <span className="text-sm">🌟</span>
                       </div>
-                      <p className="text-sm font-body text-foreground/75 leading-relaxed">{section.funFact}</p>
+                      <p className="text-sm font-body text-foreground/85 leading-relaxed">{section.funFact}</p>
                     </div>
                   </div>
                 </div>
@@ -823,7 +854,7 @@ export const PremiumPageHeader = ({
   pageTitle: string; subtitle?: string; bannerImage?: string; bannerColor?: string; pageNumber: number; totalPages: number;
 }) => (
   <motion.div initial={{ y: -15, opacity: 0, scale: 0.97 }} animate={{ y: 0, opacity: 1, scale: 1 }} transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-    className="rounded-3xl overflow-hidden border border-white/[0.08] shadow-2xl shadow-black/40 mb-10 group"
+    className="rounded-3xl overflow-hidden border border-white/[0.1] shadow-2xl shadow-black/40 mb-10 group"
   >
     {bannerImage ? (
       <div className="relative h-60 md:h-72">
@@ -834,10 +865,10 @@ export const PremiumPageHeader = ({
           <div className="w-3 h-3 rounded-full bg-yellow-500/80 shadow-lg shadow-yellow-500/30" />
           <div className="w-3 h-3 rounded-full bg-green-500/80 shadow-lg shadow-green-500/30" />
         </div>
-        <div className="absolute top-5 right-5 bg-black/40 backdrop-blur-md rounded-full px-5 py-2 border border-white/10">
+        <div className="absolute top-5 right-5 bg-black/40 backdrop-blur-md rounded-full px-5 py-2 border border-white/15">
           <div className="flex items-center gap-3">
             <span className="text-xs font-display font-bold text-white/90">{pageNumber}</span>
-            <div className="w-12 h-1.5 rounded-full bg-white/10 overflow-hidden">
+            <div className="w-12 h-1.5 rounded-full bg-white/15 overflow-hidden">
               <motion.div initial={{ width: 0 }} animate={{ width: `${(pageNumber / totalPages) * 100}%` }} className="h-full rounded-full bg-gradient-to-r from-primary to-neon-green" transition={{ duration: 0.8, delay: 0.3 }} />
             </div>
             <span className="text-xs font-display font-bold text-white/50">{totalPages}</span>
@@ -846,35 +877,35 @@ export const PremiumPageHeader = ({
         <div className="absolute bottom-0 left-0 right-0 p-8 md:p-10">
           <motion.div initial={{ y: 15, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.2 }}>
             <h2 className="font-display text-2xl md:text-3xl lg:text-4xl font-bold text-white drop-shadow-2xl leading-tight mb-2">{pageTitle}</h2>
-            {subtitle && <p className="text-white/60 font-body text-sm md:text-base max-w-2xl leading-relaxed">{subtitle}</p>}
+            {subtitle && <p className="text-white/70 font-body text-sm md:text-base max-w-2xl leading-relaxed">{subtitle}</p>}
           </motion.div>
         </div>
       </div>
     ) : (
       <div className={`bg-gradient-to-br ${bannerColor || "from-primary to-neon-blue"} relative overflow-hidden`}>
         <div className="absolute inset-0">
-          <div className="absolute -top-20 -right-20 w-60 h-60 rounded-full bg-white/[0.08] blur-3xl" />
-          <div className="absolute bottom-0 -left-10 w-80 h-80 rounded-full bg-black/[0.1] blur-3xl" />
-          <div className="absolute top-1/2 right-1/4 w-32 h-32 rounded-full bg-white/[0.05] blur-2xl" />
-          <div className="absolute inset-0 opacity-[0.04]" style={{ backgroundImage: `linear-gradient(rgba(255,255,255,.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.1) 1px, transparent 1px)`, backgroundSize: '40px 40px' }} />
+          <div className="absolute -top-20 -right-20 w-60 h-60 rounded-full bg-white/[0.1] blur-3xl" />
+          <div className="absolute bottom-0 -left-10 w-80 h-80 rounded-full bg-black/[0.12] blur-3xl" />
+          <div className="absolute top-1/2 right-1/4 w-32 h-32 rounded-full bg-white/[0.07] blur-2xl" />
+          <div className="absolute inset-0 opacity-[0.05]" style={{ backgroundImage: `linear-gradient(rgba(255,255,255,.12) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.12) 1px, transparent 1px)`, backgroundSize: '40px 40px' }} />
         </div>
-        <div className="relative z-10 p-8 md:p-10 py-12">
+        <div className="relative z-10 p-8 md:p-10 py-14">
           <div className="flex gap-2 mb-6">
-            <div className="w-3 h-3 rounded-full bg-white/30" />
-            <div className="w-3 h-3 rounded-full bg-white/20" />
+            <div className="w-3 h-3 rounded-full bg-white/40" />
+            <div className="w-3 h-3 rounded-full bg-white/25" />
             <div className="w-3 h-3 rounded-full bg-white/15" />
           </div>
-          <div className="absolute top-6 right-6 bg-black/15 backdrop-blur-sm rounded-full px-5 py-2 border border-white/10">
+          <div className="absolute top-6 right-6 bg-black/20 backdrop-blur-sm rounded-full px-5 py-2 border border-white/15">
             <div className="flex items-center gap-3">
               <span className="text-xs font-display font-bold text-white/90">{pageNumber}</span>
-              <div className="w-10 h-1.5 rounded-full bg-white/15 overflow-hidden">
-                <motion.div initial={{ width: 0 }} animate={{ width: `${(pageNumber / totalPages) * 100}%` }} className="h-full rounded-full bg-white/50" transition={{ duration: 0.8, delay: 0.3 }} />
+              <div className="w-10 h-1.5 rounded-full bg-white/20 overflow-hidden">
+                <motion.div initial={{ width: 0 }} animate={{ width: `${(pageNumber / totalPages) * 100}%` }} className="h-full rounded-full bg-white/60" transition={{ duration: 0.8, delay: 0.3 }} />
               </div>
               <span className="text-xs font-display font-bold text-white/60">{totalPages}</span>
             </div>
           </div>
           <h2 className="font-display text-2xl md:text-3xl lg:text-4xl font-bold text-white leading-tight mb-3">{pageTitle}</h2>
-          {subtitle && <p className="text-white/70 font-body text-sm md:text-base max-w-2xl leading-relaxed">{subtitle}</p>}
+          {subtitle && <p className="text-white/75 font-body text-sm md:text-base max-w-2xl leading-relaxed">{subtitle}</p>}
         </div>
       </div>
     )}
