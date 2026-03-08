@@ -396,6 +396,7 @@ const pptAnimations: TopicTextbook = {
       sections: [
         {
           heading: "Animation Timing Controls",
+          image: "https://images.unsplash.com/photo-1501139083538-0139583c060f?w=800&h=400&fit=crop",
           body: "After adding an animation, you need to control **when** it plays and **how long** it takes.\n\n**Start Options:**\n🖱️ **On Click** — animation plays when you click the mouse (default)\n▶️ **With Previous** — plays at the same time as the previous animation\n⏭️ **After Previous** — plays automatically after the previous animation finishes\n\n**Duration:** How long the animation takes\n• Fast: 0.25 - 0.50 seconds\n• Medium: 1.00 second\n• Slow: 2.00 - 3.00 seconds\n\n**Delay:** Wait time before the animation starts\n• Example: Set delay to 1 second — the animation waits 1 second before playing",
         },
         {
