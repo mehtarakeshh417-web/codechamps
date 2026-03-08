@@ -1,11 +1,11 @@
-import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
+import { createClient } from "https://esm.sh/@supabase/supabase-js@2.49.1";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
   "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type, x-supabase-client-platform, x-supabase-client-platform-version, x-supabase-client-runtime, x-supabase-client-runtime-version",
 };
 
-const jsonResponse = (body: object) =>
+const json = (body: object) =>
   new Response(JSON.stringify(body), {
     status: 200,
     headers: { ...corsHeaders, "Content-Type": "application/json" },
@@ -23,7 +23,7 @@ Deno.serve(async (req) => {
 
     const { username } = await req.json();
     if (!username) {
-      return jsonResponse({ error: "Missing username" });
+      return json({ error: "Please enter your username." });
     }
 
     const email = `${username}@codechamps.local`;
@@ -32,15 +32,15 @@ Deno.serve(async (req) => {
     let page = 1;
     const perPage = 100;
     while (!authUser) {
-      const { data: listData } = await supabase.auth.admin.listUsers({ page, perPage });
-      if (!listData?.users?.length) break;
+      const { data: listData, error: listError } = await supabase.auth.admin.listUsers({ page, perPage });
+      if (listError || !listData?.users?.length) break;
       authUser = listData.users.find((u: any) => u.email === email) || null;
       if (listData.users.length < perPage) break;
       page++;
     }
 
     if (!authUser) {
-      return jsonResponse({ error: "User not found" });
+      return json({ error: "Username not found. Please check and try again." });
     }
 
     const { data: sec } = await supabase
@@ -49,12 +49,12 @@ Deno.serve(async (req) => {
       .eq("user_id", authUser.id)
       .maybeSingle();
 
-    return jsonResponse({
+    return json({
       has_security: !!sec,
       security_question: sec?.security_question || null,
     });
   } catch (err) {
     console.error("Error:", err.message);
-    return jsonResponse({ error: err.message });
+    return json({ error: "Something went wrong. Please try again." });
   }
 });
