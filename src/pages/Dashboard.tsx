@@ -72,6 +72,8 @@ const teacherRoutes = (
     <Route path="curriculum/topic/:topicId" element={<TopicViewer />} />
     <Route path="coding-lab" element={<TeacherCodingLab />} />
     <Route path="student-progress" element={<TeacherStudentProgress />} />
+    <Route path="attendance" element={<TeacherAttendance />} />
+    <Route path="discussions" element={<TeacherDiscussions />} />
     <Route path="analytics" element={<TeacherAnalytics />} />
     <Route path="settings" element={<ChangePassword />} />
   </>
