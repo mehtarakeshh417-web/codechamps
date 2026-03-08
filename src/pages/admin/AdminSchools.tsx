@@ -89,8 +89,8 @@ const AdminSchools = () => {
           </h1>
           <p className="text-white/60 font-body">Create and manage all registered schools</p>
         </div>
-        <Button variant="hero" size="lg" onClick={() => setShowForm(true)}>
-          <Plus className="w-5 h-5 mr-2" /> Create School
+        <Button variant="hero" size="xl" onClick={() => setShowForm(true)}>
+          <Plus className="w-6 h-6 mr-2" /> Create School
         </Button>
       </motion.div>
 

@@ -100,7 +100,7 @@ const SchoolStudents = () => {
             sections={SECTION_OPTIONS}
             onComplete={() => refreshData()}
           />
-          <Button variant="hero" size="lg" onClick={handleAddClick}><Plus className="w-5 h-5 mr-2" /> Add Student</Button>
+          <Button variant="hero" size="xl" onClick={handleAddClick}><Plus className="w-6 h-6 mr-2" /> Add Student</Button>
         </div>
       </motion.div>
 
