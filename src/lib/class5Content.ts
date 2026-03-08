@@ -51,6 +51,8 @@ export interface ContentSection {
   comparison?: { left: { title: string; points: string[] }; right: { title: string; points: string[] } };
   /** Numbered step-by-step guide */
   stepByStep?: { steps: { title: string; description: string; image?: string }[] };
+  /** Emoji illustration grid */
+  illustration?: { emoji: string; label: string }[];
 }
 
 export interface TextbookPage {
