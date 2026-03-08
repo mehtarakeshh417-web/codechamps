@@ -148,15 +148,15 @@ export const JavaEditor = () => (
   </EditorWrapper>
 );
 
-// MS Paint (Photopea - opens directly into editor with blank canvas)
+// MS Paint (miniPaint - open source image editor with layers, filters, tools)
 export const MsPaintEditor = () => (
   <EditorWrapper title="MS Paint">
     <div className="h-[650px] rounded-xl overflow-hidden border border-white/10">
       <iframe
-        src={"https://www.photopea.com#" + encodeURIComponent(JSON.stringify({environment:{theme:2},script:"app.newDocument(800,600,'Untitled Paint',null,72,'RGB');app.activeDocument.flatten();"}))}
+        src="https://viliusle.github.io/miniPaint/"
         className="w-full h-full border-0"
-        title="MS Paint (Photopea)"
-        allow="clipboard-read; clipboard-write"
+        title="MS Paint (miniPaint)"
+        allow="clipboard-read; clipboard-write; camera"
         sandbox="allow-scripts allow-same-origin allow-popups allow-forms allow-modals allow-downloads"
         loading="lazy"
       />
@@ -265,7 +265,7 @@ export const EDITOR_URLS: Record<string, { url: string; label: string }> = {
   java: { url: "https://onecompiler.com/java", label: "Java Compiler" },
   scratch: { url: "https://studio.penguinmod.com/editor.html", label: "Block Coding Editor" },
   scratchjr: { url: "https://codejr.org/scratchjr/index.html", label: "Scratch Jr" },
-  mspaint: { url: "https://www.photopea.com", label: "MS Paint" },
+  mspaint: { url: "https://viliusle.github.io/miniPaint/", label: "MS Paint" },
   msword: { url: "about:blank", label: "MS Word Editor" },
   msexcel: { url: "about:blank", label: "MS Excel Editor" },
   mspowerpoint: { url: "about:blank", label: "MS PowerPoint Editor" },
