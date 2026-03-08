@@ -14,6 +14,7 @@ const c9PythonAdv: TopicTextbook = {
       sections: [
         {
           heading: "Python Data Structures",
+          image: "https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=800&h=400&fit=crop",
           body: "Python provides powerful built-in data structures that let you organize and manage data efficiently. Understanding when to use each data structure is a critical skill for any programmer.\n\n**Lists** are the most versatile — they store ordered collections that can be modified. **Tuples** are similar but immutable, making them perfect for data that shouldn't change. **Dictionaries** map unique keys to values, enabling lightning-fast lookups. **Sets** store only unique values and support powerful mathematical operations like union and intersection.\n\nChoosing the right data structure can make the difference between a program that runs in seconds vs minutes. As your datasets grow larger, efficiency matters more and more.",
           youtubeId: "kqtD5dpn9C8",
           tip: "Use lists for ordered collections, dictionaries for key-value data, sets for unique items, and tuples for fixed data.",
@@ -76,6 +77,7 @@ const c9PythonAdv: TopicTextbook = {
       sections: [
         {
           heading: "Introduction to OOP",
+          image: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=800&h=400&fit=crop",
           body: "**Object-Oriented Programming (OOP)** is a programming paradigm that organizes code around objects rather than functions. Objects bundle data (attributes) and behavior (methods) together, mirroring how we think about real-world things.\n\nImagine a Car object: it has attributes like color, speed, and fuel level, and methods like start(), accelerate(), and brake(). OOP lets us model complex systems by breaking them into manageable, reusable pieces.\n\nPython is a fully object-oriented language — in fact, everything in Python is an object, including numbers, strings, and even functions!",
           illustration: [
             { emoji: "🏗️", label: "Class (Blueprint)" },
@@ -132,6 +134,7 @@ const c9PythonAdv: TopicTextbook = {
       sections: [
         {
           heading: "Working with Files",
+          image: "https://images.unsplash.com/photo-1544396821-4dd40b938ad3?w=800&h=400&fit=crop",
           body: "Programs often need to read data from files or save results to files. Python makes file handling straightforward with built-in functions.\n\nFiles can be opened in different **modes**: read ('r'), write ('w'), append ('a'), and read+write ('r+'). The write mode creates a new file or overwrites an existing one, while append mode adds to the end without erasing existing content.\n\nThe most important best practice is using the `with` statement, which automatically closes the file when you're done — even if an error occurs. This prevents resource leaks and data corruption.",
           table: {
             headers: ["Mode", "Symbol", "Description", "Creates File?"],
@@ -192,6 +195,7 @@ const c9PythonAdv: TopicTextbook = {
       sections: [
         {
           heading: "Advanced Function Concepts",
+          image: "https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=800&h=400&fit=crop",
           body: "Beyond basic functions, Python offers powerful functional programming features that make your code more concise and expressive.\n\n**Lambda functions** are small, anonymous functions defined in a single line. They're useful for short operations that don't need a full function definition. **Higher-order functions** like `map()`, `filter()`, and `sorted()` take other functions as arguments, enabling powerful data transformations.\n\n**Decorators** are a way to modify the behavior of functions without changing their code. They 'wrap' a function with additional functionality — common uses include logging, timing, and access control.",
           codeBlock: {
             language: "python",
@@ -237,6 +241,7 @@ const c9PythonAdv: TopicTextbook = {
       sections: [
         {
           heading: "Writing Clean Python Code",
+          image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=800&h=400&fit=crop",
           body: "Professional Python code follows established conventions that make it readable and maintainable. The **PEP 8** style guide is the official standard for Python code formatting.\n\nClean code is not just about making things work — it's about making things understandable. Code is read far more often than it's written, so clarity matters. Use descriptive variable names, keep functions focused on one task, and add docstrings to explain what your code does.\n\nThe Zen of Python (type `import this` in Python) summarizes the philosophy: 'Beautiful is better than ugly. Simple is better than complex. Readability counts.'",
           stepByStep: {
             steps: [
@@ -291,6 +296,7 @@ const c9WebDev: TopicTextbook = {
       sections: [
         {
           heading: "Understanding HTML",
+          image: "https://images.unsplash.com/photo-1507721999472-8ed4421c4af2?w=800&h=400&fit=crop",
           body: "**HTML (HyperText Markup Language)** is the foundation of every website. It defines the structure and content — headings, paragraphs, images, links, forms, and more. Every web page you visit is built with HTML at its core.\n\nHTML uses **tags** to define elements. Tags come in pairs: an opening tag `<p>` and a closing tag `</p>`, with content in between. Some tags are self-closing like `<img />` and `<br />`.\n\nA well-structured HTML document has a `<head>` (metadata, title, styles) and a `<body>` (visible content). Understanding HTML is the essential first step for any web developer.",
           illustration: [
             { emoji: "🏗️", label: "HTML (Structure)" },
@@ -333,6 +339,7 @@ const c9WebDev: TopicTextbook = {
       sections: [
         {
           heading: "CSS Fundamentals",
+          image: "https://images.unsplash.com/photo-1507721999472-8ed4421c4af2?w=800&h=400&fit=crop",
           body: "**CSS (Cascading Style Sheets)** controls how HTML elements look — colors, fonts, spacing, sizes, backgrounds, and animations. Without CSS, websites would be plain black text on white backgrounds.\n\nCSS works with **selectors** (which elements to style), **properties** (what to change), and **values** (how to change it). Styles can be applied inline, in a `<style>` tag, or in external `.css` files (recommended for maintainability).\n\nThe 'cascading' in CSS means styles can inherit and override each other based on specificity — inline styles override classes, which override tag selectors.",
           codeBlock: {
             language: "css",
@@ -718,6 +725,7 @@ const c9Cybersec: TopicTextbook = {
       sections: [
         {
           heading: "Understanding Encryption",
+          image: "https://images.unsplash.com/photo-1614064641938-3bbee52942c7?w=800&h=400&fit=crop",
           body: "**Encryption** converts readable data (plaintext) into an unreadable format (ciphertext) using a mathematical algorithm and a key. Only someone with the correct key can decrypt and read the data.\n\nThere are two main types: **Symmetric encryption** uses the same key for encryption and decryption (like a shared padlock key). **Asymmetric encryption** uses a pair of keys — a public key (for encrypting) and a private key (for decrypting). This is what secures your online banking, emails, and messages.\n\nModern encryption like **AES-256** is so strong that it would take billions of years for the world's fastest computers to crack it by brute force.",
           comparison: {
             left: { title: "Symmetric Encryption", points: ["Same key encrypts and decrypts", "Faster performance", "Challenge: sharing the key securely", "Example: AES (Advanced Encryption Standard)"] },
@@ -785,6 +793,7 @@ const c9DataSci: TopicTextbook = {
       sections: [
         {
           heading: "The World of Data Science",
+          image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=400&fit=crop",
           body: "**Data Science** combines statistics, programming, and domain knowledge to extract meaningful insights from data. It's one of the fastest-growing fields in technology, transforming industries from healthcare to entertainment.\n\nData scientists don't just crunch numbers — they ask questions, find patterns, make predictions, and help organizations make better decisions. Netflix uses data science to recommend shows, doctors use it to predict diseases, and cities use it to optimize traffic flow.\n\nThe amount of data in the world doubles every two years. Being able to understand and work with data is becoming as essential as reading and writing.",
           illustration: [
             { emoji: "📊", label: "Statistics" },
@@ -832,6 +841,7 @@ const c9DataSci: TopicTextbook = {
       sections: [
         {
           heading: "Pandas — Data Manipulation",
+          image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=400&fit=crop",
           body: "**Pandas** is Python's most popular library for data analysis. It provides **DataFrames** — powerful table-like structures that make working with data intuitive and efficient.\n\nWith Pandas, you can load data from CSV files, Excel spreadsheets, and databases. Then filter rows, select columns, calculate statistics, group data, merge tables, and much more — all with concise, readable code.\n\nPandas handles millions of rows efficiently and integrates seamlessly with other data science libraries.",
           codeBlock: {
             language: "python",
@@ -870,6 +880,7 @@ const c9DataSci: TopicTextbook = {
       sections: [
         {
           heading: "Descriptive Statistics",
+          image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=400&fit=crop",
           body: "**Descriptive statistics** summarize and describe data using numbers. They answer: What does our data look like?\n\n**Measures of central tendency** tell you where the 'middle' of your data is: **Mean** (average), **Median** (middle value when sorted), and **Mode** (most frequent value). Each has strengths — mean is affected by outliers, while median is more robust.\n\n**Measures of spread** tell you how spread out the data is: **Range** (max - min), **Variance** (average squared deviation from mean), and **Standard Deviation** (square root of variance — most commonly used because it's in the same units as the data).",
           table: {
             headers: ["Measure", "Formula", "Best For", "Example"],
@@ -1203,6 +1214,7 @@ const c10WebApps: TopicTextbook = {
       sections: [
         {
           heading: "Deploying Your Web Application",
+          image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&h=400&fit=crop",
           body: "**Deployment** is the process of making your web application accessible on the internet. During development, your app runs locally (only you can access it). Deployment puts it on a server that anyone with the URL can reach.\n\nModern deployment platforms make this incredibly easy — many offer free tiers for student projects. The key concepts are **hosting** (where your code runs), **domains** (your URL), **environment variables** (configuration like database passwords), and **continuous deployment** (automatic updates when you push code to GitHub).\n\nBefore deploying, always test your app thoroughly, set up proper error handling, secure sensitive data, and optimize performance.",
           stepByStep: {
             steps: [
@@ -1246,6 +1258,7 @@ const c10AiFund: TopicTextbook = {
       sections: [
         {
           heading: "What is Artificial Intelligence?",
+          image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=800&h=400&fit=crop",
           body: "**Artificial Intelligence (AI)** is the ability of machines to perform tasks that normally require human intelligence — understanding language, recognizing images, making decisions, and learning from experience.\n\nAI isn't one single technology — it's an umbrella term covering many approaches. **Machine Learning** teaches computers to learn from data. **Deep Learning** uses neural networks inspired by the brain. **Natural Language Processing** enables machines to understand and generate human language.\n\nAI is already part of your daily life: voice assistants (Alexa, Siri), auto-correct on your phone, face unlock, Netflix recommendations, spam filters, and Google search results are all powered by AI.",
           illustration: [
             { emoji: "🤖", label: "AI" },
@@ -1296,6 +1309,7 @@ const c10AiFund: TopicTextbook = {
       sections: [
         {
           heading: "Supervised Learning",
+          image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=800&h=400&fit=crop",
           body: "**Supervised learning** is the most common type of ML. The model learns from **labeled data** — examples where we already know the correct answer. It's like learning from a textbook with an answer key.\n\nFor example, to build a spam filter, you show the model thousands of emails labeled as 'spam' or 'not spam'. The model learns patterns (certain words, sender addresses) and can then classify new emails it hasn't seen before.\n\nSupervised learning is used for **classification** (predicting categories: spam/not spam, cat/dog) and **regression** (predicting numbers: house prices, temperature tomorrow).",
           comparison: {
             left: { title: "Classification", points: ["Predicts categories/labels", "Email: spam or not spam?", "Image: cat, dog, or bird?", "Medical: disease or healthy?", "Output: discrete classes"] },
@@ -1341,6 +1355,7 @@ const c10AiFund: TopicTextbook = {
       sections: [
         {
           heading: "Bias in AI Systems",
+          image: "https://images.unsplash.com/photo-1614064641938-3bbee52942c7?w=800&h=400&fit=crop",
           body: "AI systems learn from data — and if that data contains biases, the AI will learn and amplify those biases. This is a critical challenge because AI is increasingly used for important decisions in hiring, lending, healthcare, and criminal justice.\n\n**Data bias** occurs when training data doesn't represent the real world fairly. For example, if a hiring AI is trained on historical data where most hires were male, it might unfairly rank male candidates higher. If a facial recognition system is trained mostly on light-skinned faces, it performs poorly on darker skin tones.\n\n**Algorithmic bias** can also emerge from how models are designed and optimized. Even with balanced data, certain metrics or features can inadvertently discriminate. Identifying and mitigating bias requires conscious effort from developers.",
           warningNote: "AI bias has real consequences: biased hiring tools reject qualified candidates, biased loan algorithms deny credit unfairly, and biased facial recognition leads to wrongful arrests. As future technologists, it's your responsibility to build fair AI systems."
         },
@@ -1379,6 +1394,7 @@ const c10AiFund: TopicTextbook = {
       sections: [
         {
           heading: "AI Applications Today",
+          image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=800&h=400&fit=crop",
           body: "AI is transforming every industry. Here's how AI is being used right now to solve real problems:\n\n**Healthcare:** AI analyzes medical images to detect diseases earlier than human doctors, predicts patient outcomes, and accelerates drug discovery. DeepMind's AlphaFold predicted the structure of 200 million proteins.\n\n**Education:** Adaptive learning platforms personalize content for each student, chatbots answer student questions 24/7, and AI helps teachers identify struggling students early.\n\n**Transportation:** Self-driving cars use computer vision and decision-making AI. Route optimization reduces delivery times and fuel consumption. Traffic management systems reduce congestion.\n\n**Creative Arts:** AI generates art, writes stories, composes music, and creates realistic images. Tools like DALL-E, Midjourney, and ChatGPT are changing how creative work is done.",
           table: {
             headers: ["Field", "AI Application", "Technology Used", "Impact"],

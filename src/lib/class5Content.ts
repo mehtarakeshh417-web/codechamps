@@ -85,6 +85,7 @@ const wordPageFormatting: TopicTextbook = {
       sections: [
         {
           heading: "What is Page Formatting?",
+          image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&h=400&fit=crop",
           body: "**Page formatting** means changing how your document page looks. It includes setting margins, choosing page orientation, adding backgrounds, watermarks, borders, and columns.\n\nWhen you write a letter, a report, or a project, page formatting makes it look neat and professional. Imagine reading a book with no margins — the text would go right to the edge of the paper! Formatting fixes that.\n\n**Why is Page Formatting Important?**\n• Makes documents easy to read\n• Gives a professional appearance\n• Helps organize information\n• Makes printed documents look great",
           tip: "All page formatting options are found in the **Page Layout** tab in MS Word.",
           illustration: [
@@ -121,6 +122,7 @@ const wordPageFormatting: TopicTextbook = {
         },
         {
           heading: "Types of Margin Settings",
+          image: "https://images.unsplash.com/photo-1586281380349-632531db7ed4?w=800&h=400&fit=crop",
           body: "MS Word provides several preset margin options:\n\n📄 **Normal** — Top: 2.54cm, Bottom: 2.54cm, Left: 3.17cm, Right: 3.17cm (most common)\n📄 **Narrow** — 1.27cm on all sides (fits more text on page)\n📄 **Wide** — 5.08cm left and right (gives more white space)\n📄 **Moderate** — 2.54cm top/bottom, 1.91cm left/right\n📄 **Custom Margins** — You set your own values!\n\n**How to Change Margins:**\n1. Go to **Page Layout** tab\n2. Click **Margins**\n3. Choose a preset OR click **Custom Margins**\n4. Set your desired values\n5. Click **OK**",
           tip: "For school projects, the **Normal** margin setting works best. It gives enough space for binding on the left side."
         }
@@ -163,6 +165,7 @@ const wordPageFormatting: TopicTextbook = {
       sections: [
         {
           heading: "Adding a Background Color",
+          image: "https://images.unsplash.com/photo-1502691876148-a84978e59af8?w=800&h=400&fit=crop",
           body: "You can change the entire background color of your page to make it more attractive or to match a theme.\n\n**How to Add Page Color:**\n1. Go to **Page Layout** tab\n2. Click **Page Color** in the Page Background group\n3. Choose a color from the color palette\n4. Your entire page background will change!\n\n**More Options:**\n• Click **More Colors** to see the full color spectrum\n• Click **Fill Effects** to add gradients, textures, or patterns\n\n**Types of Fill Effects:**\n🎨 **Gradient** — smooth blend of two colors\n🎨 **Texture** — looks like fabric, marble, wood, etc.\n🎨 **Pattern** — repeating designs like stripes or dots\n🎨 **Picture** — use an image as background",
           tip: "Light colors work best for page backgrounds. Dark backgrounds make text hard to read!"
         },
@@ -222,6 +225,7 @@ const wordPageFormatting: TopicTextbook = {
       sections: [
         {
           heading: "What are Page Borders?",
+          image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=800&h=400&fit=crop",
           body: "**Page borders** are decorative frames that go around the entire page. They make your documents look attractive and professional — perfect for certificates, greeting cards, and project covers!\n\n**Types of Page Borders:**\n🔲 **Box** — simple rectangular border all around\n🔲 **Shadow** — border with a shadow effect\n🔲 **3-D** — border with a 3D raised effect\n🔲 **Custom** — different borders on each side\n🎨 **Art** — decorative borders with shapes like stars, hearts, trees, balloons, and more!",
           table: {
             headers: ["Border Type", "Description", "Best Use"],
@@ -260,6 +264,7 @@ const wordPageFormatting: TopicTextbook = {
         },
         {
           heading: "How to Create Columns",
+          image: "https://images.unsplash.com/photo-1504711434969-e33886168d6c?w=800&h=400&fit=crop",
           body: "**Steps to add columns:**\n1. Select the text you want to put in columns (or select all text with Ctrl+A)\n2. Go to **Page Layout** tab\n3. Click **Columns**\n4. Choose **Two** or **Three**\n5. Your text automatically reformats into columns!\n\n**For More Options:**\n1. Click **Columns → More Columns**\n2. Set the exact number of columns\n3. Adjust the **spacing** between columns\n4. Check **Line between** to add a vertical line separating columns\n5. Click **OK**\n\n**Column Break:**\nTo force text to move to the next column:\n1. Place your cursor where you want the break\n2. Go to **Page Layout → Breaks → Column**",
           tip: "Columns work great for newsletters, brochures, and newspaper-style projects. Try combining columns with a large heading that spans the full width!"
         }
@@ -319,6 +324,7 @@ const pptAnimations: TopicTextbook = {
       sections: [
         {
           heading: "Why Animations Matter",
+          image: "https://images.unsplash.com/photo-1557804506-669a67965ba0?w=800&h=400&fit=crop",
           body: "**Animations** and **transitions** make your PowerPoint presentations exciting and engaging! Without them, your slides just appear one after another — but with them, text flies in, images spin, and slides fade beautifully.\n\n**Animations** = Effects applied to **objects** on a slide (text, images, shapes)\n**Transitions** = Effects applied **between slides** (how one slide changes to the next)\n\nThink of animations like special effects in a movie — they grab attention and keep your audience interested!",
           tip: "Don't use too many different animations in one presentation. Pick 2-3 effects and use them consistently for a professional look."
         },
@@ -351,6 +357,7 @@ const pptAnimations: TopicTextbook = {
         },
         {
           heading: "How to Apply Transitions",
+          image: "https://images.unsplash.com/photo-1557804506-669a67965ba0?w=800&h=400&fit=crop",
           body: "**Steps to add a transition:**\n1. Click on the slide you want to add a transition to\n2. Go to the **Transitions** tab\n3. Browse the transition effects\n4. Click on one to preview it!\n5. The transition plays automatically so you can see the effect\n\n**Customizing Transitions:**\n• **Effect Options** — change direction (from left, right, top, bottom)\n• **Sound** — add a sound effect (like applause, drum roll)\n• **Duration** — how long the transition takes (fast: 0.5s, slow: 3s)\n• **Apply To All** — same transition on every slide\n\n**Advancing Slides:**\n• **On Mouse Click** — click to move to next slide\n• **After** — automatically advance after set time (e.g., 5 seconds)",
           tip: "The **Morph** transition is one of the coolest! It smoothly animates objects from one position to another between slides."
         }
@@ -389,6 +396,7 @@ const pptAnimations: TopicTextbook = {
       sections: [
         {
           heading: "Animation Timing Controls",
+          image: "https://images.unsplash.com/photo-1501139083538-0139583c060f?w=800&h=400&fit=crop",
           body: "After adding an animation, you need to control **when** it plays and **how long** it takes.\n\n**Start Options:**\n🖱️ **On Click** — animation plays when you click the mouse (default)\n▶️ **With Previous** — plays at the same time as the previous animation\n⏭️ **After Previous** — plays automatically after the previous animation finishes\n\n**Duration:** How long the animation takes\n• Fast: 0.25 - 0.50 seconds\n• Medium: 1.00 second\n• Slow: 2.00 - 3.00 seconds\n\n**Delay:** Wait time before the animation starts\n• Example: Set delay to 1 second — the animation waits 1 second before playing",
         },
         {
@@ -464,6 +472,7 @@ const excelIntro: TopicTextbook = {
       sections: [
         {
           heading: "What is Microsoft Excel?",
+          image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=400&fit=crop",
           body: "**Microsoft Excel** is a powerful spreadsheet application. It organizes data in a grid of **rows** and **columns**.\n\n**What can you do with Excel?**\n📊 Organize data neatly in tables\n📊 Perform calculations using formulas\n📊 Create colorful charts and graphs\n📊 Sort and filter large amounts of data\n📊 Track scores, budgets, and attendance\n📊 Create timetables and schedules\n\n**Real-life uses of Excel:**\n• Teachers use it to maintain student marks\n• Companies use it to track sales and expenses\n• Scientists use it to analyze data\n• Students use it for projects and record-keeping",
           funFact: "Microsoft Excel was first released in 1985 for Apple Macintosh! The Windows version came in 1987. Today, over 750 million people use Excel worldwide!"
         }
@@ -490,6 +499,7 @@ const excelIntro: TopicTextbook = {
       sections: [
         {
           heading: "Workbook vs Worksheet",
+          image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=400&fit=crop",
           body: "📗 **Workbook** = The entire Excel file. When you save an Excel file, you save a workbook. The file extension is **.xlsx**\n\n📄 **Worksheet** (or Sheet) = A single page within the workbook. Each worksheet is a separate grid of cells.\n\n**Think of it like this:**\n• A **workbook** is like a **notebook**\n• A **worksheet** is like a **page** in that notebook\n• You can have many pages (worksheets) in one notebook (workbook)!",
         },
         {
@@ -750,6 +760,7 @@ const scratchBlocks: TopicTextbook = {
       sections: [
         {
           heading: "What are Sensing Blocks?",
+          image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=800&h=400&fit=crop",
           body: "**Sensing blocks** (light blue) let your program **detect** what's happening in the project.\n\n🖱️ **Mouse Sensing:**\n• **mouse x** / **mouse y** — gets the mouse cursor position\n• **mouse down?** — checks if mouse button is pressed\n\n⌨️ **Keyboard Sensing:**\n• **key ( ) pressed?** — checks if a specific key is pressed\n• Choose any key: space, arrows, letters, numbers\n\n👆 **Touch Sensing:**\n• **touching ( )?** — checks if sprite is touching another sprite, edge, or mouse\n• **touching color ( )?** — checks if sprite touches a specific color\n• **color ( ) is touching ( )?** — checks if one color on the sprite touches another color\n\n📏 **Distance:**\n• **distance to ( )** — measures distance to mouse or another sprite",
         },
         {
@@ -772,6 +783,7 @@ const scratchBlocks: TopicTextbook = {
       sections: [
         {
           heading: "Math Operators",
+          image: "https://images.unsplash.com/photo-1509228468518-180dd4864904?w=800&h=400&fit=crop",
           body: "**Operator blocks** (green) perform math calculations and comparisons.\n\n**Arithmetic Operators:**\n➕ **( ) + ( )** — Addition (5 + 3 = 8)\n➖ **( ) - ( )** — Subtraction (10 - 4 = 6)\n✖️ **( ) * ( )** — Multiplication (6 * 7 = 42)\n➗ **( ) / ( )** — Division (20 / 5 = 4)\n\n**More Math:**\n🎲 **pick random ( ) to ( )** — generates a random number\n   Example: pick random 1 to 6 = simulates rolling a dice!\n\n📐 **( ) mod ( )** — remainder after division\n   Example: 10 mod 3 = 1 (because 10 ÷ 3 = 3 remainder 1)\n\n🔄 **round ( )** — rounds to nearest whole number\n   Example: round 3.7 = 4",
         },
         {
@@ -818,6 +830,7 @@ const scratchBlocks: TopicTextbook = {
       sections: [
         {
           heading: "What is Broadcasting?",
+          image: "https://images.unsplash.com/photo-1535016120720-40c646be5580?w=800&h=400&fit=crop",
           body: "**Broadcasting** lets sprites send messages to each other! This is how sprites coordinate and work together.\n\n**How it works:**\n1. One sprite **broadcasts** a message (like shouting a signal)\n2. Other sprites **receive** the message and react\n\n**Broadcasting Blocks:**\n📡 **broadcast [message]** — sends a message to all sprites\n📡 **broadcast [message] and wait** — sends a message and waits until all receivers finish\n📡 **when I receive [message]** — runs code when the message is received\n\n**Example: Traffic Light Game**\n\nSprite 1 (Traffic Light):\n```\nWhen green flag clicked\nForever\n  switch costume to 'green'\n  broadcast 'go'\n  wait 3 secs\n  switch costume to 'red'\n  broadcast 'stop'\n  wait 3 secs\nEnd\n```\n\nSprite 2 (Car):\n```\nWhen I receive 'go'\n  repeat 30\n    move 5 steps\n  end\n\nWhen I receive 'stop'\n  say 'Stopped!' for 1 sec\n```",
         },
         {
@@ -850,6 +863,7 @@ const wordTextFormatting: TopicTextbook = {
       sections: [
         {
           heading: "What is Text Formatting?",
+          image: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=800&h=400&fit=crop",
           body: "**Text formatting** means changing how your text looks — making it bigger, bolder, more colorful, or more organized.\n\nGood formatting makes documents:\n• **Easier to read** — readers can scan quickly\n• **More professional** — looks like a real publication\n• **Better organized** — headings, lists, and emphasis guide the reader\n• **More attractive** — color and style catch the eye\n\nAll text formatting tools are in the **Home** tab in the **Font** and **Paragraph** groups.",
           tip: "Always format AFTER you finish writing. Write first, format later — this saves time!"
         }
@@ -862,6 +876,7 @@ const wordTextFormatting: TopicTextbook = {
       sections: [
         {
           heading: "Text Style Options",
+          image: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=800&h=400&fit=crop",
           body: "**Bold (Ctrl+B)** — Makes text **thicker and darker**. Use for headings and important words.\n\n*Italic (Ctrl+I)* — Makes text *slanted*. Use for book titles, foreign words, or emphasis.\n\n**Underline (Ctrl+U)** — Adds a line under text. Use sparingly — too much underline is hard to read.\n\n~~Strikethrough~~ — Draws a line through text. Shows deleted or incorrect information.\n\n**Subscript** — Makes text smaller and lower (like H₂O)\n**Superscript** — Makes text smaller and higher (like x²)\n\n**Text Highlight** — Marks text with a colored background (like a highlighter pen)\n**Font Color** — Changes the color of the text itself",
         },
         {

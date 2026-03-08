@@ -27,6 +27,7 @@ const c6HtmlIntro: TopicTextbook = {
       sections: [
         {
           heading: "Understanding HTML",
+          image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=800&h=400&fit=crop",
           body: "**HTML** stands for **HyperText Markup Language**. It's the language used to create web pages!\n\nEvery website you visit — Google, YouTube, Wikipedia — is built with HTML.\n\n**What HTML does:**\n📄 Defines the **structure** of a web page\n📝 Adds **text** (headings, paragraphs, lists)\n🖼️ Adds **images** and videos\n🔗 Creates **links** to other pages\n📊 Creates **tables** for organized data\n📋 Creates **forms** for user input",
           youtubeId: "FG44xi1ujac",
           funFact: "HTML was invented by Tim Berners-Lee in 1991. He also invented the World Wide Web!",
@@ -59,6 +60,7 @@ const c6HtmlIntro: TopicTextbook = {
       sections: [
         {
           heading: "The HTML Skeleton",
+          image: "https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=800&h=400&fit=crop",
           body: "Every HTML page has this basic structure. Think of it as the **blueprint** — without it, the browser won't know how to display your content!",
           tip: "Think of `<head>` as the brain (thinking but invisible) and `<body>` as the body (visible to everyone)!",
           codeBlock: {
@@ -102,6 +104,7 @@ const c6HtmlIntro: TopicTextbook = {
       sections: [
         {
           heading: "Text Elements",
+          image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=800&h=400&fit=crop",
           body: "**Headings** — 6 levels, from biggest to smallest:\n`<h1>` — Main heading (use once per page)\n`<h2>` — Section heading\n`<h3>` — Sub-section\n`<h4>` — Sub-sub-section\n`<h5>` — Small heading\n`<h6>` — Smallest heading\n\n**Paragraphs:**\n`<p>This is a paragraph of text.</p>`\n\n**Line Breaks:**\n`<br>` — starts a new line (no closing tag needed!)\n\n**Horizontal Rule:**\n`<hr>` — draws a horizontal line across the page\n\n**Text Formatting:**\n`<b>bold text</b>` — **bold**\n`<i>italic text</i>` — *italic*\n`<u>underlined text</u>` — underlined\n`<strong>important</strong>` — **strong emphasis**\n`<em>emphasized</em>` — *emphasized*\n`<mark>highlighted</mark>` — highlighted text\n`<del>deleted</del>` — ~~strikethrough~~",
         }
       ],
@@ -175,6 +178,7 @@ const c6CssIntro: TopicTextbook = {
       sections: [
         {
           heading: "CSS — Cascading Style Sheets",
+          image: "https://images.unsplash.com/photo-1507721999472-8ed4421c4af2?w=800&h=400&fit=crop",
           body: "**CSS** controls how HTML elements LOOK — colors, fonts, sizes, spacing, layouts.\n\n**HTML = structure** (the skeleton)\n**CSS = style** (the clothing and makeup)\n\n**Three ways to add CSS:**\n\n1️⃣ **Inline** — directly on an element:\n`<p style=\"color: blue; font-size: 20px;\">Blue text</p>`\n\n2️⃣ **Internal** — in a `<style>` tag in `<head>`:\n```\n<style>\n  p { color: blue; font-size: 20px; }\n</style>\n```\n\n3️⃣ **External** — separate .css file (best practice):\n`<link rel=\"stylesheet\" href=\"style.css\">`\n\n**CSS Syntax:**\n```\nselector {\n  property: value;\n  property: value;\n}\n```\n\n**Example:**\n```\nh1 {\n  color: red;\n  font-size: 36px;\n  text-align: center;\n}\n```",
           tip: "External CSS is the best practice because you can style your entire website from one file!"
         }
@@ -231,6 +235,7 @@ const c6PythonIntro: TopicTextbook = {
       sections: [
         {
           heading: "print() — Your First Command",
+          image: "https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=800&h=400&fit=crop",
           body: "The `print()` function displays text on the screen.\n\n**Your first program:**\n```python\nprint(\"Hello, World!\")\n```\n\n**Output:** Hello, World!\n\n**More examples:**\n```python\nprint(\"My name is Arjun\")\nprint(\"I am 11 years old\")\nprint(\"I love coding!\")\nprint(2 + 3)  # Prints: 5\nprint(\"2 + 3 =\", 2 + 3)  # Prints: 2 + 3 = 5\n```\n\n**Important rules:**\n• Text (strings) must be in quotes: \"hello\" or 'hello'\n• Numbers don't need quotes: 42, 3.14\n• Python is **case-sensitive**: Print ≠ print\n• Use **#** for comments (notes the computer ignores)",
           tip: "Always use lowercase for print() — Python is case-sensitive, so Print() won't work!"
         }
@@ -283,6 +288,7 @@ const c6PythonIntro: TopicTextbook = {
       sections: [
         {
           heading: "Conditional Statements",
+          image: "https://images.unsplash.com/photo-1509228468518-180dd4864904?w=800&h=400&fit=crop",
           body: "**if-else** lets your program make decisions!\n\n```python\nage = int(input(\"Enter your age: \"))\n\nif age >= 18:\n    print(\"You are an adult!\")\nelse:\n    print(\"You are a minor.\")\n```\n\n**Comparison operators:**\n• `==` equal to\n• `!=` not equal to\n• `>` greater than\n• `<` less than\n• `>=` greater than or equal\n• `<=` less than or equal\n\n**if-elif-else** for multiple conditions:\n```python\nmarks = int(input(\"Enter marks: \"))\n\nif marks >= 90:\n    print(\"Grade: A+\")\nelif marks >= 80:\n    print(\"Grade: A\")\nelif marks >= 70:\n    print(\"Grade: B\")\nelif marks >= 60:\n    print(\"Grade: C\")\nelse:\n    print(\"Grade: D\")\n```\n\n⚠️ **Python uses indentation** (spaces) instead of curly braces! Each block MUST be indented with 4 spaces.",
           tip: "Indentation is NOT optional in Python — it's how Python knows which code belongs to which if/else block!"
         }
@@ -300,6 +306,7 @@ const c6PythonIntro: TopicTextbook = {
       sections: [
         {
           heading: "for and while Loops",
+          image: "https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=800&h=400&fit=crop",
           body: "**for loop** — repeat a specific number of times:\n```python\nfor i in range(5):\n    print(\"Hello!\", i)\n# Prints Hello! 0, Hello! 1, ... Hello! 4\n\nfor i in range(1, 11):\n    print(i, \"x 5 =\", i * 5)\n# Prints the 5 times table!\n```\n\n**while loop** — repeat while a condition is true:\n```python\ncount = 1\nwhile count <= 10:\n    print(count)\n    count = count + 1\n# Prints 1 to 10\n```\n\n**Useful with loops:**\n• `range(5)` → 0, 1, 2, 3, 4\n• `range(1, 6)` → 1, 2, 3, 4, 5\n• `range(0, 10, 2)` → 0, 2, 4, 6, 8\n• `break` — exit the loop early\n• `continue` — skip to next iteration",
         }
       ],
@@ -354,6 +361,7 @@ const c6Internet: TopicTextbook = {
       sections: [
         {
           heading: "Browsers and Addresses",
+          image: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=800&h=400&fit=crop",
           body: "**Web Browser** — software to view websites:\n🌐 Google Chrome (most popular)\n🦊 Mozilla Firefox\n🧭 Safari (Apple)\n🔵 Microsoft Edge\n\n**URL (Uniform Resource Locator)** — a website's address:\n`https://www.google.com`\n\n**Parts of a URL:**\n• `https://` — protocol (secure connection)\n• `www` — subdomain\n• `google` — domain name\n• `.com` — top-level domain (TLD)\n\n**Common TLDs:**\n• `.com` — commercial\n• `.org` — organization\n• `.edu` — education\n• `.gov` — government\n• `.in` — India\n• `.co.uk` — United Kingdom\n\n**Search Engines** — help you find websites:\n🔍 Google, Bing, Yahoo, DuckDuckGo",
         }
       ],
@@ -370,6 +378,7 @@ const c6Internet: TopicTextbook = {
       sections: [
         {
           heading: "Online Safety Rules",
+          image: "https://images.unsplash.com/photo-1614064641938-3bbee52942c7?w=800&h=400&fit=crop",
           body: "**The internet is powerful but can be dangerous. Follow these rules:**\n\n🔒 **Passwords:**\n• Use strong passwords (letters + numbers + symbols)\n• Never share your password\n• Use different passwords for different sites\n\n🚫 **Personal Information:**\n• NEVER share your address, phone number, or school name with strangers\n• Don't post photos with location information\n• Be careful what you share on social media\n\n👤 **Stranger Danger:**\n• Not everyone online is who they say they are\n• Never meet someone from the internet in person\n• Tell a trusted adult if someone makes you uncomfortable\n\n📧 **Email & Messages:**\n• Don't open emails from unknown senders\n• Don't click suspicious links\n• Don't download unknown files\n\n🛡️ **Cyberbullying:**\n• Be kind online — treat others as you want to be treated\n• If someone is mean to you, tell a trusted adult\n• Block and report bullies",
           tip: "A good rule: if you wouldn't say or do something in real life, don't do it online either!"
         }
@@ -396,6 +405,7 @@ const c7HtmlAdv: TopicTextbook = {
       sections: [
         {
           heading: "HTML Forms",
+          image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=800&h=400&fit=crop",
           body: "**Forms** let users input data on web pages — like login forms, sign-up forms, and search bars.\n\n```html\n<form>\n  <label>Name:</label>\n  <input type=\"text\" placeholder=\"Enter name\">\n  <br><br>\n  <label>Email:</label>\n  <input type=\"email\" placeholder=\"Enter email\">\n  <br><br>\n  <label>Password:</label>\n  <input type=\"password\">\n  <br><br>\n  <input type=\"submit\" value=\"Submit\">\n</form>\n```\n\n**Input Types:**\n• `text` — regular text\n• `email` — email validation\n• `password` — hidden characters\n• `number` — only numbers\n• `date` — date picker\n• `checkbox` — tick boxes\n• `radio` — select one option\n• `submit` — submit button\n• `textarea` — multi-line text\n• `select` — dropdown menu",
         }
       ],
@@ -436,6 +446,7 @@ const c7PythonAdv: TopicTextbook = {
       sections: [
         {
           heading: "Defining Functions",
+          image: "https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=800&h=400&fit=crop",
           body: "**Functions** are reusable blocks of code with a name.\n\n```python\ndef greet(name):\n    print(\"Hello,\", name + \"!\")\n\ngreet(\"Arjun\")   # Hello, Arjun!\ngreet(\"Priya\")   # Hello, Priya!\n```\n\n**Function with return value:**\n```python\ndef add(a, b):\n    return a + b\n\nresult = add(5, 3)\nprint(result)  # 8\n```\n\n**Default parameters:**\n```python\ndef greet(name, greeting=\"Hello\"):\n    print(greeting + \",\", name)\n\ngreet(\"Arjun\")              # Hello, Arjun\ngreet(\"Priya\", \"Namaste\")  # Namaste, Priya\n```\n\n**Why use functions?**\n• Avoid repeating code\n• Organize your program\n• Make code easier to read\n• Easy to test and fix bugs",
           tip: "Name your functions with verbs that describe what they DO: calculate_area(), check_password(), display_menu()"
         }
@@ -453,6 +464,7 @@ const c7PythonAdv: TopicTextbook = {
       sections: [
         {
           heading: "Python Lists",
+          image: "https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=800&h=400&fit=crop",
           body: "A **list** stores multiple values in order.\n\n```python\nfruits = [\"apple\", \"banana\", \"cherry\"]\nmarks = [85, 92, 78, 95, 88]\nmixed = [\"hello\", 42, True, 3.14]\n\n# Accessing items (index starts at 0!)\nprint(fruits[0])    # apple\nprint(fruits[1])    # banana\nprint(fruits[-1])   # cherry (last item)\n\n# List operations\nfruits.append(\"mango\")     # add to end\nfruits.insert(1, \"grape\")  # insert at position\nfruits.remove(\"banana\")    # remove by value\nfruits.pop()               # remove last item\nlen(fruits)                # number of items\nfruits.sort()              # sort alphabetically\n```\n\n**Looping through a list:**\n```python\nfor fruit in fruits:\n    print(\"I like\", fruit)\n```",
         }
       ],
@@ -478,6 +490,7 @@ const c8JavaIntro: TopicTextbook = {
       sections: [
         {
           heading: "Welcome to Java!",
+          image: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=800&h=400&fit=crop",
           body: "**Java** is one of the most popular programming languages in the world!\n\n**Why learn Java?**\n☕ Powers billions of devices\n📱 Android apps are built with Java/Kotlin\n🏢 Used by banks, hospitals, and big companies\n🎮 Minecraft was built in Java!\n💼 One of the most in-demand skills\n\n**Java vs Python:**\n| Feature | Java | Python |\n|---------|------|--------|\n| Syntax | More strict | Simple |\n| Speed | Faster | Slower |\n| Typing | Static (declare types) | Dynamic |\n| Uses | Enterprise, Android | AI, Data, Web |\n\n**Your first Java program:**\n```java\npublic class Hello {\n    public static void main(String[] args) {\n        System.out.println(\"Hello, World!\");\n    }\n}\n```\n\nYes, it's longer than Python — but that structure makes large programs more organized!",
           funFact: "Java was created by James Gosling at Sun Microsystems in 1995. It was originally called 'Oak' after a tree outside his office!"
         }
@@ -764,6 +777,7 @@ const c6AiAct: TopicTextbook = {
       sections: [
         {
           heading: "AI Applications You Use Every Day",
+          image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=800&h=400&fit=crop",
           body: "You interact with AI every day without even knowing!\n\n📱 **Voice Assistants** — Siri, Google Assistant, Alexa understand your speech and respond\n🎬 **Recommendations** — Netflix suggests movies, YouTube suggests videos based on what you like\n📷 **Photo Features** — Your phone recognizes faces, adds filters, and organizes photos\n🔍 **Google Search** — AI understands your question and finds the best answers\n📧 **Spam Filters** — AI identifies and blocks spam emails\n🗺️ **Maps & Navigation** — Google Maps finds the fastest route using AI\n🛒 **Online Shopping** — Amazon suggests products you might like\n🎮 **Games** — AI controls computer opponents\n🌐 **Translation** — Google Translate converts languages instantly\n🏥 **Healthcare** — AI helps doctors detect diseases from X-rays\n\n**How AI Learns:**\n1. It receives **data** (examples)\n2. It finds **patterns** in the data\n3. It makes **predictions** based on patterns\n4. It gets **feedback** (right or wrong)\n5. It improves with more data!",
         }
       ],
@@ -910,6 +924,7 @@ const c7PyOps: TopicTextbook = {
       sections: [
         {
           heading: "Python Operators",
+          image: "https://images.unsplash.com/photo-1509228468518-180dd4864904?w=800&h=400&fit=crop",
           body: "**Arithmetic Operators:**\n`+` Addition: `5 + 3 = 8`\n`-` Subtraction: `10 - 4 = 6`\n`*` Multiplication: `3 * 7 = 21`\n`/` Division: `15 / 4 = 3.75`\n`//` Floor division: `15 // 4 = 3` (whole number only)\n`%` Modulus: `15 % 4 = 3` (remainder)\n`**` Power: `2 ** 3 = 8` (2³)\n\n**Comparison Operators:**\n`==` Equal to\n`!=` Not equal to\n`>` Greater than\n`<` Less than\n`>=` Greater than or equal\n`<=` Less than or equal\n\n**Logical Operators:**\n`and` — both must be True\n`or` — at least one must be True\n`not` — reverses True/False\n\n**Examples:**\n```python\nage = 15\nif age >= 13 and age <= 19:\n    print(\"You're a teenager!\")\n\nday = \"Sunday\"\nif day == \"Saturday\" or day == \"Sunday\":\n    print(\"Weekend!\")\n```",
         }
       ],
