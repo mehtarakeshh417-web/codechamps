@@ -2,6 +2,7 @@
 import c1ComputerParts from "@/assets/curriculum/c1-computer-parts.jpg";
 import c1PaintTools from "@/assets/curriculum/c1-paint-tools.jpg";
 import c1ScratchJr from "@/assets/curriculum/c1-scratchjr.jpg";
+import c2ComputerTypes from "@/assets/curriculum/c2-computer-types.jpg";
 
 import type { TopicTextbook } from "./class5Content";
 
