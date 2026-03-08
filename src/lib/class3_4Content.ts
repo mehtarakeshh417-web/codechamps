@@ -220,6 +220,7 @@ const c3PaintMore: TopicTextbook = {
       sections: [
         {
           heading: "Brush Styles & Airbrush",
+          image: "https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=800&h=400&fit=crop",
           body: "Paint has several **brush styles**:\n\n🖌️ **Round Brush** — smooth, round strokes\n🖌️ **Calligraphy Brush** — thick/thin strokes like fancy writing\n🖌️ **Oil Brush** — textured, artistic strokes\n🖌️ **Crayon** — looks like crayon on paper\n🖌️ **Marker** — smooth, semi-transparent\n🖌️ **Natural Pencil** — like a real pencil\n\n**To change brush style:**\n1. Click the **Brushes** dropdown in the toolbar\n2. Select the style you want\n3. Choose the **size** (thickness)\n4. Start painting!\n\n**Airbrush effect:** Use the spray can tool for a soft, spray-paint look. Great for clouds, fog, and backgrounds!",
           youtubeId: "Q5mH88NAOA0"
         }
