@@ -114,7 +114,17 @@ const c1ComputerIntro: TopicTextbook = {
         {
           heading: "Important Keys on the Keyboard",
           body: "The keyboard has many keys. Let's learn the most important ones:\n\n🔤 **Letter Keys** (A-Z) — Type letters to make words\n🔢 **Number Keys** (0-9) — Type numbers\n⬜ **Space Bar** — The longest key at the bottom. Makes a space between words.\n⏎ **Enter Key** — Goes to a new line, or says \"OK\" to the computer\n⬅️ **Backspace** — Deletes the letter BEFORE the cursor (goes backward)\n🔠 **Caps Lock** — Makes ALL letters CAPITAL when turned on\n⬆️ **Shift** — Hold it while pressing a letter to make ONE capital letter\n\n**Special Keys:**\n🔼 **Arrow Keys** — Move up, down, left, right\n⎋ **Escape (Esc)** — Cancels or closes something\n📋 **Tab** — Makes a big space (indent)",
-          youtubeId: "n7LBLjnF_qs"
+          youtubeId: "n7LBLjnF_qs",
+          illustration: [
+            { emoji: "🔤", label: "Letters A-Z" },
+            { emoji: "🔢", label: "Numbers 0-9" },
+            { emoji: "⬜", label: "Space Bar" },
+            { emoji: "⏎", label: "Enter" },
+            { emoji: "⬅️", label: "Backspace" },
+            { emoji: "⬆️", label: "Shift" },
+            { emoji: "🔠", label: "Caps Lock" },
+            { emoji: "⎋", label: "Escape" },
+          ]
         }
       ],
       exercises: [
