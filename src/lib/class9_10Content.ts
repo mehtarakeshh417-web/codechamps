@@ -793,6 +793,7 @@ const c9DataSci: TopicTextbook = {
       sections: [
         {
           heading: "The World of Data Science",
+          image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=400&fit=crop",
           body: "**Data Science** combines statistics, programming, and domain knowledge to extract meaningful insights from data. It's one of the fastest-growing fields in technology, transforming industries from healthcare to entertainment.\n\nData scientists don't just crunch numbers — they ask questions, find patterns, make predictions, and help organizations make better decisions. Netflix uses data science to recommend shows, doctors use it to predict diseases, and cities use it to optimize traffic flow.\n\nThe amount of data in the world doubles every two years. Being able to understand and work with data is becoming as essential as reading and writing.",
           illustration: [
             { emoji: "📊", label: "Statistics" },
