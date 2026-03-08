@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Code, Terminal, Gamepad2, Palette, Coffee, Paintbrush, FileText, Table2, Presentation, ImageIcon, PenTool } from "lucide-react";
+import { Code, Terminal, Gamepad2, Palette, Coffee, Paintbrush, FileText, Table2, Presentation, ImageIcon, PenTool, LayoutDashboard } from "lucide-react";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { useSearchParams } from "react-router-dom";
 import {
