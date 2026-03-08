@@ -23,7 +23,7 @@ const SchoolDashboard = () => {
     <div>
       <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
         <h1 className="font-display text-3xl font-bold mb-1">
-          <span className="text-gradient-brand text-primary-foreground bg-muted">{user?.schoolName || "School"}</span>
+          <span className="text-gradient-brand bg-muted text-muted">{user?.schoolName || "School"}</span>
         </h1>
         <p className="font-body font-bold mb-8 text-primary-foreground">Principal's Command Center</p>
       </motion.div>
