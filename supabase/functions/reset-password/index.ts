@@ -41,12 +41,14 @@ Deno.serve(async (req) => {
     }
 
     if (!authUser) {
+      console.log("User not found for email:", email);
       return new Response(JSON.stringify({ error: "User not found" }), {
-        status: 404,
+        status: 200,
         headers: { ...corsHeaders, "Content-Type": "application/json" },
       });
     }
 
+    console.log("Found user:", authUser.id);
     const userId = authUser.id;
 
     if (method === "old_password") {
