@@ -57,7 +57,7 @@ const Landing = () => {
               <span className="text-gradient-fire">Schools</span>
             </h1>
             <p className="font-body text-lg text-white/70 mb-8 max-w-lg">
-              CodeChamps transforms computer science teaching with XP systems, AI assignments, live coding sandboxes, and class-wise curriculum — from Class 1 to 8.
+              CodeChamps transforms computer science teaching with XP systems, AI assignments, live coding sandboxes, and class-wise curriculum — from Class 1 to 10.
             </p>
             <div className="flex flex-wrap gap-4">
               <Button variant="hero" size="xl" onClick={() => navigate("/login")}>
