@@ -30,7 +30,7 @@ const Landing = () => {
       >
         <div className="flex items-center gap-3">
           <img src={logo} alt="CodeChamps logo" className="w-10 h-10 rounded-xl object-contain" />
-          <span className="font-display text-xl font-bold text-gradient-brand">CodeChamps</span>
+          <span className="font-display text-xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">CodeChamps</span>
         </div>
         <Button variant="hero" size="xl" onClick={() => navigate("/login")}>
           Login
@@ -50,7 +50,7 @@ const Landing = () => {
               <span className="text-sm font-body text-neon-green">The Future of Computer Education</span>
             </div>
             <h1 className="font-display text-4xl md:text-6xl font-bold leading-tight mb-6">
-              <span className="text-gradient-brand">Gamified</span>{" "}
+              <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Gamified</span>{" "}
               <span className="text-white">Computer</span>
               <br />
               <span className="text-white">Education for</span>{" "}
@@ -89,7 +89,7 @@ const Landing = () => {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          className="font-display text-3xl md:text-4xl font-bold text-center mb-12 text-foreground"
+          className="font-display text-3xl md:text-4xl font-bold text-center mb-12 text-white"
         >
           Powerful Features
         </motion.h2>
