@@ -331,6 +331,16 @@ const c1PaintShapes: TopicTextbook = {
         {
           heading: "Pencil and Brush Drawing",
           body: "**Pencil Tool:**\n• Makes thin, precise lines\n• Great for details and outlines\n• Click and hold while moving the mouse\n\n**Brush Tool:**\n• Makes thicker, more artistic strokes\n• You can choose different brush styles:\n  - Round brush\n  - Square brush\n  - Calligraphy brush\n  - Oil brush\n\n**Eraser Tool:**\n• Removes anything you've drawn\n• You can change the eraser size\n• Right-click with eraser to erase only Color 1\n\n**Tip:** Zoom in (View → Zoom In) to draw small details more easily!",
+          comparison: {
+            left: {
+              title: "Pencil Tool",
+              points: ["Thin, precise lines", "Best for outlines & details", "Single consistent width", "Good for writing text"]
+            },
+            right: {
+              title: "Brush Tool",
+              points: ["Thick, artistic strokes", "Multiple brush styles", "Adjustable size", "Good for coloring & painting"]
+            }
+          }
         }
       ],
       exercises: [
