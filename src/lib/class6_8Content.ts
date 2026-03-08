@@ -60,6 +60,7 @@ const c6HtmlIntro: TopicTextbook = {
       sections: [
         {
           heading: "The HTML Skeleton",
+          image: "https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=800&h=400&fit=crop",
           body: "Every HTML page has this basic structure. Think of it as the **blueprint** — without it, the browser won't know how to display your content!",
           tip: "Think of `<head>` as the brain (thinking but invisible) and `<body>` as the body (visible to everyone)!",
           codeBlock: {
